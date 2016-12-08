@@ -207,11 +207,21 @@
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Setting" ofType:@"plist"];
     NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
     NSString *url1 = data[@"shareurl"];
+    
+    
+    NSLog(@"新的url -- %@",newUrl);
+    NSLog(@"老的的url -- %@",url1);
+    
+    
+    
     if ([newUrl isEqualToString:url1])
     {
         return YES;
     }
+    
+    //return NO;
     _myType = [[newUrl componentsSeparatedByString:@"/"] lastObject];
+    
     if (!([newUrl rangeOfString:@"type"].location==NSNotFound)) {
     
         SearchListViewController * search=[[SearchListViewController alloc]init];
@@ -223,15 +233,25 @@
         newUrl = url1;
         
         return YES;
-    }
-    
-    else {
+    }else if([self isAllNum:_myType]){
+        
         goodDetailViewController * good=[[goodDetailViewController alloc]init];
         good.goodID=_myType;
         [self.navigationController pushViewController:good animated:NO];
     }
     
     return NO;
+}
+             
+- (BOOL)isAllNum:(NSString *)string{
+ unichar c;
+ for (int i=0; i<string.length;i++) {
+     c=[string characterAtIndex:i];
+     if (!isdigit(c)) {
+         return NO;
+     }
+ }
+ return YES;
 }
 #pragma mark-点击我跳转点击事件
 -(void)pushSearch
