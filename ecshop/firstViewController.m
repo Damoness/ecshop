@@ -224,9 +224,9 @@
     
     if (!([newUrl rangeOfString:@"type"].location==NSNotFound)) {
     
-        SearchListViewController * search=[[SearchListViewController alloc]init];
-        search.typeStay=_myType;
-        [self.navigationController pushViewController:search animated:NO];
+//        SearchListViewController * search=[[SearchListViewController alloc]init];
+//        search.typeStay=_myType;
+//        [self.navigationController pushViewController:search animated:NO];
         
     }else if(!([newUrl rangeOfString:@"ad"].location==NSNotFound)){
         

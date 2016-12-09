@@ -69,6 +69,7 @@
     NSString *url1 = data[@"url"];
     
 
+
     AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
 
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"json/text", @"text/json",@"application/json",@"text/javascript",nil];
