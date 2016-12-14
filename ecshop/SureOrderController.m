@@ -439,7 +439,7 @@
         }else if (i==1){
             _yunfei=[[UILabel alloc]initWithFrame:CGRectMake(self.view.frame.size.width-100, 10,90, 20)];
             _yunfei.textColor=[UIColor redColor];
-            _yunfei.text=@"+0";
+            _yunfei.text=@"0";
             _yunfei.textAlignment=NSTextAlignmentRight;
             _yunfei.font=[UIFont systemFontOfSize:15];
             [vieww addSubview:_yunfei];
