@@ -69,8 +69,8 @@
     self.tabBarController.tabBar.hidden=YES;
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
     [tabbar hiddenTabbar:NO];
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
+    
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     self.tempDic = app.tempDic;
     if (app.tempDic == nil) {
         //未登录
@@ -106,8 +106,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"我的";
     
+    self.title = @"我的";
     self.view.backgroundColor = kColorBack;
     [self draw];
     [self draw1];
