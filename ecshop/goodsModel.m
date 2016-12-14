@@ -17,4 +17,12 @@
     self.number = model.number;
     self.rec_id = model.rec_id;
 }
+
+//
+//-(void)setGoods_img:(NSString *)goods_img{
+//    
+//    
+//    
+//}
+
 @end

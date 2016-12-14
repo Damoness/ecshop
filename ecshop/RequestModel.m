@@ -77,9 +77,9 @@
     manager.requestSerializer=[AFHTTPRequestSerializer serializer];
 //        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@/%@/%@",url1,model,action];
-    
+    DebugLog(@"url --- %@ --- dict ---%@",url,dict);
     [manager POST:url parameters:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"POST-->%@,%@",responseObject,[NSThread currentThread]);
+        NSLog(@"POST-->%@,%@",[responseObject toConsole],[NSThread currentThread]);
         //自动返回主线程
         //responseObject[@"msg"]
         if ([responseObject[@"datas"] isKindOfClass:[NSDictionary class]]) {

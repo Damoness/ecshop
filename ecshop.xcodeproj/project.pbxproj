@@ -368,6 +368,7 @@
 		51FD42B41C279F4000D260A8 /* DetailTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51FD42B31C279F4000D260A8 /* DetailTableCell.m */; };
 		51FD42BF1C27DC9400D260A8 /* 单选框（选中).png in Resources */ = {isa = PBXBuildFile; fileRef = 51FD42BD1C27DC9400D260A8 /* 单选框（选中).png */; };
 		51FD42C01C27DC9400D260A8 /* 单选框1.png in Resources */ = {isa = PBXBuildFile; fileRef = 51FD42BE1C27DC9400D260A8 /* 单选框1.png */; };
+		9C36ACFC1E01324A0021C6CE /* NSDictionary+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36ACFB1E01324A0021C6CE /* NSDictionary+Common.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -995,6 +996,9 @@
 		51FD42B31C279F4000D260A8 /* DetailTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTableCell.m; sourceTree = "<group>"; };
 		51FD42BD1C27DC9400D260A8 /* 单选框（选中).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "单选框（选中).png"; sourceTree = "<group>"; };
 		51FD42BE1C27DC9400D260A8 /* 单选框1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "单选框1.png"; sourceTree = "<group>"; };
+		9C36ACF61E0128E80021C6CE /* eshop-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "eshop-Prefix.pch"; sourceTree = "<group>"; };
+		9C36ACFA1E01324A0021C6CE /* NSDictionary+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Common.h"; sourceTree = "<group>"; };
+		9C36ACFB1E01324A0021C6CE /* NSDictionary+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Common.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1410,6 +1414,8 @@
 		51F12E6D1C0BE168002C62D0 /* ecshop */ = {
 			isa = PBXGroup;
 			children = (
+				9C36ACF81E0130EF0021C6CE /* Util */,
+				9C36ACF61E0128E80021C6CE /* eshop-Prefix.pch */,
 				51F12E8A1C0BE1B7002C62D0 /* other */,
 				51F12E891C0BE1A3002C62D0 /* view */,
 				51F12E881C0BE199002C62D0 /* model */,
@@ -2109,6 +2115,23 @@
 			name = "分享";
 			sourceTree = "<group>";
 		};
+		9C36ACF81E0130EF0021C6CE /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				9C36ACF91E0130EF0021C6CE /* OC_Category */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		9C36ACF91E0130EF0021C6CE /* OC_Category */ = {
+			isa = PBXGroup;
+			children = (
+				9C36ACFA1E01324A0021C6CE /* NSDictionary+Common.h */,
+				9C36ACFB1E01324A0021C6CE /* NSDictionary+Common.m */,
+			);
+			path = OC_Category;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2373,6 +2396,7 @@
 				51FD42471C27936D00D260A8 /* MJRefreshFooter.m in Sources */,
 				51F12ECB1C0C14AA002C62D0 /* MASViewConstraint.m in Sources */,
 				3C7D67521C3525B200EAB2AB /* fourthViewController.m in Sources */,
+				9C36ACFC1E01324A0021C6CE /* NSDictionary+Common.m in Sources */,
 				51FD42541C27936D00D260A8 /* UIScrollView+MJExtension.m in Sources */,
 				51F12E761C0BE168002C62D0 /* ViewController.m in Sources */,
 				51F6F5A21C47A83E00D9360B /* MyOrderViewCell.m in Sources */,
@@ -2647,6 +2671,7 @@
 					"$(PROJECT_DIR)/ecshop/umeng_ios_social_sdk_4.4_arm64_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/ecshop/alipaySDK",
 				);
+				GCC_PREFIX_HEADER = "ecshop/eshop-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/ecshop/alipaySDK\"";
 				INFOPLIST_FILE = ecshop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2680,6 +2705,7 @@
 					"$(PROJECT_DIR)/ecshop/umeng_ios_social_sdk_4.4_arm64_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/ecshop/alipaySDK",
 				);
+				GCC_PREFIX_HEADER = "ecshop/eshop-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/ecshop/alipaySDK\"";
 				INFOPLIST_FILE = ecshop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
