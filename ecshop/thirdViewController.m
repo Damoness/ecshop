@@ -151,7 +151,7 @@
     [_viewbefore addSubview:viewbuy];
     //看看关注
     UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.center.x-30, 200, 60, 60)];
-    imgView.image = [UIImage imageNamed:@"cart_goods_empty.png"];
+    imgView.image = [UIImage imageNamed:@"cart_goods_empty.jpg"];
     [_viewbefore addSubview:imgView];
     //购物车肚子空空
     UILabel *label1 = [[UILabel alloc]init];

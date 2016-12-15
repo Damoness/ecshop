@@ -18,6 +18,7 @@
 #ifdef __OBJC__
 
 #import "NSDictionary+Common.h"
+#import "MJExtension.h"
 
 #endif
 
