@@ -554,8 +554,9 @@
         AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
         manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/html"];
         __weak typeof(self) weakSelf = self;
+        NSLog(@"path:%@",PATH);
         [manager GET:PATH parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSLog(@"提交成功%@",responseObject);
+            NSLog(@"提交成功%@",[responseObject toConsole]);
             
             CheckStandController * check=[[CheckStandController alloc]init];
             check.jiage=responseObject[@"data"][@"money_paid"];

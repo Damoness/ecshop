@@ -7,14 +7,18 @@
 //
 
 #import "LoginModel.h"
-#import "UserModel.h"
 
-#define kLoginStatus @"login_status"
+#define kLoginStatus @"kLoginStatus"
 
-#define KLoginUserDic @"user_dic"
+#define KLoginUserDic @"KLoginUserDic"
 
+#define KLoginKey    @"KLoginKey"
+
+//#define
 
 static UserModel *userModel;
+
+static  NSString *key;
 
 @implementation LoginModel
 
@@ -41,15 +45,17 @@ static UserModel *userModel;
 
     
     if (dic) {
+    
         
         NSUserDefaults *defaults =  [NSUserDefaults standardUserDefaults];
         
         [defaults setObject:[NSNumber numberWithBool:YES] forKey:kLoginStatus];
         
-         userModel =  [UserModel mj_objectWithKeyValues:dic];
+        [defaults setObject:dic forKey:KLoginUserDic];
         
-        [defaults setObject:userModel forKey:KLoginUserDic];
+        userModel =  [UserModel mj_objectWithKeyValues:dic];
         
+
         [defaults synchronize];
         
     }
@@ -57,6 +63,51 @@ static UserModel *userModel;
     
     
     
+}
+
+
++(NSString *)key{
+    
+    if (!key) {
+        
+        NSUserDefaults *defaults =  [NSUserDefaults standardUserDefaults];
+        
+        key =  [defaults stringForKey:KLoginKey];
+        
+    }
+    
+    return  key;
+    
+}
+
+
++(void)setKey:(NSString *)k{
+    
+    
+    if (k) {
+        
+        key = k;
+        
+        NSUserDefaults *defaults =  [NSUserDefaults standardUserDefaults];
+        
+        [defaults setObject:key forKey:KLoginKey];
+        
+        [defaults setObject:[NSNumber numberWithBool:YES] forKey:kLoginStatus];
+        
+        [defaults synchronize];
+    }
+    
+}
+
+
++ (UserModel *)currentLoginUser{
+    if (!userModel) {
+        
+          NSDictionary *loginData = [[NSUserDefaults standardUserDefaults] objectForKey:KLoginUserDic];
+
+          userModel = loginData ? [UserModel mj_objectWithKeyValues:loginData]:nil;
+    }
+    return userModel;
 }
 
 @end

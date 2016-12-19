@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "UserModel.h"
 @interface LoginModel : NSObject
 
 
@@ -19,6 +19,13 @@
 
 //登录成功后存储用户数据
 +(void)doLogin:(NSDictionary *)dic;
+
+
++(NSString *)key;
+
++(void)setKey:(NSString *)k;
+
++(UserModel *)currentLoginUser;
 
 
 @end

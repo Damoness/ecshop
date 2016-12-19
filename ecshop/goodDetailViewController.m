@@ -863,6 +863,9 @@
     UIApplication *appli=[UIApplication sharedApplication];
     AppDelegate *app=appli.delegate;
     NSString * receNs= app.tempDic[@"data"][@"key"];
+    
+    [LoginModel isLogin];
+    
     //加入购物车
     if (btn.tag==1502)
     {

@@ -14,6 +14,9 @@
 #import "ForgetPasswordViewController.h"
 #import "MD5/NSString+Hashing.h"
 #import "UIColor+Hex.h"
+
+#import "LoginModel.h"
+
 #define kColorBack [UIColor colorWithRed:239/255.0 green:239/255.0 blue:244/255.0 alpha:1.0]
 #define kColorOffButton [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]
 @interface LoginViewController ()<UITextFieldDelegate>
@@ -164,6 +167,9 @@
             if ([dic[@"msg"]isEqualToString:@"登录成功"]) {
                 
                 weakSelf.mykey = dic[@"data"][@"key"];
+                
+                [LoginModel setKey:dic[@"data"][@"key"]];
+                
                 
                 [weakSelf.navigationController popViewControllerAnimated:YES];
                 NSDictionary *dicc = [[NSDictionary alloc]init];

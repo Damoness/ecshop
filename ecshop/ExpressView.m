@@ -11,6 +11,7 @@
 #import "AFHTTPSessionManager.h"
 #import "SureOrderController.h"
 #import "UIColor+Hex.h"
+#import "RequestModel.h"
 @interface ExpressView ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSMutableArray * datasource;//数据源
@@ -47,17 +48,34 @@
     NSString *url1 = data[@"url"];
     
     NSString * strr= app.tempDic[@"data"][@"key"];
-    NSString*path=[NSString stringWithFormat:@"%@/order/delivery?key=%@",url1,strr];
-    AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/html"];
-    manager.requestSerializer=[AFJSONRequestSerializer serializer];
-    [manager GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-       [datasource addObjectsFromArray:responseObject[@"data"]];
-            [table1 reloadData];
-        NSLog(@"%@",responseObject);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"%@",error.description);
+//    NSString*path=[NSString stringWithFormat:@"%@/order/delivery?key=%@",url1,strr];
+//    AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
+//    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/html"];
+//    manager.requestSerializer=[AFJSONRequestSerializer serializer];
+//    [manager GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//       [datasource addObjectsFromArray:responseObject[@"data"]];
+//            [table1 reloadData];
+//        NSLog(@"%@",responseObject);
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//        NSLog(@"%@",error.description);
+//    }];
+//    
+    
+    __weak typeof(self) weakSelf = self;
+    
+    NSDictionary *dict = @{@"key":
+                           strr
+                               };
+    
+    [RequestModel requestWithDictionary:dict model:@"order" action:@"delivery" block:^(id result) {
+        [datasource addObjectsFromArray:result[@"data"]];
+        [table1 reloadData];
+       // NSLog(@"%@",result);
     }];
+    
+    
+    
+    
 }
 -(void)createTable
 {
