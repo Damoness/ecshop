@@ -860,52 +860,41 @@
 -(void)buttonNext2:(id)sender
 {
     UIButton *btn=(UIButton *)sender;
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
-    NSString * receNs= app.tempDic[@"data"][@"key"];
     
-    [LoginModel isLogin];
-    
-    //加入购物车
-    if (btn.tag==1502)
-    {
-        if (receNs!=NULL) {
+    if(![LoginModel isLogin]){
+        
+        LoginViewController *login=[[LoginViewController alloc]init];
+        [self.navigationController pushViewController:login animated:YES];
+        
+    }else{
+        
+        //加入购物车
+        if (btn.tag==1502)
+        {
             //            NSMutableDictionary * valueDic=[[NSMutableDictionary alloc]init];
             //            NSString * strr;
             NSString * path1;
             if (valueID!=NULL) {
-                //                [valueDic setObject:[NSString stringWithFormat:@"%@",valueID]forKey:@"attr_value_id"];
-                //                strr=[valueDic JSONString];
-                //                path1=[strr  stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+                
                 path1 = [NSString stringWithFormat:@"[%@]",valueID];
+                
             }else if (valueID==NULL)
             {
                 path1=[NSString stringWithFormat:@""];
             }
             
-            
-            //  NSString * path2=[receNs stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-            
             NSString *api_token = [RequestModel model:@"goods" action:@"addcart"];
-            // strr=@"0";
-            NSDictionary *dict;
-            dict= @{@"api_token":api_token,@"goods_id":self.goodID,@"key":receNss,@"num":_numLab.text,@"attrvalue_id":path1};
+    
+            
+            NSDictionary *dict = @{@"api_token":api_token,@"goods_id":self.goodID,@"key":receNss,@"num":_numLab.text,@"attrvalue_id":path1};
             [RequestModel requestWithDictionary:dict model:@"goods" action:@"addcart" block:^(id result) {
-                UIAlertView * alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"加入购物车成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                [alert show];
+                
+                kTipAlert(@"%@",@"加入购物车成功");
             }];
             
-        }
-        else if (receNs==NULL)
-        {
-            LoginViewController *login=[[LoginViewController alloc]init];
-            [self.navigationController pushViewController:login animated:YES];
-        }
-    }
-    //立刻购买
-    else if (btn.tag==1503)
-    {
-        if (receNs!=NULL) {
+        } //立刻购买
+        else if (btn.tag==1503){
+            
             SureOrderController * sure=[[SureOrderController alloc]init];
             sure.sureId=self.goodID;
             if (valueID!=NULL) {
@@ -917,13 +906,70 @@
             
             sure.shopNum=self.numLab.text;
             [self.navigationController pushViewController:sure animated:YES];
-        }else if (receNs==NULL)
-        {
-            LoginViewController *login=[[LoginViewController alloc]init];
-            [self.navigationController pushViewController:login animated:YES];
+            
         }
         
+        
     }
+    
+//    //加入购物车
+//    if (btn.tag==1502)
+//    {
+//        if (receNs!=NULL) {
+//            //            NSMutableDictionary * valueDic=[[NSMutableDictionary alloc]init];
+//            //            NSString * strr;
+//            NSString * path1;
+//            if (valueID!=NULL) {
+//                //                [valueDic setObject:[NSString stringWithFormat:@"%@",valueID]forKey:@"attr_value_id"];
+//                //                strr=[valueDic JSONString];
+//                //                path1=[strr  stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+//                path1 = [NSString stringWithFormat:@"[%@]",valueID];
+//            }else if (valueID==NULL)
+//            {
+//                path1=[NSString stringWithFormat:@""];
+//            }
+//            
+//            
+//            //  NSString * path2=[receNs stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+//            
+//            NSString *api_token = [RequestModel model:@"goods" action:@"addcart"];
+//            // strr=@"0";
+//            NSDictionary *dict;
+//            dict= @{@"api_token":api_token,@"goods_id":self.goodID,@"key":receNss,@"num":_numLab.text,@"attrvalue_id":path1};
+//            [RequestModel requestWithDictionary:dict model:@"goods" action:@"addcart" block:^(id result) {
+//                UIAlertView * alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"加入购物车成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+//                [alert show];
+//            }];
+//            
+//        }
+//        else if (receNs==NULL)
+//        {
+//            LoginViewController *login=[[LoginViewController alloc]init];
+//            [self.navigationController pushViewController:login animated:YES];
+//        }
+//    }
+//    //立刻购买
+//    else if (btn.tag==1503)
+//    {
+//        if (receNs!=NULL) {
+//            SureOrderController * sure=[[SureOrderController alloc]init];
+//            sure.sureId=self.goodID;
+//            if (valueID!=NULL) {
+//                sure.smallId=valueID;
+//            }else if (valueID==NULL)
+//            {
+//                sure.smallId=[NSString stringWithFormat:@""];
+//            }
+//            
+//            sure.shopNum=self.numLab.text;
+//            [self.navigationController pushViewController:sure animated:YES];
+//        }else if (receNs==NULL)
+//        {
+//            LoginViewController *login=[[LoginViewController alloc]init];
+//            [self.navigationController pushViewController:login animated:YES];
+//        }
+//        
+//    }
 }
 //返回上一页的点击事件
 -(void)bitBtn
