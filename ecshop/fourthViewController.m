@@ -48,10 +48,12 @@
 @property (nonatomic,strong)UILabel *labelForIntegration1;
 //用户名
 @property (nonatomic,strong)UILabel *label1;
-//未登录
-@property (nonatomic,strong)UIView *viewForLogin;
-//已登录
-@property (nonatomic,strong)UIView *viewForLogin1;
+
+//登录视图
+@property (nonatomic,strong)UIView *loginView;
+//用户视图
+@property (nonatomic,strong)UIView *userView;
+
 //登录后头像
 @property (nonatomic,strong)UIImageView *headView1;
 @property (nonatomic,strong)NSString *waitPayNum;//待付款个数
@@ -68,15 +70,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"我的";
+    //self.title = @"我的";
     self.view.backgroundColor = kColorBack;
-    [self draw];
-    [self draw1];
     
+    [self configLoginView];
     
-
-    [self configRightItemView];
-    
+    [self configUserView];
     // Do any additional setup after loading the view.
 }
 
@@ -89,17 +88,12 @@
     AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     self.tempDic = app.tempDic;
     
-    if (![LoginModel isLogin]) {
-        //未登录
-        _viewForLogin.hidden = NO;
-        _viewForLogin1.hidden = YES;
-        self.tagg = 1;
-        [self.table reloadData];
-    }else{
+    if ([LoginModel isLogin]) {
+
         //登录后
         self.userName = app.userName;
-        _viewForLogin.hidden = YES;
-        _viewForLogin1.hidden = NO;
+        _loginView.hidden = YES;
+        _userView.hidden = NO;
         
         [self myAccount];
         self.tagg = 2;
@@ -118,6 +112,17 @@
             UIImage *headImg = [UIImage imageNamed:@"null_head.png"];
             _headView1.image = headImg;
         }
+        
+    }else{
+        
+        //未登录
+        _loginView.hidden = NO;
+        _userView.hidden = YES;
+        self.tagg = 1;
+        [self.table reloadData];
+        
+        
+
     }
     
 }
@@ -135,11 +140,11 @@
     [self.navigationController pushViewController:settingVC animated:YES];
 }
 #pragma mark -- 登录后
--(void)draw1{
+-(void)configUserView{
     
     
-    _viewForLogin1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    _viewForLogin1.hidden = YES;
+    _userView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    _userView.hidden = YES;
     [self initNavigationBar];
     //背景图
     //    UIImageView *imgView = [[UIImageView alloc]initWithFrame:[app createFrameWithX:0 andY:0 andWidth:375 andHeight:250]];
@@ -149,11 +154,11 @@
     
     imgView.image = image;
     
-    [_viewForLogin1 addSubview:imgView];
+    [_userView addSubview:imgView];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, 64, imgView.frame.size.width, imgView.frame.size.height - 64);
     [button addTarget:self action:@selector(changeToMine:) forControlEvents:UIControlEventTouchUpInside];
-    [_viewForLogin1 addSubview:button];
+    [_userView addSubview:button];
     //头像
     
     _headView1 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 90, self.view.frame.size.width/5, self.view.frame.size.width/5)];
@@ -174,7 +179,7 @@
     }
     
     
-    [_viewForLogin1 addSubview:_headView1];
+    [_userView addSubview:_headView1];
     //底部色块
     
     UIView *backgroudView = [[UIView alloc]initWithFrame:CGRectMake(0, imgView.frame.size.height - 40, self.view.frame.size.width, 40)];
@@ -265,15 +270,15 @@
     _table.dataSource = self;
     
     [self setExtraCellLineHidden:_table];
-    [_viewForLogin1 addSubview:_table];
+    [_userView addSubview:_table];
     //用户名label
     _label1 = [[UILabel alloc]initWithFrame:CGRectMake(20+self.view.frame.size.width/5, 110, self.view.frame.size.width/2, 40)];
     _label1.text = self.userName;
     
     _label1.textColor = [UIColor whiteColor];
-    [_viewForLogin1 addSubview:_label1];
+    [_userView addSubview:_label1];
     
-    [self.view addSubview:_viewForLogin1];
+    [self.view addSubview:_userView];
 }
 #pragma mark --跳转我关注的商品界面
 -(void)goodsAction:(id)sender{
@@ -302,16 +307,17 @@
 }
 
 #pragma mark -- 未登录
--(void)draw{
+-(void)configLoginView{
     
-    _viewForLogin = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    _viewForLogin.hidden = NO;
+    _loginView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    _loginView.hidden = NO;
+    
     [self initNavigationBar];
     //背景图
     UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, (self.view.frame.size.height/7)*2)];
     UIImage *image = [UIImage imageNamed:@"会员中心-未登录-背景.png"];
     imgView.image = image;
-    [_viewForLogin addSubview:imgView];
+    [_loginView addSubview:imgView];
     
     //登录按钮
     UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -322,7 +328,7 @@
     loginBtn.frame = CGRectMake(self.view.frame.size.width/4-10, (imgView.frame.size.height/3)*2 + 64, self.view.frame.size.width/4, imgView.frame.size.height/6);
     [loginBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [loginBtn addTarget:self action:@selector(changeToLogin:) forControlEvents:UIControlEventTouchUpInside];
-    [_viewForLogin addSubview:loginBtn];
+    [_loginView addSubview:loginBtn];
     
     //注册按钮
     UIButton *registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -333,7 +339,7 @@
     registerBtn.backgroundColor = [UIColor whiteColor];
     [registerBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [registerBtn addTarget:self action:@selector(changeToRegister:) forControlEvents:UIControlEventTouchUpInside];
-    [_viewForLogin addSubview:registerBtn];
+    [_loginView addSubview:registerBtn];
     
     
     _table = [[UITableView alloc]initWithFrame:CGRectMake(0, (self.view.frame.size.height/7)*2 + 64, self.view.frame.size.width, (self.view.frame.size.height/7)*6 - 110) style:UITableViewStyleGrouped];
@@ -341,7 +347,7 @@
     _table.dataSource = self;
     
     
-    [_viewForLogin addSubview:_table];
+    [_loginView addSubview:_table];
     //label1
     UILabel *label1 = [[UILabel alloc]initWithFrame:CGRectMake(self.view.center.x - 70,  30, self.view.frame.size.width/2, imgView.frame.size.height/7)];
     label1.text = @"您当前还没有登录？";
@@ -355,7 +361,7 @@
     label2.font = [UIFont systemFontOfSize:15];
     label2.textColor = [UIColor whiteColor];
     [imgView addSubview:label2];
-    [self.view addSubview:_viewForLogin];
+    [self.view addSubview:_loginView];
     
 }
 - (void)didReceiveMemoryWarning {
@@ -700,14 +706,17 @@
             UIAlertAction *okAction =[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 #pragma mark --注册通知各页已经退出
                 
+                [LoginModel doLogout];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"quite" object:nil];
-                weakSelf.viewForLogin.hidden = NO;
-                weakSelf.viewForLogin1.hidden = YES;
+                weakSelf.loginView.hidden = NO;
+                weakSelf.userView.hidden = YES;
                 weakSelf.tabBarController.tabBar.hidden=YES;
                 MyTabBarViewController * tabbar =(MyTabBarViewController *)weakSelf.navigationController.tabBarController;
                 [tabbar hiddenTabbar:NO];
                 weakSelf.tagg = 1;
                 [weakSelf.table reloadData];
+                
+                
                 
             }];
             [alertVC addAction:cancelAction];
@@ -812,6 +821,7 @@
 }
 #pragma mark -- 自定义导航栏
 - (void)initNavigationBar{
+    
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Setting" ofType:@"plist"];
     NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
     NSString *naviBGColor = data[@"navigationBGColor"];
@@ -828,14 +838,14 @@
     [view addSubview:label];
     
     UIImage *img = [UIImage imageNamed:@"个人中心-标题栏-设置icon.png"];
-    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(label.frame.size.width + label.frame.origin.x + 60, 30, 30, 30)];
+    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(self.view.frame.size.width - 40, 30, 30, 30)];
     [btn addTarget:self action:@selector(change:) forControlEvents:UIControlEventTouchUpInside];
     
     [btn setBackgroundImage:img forState:UIControlStateNormal];
     [view addSubview:btn];
     
-    [self.viewForLogin addSubview:view];
-    [self.viewForLogin1 addSubview:view];
+    [self.loginView addSubview:view];
+    [self.userView addSubview:view];
     
 }
 -(void)dealloc{
@@ -844,14 +854,4 @@
 }
 
 
--(void)configRightItemView{
-    
-    UIImage *img = [UIImage imageNamed:@"个人中心-标题栏-设置icon.png"];
-    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [btn addTarget:self action:@selector(change:) forControlEvents:UIControlEventTouchUpInside];
-    [btn setBackgroundImage:img forState:UIControlStateNormal];
-    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithCustomView:btn];
-    self.navigationItem.rightBarButtonItem = item;
-    
-}
 @end
