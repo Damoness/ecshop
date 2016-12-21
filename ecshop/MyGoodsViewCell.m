@@ -84,10 +84,9 @@
 }
 -(void)myGoodsNum:(int)num{
     NSString *a = [NSString stringWithFormat:@"%d",num];
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
+
     NSString *api_token = [RequestModel model:@"goods" action:@"charnum"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":app.tempDic[@"data"][@"key"],@"rec_id":self.rec_id,@"num":a};
+    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"rec_id":self.rec_id,@"num":a};
     [RequestModel requestWithDictionary:dict model:@"goods" action:@"charnum" block:^(id result) {
         NSDictionary *dic = result;
         NSLog(@"获得的数据：%@",dic);

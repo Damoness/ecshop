@@ -65,6 +65,15 @@ static  NSString *key;
     
 }
 
+//登出
++(void)doLogout{
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSNumber numberWithBool:NO] forKey:kLoginStatus];
+    [defaults synchronize];
+    
+}
+
 
 +(NSString *)key{
     

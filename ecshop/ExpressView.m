@@ -41,13 +41,12 @@
 }
 -(void)requestInfo
 {
-    UIApplication * appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
+
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Setting" ofType:@"plist"];
     NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
     NSString *url1 = data[@"url"];
     
-    NSString * strr= app.tempDic[@"data"][@"key"];
+
 //    NSString*path=[NSString stringWithFormat:@"%@/order/delivery?key=%@",url1,strr];
 //    AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
 //    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/html"];
@@ -64,7 +63,7 @@
     __weak typeof(self) weakSelf = self;
     
     NSDictionary *dict = @{@"key":
-                           strr
+                           [LoginModel key]
                                };
     
     [RequestModel requestWithDictionary:dict model:@"order" action:@"delivery" block:^(id result) {

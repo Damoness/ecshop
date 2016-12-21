@@ -490,10 +490,9 @@
     model = _orderArray[button.tag];
     NSLog(@"%@",model);
     
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
+
     NSString *api_token = [RequestModel model:@"order" action:@"recart"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":app.tempDic[@"data"][@"key"],@"order_id":model.orderId};
+    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"order_id":model.orderId};
     __weak typeof(self) weakSelf = self;
     [RequestModel requestWithDictionary:dict model:@"order" action:@"recart" block:^(id result) {
         NSDictionary *dic = result;

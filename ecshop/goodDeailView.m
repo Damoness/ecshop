@@ -30,9 +30,8 @@
 
 @implementation goodDeailView
 -(void)viewWillAppear:(BOOL)animated{
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
-    if (app.tempDic != nil) {
+
+    if ([LoginModel isLogin]) {
         [self netInfo];
     }
 }
@@ -288,10 +287,12 @@
 {
     
     
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
-    NSString * receNss= app.tempDic[@"data"][@"key"];
-    if (receNss!=NULL) {
+    
+    
+
+    
+    if ([LoginModel isLogin]) {
+        
         
         NSMutableDictionary * valueDic=[[NSMutableDictionary alloc]init];
         NSString * path1;
@@ -305,22 +306,19 @@
             path1=[NSString stringWithFormat:@""];
         }
         
-        
-        NSString * path2=[receNss stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-        
         NSString *api_token = [RequestModel model:@"goods" action:@"addcart"];
         // strr=@"0";
-        NSDictionary *dict = @{@"api_token":api_token,@"key":path2,@"num":_numuBer,@"goods_id":self.recevieId,@"attrvalue_id":path1};
+        NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"num":_numuBer,@"goods_id":self.recevieId,@"attrvalue_id":path1};
         [RequestModel requestWithDictionary:dict model:@"goods" action:@"addcart" block:^(id result) {
             NSLog(@"侧边栏加入购物车成功%@",result);
         }];
+        
+        
+    }else{
+        
+        kTipAlert(@"%@",@"亲,还没登录哦");
+        
     }
-    else if (receNss==nil)
-    {
-        UIAlertView * alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"亲,还没登录哦" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-        [alert show];
-    }
-    
     
    }
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event

@@ -20,6 +20,8 @@
 //登录成功后存储用户数据
 +(void)doLogin:(NSDictionary *)dic;
 
+//登出
++(void)doLogout;
 
 +(NSString *)key;
 

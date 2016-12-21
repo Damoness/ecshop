@@ -76,10 +76,9 @@
 }
 */
 - (void)recharge{
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
+
     NSString *api_token = [RequestModel model:@"user" action:@"recharge"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":app.tempDic[@"data"][@"key"],@"price":_textField.text};
+    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"price":_textField.text};
 
     [RequestModel requestWithDictionary:dict model:@"user" action:@"recharge" block:^(id result) {
         NSDictionary *dic = result;

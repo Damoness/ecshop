@@ -34,11 +34,9 @@
 }
 -(void)relodInfo
 {
-    UIApplication * appli=[UIApplication sharedApplication];
-    AppDelegate * app=appli.delegate;
-    NSString * appStr=app.tempDic[@"data"][@"key"];
+
     NSString *api_token = [RequestModel model:@"order" action:@"bouns"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":appStr,@"money":self.money};
+    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"money":self.money};
     //    __weak typeof(self) weakSelf = self;
     [RequestModel requestWithDictionary:dict model:@"order" action:@"bouns" block:^(id result) {
         [self sendMessage:result];

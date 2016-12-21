@@ -104,9 +104,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    UIApplication * appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
-    NSString * receNs= app.tempDic[@"data"][@"key"];
+
     NSString * pathh;
     if (indexPath.section==0) {
         UIAlertView * alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"确定使用您的账户余额支付吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
@@ -117,7 +115,7 @@
         NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
         NSString *url1 = data[@"url"];
         
-        pathh=[NSString stringWithFormat:@"%@/order/pay?key=%@&order_id=%@&type=4",url1,receNs,_orderNs];
+        pathh=[NSString stringWithFormat:@"%@/order/pay?key=%@&order_id=%@&type=4",url1,[LoginModel key],_orderNs];
         AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
         manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/html"];
         manager.requestSerializer=[AFJSONRequestSerializer serializer];
@@ -148,9 +146,7 @@
         NSString *url1 = data[@"url"];
         
         UIApplication * appli=[UIApplication sharedApplication];
-        AppDelegate *app=appli.delegate;
-        NSString * receNs= app.tempDic[@"data"][@"key"];
-        NSString * pathp=[NSString stringWithFormat:@"%@/order/pay?key=%@&order_id=%@&type=1",url1,receNs,_orderNs];
+        NSString * pathp=[NSString stringWithFormat:@"%@/order/pay?key=%@&order_id=%@&type=1",url1,[LoginModel key],_orderNs];
         AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
         manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/html"];
         manager.requestSerializer=[AFJSONRequestSerializer serializer];

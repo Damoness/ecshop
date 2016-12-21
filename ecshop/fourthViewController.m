@@ -64,6 +64,22 @@
 
 @implementation fourthViewController
 
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.title = @"我的";
+    self.view.backgroundColor = kColorBack;
+    [self draw];
+    [self draw1];
+    
+    
+
+    [self configRightItemView];
+    
+    // Do any additional setup after loading the view.
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     
     self.tabBarController.tabBar.hidden=YES;
@@ -72,7 +88,8 @@
     
     AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     self.tempDic = app.tempDic;
-    if (app.tempDic == nil) {
+    
+    if (![LoginModel isLogin]) {
         //未登录
         _viewForLogin.hidden = NO;
         _viewForLogin1.hidden = YES;
@@ -104,23 +121,7 @@
     }
     
 }
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.title = @"我的";
-    self.view.backgroundColor = kColorBack;
-    [self draw];
-    [self draw1];
-    UIImage *img = [UIImage imageNamed:@"个人中心-标题栏-设置icon.png"];
-    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [btn addTarget:self action:@selector(change:) forControlEvents:UIControlEventTouchUpInside];
-    [btn setBackgroundImage:img forState:UIControlStateNormal];
-    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithCustomView:btn];
-    self.navigationItem.rightBarButtonItem = item;
-    
-    
-    // Do any additional setup after loading the view.
-}
+
 #pragma mark --我关注的商品等请求的数据
 -(void)mygoods{
     
@@ -730,7 +731,7 @@
 #pragma mark--我的资料数据请求
 -(void)myAccount{
     NSString *api_token = [RequestModel model:@"user" action:@"userinfo"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":self.tempDic[@"data"][@"key"]};
+    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
     
     __weak typeof(self) weakSelf = self;
     [RequestModel requestWithDictionary:dict model:@"user" action:@"userinfo" block:^(id result) {
@@ -839,6 +840,18 @@
 }
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"cart_num" object:nil];
+    
+}
+
+
+-(void)configRightItemView{
+    
+    UIImage *img = [UIImage imageNamed:@"个人中心-标题栏-设置icon.png"];
+    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [btn addTarget:self action:@selector(change:) forControlEvents:UIControlEventTouchUpInside];
+    [btn setBackgroundImage:img forState:UIControlStateNormal];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithCustomView:btn];
+    self.navigationItem.rightBarButtonItem = item;
     
 }
 @end

@@ -259,10 +259,9 @@
 }
 #pragma mark --解析数据
 -(void)myOrder{
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
+
     NSString *api_token = [RequestModel model:@"order" action:@"lorder"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":app.tempDic[@"data"][@"key"],@"order_id":_orderId};
+    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"order_id":_orderId};
     __weak typeof(self) weakSelf = self;
     [RequestModel requestWithDictionary:dict model:@"order" action:@"lorder" block:^(id result) {
         NSDictionary *dic = result;
@@ -354,10 +353,8 @@
     model = _goodsArr[button.tag];
     NSLog(@"%@",model);
     
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
     NSString *api_token = [RequestModel model:@"order" action:@"recart"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":app.tempDic[@"data"][@"key"],@"order_id":self.orderId};
+    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"order_id":self.orderId};
     __weak typeof(self) weakSelf = self;
     [RequestModel requestWithDictionary:dict model:@"order" action:@"recart" block:^(id result) {
         NSDictionary *dic = result;
@@ -383,14 +380,13 @@
 }
 #pragma mark --确认收货
 -(void)received:(UIButton *)button{
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
+
     shangpinModel *model = [shangpinModel new];
     model = _goodsArr[button.tag];
     
     NSLog(@"确认收货%@",model.orderId);
     NSString *api_token = [RequestModel model:@"order" action:@"received"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":app.tempDic[@"data"][@"key"],@"order_id":self.orderId};
+    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"order_id":self.orderId};
     [RequestModel requestWithDictionary:dict model:@"order" action:@"received" block:^(id result) {
         NSDictionary *dic = result;
         NSLog(@"获得的数据：%@",dic);

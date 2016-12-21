@@ -176,11 +176,10 @@
 
 
 -(void)cartNum:(NSNotification *)sender{
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
+
     NSDictionary *dic = sender.object;
     smallLab1.text = dic[@"cart_num"];
-    if (app.tempDic != nil) {
+    if ([LoginModel isLogin]) {
         smallView1.hidden = NO;
     }else{
         smallView1.hidden = YES;

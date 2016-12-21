@@ -120,8 +120,6 @@
 #pragma mark-请求数据
 -(void)reloadInfo
 {
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
     
     // NSString *goodsId = nil;
     goodsModel *goodmodel1 = [goodsModel new];
@@ -139,7 +137,7 @@
         }
         
         NSString *api_token = [RequestModel model:@"order" action:@"confirm"];
-        NSDictionary *dict = @{@"api_token":api_token,@"key":app.tempDic[@"data"][@"key"],@"goods_id":goodPathId};
+        NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"goods_id":goodPathId};
         __weak typeof(self) weakSelf = self;
         [RequestModel requestWithDictionary:dict model:@"order" action:@"confirm" block:^(id result) {
             NSDictionary *dic = result;
@@ -151,14 +149,12 @@
         
         RequestModel * requ=[[RequestModel alloc]init];
         requ.delegate=self;
-        UIApplication *appli=[UIApplication sharedApplication];
-        AppDelegate *app=appli.delegate;
-        NSString * receStr= app.tempDic[@"data"][@"key"];
+
         goodPathId=[NSString stringWithFormat:@"%@-%@",_sureId,_NumLab.text];
         NSString *path2=[goodPathId stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
         
         NSString *api_token = [RequestModel model:@"order" action:@"confirm"];
-        NSDictionary *dict = @{@"api_token":api_token,@"key":receStr,@"goods_id":path2,@"attrvalue_id":_smallId};
+        NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"goods_id":path2,@"attrvalue_id":_smallId};
         __weak typeof(self) weakSelf = self;
         [RequestModel requestWithDictionary:dict model:@"order" action:@"confirm" block:^(id result) {
             
@@ -533,12 +529,20 @@
 -(void)downButClick:(UIButton*)sender
 {
     if (_yunfeiID ==NULL) {
-        UIAlertView * aler=[[UIAlertView alloc]initWithTitle:@"提示" message:@"亲,请选择运费" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-        [aler show];
+//        UIAlertView * aler=[[UIAlertView alloc]initWithTitle:@"提示" message:@"亲,请选择运费" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+//        [aler show];
+//        
+//        
+        kTipAlert(@"%@",@"亲,请选择运费");
+        
     }else if (_yunfeiID !=NULL){
-        UIApplication *appli=[UIApplication sharedApplication];
-        AppDelegate *app=appli.delegate;
-        NSString * receNs= app.tempDic[@"data"][@"key"];
+//        UIApplication *appli=[UIApplication sharedApplication];
+//        AppDelegate *app=appli.delegate;
+//        NSString * receNs= app.tempDic[@"data"][@"key"];
+        
+        
+        NSString *key = [LoginModel key];
+        
         NSString * fieldPath=[field.text stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
         NSString *path2=[goodPathId stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
         NSString * PATH;
@@ -547,9 +551,9 @@
         NSString *url1 = data[@"url"];
         
         if(self.secondAddressId==NULL){
-            PATH=[NSString stringWithFormat:@"%@/order/create?key=%@&goods_id=%@&address_id=%@&amount=%@&money_paid=%@&shipping_fee=%@&expressage_id=%@&redpacket=%@&goods_attr_id=%@&bonus_id=%@&bonus_type_id=%@&message=%@&integral=%@&type=1",url1,receNs,path2,_addressId,_NumLab.text,totalPrice.text,_yunfei.text,_yunfeiID,diyongFen.text,_smallId,_hongId,_typeID,fieldPath,diyongFen.text];}
+            PATH=[NSString stringWithFormat:@"%@/order/create?key=%@&goods_id=%@&address_id=%@&amount=%@&money_paid=%@&shipping_fee=%@&expressage_id=%@&redpacket=%@&goods_attr_id=%@&bonus_id=%@&bonus_type_id=%@&message=%@&integral=%@&type=1",url1,key,path2,_addressId,_NumLab.text,totalPrice.text,_yunfei.text,_yunfeiID,diyongFen.text,_smallId,_hongId,_typeID,fieldPath,diyongFen.text];}
         else if (self.secondAddressId!=NULL){
-            PATH=[NSString stringWithFormat:@"%@/order/create?key=%@&goods_id=%@&address_id=%@&amount=%@&money_paid=%@&shipping_fee=%@&expressage_id=%@&redpacket=%@&goods_attr_id=%@&bonus_id=%@&bonus_type_id=%@&message=%@&integral=%@&type=1",url1,receNs,path2,_addressId,_NumLab.text,totalPrice.text,_yunfei.text,_yunfeiID,diyongFen.text,_smallId,_hongId,_typeID,fieldPath,diyongFen.text];
+            PATH=[NSString stringWithFormat:@"%@/order/create?key=%@&goods_id=%@&address_id=%@&amount=%@&money_paid=%@&shipping_fee=%@&expressage_id=%@&redpacket=%@&goods_attr_id=%@&bonus_id=%@&bonus_type_id=%@&message=%@&integral=%@&type=1",url1,key,path2,_addressId,_NumLab.text,totalPrice.text,_yunfei.text,_yunfeiID,diyongFen.text,_smallId,_hongId,_typeID,fieldPath,diyongFen.text];
         }
         AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
         manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/html"];

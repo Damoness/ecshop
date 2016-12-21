@@ -41,7 +41,7 @@
     UIView * firstView;//顶部弹出视图
     BOOL careGood;//是否收藏
     BOOL changeWebColl;
-    NSString * receNss;//接受key值的
+    //NSString * receNss;//接受key值的
     NSNumber* attenStr;//接受是否关注
     NSString * sttt;//页面进去后的默认颜色
     NSString * valueID;//加入购物车的id
@@ -68,20 +68,19 @@
 
 @implementation goodDetailViewController
 -(void)viewWillAppear:(BOOL)animated{
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
-    if (app.tempDic != nil) {
-        [self.table reloadData];
+
+    if ([LoginModel isLogin]) {
         
-    }
-    
-    
-    if (app.tempDic == nil) {
-        //未登录
+        [self.table reloadData];
+        [self myAccount];
         
     }else{
-        [self myAccount];
+        
+        //未登录
+        
     }
+    
+    
 }
 
 - (void)viewDidLoad {
@@ -123,9 +122,8 @@
 #pragma mark-通知数量颜色
     NSNotificationCenter *ncollect=[NSNotificationCenter defaultCenter];
     [ncollect addObserver:self selector:@selector(showcollect:) name:@"collect" object:nil];
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
-    receNss= app.tempDic[@"data"][@"key"];
+
+    
 #pragma mark-接受购物车数量
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
     //添加当前类对象为一个观察者，name和object设置为nil，表示接收一切通知
@@ -530,15 +528,16 @@
 #pragma mark-tableview请求数据
 -(void)reloadRequest
 {
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
-    receNss= app.tempDic[@"data"][@"key"];
+
     NSDictionary *dict;
     NSString *api_token = [RequestModel model:@"goods" action:@"goodsinfo"];
-    if (receNss==NULL) {
+    if ([LoginModel isLogin]) {
+        
+        dict = @{@"api_token":api_token,@"goods_id":self.goodID,@"key":[LoginModel key]};
+        
+    }else{
+        
         dict = @{@"api_token":api_token,@"goods_id":self.goodID};
-    }else if (receNss!=NULL){
-        dict = @{@"api_token":api_token,@"goods_id":self.goodID,@"key":receNss};
     }
     __weak typeof(self) weakSelf = self;
     [RequestModel requestWithDictionary:dict model:@"goods" action:@"goodsinfo" block:^(id result) {
@@ -796,15 +795,12 @@
 #pragma mark-关注,查看购物车点击事件
 -(void)buttonNext:(UIButton*)sender
 {
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
-    receNss= app.tempDic[@"data"][@"key"];
     UIButton * button=(UIButton *)sender;
     NSString *strrr;
     strrr=[attenStr stringValue];
     if (button.tag==1500) {
         //关注
-        if (receNss!=NULL)
+        if ([LoginModel isLogin])
         {
             if (careGood==NO)
             {
@@ -816,7 +812,7 @@
                 
                 NSString *api_token = [RequestModel model:@"goods" action:@"collect"];
                 // strr=@"0";
-                NSDictionary *dict = @{@"api_token":api_token,@"goods_id":self.goodID,@"key":receNss};
+                NSDictionary *dict = @{@"api_token":api_token,@"goods_id":self.goodID,@"key":[LoginModel key]};
                 [RequestModel requestWithDictionary:dict model:@"goods" action:@"collect" block:^(id result) {
                     
                 }];
@@ -833,7 +829,7 @@
                 
                 NSString *api_token = [RequestModel model:@"goods" action:@"qcollect"];
                 // strr=@"0";
-                NSDictionary *dict = @{@"api_token":api_token,@"goods_id":self.goodID,@"key":receNss};
+                NSDictionary *dict = @{@"api_token":api_token,@"goods_id":self.goodID,@"key":[LoginModel key]};
                 [RequestModel requestWithDictionary:dict model:@"goods" action:@"qcollect" block:^(id result) {
                     
                 }];
@@ -841,10 +837,10 @@
                 careGood=NO;
             }
         }
-        else if (receNss==NULL)
+        else
         {
-            UIAlertView * alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"亲,登录之后才能关注哦" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-            [alert show];
+            
+            kTipAlert(@"%@",@"亲,登录之后才能关注哦");
         }
     }
     else if(button.tag==1501)
@@ -886,7 +882,7 @@
             NSString *api_token = [RequestModel model:@"goods" action:@"addcart"];
     
             
-            NSDictionary *dict = @{@"api_token":api_token,@"goods_id":self.goodID,@"key":receNss,@"num":_numLab.text,@"attrvalue_id":path1};
+            NSDictionary *dict = @{@"api_token":api_token,@"goods_id":self.goodID,@"key":[LoginModel key],@"num":_numLab.text,@"attrvalue_id":path1};
             [RequestModel requestWithDictionary:dict model:@"goods" action:@"addcart" block:^(id result) {
                 
                 kTipAlert(@"%@",@"加入购物车成功");
@@ -912,64 +908,6 @@
         
     }
     
-//    //加入购物车
-//    if (btn.tag==1502)
-//    {
-//        if (receNs!=NULL) {
-//            //            NSMutableDictionary * valueDic=[[NSMutableDictionary alloc]init];
-//            //            NSString * strr;
-//            NSString * path1;
-//            if (valueID!=NULL) {
-//                //                [valueDic setObject:[NSString stringWithFormat:@"%@",valueID]forKey:@"attr_value_id"];
-//                //                strr=[valueDic JSONString];
-//                //                path1=[strr  stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-//                path1 = [NSString stringWithFormat:@"[%@]",valueID];
-//            }else if (valueID==NULL)
-//            {
-//                path1=[NSString stringWithFormat:@""];
-//            }
-//            
-//            
-//            //  NSString * path2=[receNs stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-//            
-//            NSString *api_token = [RequestModel model:@"goods" action:@"addcart"];
-//            // strr=@"0";
-//            NSDictionary *dict;
-//            dict= @{@"api_token":api_token,@"goods_id":self.goodID,@"key":receNss,@"num":_numLab.text,@"attrvalue_id":path1};
-//            [RequestModel requestWithDictionary:dict model:@"goods" action:@"addcart" block:^(id result) {
-//                UIAlertView * alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"加入购物车成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-//                [alert show];
-//            }];
-//            
-//        }
-//        else if (receNs==NULL)
-//        {
-//            LoginViewController *login=[[LoginViewController alloc]init];
-//            [self.navigationController pushViewController:login animated:YES];
-//        }
-//    }
-//    //立刻购买
-//    else if (btn.tag==1503)
-//    {
-//        if (receNs!=NULL) {
-//            SureOrderController * sure=[[SureOrderController alloc]init];
-//            sure.sureId=self.goodID;
-//            if (valueID!=NULL) {
-//                sure.smallId=valueID;
-//            }else if (valueID==NULL)
-//            {
-//                sure.smallId=[NSString stringWithFormat:@""];
-//            }
-//            
-//            sure.shopNum=self.numLab.text;
-//            [self.navigationController pushViewController:sure animated:YES];
-//        }else if (receNs==NULL)
-//        {
-//            LoginViewController *login=[[LoginViewController alloc]init];
-//            [self.navigationController pushViewController:login animated:YES];
-//        }
-//        
-//    }
 }
 //返回上一页的点击事件
 -(void)bitBtn
@@ -1101,10 +1039,9 @@
  */
 #pragma mark--我的资料数据请求
 -(void)myAccount{
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
+
     NSString *api_token = [RequestModel model:@"user" action:@"userinfo"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":app.tempDic[@"data"][@"key"]};
+    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
     [RequestModel requestWithDictionary:dict model:@"user" action:@"userinfo" block:^(id result) {
         NSDictionary *dic = result;
         

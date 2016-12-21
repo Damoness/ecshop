@@ -40,10 +40,9 @@
     // Do any additional setup after loading the view.
 }
 -(void)myAccount{
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
+
     NSString *api_token = [RequestModel model:@"user" action:@"userinfo"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":app.tempDic[@"data"][@"key"]};
+    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
     __weak typeof(self) weakSelf = self;
     [RequestModel requestWithDictionary:dict model:@"user" action:@"userinfo" block:^(id result) {
         NSLog(@"111");
@@ -270,12 +269,11 @@
 }
 #pragma mark -- 保存个人信息
 -(void)saveInfo{
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
+
     NSString *api_token = [RequestModel model:@"User" action:@"modifyUser"];
     NSString *path = [NSString stringWithFormat:@"%@",self.model.sex];
     
-    NSDictionary *dict = @{@"api_token":api_token,@"key":app.tempDic[@"data"][@"key"],@"sex":path,@"birthday":self.model.birthday};
+    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"sex":path,@"birthday":self.model.birthday};
     __weak typeof(self) weakSelf = self;
     [RequestModel requestWithDictionary:dict model:@"User" action:@"modifyUser" block:^(id result) {
         NSDictionary *dic = result;

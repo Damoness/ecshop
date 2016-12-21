@@ -52,10 +52,9 @@
 }
 #pragma mark--关注列表
 -(void)myCollectlist{
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
+
     NSString *api_token = [RequestModel model:@"goods" action:@"collectlist"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":app.tempDic[@"data"][@"key"]};
+    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
 
     __weak typeof(self) weakSelf = self;
     [RequestModel requestWithDictionary:dict model:@"goods" action:@"collectlist" block:^(id result) {

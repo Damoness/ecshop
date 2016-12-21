@@ -64,9 +64,8 @@
 }
 -(void)myProvince{
     NSString *api_token = [RequestModel model:@"goods" action:@"addresslist"];
-    UIApplication * appli=[UIApplication sharedApplication];
-    AppDelegate*app=appli.delegate;
-    NSDictionary *dict = @{@"api_token":api_token,@"key":app.tempDic[@"data"][@"key"]};
+    
+    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
     __weak typeof(self) weakSelf = self;
     [RequestModel requestWithDictionary:dict model:@"goods" action:@"addresslist" block:^(id result) {
         NSDictionary *dic = result;
@@ -201,10 +200,10 @@
 }
 #pragma mark--设置默认地址
 -(void)myAddress{
-    UIApplication * appli=[UIApplication sharedApplication];
-    AppDelegate * app=appli.delegate;
+
+    
     NSString *api_token = [RequestModel model:@"goods" action:@"addrdefault"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":app.tempDic[@"data"][@"key"],@"address_id":self.myaddress};
+    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"address_id":self.myaddress};
     __weak typeof(self) weakSelf = self;
     [RequestModel requestWithDictionary:dict model:@"goods" action:@"addrdefault" block:^(id result) {
         NSDictionary *dic = result;

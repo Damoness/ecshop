@@ -26,10 +26,9 @@
 }
 -(void)relodInfomation
 {
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
+
     NSString *api_token = [RequestModel model:@"user" action:@"bonus"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":app.tempDic[@"data"][@"key"]};
+    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
     [RequestModel requestWithDictionary:dict model:@"user" action:@"bonus" block:^(id result) {
         if ([result[@"msg"] isEqualToString:@"获取列表失败"]) {
             UIAlertView * alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"暂无数据" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
