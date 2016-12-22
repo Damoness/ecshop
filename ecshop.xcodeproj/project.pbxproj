@@ -372,6 +372,7 @@
 		9C36AD121E0230AC0021C6CE /* shangpinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD0B1E0230AC0021C6CE /* shangpinModel.m */; };
 		9C36AD181E0230E30021C6CE /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD171E0230E30021C6CE /* LoginModel.m */; };
 		9C36AD1B1E02A6C30021C6CE /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD1A1E02A6C30021C6CE /* UserModel.m */; };
+		9CA948F21E0BECB400E021C9 /* shoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA948F11E0BECB400E021C9 /* shoppingCartModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1008,6 +1009,8 @@
 		9C36AD171E0230E30021C6CE /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
 		9C36AD191E02A6C30021C6CE /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		9C36AD1A1E02A6C30021C6CE /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		9CA948F01E0BECB400E021C9 /* shoppingCartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shoppingCartModel.h; sourceTree = "<group>"; };
+		9CA948F11E0BECB400E021C9 /* shoppingCartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shoppingCartModel.m; sourceTree = "<group>"; };
 		CD8F558534F74A5EEBE4F568 /* Pods-ecshop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecshop.release.xcconfig"; path = "Pods/Target Support Files/Pods-ecshop/Pods-ecshop.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2146,8 +2149,6 @@
 			children = (
 				9C36ACFE1E0230AC0021C6CE /* AddressModel.h */,
 				9C36ACFF1E0230AC0021C6CE /* AddressModel.m */,
-				9C36AD001E0230AC0021C6CE /* goodsModel.h */,
-				9C36AD011E0230AC0021C6CE /* goodsModel.m */,
 				9C36AD021E0230AC0021C6CE /* MyAddressModel.h */,
 				9C36AD031E0230AC0021C6CE /* MyAddressModel.m */,
 				9C36AD041E0230AC0021C6CE /* PersonalInfoModel.h */,
@@ -2162,6 +2163,10 @@
 				9C36AD171E0230E30021C6CE /* LoginModel.m */,
 				9C36AD191E02A6C30021C6CE /* UserModel.h */,
 				9C36AD1A1E02A6C30021C6CE /* UserModel.m */,
+				9C36AD001E0230AC0021C6CE /* goodsModel.h */,
+				9C36AD011E0230AC0021C6CE /* goodsModel.m */,
+				9CA948F01E0BECB400E021C9 /* shoppingCartModel.h */,
+				9CA948F11E0BECB400E021C9 /* shoppingCartModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -2560,6 +2565,7 @@
 				516CE51C1C86DE0600E6DE87 /* CouponsViewController.m in Sources */,
 				51F12E731C0BE168002C62D0 /* AppDelegate.m in Sources */,
 				51FD2F0E1C34BB4B0032FE14 /* GoodRightCell.m in Sources */,
+				9CA948F21E0BECB400E021C9 /* shoppingCartModel.m in Sources */,
 				51FD424C1C27936D00D260A8 /* MJRefreshBackGifFooter.m in Sources */,
 				51F271581C0D6D2200619901 /* SearchViewController.m in Sources */,
 				3C9E3D271C15585A0064EC92 /* PendingPaymentViewCell.m in Sources */,

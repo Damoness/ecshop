@@ -35,15 +35,12 @@
 //删除判断全选按钮的状态
 @property (nonatomic,assign)int tagg1;
 @property (nonatomic,strong)UIButton *changeBtn;
-//合计
-@property (nonatomic,strong)UILabel *labSum1;
-//总额
-@property (nonatomic,strong)UILabel *labSum2;
+
+
 //去结算
 @property (nonatomic,strong)UILabel *labNumber;
-@property (nonatomic,strong)UIButton *btnNumber;
-//结算的视图
-@property (nonatomic,strong)UIView *loginview;
+@property (nonatomic,strong)UIButton *settleButton;
+
 
 
 //编辑的view
@@ -72,7 +69,14 @@
 
 @property (nonatomic,strong)UIView *loginView;//登录前页面
 @property (nonatomic,strong)UIView *shoppingCartView;//登录后页面
+//结算的视图
+@property (nonatomic,strong)UIView *settleView;
 
+//合计 (优惠后的结果)
+@property (nonatomic,strong)UILabel *amountLabel;
+
+//总额
+@property (nonatomic,strong)UILabel *sumLabel;
 
 @end
 
@@ -124,8 +128,8 @@
         [self.tableView reloadData];
     }else{
         _labNumber.text = @"去结算";
-        _labSum2.text = @"总额：￥0";
-        _labSum1.text = @"合计：￥0";
+        _sumLabel.text = @"总额：￥0";
+        _amountLabel.text = @"合计：￥0";
         
         [self myGoods];
     }
@@ -247,13 +251,13 @@
     [_shoppingCartView addSubview:_tableView];
     //结算的view
     if ([self.temp isEqualToString:@"1"]){
-        _loginview = [[UIView alloc]initWithFrame:CGRectMake(0, _tableView.frame.size.height + 64, self.view.frame.size.width, self.view.frame.size.height - _tableView.frame.size.height - 64)];
+        _settleView = [[UIView alloc]initWithFrame:CGRectMake(0, _tableView.frame.size.height + 64, self.view.frame.size.width, 52)];
     }else{
-        _loginview = [[UIView alloc]initWithFrame:CGRectMake(0, _tableView.frame.size.height + 64, self.view.frame.size.width, self.view.frame.size.height - _tableView.frame.size.height - 108)];
+        _settleView = [[UIView alloc]initWithFrame:CGRectMake(0, _tableView.frame.size.height + 64, self.view.frame.size.width, 52)];
     }
     
-    _loginview.backgroundColor = [UIColor redColor];
-    UIView *view1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, (_loginview.frame.size.width/3)*2, _loginview.frame.size.height)];
+    _settleView.backgroundColor = [UIColor redColor];
+    UIView *view1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, (_settleView.frame.size.width/3)*2, _settleView.frame.size.height)];
     view1.backgroundColor = [UIColor darkGrayColor];
     //全选按钮
     _changeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -265,34 +269,34 @@
     [_changeBtn addTarget:self action:@selector(change:) forControlEvents:UIControlEventTouchUpInside];
     [view1 addSubview:_changeBtn];
     //合计
-    _labSum1 = [[UILabel alloc]initWithFrame:CGRectMake(90, 0, view1.frame.size.width - 90, view1.frame.size.height/2)];
-    _labSum1.textColor = [UIColor whiteColor];
-    _labSum1.text = @"合计：￥0";
-    _labSum1.font = [UIFont systemFontOfSize:14];
-    [view1 addSubview:_labSum1];
+    _amountLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 0, view1.frame.size.width - 90, view1.frame.size.height/2)];
+    _amountLabel.textColor = [UIColor whiteColor];
+    _amountLabel.text = @"合计：￥0";
+    _amountLabel.font = [UIFont systemFontOfSize:14];
+    [view1 addSubview:_amountLabel];
     //总额
-    _labSum2 = [[UILabel alloc]initWithFrame:CGRectMake(90, view1.frame.size.height/2, view1.frame.size.width - 90, view1.frame.size.height/2)];
-    _labSum2.textColor = [UIColor whiteColor];
-    _labSum2.text = @"总额：￥0";
+    _sumLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, view1.frame.size.height/2, view1.frame.size.width - 90, view1.frame.size.height/2)];
+    _sumLabel.textColor = [UIColor whiteColor];
+    _sumLabel.text = @"总额：￥0";
     
-    _labSum2.font = [UIFont systemFontOfSize:9];
-    [view1 addSubview:_labSum2];
+    _sumLabel.font = [UIFont systemFontOfSize:9];
+    [view1 addSubview:_sumLabel];
     //去结算
-    _labNumber = [[UILabel alloc]initWithFrame:CGRectMake((_loginview.frame.size.width/3)*2, 0, _loginview.frame.size.width/3, _loginview.frame.size.height)];
+    _labNumber = [[UILabel alloc]initWithFrame:CGRectMake((_settleView.frame.size.width/3)*2, 0, _settleView.frame.size.width/3, _settleView.frame.size.height)];
     _labNumber.text = @"去结算";
     
     _labNumber.textAlignment = NSTextAlignmentCenter;
     _labNumber.textColor = [UIColor whiteColor];
-    [_loginview addSubview:_labNumber];
-    
-    [_loginview addSubview:view1];
+    [_settleView addSubview:_labNumber];
+    [_settleView addSubview:view1];
     //去结算按钮
-    _btnNumber = [UIButton buttonWithType:UIButtonTypeCustom];
-    _btnNumber.frame = CGRectMake((_loginview.frame.size.width/3)*2, 20, _loginview.frame.size.width/3, 40);
-    _btnNumber.backgroundColor = [UIColor clearColor];
-    [_btnNumber addTarget:self action:@selector(changeToOrder:) forControlEvents:UIControlEventTouchUpInside];
-    [_loginview addSubview:_btnNumber];
-    [_shoppingCartView addSubview:_loginview];
+    _settleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _settleButton.frame = CGRectMake((_settleView.frame.size.width/3)*2, 20, _settleView.frame.size.width/3, 40);
+    _settleButton.backgroundColor = [UIColor clearColor];
+    [_settleButton addTarget:self action:@selector(changeToOrder:) forControlEvents:UIControlEventTouchUpInside];
+    [_settleView addSubview:_settleButton];
+    [_shoppingCartView addSubview:_settleView];
+    
     //编辑的view
     if ([self.temp isEqualToString:@"1"]){
         _editView = [[UIView alloc]initWithFrame:CGRectMake(0, _tableView.frame.size.height + 64, self.view.frame.size.width, self.view.frame.size.height - _tableView.frame.size.height - 64)];
@@ -311,7 +315,7 @@
     [_changeAllBtn addTarget:self action:@selector(changeAll:) forControlEvents:UIControlEventTouchUpInside];
     [_editView addSubview:_changeAllBtn];
     //移入关注
-    UIButton *attentionBtn = [[UIButton alloc]initWithFrame:CGRectMake(_loginview.frame.size.width/3+10, 10, _loginview.frame.size.width/3-20, 30)];
+    UIButton *attentionBtn = [[UIButton alloc]initWithFrame:CGRectMake(_settleView.frame.size.width/3+10, 10, _settleView.frame.size.width/3-20, 30)];
     attentionBtn.hidden = YES;
     [attentionBtn setTitle:@"移入关注" forState:UIControlStateNormal];
     attentionBtn.titleLabel.font = [UIFont systemFontOfSize:15];
@@ -324,7 +328,7 @@
     [attentionBtn.layer setBorderWidth:0.5];//设置边界的宽度
     [_editView addSubview:attentionBtn];
     //删除
-    UIButton *deleteBtn = [[UIButton alloc]initWithFrame:CGRectMake((_loginview.frame.size.width/3)*2+10, 10, _loginview.frame.size.width/3-20, 30)];
+    UIButton *deleteBtn = [[UIButton alloc]initWithFrame:CGRectMake((_settleView.frame.size.width/3)*2+10, 10, _settleView.frame.size.width/3-20, 30)];
     [deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
     [deleteBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     deleteBtn.titleLabel.font = [UIFont systemFontOfSize:15];
@@ -344,13 +348,13 @@
     AppDelegate *app=appli.delegate;
     if (app.tempDic != nil && _tempArrr.count != 0) {
         if ([self.rightBtn.titleLabel.text isEqualToString:@"编辑"]) {
-            _loginview.hidden = YES;
+            _settleView.hidden = YES;
             _editView.hidden = NO;
             self.tagg1 = 1;
             self.tagg = 0;
             [self.rightBtn setTitle:@"完成" forState:UIControlStateNormal];
         }else{
-            _loginview.hidden = NO;
+            _settleView.hidden = NO;
             _editView.hidden = YES;
             self.tagg = 1;
             self.tagg1 = 0;
@@ -459,9 +463,9 @@
         }
         self.labNumber.text = [NSString stringWithFormat:@"去结算%d",b];
         
-        self.labSum1.text = [NSString stringWithFormat:@"合计：￥%d",a];
+        self.amountLabel.text = [NSString stringWithFormat:@"合计：￥%d",a];
         //总额
-        self.labSum2.text = [NSString stringWithFormat:@"总额：￥%d",a];
+        self.sumLabel.text = [NSString stringWithFormat:@"总额：￥%d",a];
         
         self.tagg = 2;
         [self.tableView reloadData];
@@ -469,9 +473,9 @@
         [_changeBtn setImage:[UIImage imageNamed:@"select_cart_goods2.png"] forState:UIControlStateNormal];
         [_orderArray removeAllObjects];
         self.labNumber.text = @"去结算0";
-        self.labSum1.text = @"合计：￥0";
+        self.amountLabel.text = @"合计：￥0";
         //总额
-        self.labSum2.text = @"总额：￥0";
+        self.sumLabel.text = @"总额：￥0";
         self.tagg = 1;
         [self.tableView reloadData];
     }
@@ -631,7 +635,7 @@
     
     int bnum = [[self.labNumber.text substringFromIndex:3] intValue];
     int aPrice = [[cell.goods_sum.text substringFromIndex:4]intValue];
-    int bPrice = [[self.labSum1.text substringFromIndex:4]intValue];
+    int bPrice = [[self.amountLabel.text substringFromIndex:4]intValue];
     goodsModel *goodsmodel = [goodsModel new];
     goodsmodel.goods_price = cell.goods_price.text;
     goodsmodel.goods_img = cell.url;
@@ -644,10 +648,10 @@
         self.labNumber.text = [NSString stringWithFormat:@"去结算%d",c];
         //合计
         int d = aPrice + bPrice;
-        self.labSum1.text = [NSString stringWithFormat:@"合计：￥%d",d];
+        self.amountLabel.text = [NSString stringWithFormat:@"合计：￥%d",d];
         ss=d;
         //总额
-        self.labSum2.text = [NSString stringWithFormat:@"总额：￥%d",d];
+        self.sumLabel.text = [NSString stringWithFormat:@"总额：￥%d",d];
         //把选中的商品id放到数组
         NSString *good_id = cell.rec_id;
         [_goodsArr addObject:good_id];
@@ -657,9 +661,9 @@
         self.labNumber.text = [NSString stringWithFormat:@"去结算%d",c];
         //合计
         int d = bPrice - aPrice;
-        self.labSum1.text = [NSString stringWithFormat:@"合计：￥%d",d];
+        self.amountLabel.text = [NSString stringWithFormat:@"合计：￥%d",d];
         //总额
-        self.labSum2.text = [NSString stringWithFormat:@"总额：￥%d",d];
+        self.sumLabel.text = [NSString stringWithFormat:@"总额：￥%d",d];
         ss=d;
         //把选中的商品id移除
         [_goodsArr removeObject:cell.rec_id];
