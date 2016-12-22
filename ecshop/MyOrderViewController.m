@@ -127,9 +127,9 @@
     
 }
 //待付款
--(void)waitpay :(NSString*)action{
+-(void)waitpay:(NSString*)action{
     NSString *api_token = [RequestModel model:@"order" action:action];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":self.tempDic[@"data"][@"key"]};
+    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
     __weak typeof(self) weakSelf = self;
     [RequestModel requestWithDictionary:dict model:@"order" action:action block:^(id result) {
         NSDictionary *dic = result;
@@ -441,7 +441,7 @@
     
     NSLog(@"确认收货%@",model.orderId);
     NSString *api_token = [RequestModel model:@"order" action:@"received"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":self.tempDic[@"data"][@"key"],@"order_id":model.orderId};
+    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"order_id":model.orderId};
     __weak typeof(self) weakSelf = self;
     [RequestModel requestWithDictionary:dict model:@"order" action:@"received" block:^(id result) {
         NSDictionary *dic = result;
@@ -461,7 +461,7 @@
     NSLog(@"取消订单");
     
     NSString *api_token = [RequestModel model:@"order" action:@"qorder"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":self.tempDic[@"data"][@"key"],@"order_id":model.orderId};
+    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"order_id":model.orderId};
     __weak typeof(self) weakSelf = self;
     [RequestModel requestWithDictionary:dict model:@"order" action:@"qorder" block:^(id result) {
         NSDictionary *dic = result;

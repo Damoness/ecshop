@@ -56,7 +56,7 @@
 @property (nonatomic,strong)UIButton *changeAllBtn;
 //结算的商品
 @property (nonatomic,strong)NSMutableArray *orderArray;
-@property (nonatomic,strong)UIView *viewbefore;//登录前页面
+@property (nonatomic,strong)UIView *loginView;//登录前页面
 @property (nonatomic,strong)UIView *viewAfter;//登录后页面
 //刷新
 @property (nonatomic, weak) SDRefreshFooterView *refreshFooter;
@@ -95,7 +95,7 @@
     if (app.tempDic == nil) {
         
         _viewAfter.hidden = YES;
-        _viewbefore.hidden = NO;
+        _loginView.hidden = NO;
         
         
         [self.tableView reloadData];
@@ -114,45 +114,57 @@
     
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self draw2];
+    [self configLoginView];
     [self draw1];
     [self setupHeader];
     [self setupFooter];
     // Do any additional setup after loading the view.
 }
 #pragma mark --未登录
--(void)draw2{
-    _viewbefore = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+-(void)configLoginView{
+    _loginView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self initNavigationBar];
-    _viewbefore.hidden = NO;
-    viewbuy = [[UIView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 80)];
-    viewbuy.hidden = NO;
-    viewbuy.backgroundColor = kViewColor;
-    //view上的登录按钮
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(10, 25, viewbuy.frame.size.width/4 - 20, 30) ;
-    [button setTitle:@"登录" forState:UIControlStateNormal];
-    button.titleLabel.textAlignment = NSTextAlignmentCenter;
-    button.titleLabel.font = [UIFont systemFontOfSize:15];
-    [button.layer setBorderWidth:0.5];
-    [button.layer setCornerRadius:8.0]; //设置矩圆角半径
-    [button.layer setMasksToBounds:YES];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
-    [viewbuy addSubview:button];
-    //view上的文字
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20+viewbuy.frame.size.width/4, 0, (viewbuy.frame.size.width/4)*3 - 20, 80)];
-    label.text = @"您可以在登录后同步电脑与手机购物车中的商品";
-    label.font = [UIFont systemFontOfSize:15];
-    //自动折行设置
-    label.lineBreakMode = NSLineBreakByCharWrapping;
-    label.numberOfLines = 0;
-    [viewbuy addSubview:label];
-    [_viewbefore addSubview:viewbuy];
+    _loginView.hidden = NO;
+    
+    viewbuy = ({
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 80)];
+        view.hidden = NO;
+        view.backgroundColor = kViewColor;
+        
+        //view上的登录按钮
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = CGRectMake(10, 25, view.frame.size.width/4 - 20, 30) ;
+        [button setTitle:@"登录" forState:UIControlStateNormal];
+        button.titleLabel.textAlignment = NSTextAlignmentCenter;
+        button.titleLabel.font = [UIFont systemFontOfSize:15];
+        [button.layer setBorderWidth:0.5];
+        [button.layer setCornerRadius:8.0]; //设置矩圆角半径
+        [button.layer setMasksToBounds:YES];
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:button];
+        
+        
+        //view上的文字
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20+view.frame.size.width/4, 0, (view.frame.size.width/4)*3 - 20, 80)];
+        label.text = @"您可以在登录后同步电脑与手机购物车中的商品";
+        label.font = [UIFont systemFontOfSize:15];
+        //自动折行设置
+        label.lineBreakMode = NSLineBreakByCharWrapping;
+        label.numberOfLines = 0;
+        [view addSubview:label];
+        
+        
+        view;
+    });
+    
+
+    [_loginView addSubview:viewbuy];
+    
     //看看关注
     UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.center.x-30, 200, 60, 60)];
     imgView.image = [UIImage imageNamed:@"cart_goods_empty.jpg"];
-    [_viewbefore addSubview:imgView];
+    [_loginView addSubview:imgView];
     //购物车肚子空空
     UILabel *label1 = [[UILabel alloc]init];
     label1.text = @"购物车肚子空空";
@@ -161,7 +173,7 @@
     label1.textAlignment = NSTextAlignmentCenter;//居中
     label1.font = [UIFont systemFontOfSize:15];
     label1.textColor = [UIColor grayColor];
-    [_viewbefore addSubview:label1];
+    [_loginView addSubview:label1];
     UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
     [button1 setTitle:@"看看关注" forState:UIControlStateNormal];
     [button1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -171,8 +183,8 @@
     [button1 addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
     button1.frame = CGRectMake(self.view.center.x - 40, label1.frame.origin.y + label1.frame.size.height + 10, 80, 35) ;
     [button1.layer setMasksToBounds:YES];
-    [_viewbefore addSubview:button1];
-    [self.view addSubview:_viewbefore];
+    [_loginView addSubview:button1];
+    [self.view addSubview:_loginView];
 }
 -(void)login:(id)sender{
     UIApplication *appli=[UIApplication sharedApplication];
@@ -495,13 +507,13 @@
         }
         if (weakSelf.tempArrr.count == 0) {
             viewbuy.hidden = YES;
-            weakSelf.viewbefore.hidden = NO;
+            weakSelf.loginView.hidden = NO;
             weakSelf.viewAfter.hidden = YES;
             
             
         }else{
             weakSelf.viewAfter.hidden = NO;
-            weakSelf.viewbefore.hidden = YES;
+            weakSelf.loginView.hidden = YES;
             
         }
         int a = 0;
@@ -848,7 +860,7 @@
     [btn2 addSubview:imgView1];
     [view1 addSubview:btn2];
     [self.viewAfter addSubview:view];
-    [self.viewbefore addSubview:view1];
+    [self.loginView addSubview:view1];
     
     
 }

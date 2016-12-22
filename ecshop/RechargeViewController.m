@@ -86,7 +86,7 @@
         NSString *orderString = dic[@"data"];
 
         //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
-        NSString *appScheme = @"alisdk";
+        NSString *appScheme = @"alisdk123";
         [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
             NSLog(@"reslut = %@",resultDic);
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"" message:resultDic[@"memo"] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
