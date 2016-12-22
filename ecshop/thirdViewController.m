@@ -56,8 +56,8 @@
 @property (nonatomic,strong)UIButton *changeAllBtn;
 //结算的商品
 @property (nonatomic,strong)NSMutableArray *orderArray;
-@property (nonatomic,strong)UIView *loginView;//登录前页面
-@property (nonatomic,strong)UIView *viewAfter;//登录后页面
+
+
 //刷新
 @property (nonatomic, weak) SDRefreshFooterView *refreshFooter;
 @property (nonatomic, weak) SDRefreshHeaderView *refreshHeader;
@@ -67,6 +67,13 @@
 @property (nonatomic, weak) UILabel *label;
 //编辑按钮
 @property (nonatomic, strong)UIButton *rightBtn;
+
+
+
+@property (nonatomic,strong)UIView *loginView;//登录前页面
+@property (nonatomic,strong)UIView *shoppingCartView;//登录后页面
+
+
 @end
 
 @implementation thirdViewController
@@ -94,7 +101,7 @@
     _orderArray = [[NSMutableArray alloc]init];
     if (app.tempDic == nil) {
         
-        _viewAfter.hidden = YES;
+        _shoppingCartView.hidden = YES;
         _loginView.hidden = NO;
         
         
@@ -115,7 +122,7 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self configLoginView];
-    [self draw1];
+    [self configShoppingCartView];
     [self setupHeader];
     [self setupFooter];
     // Do any additional setup after loading the view.
@@ -204,10 +211,10 @@
     
 }
 #pragma mark -- 登录后的
--(void)draw1{
-    _viewAfter = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+-(void)configShoppingCartView{
+    _shoppingCartView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self initNavigationBar];
-    _viewAfter.hidden = YES;
+    _shoppingCartView.hidden = YES;
     
     if ([self.temp isEqualToString:@"1"]) {
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 116) style:UITableViewStylePlain];
@@ -222,7 +229,7 @@
     UIView *view = [UIView new];
     view.backgroundColor = [UIColor clearColor];
     [_tableView setTableFooterView:view];
-    [_viewAfter addSubview:_tableView];
+    [_shoppingCartView addSubview:_tableView];
     //结算的view
     if ([self.temp isEqualToString:@"1"]){
         _loginview = [[UIView alloc]initWithFrame:CGRectMake(0, _tableView.frame.size.height + 64, self.view.frame.size.width, self.view.frame.size.height - _tableView.frame.size.height - 64)];
@@ -270,7 +277,7 @@
     _btnNumber.backgroundColor = [UIColor clearColor];
     [_btnNumber addTarget:self action:@selector(changeToOrder:) forControlEvents:UIControlEventTouchUpInside];
     [_loginview addSubview:_btnNumber];
-    [_viewAfter addSubview:_loginview];
+    [_shoppingCartView addSubview:_loginview];
     //编辑的view
     if ([self.temp isEqualToString:@"1"]){
         _editView = [[UIView alloc]initWithFrame:CGRectMake(0, _tableView.frame.size.height + 64, self.view.frame.size.width, self.view.frame.size.height - _tableView.frame.size.height - 64)];
@@ -313,8 +320,8 @@
     [deleteBtn.layer setBorderWidth:0.5];//设置边界的宽度
     [_editView addSubview:deleteBtn];
     _editView.hidden = YES;
-    [_viewAfter addSubview:_editView];
-    [self.view addSubview:_viewAfter];
+    [_shoppingCartView addSubview:_editView];
+    [self.view addSubview:_shoppingCartView];
 }
 #pragma mark --编辑事件
 -(void)editAction:(id)sender{
@@ -508,11 +515,11 @@
         if (weakSelf.tempArrr.count == 0) {
             viewbuy.hidden = YES;
             weakSelf.loginView.hidden = NO;
-            weakSelf.viewAfter.hidden = YES;
+            weakSelf.shoppingCartView.hidden = YES;
             
             
         }else{
-            weakSelf.viewAfter.hidden = NO;
+            weakSelf.shoppingCartView.hidden = NO;
             weakSelf.loginView.hidden = YES;
             
         }
@@ -859,7 +866,7 @@
     //    [btn setBackgroundImage:img forState:UIControlStateNormal];
     [btn2 addSubview:imgView1];
     [view1 addSubview:btn2];
-    [self.viewAfter addSubview:view];
+    [self.shoppingCartView addSubview:view];
     [self.loginView addSubview:view1];
     
     
