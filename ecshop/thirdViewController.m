@@ -78,6 +78,22 @@
 
 @implementation thirdViewController
 
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
+    [tabbar hiddenTabbar:NO];
+    
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self configLoginView];
+    [self configShoppingCartView];
+    [self setupHeader];
+    [self setupFooter];
+    // Do any additional setup after loading the view.
+}
+
+
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     if ([self.temp isEqualToString:@"1"]) {
@@ -114,20 +130,8 @@
         [self myGoods];
     }
 }
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
-    [tabbar hiddenTabbar:NO];
-    
-    
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    [self configLoginView];
-    [self configShoppingCartView];
-    [self setupHeader];
-    [self setupFooter];
-    // Do any additional setup after loading the view.
-}
-#pragma mark --未登录
+
+#pragma mark -- 登录视图
 -(void)configLoginView{
     _loginView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self initNavigationBar];
@@ -148,7 +152,7 @@
         [button.layer setCornerRadius:8.0]; //设置矩圆角半径
         [button.layer setMasksToBounds:YES];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self action:@selector(goTologinVC) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:button];
         
         
@@ -176,38 +180,49 @@
     UILabel *label1 = [[UILabel alloc]init];
     label1.text = @"购物车肚子空空";
     label1.frame = CGRectMake(self.view.center.x - 60, imgView.frame.origin.y + imgView.frame.size.height + 5, 120, 30) ;
-    
     label1.textAlignment = NSTextAlignmentCenter;//居中
     label1.font = [UIFont systemFontOfSize:15];
     label1.textColor = [UIColor grayColor];
     [_loginView addSubview:label1];
+    
     UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
     [button1 setTitle:@"看看关注" forState:UIControlStateNormal];
     [button1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     button1.titleLabel.font = [UIFont systemFontOfSize:15];
     [button1.layer setBorderWidth:0.5];
     [button1.layer setCornerRadius:8.0];
-    [button1 addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
+    [button1 addTarget:self action:@selector(goToMyAttentionVC) forControlEvents:UIControlEventTouchUpInside];
     button1.frame = CGRectMake(self.view.center.x - 40, label1.frame.origin.y + label1.frame.size.height + 10, 80, 35) ;
     [button1.layer setMasksToBounds:YES];
     [_loginView addSubview:button1];
     [self.view addSubview:_loginView];
 }
--(void)login:(id)sender{
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
-    if (app.tempDic == nil) {
+
+//进入关注VC
+-(void)goToMyAttentionVC{
+    
+    if ([LoginModel isLogin]) {
         
-        LoginViewController *loginVC = [[LoginViewController alloc]init];
-        MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
-        [tabbar hiddenTabbar:YES];
-        loginVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:loginVC animated:YES];
-    }else{
         MyAttentionViewController *myAttentionVC = [MyAttentionViewController new];
-        
         [self.navigationController pushViewController:myAttentionVC animated:YES];
+        
+    }else{
+
+        [self goTologinVC];
+        
     }
+    
+}
+
+
+//进入登录VC
+-(void)goTologinVC{
+    
+    LoginViewController *loginVC = [[LoginViewController alloc]init];
+    MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
+    [tabbar hiddenTabbar:YES];
+    loginVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:loginVC animated:YES];
     
 }
 #pragma mark -- 登录后的
