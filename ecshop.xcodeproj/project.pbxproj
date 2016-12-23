@@ -373,7 +373,6 @@
 		9C36AD181E0230E30021C6CE /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD171E0230E30021C6CE /* LoginModel.m */; };
 		9C36AD1B1E02A6C30021C6CE /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD1A1E02A6C30021C6CE /* UserModel.m */; };
 		9CA948F21E0BECB400E021C9 /* shoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA948F11E0BECB400E021C9 /* shoppingCartModel.m */; };
-		9CEF16E31E0CC642009C15A3 /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEF16E21E0CC642009C15A3 /* OrderModel.m */; };
 		9CEF16E71E0CCD15009C15A3 /* Ditiy_NetAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEF16E61E0CCD15009C15A3 /* Ditiy_NetAPIManager.m */; };
 		9CEF16EA1E0CD120009C15A3 /* DitiyNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEF16E91E0CD120009C15A3 /* DitiyNetAPIClient.m */; };
 /* End PBXBuildFile section */
@@ -1014,8 +1013,6 @@
 		9C36AD1A1E02A6C30021C6CE /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		9CA948F01E0BECB400E021C9 /* shoppingCartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shoppingCartModel.h; sourceTree = "<group>"; };
 		9CA948F11E0BECB400E021C9 /* shoppingCartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shoppingCartModel.m; sourceTree = "<group>"; };
-		9CEF16E11E0CC642009C15A3 /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
-		9CEF16E21E0CC642009C15A3 /* OrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
 		9CEF16E51E0CCD15009C15A3 /* Ditiy_NetAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ditiy_NetAPIManager.h; sourceTree = "<group>"; };
 		9CEF16E61E0CCD15009C15A3 /* Ditiy_NetAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ditiy_NetAPIManager.m; sourceTree = "<group>"; };
 		9CEF16E81E0CD120009C15A3 /* DitiyNetAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DitiyNetAPIClient.h; sourceTree = "<group>"; };
@@ -2177,8 +2174,6 @@
 				9C36AD011E0230AC0021C6CE /* goodsModel.m */,
 				9CA948F01E0BECB400E021C9 /* shoppingCartModel.h */,
 				9CA948F11E0BECB400E021C9 /* shoppingCartModel.m */,
-				9CEF16E11E0CC642009C15A3 /* OrderModel.h */,
-				9CEF16E21E0CC642009C15A3 /* OrderModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -2521,7 +2516,6 @@
 				3C93DB1F1C59F484000CDDCF /* WXApiResponseHandler.m in Sources */,
 				51FD424D1C27936D00D260A8 /* MJRefreshBackNormalFooter.m in Sources */,
 				5131DD5F1C44EBC500D8DFCA /* AddressViewController.m in Sources */,
-				9CEF16E31E0CC642009C15A3 /* OrderModel.m in Sources */,
 				51FD42161C2792D000D260A8 /* Sliderbar.m in Sources */,
 				5131DD651C44EC2100D8DFCA /* ChooseAddressViewController.m in Sources */,
 				51FD42891C27940100D260A8 /* AFURLSessionManager.m in Sources */,
