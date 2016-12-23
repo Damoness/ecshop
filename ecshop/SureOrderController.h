@@ -10,7 +10,6 @@
 
 @interface SureOrderController : UIViewController
 @property (nonatomic, copy) NSString *addressId;
-@property (nonatomic, copy) NSString * secondAddressId;//传递过来的id
 @property (nonatomic, copy) NSString * sureId; //商品id
 @property (nonatomic, copy) NSString * smallId;//商品属性id
 @property (nonatomic, strong) UILabel * NumLab;//购买数量

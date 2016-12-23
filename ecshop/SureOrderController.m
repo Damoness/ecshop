@@ -19,6 +19,7 @@
 #import "MyTabBarViewController.h"
 #import "AddressViewController.h"
 #import "UIColor+Hex.h"
+#import "OrderModel.h"
 #define kColorOffButton [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]
 @interface SureOrderController ()<sendRequestInfo,UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
@@ -550,25 +551,30 @@
         NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
         NSString *url1 = data[@"url"];
         
-        if(self.secondAddressId==NULL){
-            PATH=[NSString stringWithFormat:@"%@/order/create?key=%@&goods_id=%@&address_id=%@&amount=%@&money_paid=%@&shipping_fee=%@&expressage_id=%@&redpacket=%@&goods_attr_id=%@&bonus_id=%@&bonus_type_id=%@&message=%@&integral=%@&type=1",url1,key,path2,_addressId,_NumLab.text,totalPrice.text,_yunfei.text,_yunfeiID,diyongFen.text,_smallId,_hongId,_typeID,fieldPath,diyongFen.text];}
-        else if (self.secondAddressId!=NULL){
-            PATH=[NSString stringWithFormat:@"%@/order/create?key=%@&goods_id=%@&address_id=%@&amount=%@&money_paid=%@&shipping_fee=%@&expressage_id=%@&redpacket=%@&goods_attr_id=%@&bonus_id=%@&bonus_type_id=%@&message=%@&integral=%@&type=1",url1,key,path2,_addressId,_NumLab.text,totalPrice.text,_yunfei.text,_yunfeiID,diyongFen.text,_smallId,_hongId,_typeID,fieldPath,diyongFen.text];
-        }
-        AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
-        manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/html"];
-        __weak typeof(self) weakSelf = self;
-        NSLog(@"path:%@",PATH);
-        [manager GET:PATH parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSLog(@"提交成功%@",[responseObject toConsole]);
-            
+        
+        PATH=[NSString stringWithFormat:@"%@/order/create?key=%@&goods_id=%@&address_id=%@&amount=%@&money_paid=%@&shipping_fee=%@&expressage_id=%@&redpacket=%@&goods_attr_id=%@&bonus_id=%@&bonus_type_id=%@&message=%@&integral=%@&type=1",url1,key,path2,_addressId,_NumLab.text,totalPrice.text,_yunfei.text,_yunfeiID,diyongFen.text,_smallId,_hongId,_typeID,fieldPath,diyongFen.text];
+        
+        
+        OrderModel *model = [OrderModel new];
+        
+        model.key = [LoginModel key];
+        model.goods_id = path2;
+        model.address_id = _addressId;
+        model.money_paid = totalPrice.text;
+        model.amount = totalPrice.text;
+        model.type = @"1";
+        
+        WS(weakSelf);
+        [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:@"order/create" withParams:[model mj_keyValues] withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+
             CheckStandController * check=[[CheckStandController alloc]init];
-            check.jiage=responseObject[@"data"][@"money_paid"];
-            check.orderNs=responseObject[@"data"][@"order_sn"];
+            check.jiage=data[@"data"][@"money_paid"];
+            check.orderNs=data[@"data"][@"order_sn"];
             [weakSelf.navigationController pushViewController:check animated:YES];
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            NSLog(@"%@",error.description);
+
+            
         }];
+
     }
     
     

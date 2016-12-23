@@ -98,6 +98,10 @@
                 
                 return ;
             }
+        }else if ([responseObject[@"code"]intValue] == -220){
+            
+            [LoginModel doLogout];
+            
         }
 
         id result = responseObject;
