@@ -39,4 +39,43 @@
     
 }
 
+
+-(NSDictionary *)toAddressParams{
+    
+    NSMutableDictionary *params =  @{
+                                     @"key":[LoginModel key],
+                                    
+                                     }.mutableCopy;
+    
+    
+    return params;
+    
+}
+
+//用于删除地址
+-(NSDictionary *)toDeleteParams{
+    
+    NSMutableDictionary *params =  @{
+                                     @"key":[LoginModel key],
+                                     @"address_id":self.address_id
+                                     
+                                     }.mutableCopy;
+    
+    
+    return params;
+}
+
+//用于设置默认
+-(NSDictionary *)toSetDefaultParams{
+    
+    NSMutableDictionary *params =  @{
+                                     @"key":[LoginModel key],
+                                     @"address_id":self.address_id
+                                     
+                                     }.mutableCopy;
+    
+    
+    return params;
+}
+
 @end

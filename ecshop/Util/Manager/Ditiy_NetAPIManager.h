@@ -28,7 +28,22 @@
 
 
 
-#pragma mark - 
+#pragma mark - UserAddress 用户地址
+//增加
 -(void)request_AddAddress_WithParams:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block;
-                                                                       
+
+//查询
+-(void)request_AddressList_WithParams:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block;
+
+//删除
+-(void)request_DeleteAddress_WithParams:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block;
+
+//修改
+-(void)request_ModifyAddress_WithParams:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block;
+
+
+//设置默认地址
+-(void)request_SetDefaultAddress_WithParams:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block;
+
+
 @end

@@ -17,6 +17,7 @@
 #import "SureOrderController.h"
 #import "SDRefresh.h"
 #import "UIColor+Hex.h"
+#import "MBProgressHUD+MJ.h"
 #define kColorBack [UIColor colorWithRed:239/255.0 green:239/255.0 blue:244/255.0 alpha:1.0]
 @interface AddressViewController ()<UITableViewDelegate,UITableViewDataSource,SDRefreshViewAnimationDelegate>
 @property(nonatomic,strong)UITableView *tableView;
@@ -63,33 +64,57 @@
     [self.view addSubview:button];
 }
 -(void)myProvince{
-    NSString *api_token = [RequestModel model:@"goods" action:@"addresslist"];
     
-    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
-    __weak typeof(self) weakSelf = self;
-    [RequestModel requestWithDictionary:dict model:@"goods" action:@"addresslist" block:^(id result) {
-        NSDictionary *dic = result;
-        weakSelf.modArray = nil;
-        weakSelf.modArray = [[NSMutableArray alloc]init];
-        for (NSMutableDictionary *dict in dic[@"data"]) {
-            weakSelf.model = [AddressModel new];
+
+    AddressModel *model = [[AddressModel alloc]init];
+    
+    
+    WS(ws)
+    
+    [[Ditiy_NetAPIManager sharedManager]request_AddressList_WithParams:[model toAddressParams] andBlock:^(id data, NSError *error) {
+       
+        if (data) {
             
-            weakSelf.model.address_id = dict[@"address_id"];
-            weakSelf.model.address= dict[@"address"];
-            weakSelf.model.telnumber = dict[@"telnumber"];
-            weakSelf.model.username = dict[@"username"];
-            weakSelf.model.is_default = dict[@"is_default"];
+            [MBProgressHUD showSuccess:data[@"msg"]];
             
+            ws.modArray = [AddressModel mj_objectArrayWithKeyValuesArray:data[@"data"]];
             
-            
-            [weakSelf.modArray addObject:weakSelf.model];
-            
+            [ws.tableView reloadData];
         }
         
-        
-        [weakSelf.tableView reloadData];
-        
     }];
+    
+    
+//    NSString *api_token = [RequestModel model:@"goods" action:@"addresslist"];
+//    
+//    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
+//    __weak typeof(self) weakSelf = self;
+//    
+//    
+//    
+//    [RequestModel requestWithDictionary:dict model:@"goods" action:@"addresslist" block:^(id result) {
+//        NSDictionary *dic = result;
+//        weakSelf.modArray = nil;
+//        weakSelf.modArray = [[NSMutableArray alloc]init];
+//        for (NSMutableDictionary *dict in dic[@"data"]) {
+//            weakSelf.model = [AddressModel new];
+//            
+//            weakSelf.model.address_id = dict[@"address_id"];
+//            weakSelf.model.address= dict[@"address"];
+//            weakSelf.model.telnumber = dict[@"telnumber"];
+//            weakSelf.model.username = dict[@"username"];
+//            weakSelf.model.is_default = dict[@"is_default"];
+//            
+//            
+//            
+//            [weakSelf.modArray addObject:weakSelf.model];
+//            
+//        }
+//        
+//        
+//        [weakSelf.tableView reloadData];
+//        
+//    }];
 }
 -(void)newAddress:(id)sender{
     NewAddressViewController *newVC = [[NewAddressViewController alloc]init];
@@ -128,7 +153,7 @@
 -(void)checkAction:(UIButton *)button{
     MyAddressViewCell * cell = (MyAddressViewCell *)button.superview.superview;
     self.myaddress = cell.address_id;
-    [self myAddress];
+    [self setDefaultAddress];
     [self myProvince];
     [self.tableView reloadData];
     
@@ -199,28 +224,64 @@
     }
 }
 #pragma mark--设置默认地址
--(void)myAddress{
+-(void)setDefaultAddress{
 
     
-    NSString *api_token = [RequestModel model:@"goods" action:@"addrdefault"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"address_id":self.myaddress};
-    __weak typeof(self) weakSelf = self;
-    [RequestModel requestWithDictionary:dict model:@"goods" action:@"addrdefault" block:^(id result) {
-        NSDictionary *dic = result;
-        NSLog(@"%@",dic);
-        [weakSelf.tableView reloadData];
+    
+    AddressModel *model  = [AddressModel new];
+    model.address_id = self.myaddress;
+    
+    WS(ws)
+    [[Ditiy_NetAPIManager sharedManager]request_SetDefaultAddress_WithParams:[model toSetDefaultParams] andBlock:^(id data, NSError *error) {
+       
         
+        if (data) {
+            
+            [ws.tableView reloadData];
+            
+        }
+ 
     }];
+    
+    
+//    
+//    NSString *api_token = [RequestModel model:@"goods" action:@"addrdefault"];
+//    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"address_id":self.myaddress};
+//    __weak typeof(self) weakSelf = self;
+//    [RequestModel requestWithDictionary:dict model:@"goods" action:@"addrdefault" block:^(id result) {
+//        NSDictionary *dic = result;
+//        NSLog(@"%@",dic);
+//        [weakSelf.tableView reloadData];
+//        
+//    }];
 }
 #pragma mark --删除地址
 -(void)deleteAddress{
-    NSString *api_token = [RequestModel model:@"goods" action:@"deladdress"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":self.tempDic[@"data"][@"key"],@"address_id":self.myaddress};
-    __weak typeof(self) weakSelf = self;
-    [RequestModel requestWithDictionary:dict model:@"goods" action:@"deladdress" block:^(id result) {
-        NSDictionary *dic = result;
-        NSLog(@"%@",dic);
-        [weakSelf.tableView reloadData];
+    
+    
+//    NSString *api_token = [RequestModel model:@"goods" action:@"deladdress"];
+//    NSDictionary *dict = @{@"api_token":api_token,@"key":self.tempDic[@"data"][@"key"],@"address_id":self.myaddress};
+//    __weak typeof(self) weakSelf = self;
+//    [RequestModel requestWithDictionary:dict model:@"goods" action:@"deladdress" block:^(id result) {
+//        NSDictionary *dic = result;
+//        NSLog(@"%@",dic);
+//        [weakSelf.tableView reloadData];
+//        
+//    }];
+    
+    
+    AddressModel *addressModel = [[AddressModel alloc]init];
+    addressModel.address_id = self.myaddress;
+    
+    WS(ws)
+    [[Ditiy_NetAPIManager sharedManager]request_DeleteAddress_WithParams:[addressModel toDeleteParams] andBlock:^(id data, NSError *error) {
+       
+        if (data) {
+            
+            [ws.tableView reloadData];
+            
+        }
+        
         
     }];
     

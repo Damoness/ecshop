@@ -26,6 +26,16 @@
 
 //用于新增用户地址
 -(NSDictionary *)toAddAddressParams;
-//-(NSDictionary *)
 
+//用于查询地址
+-(NSDictionary *)toAddressParams;
+
+//用于删除地址
+-(NSDictionary *)toDeleteParams;
+
+//用于修改地址
+-(NSDictionary *)toModifyParams;
+
+//用于设置默认地址
+-(NSDictionary *)toSetDefaultParams;
 @end
