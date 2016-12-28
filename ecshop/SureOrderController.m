@@ -27,13 +27,12 @@
     NSMutableArray * goodDate;//商品信息数据源
     UILabel * totalPrice;
     
-    UILabel * personLab;//人名
-    UILabel * phoneLab;//电话号码
+
     UILabel * totalFen;//总积分
     UITextField * diyongFen;//可以抵用的
     UILabel * hongbaoLab;
     UILabel * mianzhiLab;//红包面值
-    UITextView * textView;//textview
+    
     UITextField * field;//留言
     float a;//初始价格
     float b;//运费价格
@@ -42,6 +41,11 @@
     NSString * goodPathId;//商品id以及数量.
     UIView * vview;//红包view
     UIButton * buttonfen;//输入抵用现金的确定按钮
+    
+    
+    UITextView * addressTextView;//地址视图
+    UILabel * personLab;//人名
+    UILabel * phoneLab;//电话号码
 }
 @property (nonatomic, strong) UIScrollView * myScroll;
 #define TextHeight 100
@@ -61,6 +65,7 @@
     [self initNavigationBar];
     self.view.backgroundColor=[UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1.0];
     self.automaticallyAdjustsScrollViewInsets=NO;
+    
     [self createMain];
     [self reloadInfo];
     NSNotificationCenter *ncollect=[NSNotificationCenter defaultCenter];
@@ -81,7 +86,7 @@
     if (info!=NULL) {
         self.userNamm=info[@"myaddress"][@"myName"];
         self.teleNum=info[@"myaddress"][@"myPhone"];
-        self.messageee=info[@"myaddress"][@"mymessage"];
+        self.address=info[@"myaddress"][@"mymessage"];
         self.addressId=info[@"myaddress"][@"myId"];
     }else if (info==NULL)
     {
@@ -181,16 +186,16 @@
     }else if (dic[@"address_id"]!=[NSNull null]){
         _addressId=dic[@"address_id"];
     }
-    if (self.messageee==NULL) {
+    if (self.address==NULL) {
         if (dic[@"address"]==[NSNull null]) {
-            textView.text=@"";
+            addressTextView.text=@"";
         }else if (dic[@"address"]!=[NSNull null]){
-            textView.text=dic[@"address"];
+            addressTextView.text=dic[@"address"];
         }
-    }else if (self.messageee!=NULL)
+    }else if (self.address!=NULL)
     {
         
-        textView.text=self.messageee;
+        addressTextView.text=self.address;
     }
     [goodDate addObjectsFromArray:dic[@"goods"]];
     [tabble reloadData];
@@ -255,24 +260,29 @@
 -(void)createMain
 {
 #pragma mark-收货地址
+    
     UIView * firstView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, TextHeight+20)];
-    firstView.backgroundColor=[UIColor colorWithRed:254/255.0 green:248/255.0 blue:239/255.0 alpha:1.0];
+    firstView.backgroundColor = RGB(254,248,239);
     firstView.opaque=YES;
-    textView=[[UITextView alloc]initWithFrame:CGRectMake(0, 25, self.view.frame.size.width, TextHeight-10)];
-    if (self.messageee!=NULL) {
-        textView.text=self.messageee;
+    
+    
+    addressTextView=[[UITextView alloc]initWithFrame:CGRectMake(0, 25, self.view.frame.size.width, TextHeight-10)];
+    if (self.address!=NULL) {
+        addressTextView.text=self.address;
     }
-    textView.opaque=YES;
-    textView.backgroundColor=[UIColor clearColor];
-    textView.textColor=[UIColor lightGrayColor];
-    textView.font =[UIFont systemFontOfSize:15];
-    textView.tag=1888;
+    addressTextView.opaque=YES;
+    addressTextView.backgroundColor=[UIColor clearColor];
+    addressTextView.textColor=[UIColor lightGrayColor];
+    addressTextView.font =[UIFont systemFontOfSize:15];
+    addressTextView.tag=1888;
     
     UITapGestureRecognizer * tapp=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tappClick:)];
     tapp.numberOfTapsRequired=1;
     tapp.numberOfTouchesRequired=1;
-    [textView addGestureRecognizer:tapp];
-    [firstView addSubview:textView];
+    [addressTextView addGestureRecognizer:tapp];
+    [firstView addSubview:addressTextView];
+    
+    
     //创建背景图片
     for (int i=0; i<2; i++) {
         UIImage * imga=[UIImage imageNamed:@"我的订单 -去付款（等待付款）-装饰"];
@@ -307,7 +317,7 @@
     phoneLab.opaque=YES;
     [firstView addSubview:personLab];
     [firstView addSubview:phoneLab];
-    [firstView addSubview:textView];
+    [firstView addSubview:addressTextView];
 #pragma mark-创建foot
     UIView * footview=[[UIView alloc]initWithFrame:CGRectMake(0,0,self.view.frame.size.width ,5*cellHeight+2*TextHeight-10)];
 #pragma mark-配送方式,选择红包
@@ -562,6 +572,8 @@
         model.address_id = _addressId;
         model.money_paid = totalPrice.text;
         model.amount = totalPrice.text;
+        model.shipping_fee = _yunfei.text;
+        model.expressage_id = _yunfeiID;
         model.type = @"1";
         
         WS(weakSelf);

@@ -362,6 +362,7 @@
 		51FD42BF1C27DC9400D260A8 /* 单选框（选中).png in Resources */ = {isa = PBXBuildFile; fileRef = 51FD42BD1C27DC9400D260A8 /* 单选框（选中).png */; };
 		51FD42C01C27DC9400D260A8 /* 单选框1.png in Resources */ = {isa = PBXBuildFile; fileRef = 51FD42BE1C27DC9400D260A8 /* 单选框1.png */; };
 		59E8816C07D4D4D907FFB7C4 /* libPods-ecshop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA6EA264374C0A113009A8C /* libPods-ecshop.a */; };
+		9C0889391E1219C000951AEF /* NSObject+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0889381E1219C000951AEF /* NSObject+Common.m */; };
 		9C36ACFC1E01324A0021C6CE /* NSDictionary+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36ACFB1E01324A0021C6CE /* NSDictionary+Common.m */; };
 		9C36AD0C1E0230AC0021C6CE /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36ACFF1E0230AC0021C6CE /* AddressModel.m */; };
 		9C36AD0D1E0230AC0021C6CE /* goodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD011E0230AC0021C6CE /* goodsModel.m */; };
@@ -991,6 +992,8 @@
 		51FD42BD1C27DC9400D260A8 /* 单选框（选中).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "单选框（选中).png"; sourceTree = "<group>"; };
 		51FD42BE1C27DC9400D260A8 /* 单选框1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "单选框1.png"; sourceTree = "<group>"; };
 		6BA6EA264374C0A113009A8C /* libPods-ecshop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ecshop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C0889371E1219C000951AEF /* NSObject+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Common.h"; sourceTree = "<group>"; };
+		9C0889381E1219C000951AEF /* NSObject+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Common.m"; sourceTree = "<group>"; };
 		9C36ACF61E0128E80021C6CE /* eshop-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "eshop-Prefix.pch"; sourceTree = "<group>"; };
 		9C36ACFA1E01324A0021C6CE /* NSDictionary+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Common.h"; sourceTree = "<group>"; };
 		9C36ACFB1E01324A0021C6CE /* NSDictionary+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Common.m"; sourceTree = "<group>"; };
@@ -2150,6 +2153,8 @@
 			children = (
 				9C36ACFA1E01324A0021C6CE /* NSDictionary+Common.h */,
 				9C36ACFB1E01324A0021C6CE /* NSDictionary+Common.m */,
+				9C0889371E1219C000951AEF /* NSObject+Common.h */,
+				9C0889381E1219C000951AEF /* NSObject+Common.m */,
 			);
 			path = OC_Category;
 			sourceTree = "<group>";
@@ -2597,6 +2602,7 @@
 				51F12EC71C0C14AA002C62D0 /* MASConstraint.m in Sources */,
 				51A2A5091C2BF5BD006AEBFA /* mask.c in Sources */,
 				3CA76AE01C51CE6B00207019 /* SDRefreshHeaderView.m in Sources */,
+				9C0889391E1219C000951AEF /* NSObject+Common.m in Sources */,
 				51A2A50D1C2BF5BD006AEBFA /* qrspec.c in Sources */,
 				5131DD501C44EADC00D8DFCA /* MyTabBarViewController.m in Sources */,
 				51F12F3C1C0C3F93002C62D0 /* SearchListViewController.m in Sources */,

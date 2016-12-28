@@ -13,9 +13,19 @@
 @property(nonatomic,strong)NSString *address_id;
 //详细的收货地址
 @property(nonatomic,strong)NSString *address;
-@property(nonatomic,strong)NSString *telnumber;
-@property(nonatomic,strong)NSString *username;
+@property(nonatomic,strong)NSString *telnumber; //电话
+@property(nonatomic,strong)NSString *username;  //姓名
 //是否默认收货地址0不是默认1是默认
 @property(nonatomic,strong)NSString *is_default;
+
+
+@property(nonatomic,strong)NSString *province,*city,*district;
+
 @property(nonatomic,strong)AddressModel *model;
+
+
+//用于新增用户地址
+-(NSDictionary *)toAddAddressParams;
+//-(NSDictionary *)
+
 @end

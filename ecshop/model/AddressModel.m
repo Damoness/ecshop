@@ -16,4 +16,27 @@
     self.telnumber = model.telnumber;
     self.username = model.username;
 }
+
+
+
+-(NSDictionary *)toAddAddressParams{
+    
+    NSMutableDictionary *params =  @{
+                                     @"key":[LoginModel key],
+                                     
+                                     @"username":self.username,
+                                     @"telnumber":self.telnumber,
+                                     
+                                     @"province":self.province,
+                                     @"city":self.city,
+                                     @"district":self.district,
+                                     
+                                     @"address_p":self.address,
+                                     }.mutableCopy;
+    
+    
+    return params;
+    
+}
+
 @end

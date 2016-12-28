@@ -26,6 +26,8 @@
 //密码
 @property (nonatomic,strong)UITextField *passwordText;
 @property(nonatomic,strong)UIButton *loginBtn;
+
+@property(nonatomic,strong)LoginModel *myLoginModel;
 @end
 
 @implementation LoginViewController
@@ -36,6 +38,8 @@
     self.view.backgroundColor = kColorBack;
     [self draw];
     [self initNavigationBar];
+    
+    self.myLoginModel = [[LoginModel alloc]init];
     // Do any additional setup after loading the view.
 }
 -(void)draw{
@@ -158,34 +162,62 @@
     NSString *api_token = [RequestModel model:@"user" action:@"login"];
     NSDictionary *dict = @{@"api_token":api_token,@"user":userStr,@"passwd":passwordStr};
     __weak typeof(self) weakSelf = self;
-    [RequestModel requestWithDictionary:dict model:@"user" action:@"login" block:^(id result) {
-        NSDictionary *dic = result;
-        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"" message:dic[@"msg"] preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
+    self.myLoginModel.user = userStr;
+    self.myLoginModel.passwd = passwordStr;
+    
+    [[Ditiy_NetAPIManager sharedManager]request_Login_WithParams:self.myLoginModel.mj_keyValues andBlock:^(id data, NSError *error) {
         
-        UIAlertAction *okAction =[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            if ([dic[@"msg"]isEqualToString:@"登录成功"]) {
-                
-                weakSelf.mykey = dic[@"data"][@"key"];
-                
-                [LoginModel setKey:dic[@"data"][@"key"]];
-                
-                
-                [weakSelf.navigationController popViewControllerAnimated:YES];
-                NSDictionary *dicc = [[NSDictionary alloc]init];
-                dicc = @{@"dic":dic,@"userName":userStr};
+        
+        if (data) {
+            
+            kTipAlert(@"登陆成功");
+            
+            weakSelf.mykey = data[@"data"][@"key"];
+            
+            [LoginModel setKey:data[@"data"][@"key"]];
+            
+            
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+            
+             NSDictionary *dicc = @{@"dic":data,@"userName":userStr};
 #pragma mark -- 注册通知各页已经登录
-                
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:dicc];
-            }
-        }];
-        [alertVC addAction:cancelAction];
-        [alertVC addAction:okAction];
-        [weakSelf presentViewController:alertVC animated:YES completion:nil];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:dicc];
+            
+        }
         
-        NSLog(@"in");
+        
     }];
-    NSLog(@"out");
+    
+//    [RequestModel requestWithDictionary:dict model:@"user" action:@"login" block:^(id result) {
+//        NSDictionary *dic = result;
+//        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"" message:dic[@"msg"] preferredStyle:UIAlertControllerStyleAlert];
+//        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+//        
+//        UIAlertAction *okAction =[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//            if ([dic[@"msg"]isEqualToString:@"登录成功"]) {
+//                
+//                weakSelf.mykey = dic[@"data"][@"key"];
+//                
+//                [LoginModel setKey:dic[@"data"][@"key"]];
+//                
+//                
+//                [weakSelf.navigationController popViewControllerAnimated:YES];
+//                NSDictionary *dicc = [[NSDictionary alloc]init];
+//                dicc = @{@"dic":dic,@"userName":userStr};
+//#pragma mark -- 注册通知各页已经登录
+//                
+//                [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:dicc];
+//            }
+//        }];
+//        [alertVC addAction:cancelAction];
+//        [alertVC addAction:okAction];
+//        [weakSelf presentViewController:alertVC animated:YES completion:nil];
+//        
+//        NSLog(@"in");
+//    }];
+//    NSLog(@"out");
 }
 //关闭键盘
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

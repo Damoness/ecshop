@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface SureOrderController : UIViewController
-@property (nonatomic, copy) NSString *addressId;
+
+@property (nonatomic, copy) NSString *addressId; //地址ID
+@property (nonatomic, copy) NSString *address;//地址信息
+
+
 @property (nonatomic, copy) NSString * sureId; //商品id
 @property (nonatomic, copy) NSString * smallId;//商品属性id
 @property (nonatomic, strong) UILabel * NumLab;//购买数量
@@ -26,7 +30,7 @@
 @property (nonatomic, copy) NSString * typeID;//类型id
 @property (nonatomic, copy) NSString * userNamm;//用户名
 @property (nonatomic, copy) NSString * teleNum;//电话
-@property (nonatomic, copy) NSString * messageee;//地址信息
+
 //接收物品id数组
 @property (nonatomic,strong)NSMutableArray *tempArr;
 @end

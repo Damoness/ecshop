@@ -15,6 +15,10 @@
 #import <AddressBook/ABPerson.h>
 #import <AddressBookUI/ABPersonViewController.h>
 #import <ContactsUI/CNContactPickerViewController.h>
+
+#import "AddressModel.h"
+
+
 #define kColorBack [UIColor colorWithRed:239/255.0 green:239/255.0 blue:244/255.0 alpha:1.0]
 #define kColorOffButton [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]
 #define kHeight self.view.frame.size.height/15
@@ -29,6 +33,8 @@
 @property(nonatomic,strong)NSString *province;
 @property(nonatomic,strong)NSString *city;
 @property(nonatomic,strong)NSString *area;
+
+
 
 
 @end
@@ -173,24 +179,55 @@
     NSLog(@"保存");
     NSString *api_token = [RequestModel model:@"goods" action:@"address"];
     
-    if (self.tempId == nil) {
-        NSDictionary *dict = @{@"api_token":api_token,@"key":self.tempDic[@"data"][@"key"],@"province":self.province,@"city":self.city,@"district":self.area,@"username":self.text1.text,@"address_p":self.text4.text,@"telnumber":self.text2.text};
-        __weak typeof(self) weakSelf = self;
-        [RequestModel requestWithDictionary:dict model:@"goods" action:@"address" block:^(id result) {
-            NSDictionary *dic = result;
-            NSLog(@"获得的数据：%@",dic);
+    if (self.tempId == nil) { // 新增
+
+        
+        WS(ws);
+        
+        AddressModel *model = [[AddressModel alloc]init];
+        
+        model.username = self.text1.text;
+        model.telnumber = self.text2.text;
+        model.province = self.province;
+        model.city = self.city;
+        model.district = self.area;
+        model.address = self.text4.text;
+        
+        
+        [[Ditiy_NetAPIManager sharedManager]request_AddAddress_WithParams:[model toAddAddressParams]  andBlock:^(id data, NSError *error) {
             
-            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"" message:dic[@"msg"] preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            if (data) {
+                
+                kTipAlert(@"%@",data[@"msg"]);
+                
+                [ws.navigationController popViewControllerAnimated:YES];
+                
+            }
+        
             
-            UIAlertAction *okAction =[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [weakSelf.navigationController popViewControllerAnimated:YES];
-            }];
-            [alertVC addAction:cancelAction];
-            [alertVC addAction:okAction];
-            [weakSelf presentViewController:alertVC animated:YES completion:nil];
         }];
+        
+        
+//        NSDictionary *dict = @{@"api_token":api_token,@"key":self.tempDic[@"data"][@"key"],@"province":self.province,@"city":self.city,@"district":self.area,@"username":self.text1.text,@"address_p":self.text4.text,@"telnumber":self.text2.text};
+//        __weak typeof(self) weakSelf = self;
+        
+//        
+//        [RequestModel requestWithDictionary:dict model:@"goods" action:@"address" block:^(id result) {
+//            NSDictionary *dic = result;
+//            NSLog(@"获得的数据：%@",dic);
+//            
+//            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"" message:dic[@"msg"] preferredStyle:UIAlertControllerStyleAlert];
+//            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+//            
+//            UIAlertAction *okAction =[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//                [weakSelf.navigationController popViewControllerAnimated:YES];
+//            }];
+//            [alertVC addAction:cancelAction];
+//            [alertVC addAction:okAction];
+//            [weakSelf presentViewController:alertVC animated:YES completion:nil];
+//        }];
     }else{
+        
         NSDictionary *dict = @{@"api_token":api_token,@"key":self.tempDic[@"data"][@"key"],@"province":self.province,@"city":self.city,@"district":self.area,@"username":self.text1.text,@"address_p":self.text4.text,@"telnumber":self.text2.text,@"address_id":self.tempId};
         __weak typeof(self) weakSelf = self;
         [RequestModel requestWithDictionary:dict model:@"goods" action:@"address" block:^(id result) {

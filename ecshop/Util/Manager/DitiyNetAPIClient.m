@@ -52,7 +52,7 @@
         return;
     }
     
-    DebugLog(@"\n=========equest===========\n%@\n%@:\n%@",kNetworkMethodName[method],aPath,params);
+    DebugLog(@"\n=========request===========\n%@\n%@:\n%@",kNetworkMethodName[method],aPath,params);
     
     aPath = [aPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
@@ -66,15 +66,22 @@
             [self POST:aPath parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
                 DebugLog(@"\n===========response===========\n%@:\n%@", aPath, [responseObject toConsole]);
                 
+                id error = [self handleResponse:responseObject autoShowError:NO];
                 
-                block(responseObject,nil);
-                
+                if (error) {
+                    
+                    block(nil,error);
+                    
+                }else{
+                    
+                    block(responseObject,nil);
+                }
+    
                 
             } failure:^(NSURLSessionDataTask *task, NSError *error) {
                 
-//                DebugLog(@"\n===========response===========\n%@:\n%@\n%@", aPath, error, operation.responseString);
-//                !autoShowError || [NSObject showError:error];
-//                block(nil, error);
+                DebugLog(@"\n===========response===========\n%@:\n%@", aPath, error);
+               
                 
                 block(nil,error);
                 
@@ -89,5 +96,32 @@
     
     
 }
+
+#pragma mark NetError
+-(id)handleResponse:(id)responseJSON autoShowError:(BOOL)autoShowError{
+    
+    NSError *error  = nil;
+    
+    NSInteger code =  [(NSNumber *) [responseJSON valueForKey:@"code"]integerValue];
+    
+    
+    if(code !=1){
+        
+        error = [NSError errorWithDomain:baseURLStr code:code userInfo:responseJSON];
+        
+        if(code == -220){ //用户未登录
+            
+            if ([LoginModel isLogin]) {
+                [LoginModel doLogout];
+            }
+            
+        }
+
+    }
+    
+    return  error;
+    
+}
+
 
 @end
