@@ -75,7 +75,7 @@
 }
 
 //查询
--(void)request_AddressList_WithParams:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block{
+-(void)request_GetAddressList_WithParams:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block{
     
     
     NSString *toPath = @"goods/addresslist";
@@ -112,7 +112,6 @@
 //修改
 -(void)request_ModifyAddress_WithParams:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block{
     
-    
     NSString *toPath = @"goods/address";
     
     [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:toPath withParams:params withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
@@ -127,6 +126,24 @@
     
     
 }
+
+-(void)request_GetDetailAddress_WithParams:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block{
+    
+    
+    NSString *toPath = @"goods/addrdetail";
+    
+    [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:toPath withParams:params withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+        
+        
+        block(data,error);
+        
+        
+        
+    }];
+    
+}
+
 
 -(void)request_SetDefaultAddress_WithParams:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block;
 {

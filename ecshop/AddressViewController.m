@@ -34,7 +34,7 @@
 
 @implementation AddressViewController
 -(void)viewWillAppear:(BOOL)animated{
-   [self myProvince];
+   [self getAddressList];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -63,7 +63,7 @@
     [button addTarget:self action:@selector(newAddress:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
 }
--(void)myProvince{
+-(void)getAddressList{
     
 
     AddressModel *model = [[AddressModel alloc]init];
@@ -71,11 +71,11 @@
     
     WS(ws)
     
-    [[Ditiy_NetAPIManager sharedManager]request_AddressList_WithParams:[model toAddressParams] andBlock:^(id data, NSError *error) {
+    [[Ditiy_NetAPIManager sharedManager]request_GetAddressList_WithParams:[model toAddressParams] andBlock:^(id data, NSError *error) {
        
         if (data) {
             
-            [MBProgressHUD showSuccess:data[@"msg"]];
+            //[MBProgressHUD showSuccess:data[@"msg"]];
             
             ws.modArray = [AddressModel mj_objectArrayWithKeyValuesArray:data[@"data"]];
             
@@ -141,6 +141,7 @@
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"MyAddressViewCell" owner:self options:nil]lastObject];
     }
+    DebugLog(@"%ld",(long)indexPath.section);
     cell.model = self.modArray[indexPath.section];
     [cell.editBtn addTarget:self action:@selector(editAction:) forControlEvents:UIControlEventTouchUpInside];
     [cell.checkBtn addTarget:self action:@selector(checkAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -154,7 +155,7 @@
     MyAddressViewCell * cell = (MyAddressViewCell *)button.superview.superview;
     self.myaddress = cell.address_id;
     [self setDefaultAddress];
-    [self myProvince];
+    [self getAddressList];
     [self.tableView reloadData];
     
 }
@@ -166,9 +167,9 @@
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     __weak typeof(self) weakSelf = self;
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
         [weakSelf deleteAddress];
-        [weakSelf myProvince];
-        [weakSelf.tableView reloadData];
+
     }];
     [alertVC addAction:cancelAction];
     [alertVC addAction:okAction];
@@ -179,8 +180,12 @@
 - (void)editAction:(UIButton *)button{
     MyAddressViewCell * cell = (MyAddressViewCell *)button.superview.superview;
     NewAddressViewController *newVC = [[NewAddressViewController alloc]init];
+    
     newVC.tempDic = self.tempDic;
     newVC.tempId = cell.address_id;
+    
+    newVC.revisedModel = cell.model;
+    
     [self.navigationController pushViewController:newVC animated:YES];
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -225,8 +230,6 @@
 }
 #pragma mark--设置默认地址
 -(void)setDefaultAddress{
-
-    
     
     AddressModel *model  = [AddressModel new];
     model.address_id = self.myaddress;
@@ -278,7 +281,7 @@
        
         if (data) {
             
-            [ws.tableView reloadData];
+           [ws getAddressList];
             
         }
         

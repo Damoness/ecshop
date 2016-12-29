@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "AddressModel.h"
 @interface NewAddressViewController : UIViewController
 @property(nonatomic,strong)NSDictionary *tempDic;
 @property (nonatomic,strong)NSString *tempId;
+@property (nonatomic,strong)AddressModel *revisedModel; //需要修改的地址model
 @end

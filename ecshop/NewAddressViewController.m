@@ -42,10 +42,8 @@
 @implementation NewAddressViewController
 -(void)viewWillAppear:(BOOL)animated{
     
-    if (self.tempId == nil) {
-    
-    }else{
-       
+    if (self.tempId) {
+        
         [self revise];
     }
 }
@@ -226,24 +224,47 @@
 //            [alertVC addAction:okAction];
 //            [weakSelf presentViewController:alertVC animated:YES completion:nil];
 //        }];
-    }else{
+    }else{//修改
         
-        NSDictionary *dict = @{@"api_token":api_token,@"key":self.tempDic[@"data"][@"key"],@"province":self.province,@"city":self.city,@"district":self.area,@"username":self.text1.text,@"address_p":self.text4.text,@"telnumber":self.text2.text,@"address_id":self.tempId};
-        __weak typeof(self) weakSelf = self;
-        [RequestModel requestWithDictionary:dict model:@"goods" action:@"address" block:^(id result) {
-            NSDictionary *dic = result;
-            NSLog(@"获得的数据：%@",dic);
+        
+        AddressModel *addressModel = [AddressModel new];
+        addressModel.address_id = self.tempId;
+        addressModel.username = self.text1.text;
+        addressModel.telnumber = self.text2.text;
+        addressModel.province = self.province;
+        addressModel.city = self.city;
+        addressModel.district = self.area;
+        addressModel.address = self.text4.text;
+        
+        
+        WS(ws)
+        [[Ditiy_NetAPIManager sharedManager] request_ModifyAddress_WithParams:[addressModel toModifyParams] andBlock:^(id data, NSError *error) {
+           
             
-            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"" message:dic[@"msg"] preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            [MBProgressHUD showSuccess:@"修改成功"];
+            [ws.navigationController popViewControllerAnimated:YES];
             
-            UIAlertAction *okAction =[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [weakSelf.navigationController popViewControllerAnimated:YES];
-            }];
-            [alertVC addAction:cancelAction];
-            [alertVC addAction:okAction];
-            [weakSelf presentViewController:alertVC animated:YES completion:nil];
+            
+            
         }];
+        
+//        
+//        NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"province":self.province,@"city":self.city,@"district":self.area,@"username":self.text1.text,@"address_p":self.text4.text,@"telnumber":self.text2.text,@"address_id":self.tempId};
+//        __weak typeof(self) weakSelf = self;
+//        [RequestModel requestWithDictionary:dict model:@"goods" action:@"address" block:^(id result) {
+//            NSDictionary *dic = result;
+//            NSLog(@"获得的数据：%@",dic);
+//            
+//            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"" message:dic[@"msg"] preferredStyle:UIAlertControllerStyleAlert];
+//            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+//            
+//            UIAlertAction *okAction =[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//                [weakSelf.navigationController popViewControllerAnimated:YES];
+//            }];
+//            [alertVC addAction:cancelAction];
+//            [alertVC addAction:okAction];
+//            [weakSelf presentViewController:alertVC animated:YES completion:nil];
+//        }];
     }
     
 }
@@ -299,17 +320,41 @@
 }
 #pragma mark -- 修改收货地址
 -(void)revise{
-    NSString *api_token = [RequestModel model:@"goods" action:@"addrdetail"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":self.tempDic[@"data"][@"key"],@"address_id":self.tempId};
-    __weak typeof(self) weakSelf = self;
-    [RequestModel requestWithDictionary:dict model:@"goods" action:@"addrdetail" block:^(id result) {
-        NSDictionary *dic = result;
-        NSLog(@"获得的数据：%@",dic);
-        weakSelf.text1.text = dic[@"data"][@"username"];
-        weakSelf.text2.text = dic[@"data"][@"telnum"];
-        weakSelf.text4.text = dic[@"data"][@"address"];
-        weakSelf.lab5.text = dic[@"data"][@"area"];
+//    NSString *api_token = [RequestModel model:@"goods" action:@"addrdetail"];
+//    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"address_id":self.tempId};
+//    __weak typeof(self) weakSelf = self;
+//    [RequestModel requestWithDictionary:dict model:@"goods" action:@"addrdetail" block:^(id result) {
+//        NSDictionary *dic = result;
+//        NSLog(@"获得的数据：%@",dic);
+//        weakSelf.text1.text = dic[@"data"][@"username"];
+//        weakSelf.text2.text = dic[@"data"][@"telnum"];
+//        weakSelf.text4.text = dic[@"data"][@"address"];
+//        weakSelf.lab5.text = dic[@"data"][@"area"];
+//    }];
+    
+    
+    
+    WS(ws)
+    
+    [[Ditiy_NetAPIManager sharedManager]request_GetDetailAddress_WithParams:[self.revisedModel toGetDetailAddressParams]andBlock:^(id data, NSError *error) {
+       
+        
+        ws.text1.text = data[@"data"][@"username"];
+        ws.text2.text = data[@"data"][@"telnum"];
+        ws.text4.text = data[@"data"][@"address"];
+        ws.lab5.text = data[@"data"][@"area"];
+        
+        ws.province = data[@"data"][@"province"];
+        ws.city  = data[@"data"][@"city"];
+        ws.area  = data[@"data"][@"district"];
+        
+        
     }];
+    
+//    self.text1.text = self.revisedModel.username;
+//    self.text2.text = self.revisedModel.telnumber;
+//    self.text4.text = self.revisedModel.address;
+//            self.lab5.text = self.revisedModel.a
 }
 //关闭键盘
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

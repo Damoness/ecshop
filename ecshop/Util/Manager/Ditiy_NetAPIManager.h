@@ -33,7 +33,12 @@
 -(void)request_AddAddress_WithParams:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block;
 
 //查询
--(void)request_AddressList_WithParams:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block;
+-(void)request_GetAddressList_WithParams:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block;
+
+
+//查询单条详细记录
+-(void)request_GetDetailAddress_WithParams:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block;
+
 
 //删除
 -(void)request_DeleteAddress_WithParams:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block;

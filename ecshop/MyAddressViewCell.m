@@ -27,6 +27,12 @@
     // Configure the view for the selected state
 }
 -(void)setModel:(AddressModel *)model{
+    
+    if (_model != model) {
+        
+        _model = model;
+    }
+    
     self.nameLab.text = model.username;
     self.nameLab.font = [UIFont systemFontOfSize:15];
     self.addressLab.text = model.address;

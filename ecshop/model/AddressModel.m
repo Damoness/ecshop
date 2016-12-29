@@ -18,6 +18,19 @@
 }
 
 
+//用于查询某条记录的完整信息
+-(NSDictionary *)toGetDetailAddressParams{
+    
+    NSMutableDictionary *params =  @{
+                                     @"key":[LoginModel key],
+                                     @"address_id":self.address_id
+                                     
+                                     }.mutableCopy;
+    
+    
+    return params;
+}
+
 
 -(NSDictionary *)toAddAddressParams{
     
@@ -63,6 +76,30 @@
     
     
     return params;
+}
+
+//用于修改地址
+-(NSDictionary *)toModifyParams{
+    
+    NSMutableDictionary *params =  @{
+                                     @"key":[LoginModel key],
+                                     
+                                     @"address_id":self.address_id,
+                                     @"username":self.username,
+                                     @"telnumber":self.telnumber,
+                                     
+                                     @"province":self.province,
+                                     @"city":self.city,
+                                     @"district":self.district,
+                                     
+                                     @"address_p":self.address,
+                                     }.mutableCopy;
+    
+    
+    return params;
+    
+    
+    
 }
 
 //用于设置默认
