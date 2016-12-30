@@ -40,8 +40,6 @@
 @property (nonatomic,strong) NSString *type;
 
 
-- (NSString *)toPath;
-
-- (NSString *)toParams;
+- (NSDictionary *)toParams;
 
 @end

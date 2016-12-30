@@ -21,4 +21,15 @@
 }
 
 
+- (NSDictionary *)toParams{
+    
+    NSMutableDictionary *params = @{
+                                    @"key":[LoginModel key]
+                             
+                                    }.mutableCopy;
+    
+    return params;
+    
+}
+
 @end

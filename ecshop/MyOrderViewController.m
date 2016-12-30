@@ -17,6 +17,10 @@
 #import "OrderDetailViewController.h"
 #import "SDRefresh.h"
 #import "UIColor+Hex.h"
+
+
+#import "OrderModel.h"
+
 #define kColorBack [UIColor colorWithRed:239/255.0 green:239/255.0 blue:244/255.0 alpha:1.0]
 @interface MyOrderViewController ()<UITableViewDelegate,UITableViewDataSource,SDRefreshViewAnimationDelegate>
 @property(nonatomic,strong)UITableView *table;
@@ -43,26 +47,26 @@
     [self initNavigationBar];
     if ([self.tagg isEqualToString:@"0"]) {
         
-        [self myOrder];
+        [self myOrder];       //所有订单
         [self draw];
     }else if ([self.tagg isEqualToString:@"1"]){
       
-        [self waitpay:@"obligation"];
+        [self waitpay:@"obligation"]; // 代付款
         [self draw];
         
     }else if ([self.tagg isEqualToString:@"3"]){
         
-        [self waitpay:@"send_goods"];
+        [self waitpay:@"send_goods"]; //代发货
         [self draw];
         
     }else if ([self.tagg isEqualToString:@"4"]){
        
         [self draw];
-        [self waitpay:@"reciv_goods"];
+        [self waitpay:@"reciv_goods"]; //待收货
         
     }else if ([self.tagg isEqualToString:@"5"]){
         
-        [self waitpay:@"order_sucess"];
+        [self waitpay:@"order_sucess"]; //已完成
         [self draw];
         
     }
@@ -90,49 +94,173 @@
     UIApplication *appli=[UIApplication sharedApplication];
     AppDelegate *app=appli.delegate;
     self.tempDic = app.tempDic;
-    NSString *api_token = [RequestModel model:@"user" action:@"order"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":self.tempDic[@"data"][@"key"]};
-    __weak typeof(self) weakSelf = self;
-    [RequestModel requestWithDictionary:dict model:@"user" action:@"order" block:^(id result) {
-        NSDictionary *dic = result;
-        NSLog(@"%@",dic);
+//    NSString *api_token = [RequestModel model:@"user" action:@"order"];
+//    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
+//    __weak typeof(self) weakSelf = self;
+//    
+//    [RequestModel requestWithDictionary:dict model:@"user" action:@"order" block:^(id result) {
+//        NSDictionary *dic = result;
+//        NSLog(@"%@",dic);
+//        
+//        
+//        weakSelf.orderArray = [[NSMutableArray alloc]init];
+//        weakSelf.orderDic = [[NSMutableDictionary alloc]init];
+//        for (NSMutableDictionary *dict in dic[@"data"]) {
+//            shangpinModel *model2 = [shangpinModel new];
+//            weakSelf.modArray = [[NSMutableArray alloc]init];
+//            for (NSDictionary *dictt in dict[@"goods"]) {
+//                shangpinModel *model1 = [shangpinModel new];
+//                model1.goodsName = dictt[@"goods_name"];
+//                model1.goodsNumber = dictt[@"goods_number"];
+//                model1.goodsPrice = dictt[@"goods_price"];
+//                model1.goodsImage = dictt[@"goods_thumb"];
+//                [weakSelf.modArray addObject:model1];
+//            }
+//            model2.orderId = dict[@"order_id"];
+//            model2.orderSn = dict[@"order_sn"];
+//            model2.status = dict[@"status"];
+//            model2.total = dict[@"total"];
+//            
+//            [weakSelf.orderArray addObject:model2];
+//            [weakSelf.orderDic setValue:weakSelf.modArray forKey:model2.orderId];
+//            
+//        }
+//        
+//        
+//        [weakSelf.table reloadData];
+//    }];
+    
+    
+    
+    OrderModel *orderModel = [OrderModel new];
+    
+    WS(ws)
+    [[Ditiy_NetAPIManager sharedManager]request_GetOrderList_withOrderType:OrderAll Params:[orderModel toParams] andBlock:^(id data, NSError *error) {
         
+        NSDictionary *dic = data;
         
-        weakSelf.orderArray = [[NSMutableArray alloc]init];
-        weakSelf.orderDic = [[NSMutableDictionary alloc]init];
+        ws.orderArray = [[NSMutableArray alloc]init];
+        ws.orderDic = [[NSMutableDictionary alloc]init];
         for (NSMutableDictionary *dict in dic[@"data"]) {
             shangpinModel *model2 = [shangpinModel new];
-            weakSelf.modArray = [[NSMutableArray alloc]init];
+            ws.modArray = [[NSMutableArray alloc]init];
             for (NSDictionary *dictt in dict[@"goods"]) {
                 shangpinModel *model1 = [shangpinModel new];
                 model1.goodsName = dictt[@"goods_name"];
                 model1.goodsNumber = dictt[@"goods_number"];
                 model1.goodsPrice = dictt[@"goods_price"];
                 model1.goodsImage = dictt[@"goods_thumb"];
-                [weakSelf.modArray addObject:model1];
+                [ws.modArray addObject:model1];
             }
             model2.orderId = dict[@"order_id"];
             model2.orderSn = dict[@"order_sn"];
             model2.status = dict[@"status"];
             model2.total = dict[@"total"];
             
-            [weakSelf.orderArray addObject:model2];
-            [weakSelf.orderDic setValue:weakSelf.modArray forKey:model2.orderId];
+            [ws.orderArray addObject:model2];
+            [ws.orderDic setValue:ws.modArray forKey:model2.orderId];
             
         }
         
         
-        [weakSelf.table reloadData];
+        [ws.table reloadData];
+        
+        
     }];
+    
+    
+    
+
+    
+    
+
     
 }
 //待付款
 -(void)waitpay:(NSString*)action{
-    NSString *api_token = [RequestModel model:@"order" action:action];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
-    __weak typeof(self) weakSelf = self;
-    [RequestModel requestWithDictionary:dict model:@"order" action:action block:^(id result) {
-        NSDictionary *dic = result;
+//    NSString *api_token = [RequestModel model:@"order" action:action];
+//    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
+//    __weak typeof(self) weakSelf = self;
+//    
+//    [RequestModel requestWithDictionary:dict model:@"order" action:action block:^(id result) {
+//        NSDictionary *dic = result;
+//        NSLog(@"获得的数据：%@",dic);
+//        weakSelf.orderArray = nil;
+//        weakSelf.orderDic = nil;
+//        weakSelf.orderArray = [[NSMutableArray alloc]init];
+//        weakSelf.orderDic = [[NSMutableDictionary alloc]init];
+//        for (NSMutableDictionary *dict in dic[@"data"]) {
+//            weakSelf.modArray = [[NSMutableArray alloc]init];
+//            for (NSDictionary *dictt in dict[@"goods"]) {
+//                shangpinModel *model1 = [shangpinModel new];
+//                model1.goodsName = dictt[@"goods_name"];
+//                model1.goodsNumber = dictt[@"goods_number"];
+//                model1.goodsPrice = dictt[@"goods_price"];
+//                model1.goodsImage = dictt[@"goods_thumb"];
+//                [weakSelf.modArray addObject:model1];
+//            }
+//            shangpinModel *model2 = [shangpinModel new];
+//            model2.orderId = dict[@"order_id"];
+//            model2.orderSn = dict[@"order_sn"];
+//            if ([action isEqualToString:@"obligation"]) {
+//                model2.status = @"6";
+//            }else if ([action isEqualToString:@"send_goods"]) {
+//                model2.status = @"7";
+//            }else if ([action isEqualToString:@"reciv_goods"]) {
+//                model2.status = @"8";
+//            }else if ([action isEqualToString:@"order_sucess"]) {
+//                model2.status = @"9";
+//            }
+//            
+//            //订单状态0未确认1已确认 2已取消 3无效 4退货 5已分单
+//            model2.order_status = dict[@"order_status"];
+//            //支付状态 0未付款1付款中 2已付款
+//            model2.pay_status = dict[@"pay_status"];
+//            //发货状态 0未发货1已发货 2已取消 3配货中 5发货中
+//            model2.shipping_status = dict[@"shipping_status"];
+//            model2.total = dict[@"total"];
+//            [weakSelf.orderArray addObject:model2];
+//            
+//            [weakSelf.orderDic setValue:weakSelf.modArray forKey:model2.orderId];
+//            
+//            
+//            
+//        }
+//        
+//        
+//        [weakSelf.table reloadData];
+//    }];
+    
+    
+    
+
+
+
+    OrderType type;
+    if ([self.tagg isEqualToString:@"1"]){
+        
+        type = OrderUnpayed; // 代付款
+        
+    }else if ([self.tagg isEqualToString:@"3"]){
+        
+        type = OrderUndispatched; //代发货
+        
+    }else if ([self.tagg isEqualToString:@"4"]){
+        
+         type = OrderUnreceived; //待收货
+        
+    }else if ([self.tagg isEqualToString:@"5"]){
+        
+         type = OrderFinished; //已完成
+        
+    }
+
+
+    OrderModel *orderModel = [OrderModel new];
+    WS(weakSelf)
+    [[Ditiy_NetAPIManager sharedManager]request_GetOrderList_withOrderType:type Params:[orderModel toParams] andBlock:^(id data, NSError *error) {
+        
+        NSDictionary *dic = data;
         NSLog(@"获得的数据：%@",dic);
         weakSelf.orderArray = nil;
         weakSelf.orderDic = nil;
@@ -178,6 +306,8 @@
         
         
         [weakSelf.table reloadData];
+        
+        
     }];
 }
 #pragma mark -tableViewdelegate

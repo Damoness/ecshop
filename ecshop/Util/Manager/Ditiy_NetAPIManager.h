@@ -51,4 +51,18 @@
 -(void)request_SetDefaultAddress_WithParams:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block;
 
 
+
+#pragma mark - OrderList 用户订单
+
+typedef enum {
+    OrderAll = 0, //所有订单
+    OrderUnpayed, //待付款
+    OrderUndispatched , //代发货
+    OrderUnreceived  ,//待收货
+    OrderFinished  //已完成
+} OrderType;
+
+
+-(void)request_GetOrderList_withOrderType:(OrderType)type Params:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block;
+
 @end

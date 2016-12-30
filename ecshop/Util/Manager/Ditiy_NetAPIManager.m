@@ -162,4 +162,49 @@
     
 }
 
+
+-(void)request_GetOrderList_withOrderType:(OrderType)type Params:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block{
+    
+    NSString *toPath ;
+    
+    switch (type) {
+        case OrderAll:
+            
+            toPath = @"user/order";
+            
+            break;
+        case OrderUnpayed:
+            toPath = @"order/obligation";
+            
+            break;
+        case OrderUndispatched:
+            toPath = @"order/send_goods";
+            
+            break;
+        case OrderUnreceived:
+            toPath = @"order/reciv_goods";
+            
+            break;
+        case OrderFinished:
+            toPath = @"order/order_sucess";
+            
+            break;
+    }
+    
+    [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:toPath withParams:params withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+        
+        
+        block(data,error);
+        
+        
+        
+    }];
+    
+    
+    
+    
+}
+
+
 @end
