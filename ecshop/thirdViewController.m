@@ -8,7 +8,7 @@
 
 #import "thirdViewController.h"
 #import "RequestModel.h"
-#import "goodsModel.h"
+#import "GoodsModel.h"
 #import "AppDelegate.h"
 #import "MyGoodsViewCell.h"
 #import "LoginViewController.h"
@@ -29,7 +29,7 @@
 }
 @property(nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong)NSMutableArray *tempArrr;
-@property (nonatomic,strong)goodsModel *model;
+@property (nonatomic,strong)GoodsModel *model;
 //判断全选按钮的状态
 @property (nonatomic,assign)int tagg;
 //删除判断全选按钮的状态
@@ -456,7 +456,7 @@
         int a = 0;
         int b = 0;
         for (int i = 0; i < _tempArrr.count; i++) {
-            _model = [goodsModel new];
+            _model = [GoodsModel new];
             _model = _tempArrr[i];
             a = a+[_model.goods_price intValue]*_model.number;
             b = b +_model.number ;
@@ -490,7 +490,7 @@
         [_changeAllBtn setImage:[UIImage imageNamed:@"select_cart_goods1.png"] forState:UIControlStateNormal];
         _orderArray = _tempArrr;
         for (int i = 0; i<_tempArrr.count; i++) {
-            goodsModel *goodsmodel = [goodsModel new];
+            GoodsModel *goodsmodel = [GoodsModel new];
             goodsmodel = _tempArrr[i];
             NSString *rec_id = goodsmodel.rec_id;
             [_goodsArr addObject:rec_id];
@@ -522,7 +522,7 @@
         weakSelf.tempArrr = [NSMutableArray array];
         NSArray *arr = dic[@"data"];
         for (NSDictionary *dict in arr) {
-            weakSelf.model = [goodsModel new];
+            weakSelf.model = [GoodsModel new];
             weakSelf.model.goods_id = dict[@"goods_id"];
             weakSelf.model.goods_price = dict[@"goods_price"];
             weakSelf.model.goods_name = dict[@"goods_name"];
@@ -545,7 +545,7 @@
         int a = 0;
         int b = 0;
         for (int i = 0; i < weakSelf.tempArrr.count; i++) {
-            weakSelf.model = [goodsModel new];
+            weakSelf.model = [GoodsModel new];
             weakSelf.model = _tempArrr[i];
             a = a+[weakSelf.model.goods_price intValue]*weakSelf.model.number;
             b = b +weakSelf.model.number ;
@@ -636,7 +636,7 @@
     int bnum = [[self.labNumber.text substringFromIndex:3] intValue];
     int aPrice = [[cell.goods_sum.text substringFromIndex:4]intValue];
     int bPrice = [[self.amountLabel.text substringFromIndex:4]intValue];
-    goodsModel *goodsmodel = [goodsModel new];
+    GoodsModel *goodsmodel = [GoodsModel new];
     goodsmodel.goods_price = cell.goods_price.text;
     goodsmodel.goods_img = cell.url;
     goodsmodel.number = [cell.goods_number.titleLabel.text intValue];
@@ -678,7 +678,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    goodsModel *model = [goodsModel new];
+    GoodsModel *model = [GoodsModel new];
     model =_tempArrr[indexPath.section];
     goodDetailViewController *goodVC = [goodDetailViewController new];
     goodVC.goodID = model.goods_id;

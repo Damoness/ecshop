@@ -128,7 +128,7 @@
 {
     
     // NSString *goodsId = nil;
-    goodsModel *goodmodel1 = [goodsModel new];
+    GoodsModel *goodmodel1 = [GoodsModel new];
     //从购物车进来
     if (_tempArr !=NULL) {
         

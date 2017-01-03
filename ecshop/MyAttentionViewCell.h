@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "shangpinModel.h"
+#import "GoodsModel.h"
 @interface MyAttentionViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *labName;
 @property (weak, nonatomic) IBOutlet UILabel *labPrice;
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
-@property (nonatomic,strong)shangpinModel *model;
+@property (nonatomic,strong)GoodsModel *model;
 @end

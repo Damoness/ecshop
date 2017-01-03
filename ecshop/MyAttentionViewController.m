@@ -14,10 +14,11 @@
 #import "SDRefresh.h"
 #import "UIColor+Hex.h"
 #import "goodDetailViewController.h"
+#import "GoodsModel.h"
 #define kColorBack [UIColor colorWithRed:239/255.0 green:239/255.0 blue:244/255.0 alpha:1.0]
 @interface MyAttentionViewController ()<UITableViewDelegate,UITableViewDataSource,SDRefreshViewAnimationDelegate>
 @property (nonatomic,strong)UITableView *tableView;
-@property (nonatomic,strong)NSMutableArray *array;
+@property (nonatomic,strong)NSMutableArray<GoodsModel *> *array;
 
 @property (nonatomic, weak) SDRefreshFooterView *refreshFooter;
 @property (nonatomic, weak) SDRefreshHeaderView *refreshHeader;
@@ -53,42 +54,66 @@
 #pragma mark--关注列表
 -(void)myCollectlist{
 
-    NSString *api_token = [RequestModel model:@"goods" action:@"collectlist"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
-
-    __weak typeof(self) weakSelf = self;
-    [RequestModel requestWithDictionary:dict model:@"goods" action:@"collectlist" block:^(id result) {
-        NSDictionary *dic = result;
-        NSLog(@"%@",dic);
-        weakSelf.array = [[NSMutableArray alloc]init];
-        for (NSDictionary *dict in dic[@"data"]) {
-            NSLog(@"%@",dict);
-            
-            shangpinModel *model = [shangpinModel new];
-            model.goodsImage = dict[@"goods_img"];
-            model.goodsName = dict[@"goods_name"];
-            model.goodsPrice = dict[@"goods_price"];
-            model.orderId = dict[@"goods_id"];
-            if ([model.goodsImage isEqualToString:@"http://shopapi.99-k.com/ecshop/"]) {
-                model.goodsPrice = @"nil";
-                model.goodsImage = @"nil";
-                model.goodsName = @"nil";
-                model.orderId = @"nil";
-            }
-           [weakSelf.array addObject:model];
-            
-            
-        }
-        NSLog(@"%@",weakSelf.array);
-        if (weakSelf.array.count == 0) {
-            weakSelf.tableView.hidden = YES;
-            UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(weakSelf.view.frame.size.width/2 - 80, 150, 160, 40)];
+//    NSString *api_token = [RequestModel model:@"goods" action:@"collectlist"];
+//    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
+//
+//    __weak typeof(self) weakSelf = self;
+//    [RequestModel requestWithDictionary:dict model:@"goods" action:@"collectlist" block:^(id result) {
+//        NSDictionary *dic = result;
+//        NSLog(@"%@",dic);
+//        weakSelf.array = [[NSMutableArray alloc]init];
+//        for (NSDictionary *dict in dic[@"data"]) {
+//            NSLog(@"%@",dict);
+//            
+//            shangpinModel *model = [shangpinModel new];
+//            model.goodsImage = dict[@"goods_img"];
+//            model.goodsName = dict[@"goods_name"];
+//            model.goodsPrice = dict[@"goods_price"];
+//            model.orderId = dict[@"goods_id"];
+//            if ([model.goodsImage isEqualToString:@"http://shopapi.99-k.com/ecshop/"]) {
+//                model.goodsPrice = @"nil";
+//                model.goodsImage = @"nil";
+//                model.goodsName = @"nil";
+//                model.orderId = @"nil";
+//            }
+//           [weakSelf.array addObject:model];
+//            
+//            
+//        }
+//        NSLog(@"%@",weakSelf.array);
+//        if (weakSelf.array.count == 0) {
+//            weakSelf.tableView.hidden = YES;
+//            UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(weakSelf.view.frame.size.width/2 - 80, 150, 160, 40)];
+//            lab.text = @"您还没有关注商品";
+//            lab.font = [UIFont systemFontOfSize:13];
+//            lab.textAlignment = NSTextAlignmentCenter;
+//            [weakSelf.view addSubview:lab];
+//        }
+//        [weakSelf.tableView reloadData];
+//    }];
+    
+    
+    GoodsModel *goodsModel = [GoodsModel new];
+    
+    WS(ws)
+    [[Ditiy_NetAPIManager sharedManager]request_FollowedGoods_WithParams:[goodsModel toFollowedGoodsParams] andBlock:^(id data, NSError *error) {
+       
+        
+        ws.array = [GoodsModel mj_objectArrayWithKeyValuesArray:data[@"data"]];
+        
+        
+        if (ws.array.count == 0) {
+            ws.tableView.hidden = YES;
+            UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(ws.view.frame.size.width/2 - 80, 150, 160, 40)];
             lab.text = @"您还没有关注商品";
             lab.font = [UIFont systemFontOfSize:13];
             lab.textAlignment = NSTextAlignmentCenter;
-            [weakSelf.view addSubview:lab];
+            [ws.view addSubview:lab];
         }
-        [weakSelf.tableView reloadData];
+        
+        [ws.tableView reloadData];
+        
+        
     }];
 }
 /*
@@ -116,7 +141,6 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"MyAttentionViewCell" owner:self options:nil]lastObject];
     }
     cell.model = self.array[indexPath.row];
-//    cell.model = self.array[2];
     
     [cell setAccessoryType:UITableViewCellAccessoryNone];
     return cell;
@@ -126,9 +150,9 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     goodDetailViewController *goodVC = [goodDetailViewController new];
-    shangpinModel *mode = [shangpinModel new];
-    mode = self.array[indexPath.row];
-    goodVC.goodID = mode.orderId;
+    
+    GoodsModel *model = self.array[indexPath.row];
+    goodVC.goodID = model.goods_id;
     if ([goodVC.goodID isEqualToString:@"nil"]) {
         
     }else{

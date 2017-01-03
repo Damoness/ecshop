@@ -609,11 +609,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ecshop/Util/Manager/Ditiy_NetAPIManager.h"
-            timestampString = "505116718.917275"
+            timestampString = "505123589.202973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "@interface Ditiy_NetAPIManager"
             landmarkType = "2">
          </BreakpointContent>

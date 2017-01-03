@@ -28,7 +28,7 @@
     
     // Configure the view for the selected state
 }
--(void)setModel:(goodsModel *)model{
+-(void)setModel:(GoodsModel *)model{
     self.rec_id = model.rec_id;
     self.goods_name.text = model.goods_name;
     self.goods_name.font = [UIFont systemFontOfSize:15];

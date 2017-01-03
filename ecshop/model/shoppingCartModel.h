@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "goodsModel.h"
+#import "GoodsModel.h"
 @interface shoppingCartModel : NSObject
 
 
-@property (nonatomic,strong) NSMutableArray<goodsModel *> *goods;
+@property (nonatomic,strong) NSMutableArray<GoodsModel *> *goods;
 
 
 

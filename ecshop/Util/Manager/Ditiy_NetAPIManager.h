@@ -36,13 +36,20 @@
 -(void)request_UpdateUserInfo_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
 
 
-#pragma mark - bonus
 
+#pragma mark - Goods  
+
+//获取用户关注的商品  toFollowedGoodsParams
+-(void)request_FollowedGoods_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
+
+
+#pragma mark - Bonus
+
+//获取用户优惠券
 -(void)request_UserBonus_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
 
-//http://sitmarket.ditiy.com/shopapi/index.php/user/bonus
 
-#pragma mark - UserAddress 用户地址
+#pragma mark - Address 用户地址
 //增加
 -(void)request_AddAddress_WithParams:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block;
 

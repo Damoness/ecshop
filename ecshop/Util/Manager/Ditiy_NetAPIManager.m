@@ -259,4 +259,21 @@
 }
 
 
+
+-(void)request_FollowedGoods_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block{
+    
+    NSString *toPath = @"goods/collectlist";
+    
+    
+    [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:toPath withParams:params withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+        
+        block(data,error);
+        
+        
+        
+    }];
+    
+}
+
 @end
