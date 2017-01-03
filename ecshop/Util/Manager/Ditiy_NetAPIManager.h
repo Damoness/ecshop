@@ -28,6 +28,10 @@
 
 
 
+#pragma mark - User
+//-(void)request_GetOrder_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block
+
+
 #pragma mark - UserAddress 用户地址
 //增加
 -(void)request_AddAddress_WithParams:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block;

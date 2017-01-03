@@ -34,6 +34,13 @@
 @property (nonatomic,strong)NSString *pay;
 //待发货数量
 @property (nonatomic,strong)NSString *shipping_send;
+
+//已经发货数量
+@property (nonatomic,strong)NSString *shipping;
+
+
 //购物车数量
 @property (nonatomic,strong)NSString *cart_num;
+
+@property (nonatomic,strong)NSString *consume;
 @end
