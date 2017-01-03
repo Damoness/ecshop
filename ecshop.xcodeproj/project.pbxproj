@@ -375,7 +375,7 @@
 		9C36AD121E0230AC0021C6CE /* shangpinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD0B1E0230AC0021C6CE /* shangpinModel.m */; };
 		9C36AD181E0230E30021C6CE /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD171E0230E30021C6CE /* LoginModel.m */; };
 		9C36AD1B1E02A6C30021C6CE /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD1A1E02A6C30021C6CE /* UserModel.m */; };
-		9CA948F21E0BECB400E021C9 /* shoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA948F11E0BECB400E021C9 /* shoppingCartModel.m */; };
+		9CA948F21E0BECB400E021C9 /* ShoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA948F11E0BECB400E021C9 /* ShoppingCartModel.m */; };
 		9CEF16E71E0CCD15009C15A3 /* Ditiy_NetAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEF16E61E0CCD15009C15A3 /* Ditiy_NetAPIManager.m */; };
 		9CEF16EA1E0CD120009C15A3 /* DitiyNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEF16E91E0CD120009C15A3 /* DitiyNetAPIClient.m */; };
 		9CEF16F01E0D594C009C15A3 /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEF16EF1E0D594C009C15A3 /* OrderModel.m */; };
@@ -1021,8 +1021,8 @@
 		9C36AD171E0230E30021C6CE /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
 		9C36AD191E02A6C30021C6CE /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		9C36AD1A1E02A6C30021C6CE /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
-		9CA948F01E0BECB400E021C9 /* shoppingCartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shoppingCartModel.h; sourceTree = "<group>"; };
-		9CA948F11E0BECB400E021C9 /* shoppingCartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shoppingCartModel.m; sourceTree = "<group>"; };
+		9CA948F01E0BECB400E021C9 /* ShoppingCartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartModel.h; sourceTree = "<group>"; };
+		9CA948F11E0BECB400E021C9 /* ShoppingCartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartModel.m; sourceTree = "<group>"; };
 		9CEF16E51E0CCD15009C15A3 /* Ditiy_NetAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ditiy_NetAPIManager.h; sourceTree = "<group>"; };
 		9CEF16E61E0CCD15009C15A3 /* Ditiy_NetAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ditiy_NetAPIManager.m; sourceTree = "<group>"; };
 		9CEF16E81E0CD120009C15A3 /* DitiyNetAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DitiyNetAPIClient.h; sourceTree = "<group>"; };
@@ -2188,8 +2188,8 @@
 				9C36AD1A1E02A6C30021C6CE /* UserModel.m */,
 				9C36AD001E0230AC0021C6CE /* GoodsModel.h */,
 				9C36AD011E0230AC0021C6CE /* GoodsModel.m */,
-				9CA948F01E0BECB400E021C9 /* shoppingCartModel.h */,
-				9CA948F11E0BECB400E021C9 /* shoppingCartModel.m */,
+				9CA948F01E0BECB400E021C9 /* ShoppingCartModel.h */,
+				9CA948F11E0BECB400E021C9 /* ShoppingCartModel.m */,
 				9CEF16EE1E0D594C009C15A3 /* OrderModel.h */,
 				9CEF16EF1E0D594C009C15A3 /* OrderModel.m */,
 				9C090A7F1E1B4466004EDB54 /* BonusModel.h */,
@@ -2606,7 +2606,7 @@
 				516CE51C1C86DE0600E6DE87 /* CouponsViewController.m in Sources */,
 				51F12E731C0BE168002C62D0 /* AppDelegate.m in Sources */,
 				51FD2F0E1C34BB4B0032FE14 /* GoodRightCell.m in Sources */,
-				9CA948F21E0BECB400E021C9 /* shoppingCartModel.m in Sources */,
+				9CA948F21E0BECB400E021C9 /* ShoppingCartModel.m in Sources */,
 				51FD424C1C27936D00D260A8 /* MJRefreshBackGifFooter.m in Sources */,
 				51F271581C0D6D2200619901 /* SearchViewController.m in Sources */,
 				3C9E3D271C15585A0064EC92 /* PendingPaymentViewCell.m in Sources */,

@@ -53,5 +53,31 @@
 }
 
 
+-(NSDictionary *)toAddGoodsParams{
+    
+    NSMutableDictionary *params = @{
+                                    @"key":[LoginModel key],
+                                    @"goods_id":self.goods_id,
+                                    @"num":[NSString stringWithFormat:@"%d",self.number]
+                                    }.mutableCopy;
+    
+    return params;
+    
+    
+}
+
+//获取商品详情参数
+-(NSDictionary *)toDetailedGoodsInfoParams{
+    
+    
+    NSMutableDictionary *params = @{
+                                    @"key":[LoginModel key],
+                                    @"goods_id":self.goods_id,
+                                    }.mutableCopy;
+    
+    return params;
+    
+}
+
 
 @end

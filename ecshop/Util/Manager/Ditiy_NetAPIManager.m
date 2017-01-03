@@ -309,5 +309,44 @@
     }];
 }
 
+//加入购物车
+-(void)request_AddGoodsToShoppingCart_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block{
+    
+    NSString *toPath = @"goods/addcart";
+    
+    
+    [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:toPath withParams:params withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+        
+        block(data,error);
+        
+        
+        
+    }];
+    
+    
+}
+
+//获取商品详情 toDetailedGoodsInfoParams
+-(void)request_DetailedGoodsInfo_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block{
+    
+    
+    NSString *toPath = @"goods/goodsinfo";
+    
+    
+    [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:toPath withParams:params withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+        
+        block(data,error);
+        
+        
+        
+    }];
+    
+}
+
+
+
+
 
 @end

@@ -48,6 +48,18 @@
 //取消关注商品 toUnfollowGoodsParams
 -(void)request_UnfollowGoods_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
 
+//加入购物车 toAddGoodsParams
+-(void)request_AddGoodsToShoppingCart_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
+
+//获取商品详情 toDetailedGoodsInfoParams
+-(void)request_DetailedGoodsInfo_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
+
+
+
+#pragma mark - ShoppingCart
+
+
+
 #pragma mark - Bonus
 
 //获取用户优惠券

@@ -27,6 +27,7 @@
 #import "AFNetworkReachabilityManager.h"
 #import "GoodsModel.h"
 
+
 #define Width self.view.frame.size.width
 #define Height self.view.frame.size.height
 #define toolHeight 60
@@ -51,6 +52,8 @@
     UIButton * buttonJb;//购物车按钮
     UILabel * careLab;//关注的字
     UIView * viewww;
+    
+    UIView *_cartAnimView;
 }
 
 @property (nonatomic, strong) UITableView *table;
@@ -531,20 +534,37 @@
 -(void)reloadRequest
 {
 
-    NSDictionary *dict;
-    NSString *api_token = [RequestModel model:@"goods" action:@"goodsinfo"];
-    if ([LoginModel isLogin]) {
+//    NSDictionary *dict;
+//    NSString *api_token = [RequestModel model:@"goods" action:@"goodsinfo"];
+//    if ([LoginModel isLogin]) {
+//        
+//        dict = @{@"api_token":api_token,@"goods_id":self.goodID,@"key":[LoginModel key]};
+//        
+//    }else{
+//        
+//        dict = @{@"api_token":api_token,@"goods_id":self.goodID};
+//    }
+    
+//    __weak typeof(self) weakSelf = self;
+//    [RequestModel requestWithDictionary:dict model:@"goods" action:@"goodsinfo" block:^(id result) {
+//        [weakSelf sendMessage:result];
+//    }];
+    
+    
+    GoodsModel *model = [GoodsModel new];
+    model.goods_id =  self.goodID;
+    
+    WS(ws)
+    [[Ditiy_NetAPIManager sharedManager]request_DetailedGoodsInfo_WithParams:[model toDetailedGoodsInfoParams] andBlock:^(id data, NSError *error) {
+       
+        if(data){
+            [ws sendMessage:data];
+        }
         
-        dict = @{@"api_token":api_token,@"goods_id":self.goodID,@"key":[LoginModel key]};
-        
-    }else{
-        
-        dict = @{@"api_token":api_token,@"goods_id":self.goodID};
-    }
-    __weak typeof(self) weakSelf = self;
-    [RequestModel requestWithDictionary:dict model:@"goods" action:@"goodsinfo" block:^(id result) {
-        [weakSelf sendMessage:result];
     }];
+    
+    
+    
 }
 #pragma mark-请求数据
 -(void)sendMessage:(id)message
@@ -875,6 +895,8 @@
     }
     
 }
+
+
 #pragma mark-加入购物车,立刻购买点击事件
 -(void)buttonNext2:(id)sender
 {
@@ -902,14 +924,29 @@
                 path1=[NSString stringWithFormat:@""];
             }
             
-            NSString *api_token = [RequestModel model:@"goods" action:@"addcart"];
-    
+//            NSString *api_token = [RequestModel model:@"goods" action:@"addcart"];
+//    
+//            
+//            NSDictionary *dict = @{@"api_token":api_token,@"goods_id":self.goodID,@"key":[LoginModel key],@"num":_numLab.text,@"attrvalue_id":path1};
+//            [RequestModel requestWithDictionary:dict model:@"goods" action:@"addcart" block:^(id result) {
+//                
+//                kTipAlert(@"%@",@"加入购物车成功");
+//            }];
+//            
             
-            NSDictionary *dict = @{@"api_token":api_token,@"goods_id":self.goodID,@"key":[LoginModel key],@"num":_numLab.text,@"attrvalue_id":path1};
-            [RequestModel requestWithDictionary:dict model:@"goods" action:@"addcart" block:^(id result) {
+            GoodsModel *model = [GoodsModel new];
+            
+            model.goods_id = self.goodID;
+            model.number = [_numLab.text intValue];
+            
+            [self addAnimations];
+            
+            [[Ditiy_NetAPIManager sharedManager]request_AddGoodsToShoppingCart_WithParams:[model toAddGoodsParams] andBlock:^(id data, NSError *error) {
                 
-                kTipAlert(@"%@",@"加入购物车成功");
+                [MBProgressHUD showSuccess:@"加入购物车成功"];
+                
             }];
+            
             
         } //立刻购买
         else if (btn.tag==1503){
@@ -932,6 +969,45 @@
     }
     
 }
+
+
+-(void)addAnimations
+{
+    _cartAnimView=[[UIImageView alloc] initWithFrame:_headView.frame];
+    _cartAnimView.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:_cartAnimView];
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        _cartAnimView.frame=CGRectMake(100, (kScreenHeight- 40), 0, 0);
+        _cartAnimView.transform = CGAffineTransformRotate(_cartAnimView.transform, M_PI );
+    } completion:^(BOOL finished) {
+        //动画完成后做的事
+    }];
+    
+    
+//    _cartAnimView=[[UIImageView alloc] initWithFrame:CGRectMake(_topView.frame.size.height*0.025,_topView.frame.size.height* -0.025 , _topView.frame.size.height*0.2, _topView.frame.size.height*0.2)];
+//    [self.view addSubview:_cartAnimView];
+//    _cartAnimView.backgroundColor = [UIColor blackColor];
+//    
+//    CABasicAnimation* rotationAnimation;
+//    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+//    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 11.0 ];
+//    rotationAnimation.duration = 1.0;
+//    rotationAnimation.cumulative = YES;
+//    rotationAnimation.repeatCount = 0;
+//    
+//    //这个是让旋转动画慢于缩放动画执行
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [_cartAnimView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+//    });
+//    
+//    [UIView animateWithDuration:1.0 animations:^{
+//        _cartAnimView.frame=CGRectMake(kScreenWidth-55, -(kScreenHeight - CGRectGetHeight(self.view.frame) - 40), 0, 0);
+//    } completion:^(BOOL finished) {
+//        //动画完成后做的事
+//    }];
+}
+
 //返回上一页的点击事件
 -(void)bitBtn
 {
