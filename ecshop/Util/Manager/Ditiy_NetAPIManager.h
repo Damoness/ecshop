@@ -42,6 +42,11 @@
 //获取用户关注的商品  toFollowedGoodsParams
 -(void)request_FollowedGoods_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
 
+//关注商品  toFollowGoodsParams
+-(void)request_FollowGoods_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
+
+//取消关注商品 toUnfollowGoodsParams
+-(void)request_UnfollowGoods_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
 
 #pragma mark - Bonus
 

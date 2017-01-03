@@ -25,6 +25,8 @@
 #import "UIColor+Hex.h"
 #import "MyTabBarViewController.h"
 #import "AFNetworkReachabilityManager.h"
+#import "GoodsModel.h"
+
 #define Width self.view.frame.size.width
 #define Height self.view.frame.size.height
 #define toolHeight 60
@@ -810,12 +812,24 @@
                 imagerr=[imagerr imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
                 [button setImage:imagerr forState:UIControlStateNormal];
                 
-                NSString *api_token = [RequestModel model:@"goods" action:@"collect"];
-                // strr=@"0";
-                NSDictionary *dict = @{@"api_token":api_token,@"goods_id":self.goodID,@"key":[LoginModel key]};
-                [RequestModel requestWithDictionary:dict model:@"goods" action:@"collect" block:^(id result) {
+//                NSString *api_token = [RequestModel model:@"goods" action:@"collect"];
+//                // strr=@"0";
+//                NSDictionary *dict = @{@"api_token":api_token,@"goods_id":self.goodID,@"key":[LoginModel key]};
+//                [RequestModel requestWithDictionary:dict model:@"goods" action:@"collect" block:^(id result) {
+//                    
+//                }];
+                
+                
+                GoodsModel *model = [GoodsModel new];
+                
+                model.goods_id = self.goodID;
+                
+                [[Ditiy_NetAPIManager sharedManager]request_FollowGoods_WithParams:[model toFollowGoodsParams] andBlock:^(id data, NSError *error) {
+                    
                     
                 }];
+                
+                
                 careGood=YES;
                 
             }
@@ -827,10 +841,19 @@
                 imagerr=[imagerr imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
                 [button setImage:imagerr forState:UIControlStateNormal];
                 
-                NSString *api_token = [RequestModel model:@"goods" action:@"qcollect"];
-                // strr=@"0";
-                NSDictionary *dict = @{@"api_token":api_token,@"goods_id":self.goodID,@"key":[LoginModel key]};
-                [RequestModel requestWithDictionary:dict model:@"goods" action:@"qcollect" block:^(id result) {
+//                NSString *api_token = [RequestModel model:@"goods" action:@"qcollect"];
+//                // strr=@"0";
+//                NSDictionary *dict = @{@"api_token":api_token,@"goods_id":self.goodID,@"key":[LoginModel key]};
+//                [RequestModel requestWithDictionary:dict model:@"goods" action:@"qcollect" block:^(id result) {
+//                    
+//                }];
+                
+                GoodsModel *model = [GoodsModel new];
+                
+                model.goods_id = self.goodID;
+                
+                [[Ditiy_NetAPIManager sharedManager]request_UnfollowGoods_WithParams:[model toUnfollowGoodsParams] andBlock:^(id data, NSError *error) {
+                    
                     
                 }];
                 
