@@ -25,8 +25,6 @@
 #import "UIColor+Hex.h"
 #import "CouponsViewController.h"
 //尾视图按钮高度
-#define kWIDTH [UIScreen mainScreen].bounds.size.width
-#define kHEIGHT [UIScreen mainScreen].bounds.size.height
 #define kViewHeight 50
 #define kColorBack [UIColor colorWithRed:239/255.0 green:239/255.0 blue:244/255.0 alpha:1.0]
 @interface fourthViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -507,7 +505,7 @@
         viewLine5.backgroundColor = kColorBack;
         [view11 addSubview:viewLine5];
         [viewLine5 mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(kWIDTH, 1));
+            make.size.mas_equalTo(CGSizeMake(kScreenWidth, 1));
             make.top.equalTo(view11).with.offset(kViewHeight);
             make.left.equalTo(view11).with.offset(0);
         }];

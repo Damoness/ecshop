@@ -9,8 +9,6 @@
 #import "UserGuideViewController.h"
 #import "UIColor+Hex.h"
 #import "ViewController.h"
-#define kWidth [UIScreen mainScreen].bounds.size.width
-#define kHeight [UIScreen mainScreen].bounds.size.height
 #define imgCount 5
 @interface UserGuideViewController ()<UIScrollViewDelegate>
 {
@@ -34,15 +32,15 @@
     NSString *GuideButtonTitleColor = data[@"GuideButtonTitleColor"];
     NSString *GuideButtonTitle = data[@"GuideButtonTitle"];
     
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kWidth, kHeight)];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
     scrollView.delegate = self;
-    [scrollView setContentSize:CGSizeMake(kWidth*imgCount, 0)];
+    [scrollView setContentSize:CGSizeMake(kScreenWidth*imgCount, 0)];
     [scrollView setPagingEnabled:YES];  //视图整页显示
     //    [scrollView setBounces:NO]; //避免弹跳效果,避免把根视图露出来
 
     
     for (int i = 1; i < imgCount + 1; i++) {
-        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(kWidth*(i-1), 0, kWidth, kHeight)];
+        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth*(i-1), 0, kScreenWidth, kScreenHeight)];
         NSString *imgName = [NSString stringWithFormat:@"%d.png",i];
         [imageview setImage:[UIImage imageNamed:imgName]];
         imageview.userInteractionEnabled = YES;    //打开imageview3的用户交互;否则下面的button无法响应

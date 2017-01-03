@@ -11,8 +11,6 @@
 #import "SDImageCache.h"
 #import "AboutViewController.h"
 #import "UIColor+Hex.h"
-#define kWIDTH [UIScreen mainScreen].bounds.size.width
-#define kHEIGHT [UIScreen mainScreen].bounds.size.height
 #define kColorBack [UIColor colorWithRed:239/255.0 green:239/255.0 blue:244/255.0 alpha:1.0]
 @interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tableview;
@@ -57,12 +55,12 @@
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if (section == 1) {
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kWIDTH, 20)];
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 20)];
         view.backgroundColor = kColorBack;
         
         return view;
     }else if(section == 0){
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kWIDTH, 20)];
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 20)];
         view.backgroundColor = kColorBack;
         
         return view;

@@ -363,6 +363,8 @@
 		51FD42C01C27DC9400D260A8 /* 单选框1.png in Resources */ = {isa = PBXBuildFile; fileRef = 51FD42BE1C27DC9400D260A8 /* 单选框1.png */; };
 		59E8816C07D4D4D907FFB7C4 /* libPods-ecshop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA6EA264374C0A113009A8C /* libPods-ecshop.a */; };
 		9C0889391E1219C000951AEF /* NSObject+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0889381E1219C000951AEF /* NSObject+Common.m */; };
+		9C090A811E1B4466004EDB54 /* BonusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C090A801E1B4466004EDB54 /* BonusModel.m */; };
+		9C090A841E1B4872004EDB54 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C090A831E1B4872004EDB54 /* BaseModel.m */; };
 		9C36ACFC1E01324A0021C6CE /* NSDictionary+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36ACFB1E01324A0021C6CE /* NSDictionary+Common.m */; };
 		9C36AD0C1E0230AC0021C6CE /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36ACFF1E0230AC0021C6CE /* AddressModel.m */; };
 		9C36AD0D1E0230AC0021C6CE /* goodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD011E0230AC0021C6CE /* goodsModel.m */; };
@@ -994,6 +996,10 @@
 		6BA6EA264374C0A113009A8C /* libPods-ecshop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ecshop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C0889371E1219C000951AEF /* NSObject+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Common.h"; sourceTree = "<group>"; };
 		9C0889381E1219C000951AEF /* NSObject+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Common.m"; sourceTree = "<group>"; };
+		9C090A7F1E1B4466004EDB54 /* BonusModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusModel.h; sourceTree = "<group>"; };
+		9C090A801E1B4466004EDB54 /* BonusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonusModel.m; sourceTree = "<group>"; };
+		9C090A821E1B4872004EDB54 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		9C090A831E1B4872004EDB54 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		9C36ACF61E0128E80021C6CE /* eshop-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "eshop-Prefix.pch"; sourceTree = "<group>"; };
 		9C36ACFA1E01324A0021C6CE /* NSDictionary+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Common.h"; sourceTree = "<group>"; };
 		9C36ACFB1E01324A0021C6CE /* NSDictionary+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Common.m"; sourceTree = "<group>"; };
@@ -2162,6 +2168,8 @@
 		9C36ACFD1E0230AC0021C6CE /* model */ = {
 			isa = PBXGroup;
 			children = (
+				9C090A821E1B4872004EDB54 /* BaseModel.h */,
+				9C090A831E1B4872004EDB54 /* BaseModel.m */,
 				9C36ACFE1E0230AC0021C6CE /* AddressModel.h */,
 				9C36ACFF1E0230AC0021C6CE /* AddressModel.m */,
 				9C36AD021E0230AC0021C6CE /* MyAddressModel.h */,
@@ -2184,6 +2192,8 @@
 				9CA948F11E0BECB400E021C9 /* shoppingCartModel.m */,
 				9CEF16EE1E0D594C009C15A3 /* OrderModel.h */,
 				9CEF16EF1E0D594C009C15A3 /* OrderModel.m */,
+				9C090A7F1E1B4466004EDB54 /* BonusModel.h */,
+				9C090A801E1B4466004EDB54 /* BonusModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -2511,6 +2521,7 @@
 				51A2A50B1C2BF5BD006AEBFA /* qrencode.c in Sources */,
 				51A2A50E1C2BF5BD006AEBFA /* rscode.c in Sources */,
 				51F12ECC1C0C14AA002C62D0 /* NSArray+MASAdditions.m in Sources */,
+				9C090A811E1B4466004EDB54 /* BonusModel.m in Sources */,
 				51FD42471C27936D00D260A8 /* MJRefreshFooter.m in Sources */,
 				51F12ECB1C0C14AA002C62D0 /* MASViewConstraint.m in Sources */,
 				3C7D67521C3525B200EAB2AB /* fourthViewController.m in Sources */,
@@ -2531,6 +2542,7 @@
 				51FD42891C27940100D260A8 /* AFURLSessionManager.m in Sources */,
 				51F8F6751C3113BE00709CEF /* GoodBaseCell.m in Sources */,
 				51FD428E1C27940100D260A8 /* UIImageView+AFNetworking.m in Sources */,
+				9C090A841E1B4872004EDB54 /* BaseModel.m in Sources */,
 				51FD42511C27936D00D260A8 /* MJRefreshStateHeader.m in Sources */,
 				9CEF16EA1E0CD120009C15A3 /* DitiyNetAPIClient.m in Sources */,
 				51FD42561C27936D00D260A8 /* UIView+MJExtension.m in Sources */,

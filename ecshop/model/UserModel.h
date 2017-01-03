@@ -7,21 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseModel.h"
 
-@interface UserModel : NSObject
-
-
-
+@interface UserModel : BaseModel
 
 @property(nonatomic,strong)NSString *user_id;
 @property(nonatomic,strong)NSString *nick_name;
 @property(nonatomic,strong)NSString *sex;
 @property(nonatomic,strong)NSString *address;
 @property(nonatomic,strong)NSString *mobile;
-
-@property (nonatomic,strong)NSString *birthday;
-
-@property (nonatomic,strong)NSString *email;
+@property(nonatomic,strong)NSString *birthday;
+@property(nonatomic,strong)NSString *email;
 
 //积分
 @property(nonatomic,strong)NSString *integration;
@@ -38,9 +34,12 @@
 //已经发货数量
 @property (nonatomic,strong)NSString *shipping;
 
-
 //购物车数量
 @property (nonatomic,strong)NSString *cart_num;
 
 @property (nonatomic,strong)NSString *consume;
+
+-(NSDictionary *)toUserInfoParams;
+-(NSDictionary *)toUpdateUserInfoParams;
+
 @end

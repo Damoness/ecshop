@@ -10,4 +10,24 @@
 
 @implementation UserModel
 
+
+
+-(NSDictionary *)toUserInfoParams{
+    
+    return [super toParams];
+    
+};
+
+-(NSDictionary *)toUpdateUserInfoParams{
+    
+    NSMutableDictionary *params = @{
+                                    @"key":[LoginModel key],
+                                    @"sex":self.sex,
+                                    @"birthday":self.birthday
+                                    }.mutableCopy;
+    
+    return params;
+    
+}
+
 @end

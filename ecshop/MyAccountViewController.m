@@ -15,18 +15,17 @@
 #import "AppDelegate.h"
 #import "PersonViewController.h"
 #import "UIColor+Hex.h"
-#define kWIDTH [UIScreen mainScreen].bounds.size.width
-#define kHEIGHT [UIScreen mainScreen].bounds.size.height
 #define kColorBack [UIColor colorWithRed:239/255.0 green:239/255.0 blue:244/255.0 alpha:1.0]
 @interface MyAccountViewController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
-@property (nonatomic,strong)NSMutableArray *modArray;
 @property (nonatomic,strong)UITableView *tableview;
-@property (nonatomic,strong)PersonalInfoModel *model;
 @property (nonatomic,strong)UIDatePicker *datePicker;
 @property (nonatomic,strong)UIView *shadowView;
 @property (nonatomic,strong)UIButton *cancleBtn;
 @property (nonatomic,strong)NSString *sex1;
 @property (nonatomic,strong)UIImage *image1;
+
+
+@property (nonatomic,strong)UserModel *model;
 @end
 
 @implementation MyAccountViewController
@@ -41,37 +40,25 @@
 }
 -(void)myAccount{
 
-    NSString *api_token = [RequestModel model:@"user" action:@"userinfo"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
-    __weak typeof(self) weakSelf = self;
-    [RequestModel requestWithDictionary:dict model:@"user" action:@"userinfo" block:^(id result) {
-        NSLog(@"111");
-        NSDictionary *dic = result;
-        weakSelf.modArray = [[NSMutableArray alloc]init];
-        for (NSMutableDictionary *dict in dic[@"data"]) {
-            weakSelf.model = [PersonalInfoModel new];
+    
+    WS(ws);
+    UserModel *userModel  = [UserModel new];
+    
+    [[Ditiy_NetAPIManager sharedManager]request_UserInfo_WithParams:[userModel toUserInfoParams] andBlock:^(id data, NSError *error) {
+       
+        if (data) {
             
-            weakSelf.model.user_id = dict[@"user_id"];//缺少
-            weakSelf.model.nick_name = dict[@"nick_name"];
-            weakSelf.model.sex = dict[@"sex"];
-            weakSelf.model.address = dict[@"address"];
-            weakSelf.model.mobile = dict[@"mobile"];
-            weakSelf.model.integration = dict[@"integration"];
-            weakSelf.model.attention = dict[@"attention"];
-            //birthday
-            weakSelf.model.birthday = dict[@"birthday"];
-            weakSelf.model.email = dict[@"email"];
-            
-            [weakSelf.modArray addObject:weakSelf.model];
-            
+            ws.model = [UserModel mj_objectWithKeyValues:data[@"data"][0]];
+
+            [ws.tableview reloadData];
         }
         
-        
-        [weakSelf.tableview reloadData];
     }];
+    
+    
 }
 -(void)draw{
-    _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 44, kWIDTH, kHEIGHT) style:UITableViewStyleGrouped];
+    _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 44, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
     _tableview.delegate = self;
     _tableview.dataSource = self;
     _tableview.separatorInset = UIEdgeInsetsMake(0, -20, 0, 0);
@@ -124,7 +111,7 @@
     
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kWIDTH, 1)];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 1)];
     view.backgroundColor = kColorBack;
     return view;
 }
@@ -270,22 +257,16 @@
 #pragma mark -- 保存个人信息
 -(void)saveInfo{
 
-    NSString *api_token = [RequestModel model:@"User" action:@"modifyUser"];
-    NSString *path = [NSString stringWithFormat:@"%@",self.model.sex];
-    
-    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"sex":path,@"birthday":self.model.birthday};
-    __weak typeof(self) weakSelf = self;
-    [RequestModel requestWithDictionary:dict model:@"User" action:@"modifyUser" block:^(id result) {
-        NSDictionary *dic = result;
-        NSLog(@"获得的数据：%@",dic);
+    [[Ditiy_NetAPIManager sharedManager]request_UpdateUserInfo_WithParams:[self.model toUpdateUserInfoParams] andBlock:^(id data, NSError *error) {
         
-        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"" message:dic[@"msg"] preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
-        [alertVC addAction:cancelAction];
-        [alertVC addAction:okAction];
-        [weakSelf presentViewController:alertVC animated:YES completion:nil];
+        if(data){
+            
+            [MBProgressHUD showSuccess:@"更新成功"];
+            
+        }
+        
     }];
+    
 }
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 0) {

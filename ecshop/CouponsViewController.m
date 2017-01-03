@@ -11,6 +11,8 @@
 #import "CouponTableCell.h"
 #import "RequestModel.h"
 #import "AppDelegate.h"
+
+#import "BonusModel.h"
 @interface CouponsViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 @property (nonatomic, strong) UITableView * myTable;
 @property (nonatomic, strong) NSMutableArray * dataSource;
@@ -27,17 +29,33 @@
 -(void)relodInfomation
 {
 
-    NSString *api_token = [RequestModel model:@"user" action:@"bonus"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
-    [RequestModel requestWithDictionary:dict model:@"user" action:@"bonus" block:^(id result) {
-        if ([result[@"msg"] isEqualToString:@"获取列表失败"]) {
-            UIAlertView * alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"暂无数据" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-            [alert show];
+//    NSString *api_token = [RequestModel model:@"user" action:@"bonus"];
+//    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
+//    [RequestModel requestWithDictionary:dict model:@"user" action:@"bonus" block:^(id result) {
+//        if ([result[@"msg"] isEqualToString:@"获取列表失败"]) {
+//            UIAlertView * alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"暂无数据" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+//            [alert show];
+//
+//        }
+//            [_dataSource addObjectsFromArray:result[@"data"]];
+//            [_myTable reloadData];
+//
+//    }];
+//    
 
+    BonusModel *bonusModel = [BonusModel new];
+    
+    [[Ditiy_NetAPIManager sharedManager]request_UserBonus_WithParams:[bonusModel toParams] andBlock:^(id data, NSError *error) {
+       
+        if ([data[@"msg"] isEqualToString:@"获取列表失败"]) {
+            
+            [MBProgressHUD showError:@"暂无数据"];
+            
         }
-            [_dataSource addObjectsFromArray:result[@"data"]];
-            [_myTable reloadData];
-
+        [_dataSource addObjectsFromArray:data[@"data"]];
+        [_myTable reloadData];
+        
+        
     }];
     
     

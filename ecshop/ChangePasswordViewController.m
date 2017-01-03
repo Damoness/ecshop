@@ -11,8 +11,6 @@
 #import "Masonry.h"
 #import "RequestModel.h"
 #import "UIColor+Hex.h"
-#define kWIDTH [UIScreen mainScreen].bounds.size.width
-#define kHEIGHT [UIScreen mainScreen].bounds.size.height
 #define kColorBack [UIColor colorWithRed:239/255.0 green:239/255.0 blue:244/255.0 alpha:1]
 #define kColorOffButton [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]
 @interface ChangePasswordViewController ()<UITextFieldDelegate>
