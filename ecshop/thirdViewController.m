@@ -29,7 +29,7 @@
     UIButton *btn2;//左上角返回按钮登录后
 }
 @property(nonatomic,strong)UITableView *tableView;
-@property (nonatomic,strong)NSMutableArray<GoodsModel *> *tempArrr;
+@property (nonatomic,strong)NSMutableArray<GoodsModel *> *goodsModelArray;
 @property (nonatomic,strong)GoodsModel *model;
 //判断全选按钮的状态
 @property (nonatomic,assign)int tagg;
@@ -345,9 +345,8 @@
 }
 #pragma mark --编辑事件
 -(void)editAction:(id)sender{
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
-    if (app.tempDic != nil && _tempArrr.count != 0) {
+    
+    if ([LoginModel isLogin] && _goodsModelArray.count != 0) {
         if ([self.rightBtn.titleLabel.text isEqualToString:@"编辑"]) {
             _settleView.hidden = YES;
             _editView.hidden = NO;
@@ -384,36 +383,28 @@
 }
 #pragma mark --删除商品
 -(void)deleteAction:(id)sender{
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
+
     if (_goodsArr.count == 0) {
         
         return;
     }
-    _goodsIdStr = nil;
-    _goodsIdStr = self.goodsArr[0];
-    for (int i = 1; i < self.goodsArr.count; i++) {
-        _goodsIdStr = [NSString stringWithFormat:@"%@,%@",_goodsIdStr,self.goodsArr[i]];
-    }
     
-    NSString *api_token = [RequestModel model:@"goods" action:@"delcart"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":app.tempDic[@"data"][@"key"],@"rec_id":_goodsIdStr};
-    __weak typeof(self) weakSelf = self;
-    [RequestModel requestWithDictionary:dict model:@"goods" action:@"delcart" block:^(id result) {
-        NSDictionary *dic = result;
-        NSLog(@"获得的数据：%@",dic);
-        [weakSelf myGoods];
-        [weakSelf.goodsArr removeAllObjects];
-        
-        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"" message:dic[@"msg"] preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-        
-        UIAlertAction *okAction =[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    ShoppingCartModel *model = [ShoppingCartModel new];
+    model.deletedGoodsIds = [_goodsArr copy];
+    
+    WS(ws)
+    [[Ditiy_NetAPIManager sharedManager]request_DeleteGoodsFromShoppingCart_WithParams:[model toDeleteGoodsFromShoppingCartParams] andBlock:^(id data, NSError *error) {
+       
+    
+        if (data) {
             
-        }];
-        [alertVC addAction:cancelAction];
-        [alertVC addAction:okAction];
-        [weakSelf presentViewController:alertVC animated:YES completion:nil];
+            [MBProgressHUD showSuccess:data[@"msg"]];
+            
+            [ws myGoods];
+            [ws.goodsArr removeAllObjects];
+            
+        }
+        
         
     }];
     
@@ -453,12 +444,12 @@
     if (self.tagg == 1) {
         //选中状态
         [_changeBtn setImage:[UIImage imageNamed:@"select_cart_goods1.png"] forState:UIControlStateNormal];
-        _orderArray = [_tempArrr mutableCopy];
+        _orderArray = [_goodsModelArray mutableCopy];
         int a = 0;
         int b = 0;
-        for (int i = 0; i < _tempArrr.count; i++) {
+        for (int i = 0; i < _goodsModelArray.count; i++) {
             _model = [GoodsModel new];
-            _model = _tempArrr[i];
+            _model = _goodsModelArray[i];
             a = a+[_model.goods_price intValue]*_model.number;
             b = b +_model.number ;
         }
@@ -489,10 +480,10 @@
     
     if (self.tagg1 == 1) {
         [_changeAllBtn setImage:[UIImage imageNamed:@"select_cart_goods1.png"] forState:UIControlStateNormal];
-        _orderArray = _tempArrr;
-        for (int i = 0; i<_tempArrr.count; i++) {
+        _orderArray = _goodsModelArray;
+        for (int i = 0; i<_goodsModelArray.count; i++) {
             GoodsModel *goodsmodel = [GoodsModel new];
-            goodsmodel = _tempArrr[i];
+            goodsmodel = _goodsModelArray[i];
             NSString *rec_id = goodsmodel.rec_id;
             [_goodsArr addObject:rec_id];
         }
@@ -523,10 +514,10 @@
        
         if (data) {
     
-            weakSelf.tempArrr = [NSMutableArray array];
-            weakSelf.tempArrr = [GoodsModel mj_objectArrayWithKeyValuesArray:data[@"data"]];
+            weakSelf.goodsModelArray = [NSMutableArray array];
+            weakSelf.goodsModelArray = [GoodsModel mj_objectArrayWithKeyValuesArray:data[@"data"]];
             
-            if (weakSelf.tempArrr.count == 0) {
+            if (weakSelf.goodsModelArray.count == 0) {
                 viewbuy.hidden = YES;
                 weakSelf.loginView.hidden = NO;
                 weakSelf.shoppingCartView.hidden = YES;
@@ -538,9 +529,9 @@
                 
             }
             int numOfGoods = 0;
-            for (int i = 0; i < weakSelf.tempArrr.count; i++) {
+            for (int i = 0; i < weakSelf.goodsModelArray.count; i++) {
                 weakSelf.model = [GoodsModel new];
-                weakSelf.model = _tempArrr[i];
+                weakSelf.model = _goodsModelArray[i];
                 numOfGoods = numOfGoods +weakSelf.model.number ;
             }
             NSString * cc=[NSString stringWithFormat:@"%d",numOfGoods];
@@ -555,49 +546,6 @@
         
     }];
     
-//    [RequestModel requestWithDictionary:dict model:@"goods" action:@"cartlist" block:^(id result) {
-//        NSDictionary *dic = result;
-//        
-//        
-//        weakSelf.tempArrr = [NSMutableArray array];
-//        NSArray *arr = dic[@"data"];
-//        for (NSDictionary *dict in arr) {
-//            weakSelf.model = [GoodsModel new];
-//            weakSelf.model.goods_id = dict[@"goods_id"];
-//            weakSelf.model.goods_price = dict[@"goods_price"];
-//            weakSelf.model.goods_name = dict[@"goods_name"];
-//            weakSelf.model.goods_img = dict[@"goods_img"];
-//            weakSelf.model.number = [dict[@"number"] intValue];
-//            weakSelf.model.rec_id = dict[@"rec_id"];
-//            [weakSelf.tempArrr addObject:weakSelf.model];
-//        }
-//        if (weakSelf.tempArrr.count == 0) {
-//            viewbuy.hidden = YES;
-//            weakSelf.loginView.hidden = NO;
-//            weakSelf.shoppingCartView.hidden = YES;
-//            
-//            
-//        }else{
-//            weakSelf.shoppingCartView.hidden = NO;
-//            weakSelf.loginView.hidden = YES;
-//            
-//        }
-//        int a = 0;
-//        int b = 0;
-//        for (int i = 0; i < weakSelf.tempArrr.count; i++) {
-//            weakSelf.model = [GoodsModel new];
-//            weakSelf.model = _tempArrr[i];
-//            a = a+[weakSelf.model.goods_price intValue]*weakSelf.model.number;
-//            b = b +weakSelf.model.number ;
-//        }
-//        NSString * cc=[NSString stringWithFormat:@"%d",b];
-//#pragma mark- 创建一个消息对象
-//        NSNotification * notice = [NSNotification notificationWithName:@"123" object:nil userInfo:@{@"1234":cc}];
-//        //发送消息
-//        [[NSNotificationCenter defaultCenter]postNotification:notice];
-//        //        _labNumber.text = [NSString stringWithFormat:@"%d",b];
-//        [self.tableView reloadData];
-//    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -618,7 +566,7 @@
     return 1;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return _tempArrr.count;
+    return _goodsModelArray.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *string = @"MyGoodsViewCell";
@@ -631,14 +579,14 @@
         cell.taggg = 1;
         self.tagg1 = 1;
         [cell.changeBtn setImage:[UIImage imageNamed:@"select_cart_goods2.png"] forState:UIControlStateNormal];
-        if (indexPath.section == _tempArrr.count) {
+        if (indexPath.section == _goodsModelArray.count) {
             self.tagg1 = 1;
         }
     }else if(self.tagg == 2){
         cell.taggg = 2;
         self.tagg1 = 1;
         [cell.changeBtn setImage:[UIImage imageNamed:@"select_cart_goods1.png"] forState:UIControlStateNormal];
-        if (indexPath.section == _tempArrr.count) {
+        if (indexPath.section == _goodsModelArray.count) {
             self.tagg1 = 1;
         }
     }
@@ -646,21 +594,21 @@
         cell.taggg = 1;
         
         [cell.changeBtn setImage:[UIImage imageNamed:@"select_cart_goods2.png"] forState:UIControlStateNormal];
-        if (indexPath.section == _tempArrr.count) {
+        if (indexPath.section == _goodsModelArray.count) {
             self.tagg = 1;
         }
     }else if(self.tagg1 == 2){
         cell.taggg = 2;
         
         [cell.changeBtn setImage:[UIImage imageNamed:@"select_cart_goods1.png"] forState:UIControlStateNormal];
-        if (indexPath.section == _tempArrr.count) {
+        if (indexPath.section == _goodsModelArray.count) {
             self.tagg = 1;
         }
     }
     
     
     
-    cell.model = self.tempArrr[indexPath.section];
+    cell.model = self.goodsModelArray[indexPath.section];
     [cell.changeBtn addTarget:self action:@selector(changeState:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
@@ -719,7 +667,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     GoodsModel *model = [GoodsModel new];
-    model =_tempArrr[indexPath.section];
+    model =_goodsModelArray[indexPath.section];
     goodDetailViewController *goodVC = [goodDetailViewController new];
     goodVC.goodID = model.goods_id;
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;

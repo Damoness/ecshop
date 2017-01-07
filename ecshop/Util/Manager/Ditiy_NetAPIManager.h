@@ -60,6 +60,9 @@
 //获取购物车  toShoppingCartParams
 -(void)request_ShoppingCart_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
 
+//删除购物车的商品 toDeleteGoodsFromShoppingCartParams
+-(void)request_DeleteGoodsFromShoppingCart_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
+
 #pragma mark - Bonus
 
 //获取用户优惠券
