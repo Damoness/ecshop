@@ -375,6 +375,9 @@
 		9C36AD181E0230E30021C6CE /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD171E0230E30021C6CE /* LoginModel.m */; };
 		9C36AD1B1E02A6C30021C6CE /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD1A1E02A6C30021C6CE /* UserModel.m */; };
 		9CA6C14B1E209C7100290E9D /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6C14A1E209C7100290E9D /* Util.m */; };
+		9CA6C1671E20EEDA00290E9D /* ShoppingCartGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6C1611E20EEDA00290E9D /* ShoppingCartGoodsModel.m */; };
+		9CA6C1681E20EEDA00290E9D /* ShoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6C1641E20EEDA00290E9D /* ShoppingCartModel.m */; };
+		9CA6C1691E20EEDA00290E9D /* GoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6C1651E20EEDA00290E9D /* GoodsModel.m */; };
 		9CEF16E71E0CCD15009C15A3 /* Ditiy_NetAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEF16E61E0CCD15009C15A3 /* Ditiy_NetAPIManager.m */; };
 		9CEF16EA1E0CD120009C15A3 /* DitiyNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEF16E91E0CD120009C15A3 /* DitiyNetAPIClient.m */; };
 		9CEF16F01E0D594C009C15A3 /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEF16EF1E0D594C009C15A3 /* OrderModel.m */; };
@@ -1020,6 +1023,12 @@
 		9C36AD1A1E02A6C30021C6CE /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		9CA6C1491E209C7100290E9D /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		9CA6C14A1E209C7100290E9D /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		9CA6C1611E20EEDA00290E9D /* ShoppingCartGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartGoodsModel.m; sourceTree = "<group>"; };
+		9CA6C1621E20EEDA00290E9D /* ShoppingCartGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartGoodsModel.h; sourceTree = "<group>"; };
+		9CA6C1631E20EEDA00290E9D /* ShoppingCartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartModel.h; sourceTree = "<group>"; };
+		9CA6C1641E20EEDA00290E9D /* ShoppingCartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartModel.m; sourceTree = "<group>"; };
+		9CA6C1651E20EEDA00290E9D /* GoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsModel.m; sourceTree = "<group>"; };
+		9CA6C1661E20EEDA00290E9D /* GoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsModel.h; sourceTree = "<group>"; };
 		9CEF16E51E0CCD15009C15A3 /* Ditiy_NetAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ditiy_NetAPIManager.h; sourceTree = "<group>"; };
 		9CEF16E61E0CCD15009C15A3 /* Ditiy_NetAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ditiy_NetAPIManager.m; sourceTree = "<group>"; };
 		9CEF16E81E0CD120009C15A3 /* DitiyNetAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DitiyNetAPIClient.h; sourceTree = "<group>"; };
@@ -2185,6 +2194,12 @@
 				9C36AD171E0230E30021C6CE /* LoginModel.m */,
 				9C36AD191E02A6C30021C6CE /* UserModel.h */,
 				9C36AD1A1E02A6C30021C6CE /* UserModel.m */,
+				9CA6C1621E20EEDA00290E9D /* ShoppingCartGoodsModel.h */,
+				9CA6C1611E20EEDA00290E9D /* ShoppingCartGoodsModel.m */,
+				9CA6C1631E20EEDA00290E9D /* ShoppingCartModel.h */,
+				9CA6C1641E20EEDA00290E9D /* ShoppingCartModel.m */,
+				9CA6C1651E20EEDA00290E9D /* GoodsModel.m */,
+				9CA6C1661E20EEDA00290E9D /* GoodsModel.h */,
 				9CEF16EE1E0D594C009C15A3 /* OrderModel.h */,
 				9CEF16EF1E0D594C009C15A3 /* OrderModel.m */,
 				9C090A7F1E1B4466004EDB54 /* BonusModel.h */,
@@ -2537,6 +2552,7 @@
 				51FD42891C27940100D260A8 /* AFURLSessionManager.m in Sources */,
 				51F8F6751C3113BE00709CEF /* GoodBaseCell.m in Sources */,
 				51FD428E1C27940100D260A8 /* UIImageView+AFNetworking.m in Sources */,
+				9CA6C1691E20EEDA00290E9D /* GoodsModel.m in Sources */,
 				9C090A841E1B4872004EDB54 /* BaseModel.m in Sources */,
 				51FD42511C27936D00D260A8 /* MJRefreshStateHeader.m in Sources */,
 				9CEF16EA1E0CD120009C15A3 /* DitiyNetAPIClient.m in Sources */,
@@ -2585,6 +2601,8 @@
 				5131DD7E1C44ED6100D8DFCA /* AboutViewController.m in Sources */,
 				51FD42901C27940100D260A8 /* UIWebView+AFNetworking.m in Sources */,
 				3C93DB1D1C59F484000CDDCF /* WXApiManager.m in Sources */,
+				9CA6C1671E20EEDA00290E9D /* ShoppingCartGoodsModel.m in Sources */,
+				9CA6C1681E20EEDA00290E9D /* ShoppingCartModel.m in Sources */,
 				51F12EE41C0C2AB0002C62D0 /* BaseViewController.m in Sources */,
 				5131DD851C44FFDC00D8DFCA /* SureTableViewCell.m in Sources */,
 				9C36AD101E0230AC0021C6CE /* RequestModel.m in Sources */,
