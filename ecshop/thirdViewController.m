@@ -8,7 +8,7 @@
 
 #import "thirdViewController.h"
 #import "RequestModel.h"
-#import "GoodsModel.h"
+//#import "GoodsModel.h"
 #import "AppDelegate.h"
 #import "MyGoodsViewCell.h"
 #import "LoginViewController.h"
@@ -20,6 +20,7 @@
 #import "UIColor+Hex.h"
 #import "AFNetworkReachabilityManager.h"
 #import "ShoppingCartModel.h"
+#import "ShoppingCartGoodsModel.h"
 #define kViewColor [UIColor colorWithRed:1.0 green:1.0 blue:242/255.0 alpha:1.0]
 @interface thirdViewController ()<UITableViewDelegate,UITableViewDataSource,SDRefreshViewAnimationDelegate>
 {
@@ -29,8 +30,8 @@
     UIButton *btn2;//左上角返回按钮登录后
 }
 @property(nonatomic,strong)UITableView *tableView;
-@property (nonatomic,strong)NSMutableArray<GoodsModel *> *goodsModelArray;
-@property (nonatomic,strong)GoodsModel *model;
+@property (nonatomic,strong)NSMutableArray<ShoppingCartGoodsModel *> *goodsModelArray;
+@property (nonatomic,strong)ShoppingCartGoodsModel *model;
 //判断全选按钮的状态
 @property (nonatomic,assign)int tagg;
 //删除判断全选按钮的状态
@@ -116,11 +117,10 @@
         MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
         [tabbar hiddenTabbar:NO];
     }
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
+    
     _goodsArr = [[NSMutableArray alloc]init];
     _orderArray = [[NSMutableArray alloc]init];
-    if (app.tempDic == nil) {
+    if (![LoginModel isLogin]) {
         
         _shoppingCartView.hidden = YES;
         _loginView.hidden = NO;
@@ -411,8 +411,6 @@
 }
 #pragma mark --移入关注
 -(void)attentionAction:(id)sender{
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
     if (_goodsArr.count == 0) {
         
         return;
@@ -425,7 +423,7 @@
     
     NSString *api_token = [RequestModel model:@"goods" action:@"collect"];
     
-    NSDictionary *dict = @{@"api_token":api_token,@"key":app.tempDic[@"data"][@"key"],@"goods_id":_goodsIdStr};
+    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"goods_id":_goodsIdStr};
     __weak typeof(self) weakSelf = self;
     [RequestModel requestWithDictionary:dict model:@"goods" action:@"collect" block:^(id result) {
         NSDictionary *dic = result;
@@ -433,7 +431,7 @@
         [weakSelf myGoods];
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"" message:dic[@"msg"] delegate:weakSelf cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         [alert show];
-        [_goodsArr removeAllObjects];
+        [weakSelf.goodsArr removeAllObjects];
         
     }];
     
@@ -448,7 +446,6 @@
         int a = 0;
         int b = 0;
         for (int i = 0; i < _goodsModelArray.count; i++) {
-            _model = [GoodsModel new];
             _model = _goodsModelArray[i];
             a = a+[_model.goods_price intValue]*_model.number;
             b = b +_model.number ;
@@ -482,8 +479,7 @@
         [_changeAllBtn setImage:[UIImage imageNamed:@"select_cart_goods1.png"] forState:UIControlStateNormal];
         _orderArray = _goodsModelArray;
         for (int i = 0; i<_goodsModelArray.count; i++) {
-            GoodsModel *goodsmodel = [GoodsModel new];
-            goodsmodel = _goodsModelArray[i];
+            ShoppingCartGoodsModel *goodsmodel = _goodsModelArray[i];
             NSString *rec_id = goodsmodel.rec_id;
             [_goodsArr addObject:rec_id];
         }
@@ -515,7 +511,7 @@
         if (data) {
     
             weakSelf.goodsModelArray = [NSMutableArray array];
-            weakSelf.goodsModelArray = [GoodsModel mj_objectArrayWithKeyValuesArray:data[@"data"]];
+            weakSelf.goodsModelArray = [ShoppingCartGoodsModel mj_objectArrayWithKeyValuesArray:data[@"data"]];
             
             if (weakSelf.goodsModelArray.count == 0) {
                 viewbuy.hidden = YES;
@@ -530,7 +526,6 @@
             }
             int numOfGoods = 0;
             for (int i = 0; i < weakSelf.goodsModelArray.count; i++) {
-                weakSelf.model = [GoodsModel new];
                 weakSelf.model = _goodsModelArray[i];
                 numOfGoods = numOfGoods +weakSelf.model.number ;
             }
@@ -624,7 +619,7 @@
     int bnum = [[self.labNumber.text substringFromIndex:3] intValue];
     int aPrice = [[cell.goods_sum.text substringFromIndex:4]intValue];
     int bPrice = [[self.amountLabel.text substringFromIndex:4]intValue];
-    GoodsModel *goodsmodel = [GoodsModel new];
+    ShoppingCartGoodsModel *goodsmodel = [ShoppingCartGoodsModel new];
     goodsmodel.goods_price = cell.goods_price.text;
     goodsmodel.goods_img = cell.url;
     goodsmodel.number = [cell.goods_number.titleLabel.text intValue];
@@ -666,7 +661,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    GoodsModel *model = [GoodsModel new];
+    ShoppingCartGoodsModel *model = [ShoppingCartGoodsModel new];
     model =_goodsModelArray[indexPath.section];
     goodDetailViewController *goodVC = [goodDetailViewController new];
     goodVC.goodID = model.goods_id;
@@ -684,6 +679,7 @@
     NSString *api_token = [RequestModel model:@"goods" action:@"cartnum"];
     NSDictionary *dict = @{@"api_token":api_token,@"key":app.tempDic[@"data"][@"key"]};
     __weak typeof(self) weakSelf = self;
+    
     [RequestModel requestWithDictionary:dict model:@"goods" action:@"cartnum" block:^(id result) {
         NSDictionary *dic = result;
         

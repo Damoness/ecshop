@@ -14,6 +14,7 @@
 @implementation MyGoodsViewCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     [self.changeBtn setImage:[UIImage imageNamed:@"select_cart_goods2.png"] forState:UIControlStateNormal];
     self.taggg = 1;
     self.bottomView.backgroundColor = [UIColor colorWithHexString:@"#CDCDCD"];
@@ -28,7 +29,7 @@
     
     // Configure the view for the selected state
 }
--(void)setModel:(GoodsModel *)model{
+-(void)setModel:(ShoppingCartGoodsModel *)model{
     self.rec_id = model.rec_id;
     self.goods_name.text = model.goods_name;
     self.goods_name.font = [UIFont systemFontOfSize:15];
@@ -83,14 +84,16 @@
     [self myGoodsNum:b];
 }
 -(void)myGoodsNum:(int)num{
-    NSString *a = [NSString stringWithFormat:@"%d",num];
-
-    NSString *api_token = [RequestModel model:@"goods" action:@"charnum"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"rec_id":self.rec_id,@"num":a};
-    [RequestModel requestWithDictionary:dict model:@"goods" action:@"charnum" block:^(id result) {
-        NSDictionary *dic = result;
-        NSLog(@"获得的数据：%@",dic);
+    
+    ShoppingCartGoodsModel *model = [ShoppingCartGoodsModel new];
+    model.rec_id = self.rec_id;
+    model.number = num;
+    
+    [[Ditiy_NetAPIManager sharedManager]request_ChangeNumOfGoodsFromShoppingCart_WithParams:[model toChangeNumOfGoodsFromShoppingCartParams] andBlock:^(id data, NSError *error) {
+       
         
     }];
+    
+    
 }
 @end

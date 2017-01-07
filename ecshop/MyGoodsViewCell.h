@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "goodsModel.h"
+#import "ShoppingCartGoodsModel.h"
 @interface MyGoodsViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *goods_name;
 //小计
@@ -24,7 +24,7 @@
 //减少数量
 @property (weak, nonatomic) IBOutlet UIButton *minusBtn;
 
-@property (nonatomic,strong)GoodsModel *model;
+@property (nonatomic,strong)ShoppingCartGoodsModel *model;
 @property (nonatomic,assign)int taggg;
 //购物车唯一标识
 @property (nonatomic,strong)NSString *rec_id;

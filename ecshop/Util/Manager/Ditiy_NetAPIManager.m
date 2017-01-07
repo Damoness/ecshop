@@ -382,5 +382,21 @@
     
 }
 
+-(void)request_ChangeNumOfGoodsFromShoppingCart_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block{
+    
+    
+    NSString *toPath = @"goods/charnum";
+    
+    
+    [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:toPath withParams:params withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+        
+        block(data,error);
+        
+        
+        
+    }];
+    
+}
 
 @end

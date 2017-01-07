@@ -63,6 +63,14 @@
 //删除购物车的商品 toDeleteGoodsFromShoppingCartParams
 -(void)request_DeleteGoodsFromShoppingCart_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
 
+
+#pragma mark - ShoppingCartGoods
+//修改购物车某个商品的数量 toChangeNumOfGoodsFromShoppingCartParams
+-(void)request_ChangeNumOfGoodsFromShoppingCart_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
+
+
+
+
 #pragma mark - Bonus
 
 //获取用户优惠券

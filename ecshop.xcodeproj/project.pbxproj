@@ -367,7 +367,6 @@
 		9C090A841E1B4872004EDB54 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C090A831E1B4872004EDB54 /* BaseModel.m */; };
 		9C36ACFC1E01324A0021C6CE /* NSDictionary+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36ACFB1E01324A0021C6CE /* NSDictionary+Common.m */; };
 		9C36AD0C1E0230AC0021C6CE /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36ACFF1E0230AC0021C6CE /* AddressModel.m */; };
-		9C36AD0D1E0230AC0021C6CE /* GoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD011E0230AC0021C6CE /* GoodsModel.m */; };
 		9C36AD0E1E0230AC0021C6CE /* MyAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD031E0230AC0021C6CE /* MyAddressModel.m */; };
 		9C36AD0F1E0230AC0021C6CE /* PersonalInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD051E0230AC0021C6CE /* PersonalInfoModel.m */; };
 		9C36AD101E0230AC0021C6CE /* RequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD071E0230AC0021C6CE /* RequestModel.m */; };
@@ -376,7 +375,6 @@
 		9C36AD181E0230E30021C6CE /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD171E0230E30021C6CE /* LoginModel.m */; };
 		9C36AD1B1E02A6C30021C6CE /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD1A1E02A6C30021C6CE /* UserModel.m */; };
 		9CA6C14B1E209C7100290E9D /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6C14A1E209C7100290E9D /* Util.m */; };
-		9CA948F21E0BECB400E021C9 /* ShoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA948F11E0BECB400E021C9 /* ShoppingCartModel.m */; };
 		9CEF16E71E0CCD15009C15A3 /* Ditiy_NetAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEF16E61E0CCD15009C15A3 /* Ditiy_NetAPIManager.m */; };
 		9CEF16EA1E0CD120009C15A3 /* DitiyNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEF16E91E0CD120009C15A3 /* DitiyNetAPIClient.m */; };
 		9CEF16F01E0D594C009C15A3 /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEF16EF1E0D594C009C15A3 /* OrderModel.m */; };
@@ -1006,8 +1004,6 @@
 		9C36ACFB1E01324A0021C6CE /* NSDictionary+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Common.m"; sourceTree = "<group>"; };
 		9C36ACFE1E0230AC0021C6CE /* AddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressModel.h; sourceTree = "<group>"; };
 		9C36ACFF1E0230AC0021C6CE /* AddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressModel.m; sourceTree = "<group>"; };
-		9C36AD001E0230AC0021C6CE /* GoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsModel.h; sourceTree = "<group>"; };
-		9C36AD011E0230AC0021C6CE /* GoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsModel.m; sourceTree = "<group>"; };
 		9C36AD021E0230AC0021C6CE /* MyAddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAddressModel.h; sourceTree = "<group>"; };
 		9C36AD031E0230AC0021C6CE /* MyAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAddressModel.m; sourceTree = "<group>"; };
 		9C36AD041E0230AC0021C6CE /* PersonalInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInfoModel.h; sourceTree = "<group>"; };
@@ -1024,8 +1020,6 @@
 		9C36AD1A1E02A6C30021C6CE /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		9CA6C1491E209C7100290E9D /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		9CA6C14A1E209C7100290E9D /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
-		9CA948F01E0BECB400E021C9 /* ShoppingCartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartModel.h; sourceTree = "<group>"; };
-		9CA948F11E0BECB400E021C9 /* ShoppingCartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartModel.m; sourceTree = "<group>"; };
 		9CEF16E51E0CCD15009C15A3 /* Ditiy_NetAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ditiy_NetAPIManager.h; sourceTree = "<group>"; };
 		9CEF16E61E0CCD15009C15A3 /* Ditiy_NetAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ditiy_NetAPIManager.m; sourceTree = "<group>"; };
 		9CEF16E81E0CD120009C15A3 /* DitiyNetAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DitiyNetAPIClient.h; sourceTree = "<group>"; };
@@ -2191,10 +2185,6 @@
 				9C36AD171E0230E30021C6CE /* LoginModel.m */,
 				9C36AD191E02A6C30021C6CE /* UserModel.h */,
 				9C36AD1A1E02A6C30021C6CE /* UserModel.m */,
-				9C36AD001E0230AC0021C6CE /* GoodsModel.h */,
-				9C36AD011E0230AC0021C6CE /* GoodsModel.m */,
-				9CA948F01E0BECB400E021C9 /* ShoppingCartModel.h */,
-				9CA948F11E0BECB400E021C9 /* ShoppingCartModel.m */,
 				9CEF16EE1E0D594C009C15A3 /* OrderModel.h */,
 				9CEF16EF1E0D594C009C15A3 /* OrderModel.m */,
 				9C090A7F1E1B4466004EDB54 /* BonusModel.h */,
@@ -2551,7 +2541,6 @@
 				51FD42511C27936D00D260A8 /* MJRefreshStateHeader.m in Sources */,
 				9CEF16EA1E0CD120009C15A3 /* DitiyNetAPIClient.m in Sources */,
 				51FD42561C27936D00D260A8 /* UIView+MJExtension.m in Sources */,
-				9C36AD0D1E0230AC0021C6CE /* GoodsModel.m in Sources */,
 				51FD425C1C27939C00D260A8 /* HJCAjustNumButton.m in Sources */,
 				3CD680691C58AB8600966E38 /* UserGuideViewController.m in Sources */,
 				51F12ED81C0C1C20002C62D0 /* secondViewController.m in Sources */,
@@ -2611,7 +2600,6 @@
 				516CE51C1C86DE0600E6DE87 /* CouponsViewController.m in Sources */,
 				51F12E731C0BE168002C62D0 /* AppDelegate.m in Sources */,
 				51FD2F0E1C34BB4B0032FE14 /* GoodRightCell.m in Sources */,
-				9CA948F21E0BECB400E021C9 /* ShoppingCartModel.m in Sources */,
 				51FD424C1C27936D00D260A8 /* MJRefreshBackGifFooter.m in Sources */,
 				51F271581C0D6D2200619901 /* SearchViewController.m in Sources */,
 				3C9E3D271C15585A0064EC92 /* PendingPaymentViewCell.m in Sources */,
