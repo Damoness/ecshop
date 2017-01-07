@@ -346,6 +346,22 @@
 }
 
 
+//获取购物车
+-(void)request_ShoppingCart_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block{
+    
+    NSString *toPath = @"goods/cartlist";
+    
+    
+    [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:toPath withParams:params withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+        
+        block(data,error);
+        
+        
+        
+    }];
+    
+}
 
 
 

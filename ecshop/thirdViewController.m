@@ -19,6 +19,7 @@
 #import "SDRefresh.h"
 #import "UIColor+Hex.h"
 #import "AFNetworkReachabilityManager.h"
+#import "ShoppingCartModel.h"
 #define kViewColor [UIColor colorWithRed:1.0 green:1.0 blue:242/255.0 alpha:1.0]
 @interface thirdViewController ()<UITableViewDelegate,UITableViewDataSource,SDRefreshViewAnimationDelegate>
 {
@@ -28,7 +29,7 @@
     UIButton *btn2;//左上角返回按钮登录后
 }
 @property(nonatomic,strong)UITableView *tableView;
-@property (nonatomic,strong)NSMutableArray *tempArrr;
+@property (nonatomic,strong)NSMutableArray<GoodsModel *> *tempArrr;
 @property (nonatomic,strong)GoodsModel *model;
 //判断全选按钮的状态
 @property (nonatomic,assign)int tagg;
@@ -510,54 +511,93 @@
 }
 #pragma mark-购物车数据
 -(void)myGoods{
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
-    NSString *api_token = [RequestModel model:@"goods" action:@"cartlist"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":app.tempDic[@"data"][@"key"]};
-    __weak typeof(self) weakSelf = self;
-    [RequestModel requestWithDictionary:dict model:@"goods" action:@"cartlist" block:^(id result) {
-        NSDictionary *dic = result;
-        
-        
-        weakSelf.tempArrr = [NSMutableArray array];
-        NSArray *arr = dic[@"data"];
-        for (NSDictionary *dict in arr) {
-            weakSelf.model = [GoodsModel new];
-            weakSelf.model.goods_id = dict[@"goods_id"];
-            weakSelf.model.goods_price = dict[@"goods_price"];
-            weakSelf.model.goods_name = dict[@"goods_name"];
-            weakSelf.model.goods_img = dict[@"goods_img"];
-            weakSelf.model.number = [dict[@"number"] intValue];
-            weakSelf.model.rec_id = dict[@"rec_id"];
-            [weakSelf.tempArrr addObject:weakSelf.model];
-        }
-        if (weakSelf.tempArrr.count == 0) {
-            viewbuy.hidden = YES;
-            weakSelf.loginView.hidden = NO;
-            weakSelf.shoppingCartView.hidden = YES;
+//    UIApplication *appli=[UIApplication sharedApplication];
+//    AppDelegate *app=appli.delegate;
+//    NSString *api_token = [RequestModel model:@"goods" action:@"cartlist"];
+//    NSDictionary *dict = @{@"api_token":api_token,@"key":app.tempDic[@"data"][@"key"]};
+    
+    WS(weakSelf)
+    ShoppingCartModel *model  = [ShoppingCartModel new];
+    
+    [[Ditiy_NetAPIManager sharedManager]request_ShoppingCart_WithParams:[model toShoppingCartParams] andBlock:^(id data, NSError *error) {
+       
+        if (data) {
+    
+            weakSelf.tempArrr = [NSMutableArray array];
+            weakSelf.tempArrr = [GoodsModel mj_objectArrayWithKeyValuesArray:data[@"data"]];
             
-            
-        }else{
-            weakSelf.shoppingCartView.hidden = NO;
-            weakSelf.loginView.hidden = YES;
-            
-        }
-        int a = 0;
-        int b = 0;
-        for (int i = 0; i < weakSelf.tempArrr.count; i++) {
-            weakSelf.model = [GoodsModel new];
-            weakSelf.model = _tempArrr[i];
-            a = a+[weakSelf.model.goods_price intValue]*weakSelf.model.number;
-            b = b +weakSelf.model.number ;
-        }
-        NSString * cc=[NSString stringWithFormat:@"%d",b];
+            if (weakSelf.tempArrr.count == 0) {
+                viewbuy.hidden = YES;
+                weakSelf.loginView.hidden = NO;
+                weakSelf.shoppingCartView.hidden = YES;
+                
+                
+            }else{
+                weakSelf.shoppingCartView.hidden = NO;
+                weakSelf.loginView.hidden = YES;
+                
+            }
+            int numOfGoods = 0;
+            for (int i = 0; i < weakSelf.tempArrr.count; i++) {
+                weakSelf.model = [GoodsModel new];
+                weakSelf.model = _tempArrr[i];
+                numOfGoods = numOfGoods +weakSelf.model.number ;
+            }
+            NSString * cc=[NSString stringWithFormat:@"%d",numOfGoods];
 #pragma mark- 创建一个消息对象
-        NSNotification * notice = [NSNotification notificationWithName:@"123" object:nil userInfo:@{@"1234":cc}];
-        //发送消息
-        [[NSNotificationCenter defaultCenter]postNotification:notice];
-        //        _labNumber.text = [NSString stringWithFormat:@"%d",b];
-        [self.tableView reloadData];
+            NSNotification * notice = [NSNotification notificationWithName:@"123" object:nil userInfo:@{@"1234":cc}];
+            //发送消息
+            [[NSNotificationCenter defaultCenter]postNotification:notice];
+            [self.tableView reloadData];
+        }
+        
+ 
+        
     }];
+    
+//    [RequestModel requestWithDictionary:dict model:@"goods" action:@"cartlist" block:^(id result) {
+//        NSDictionary *dic = result;
+//        
+//        
+//        weakSelf.tempArrr = [NSMutableArray array];
+//        NSArray *arr = dic[@"data"];
+//        for (NSDictionary *dict in arr) {
+//            weakSelf.model = [GoodsModel new];
+//            weakSelf.model.goods_id = dict[@"goods_id"];
+//            weakSelf.model.goods_price = dict[@"goods_price"];
+//            weakSelf.model.goods_name = dict[@"goods_name"];
+//            weakSelf.model.goods_img = dict[@"goods_img"];
+//            weakSelf.model.number = [dict[@"number"] intValue];
+//            weakSelf.model.rec_id = dict[@"rec_id"];
+//            [weakSelf.tempArrr addObject:weakSelf.model];
+//        }
+//        if (weakSelf.tempArrr.count == 0) {
+//            viewbuy.hidden = YES;
+//            weakSelf.loginView.hidden = NO;
+//            weakSelf.shoppingCartView.hidden = YES;
+//            
+//            
+//        }else{
+//            weakSelf.shoppingCartView.hidden = NO;
+//            weakSelf.loginView.hidden = YES;
+//            
+//        }
+//        int a = 0;
+//        int b = 0;
+//        for (int i = 0; i < weakSelf.tempArrr.count; i++) {
+//            weakSelf.model = [GoodsModel new];
+//            weakSelf.model = _tempArrr[i];
+//            a = a+[weakSelf.model.goods_price intValue]*weakSelf.model.number;
+//            b = b +weakSelf.model.number ;
+//        }
+//        NSString * cc=[NSString stringWithFormat:@"%d",b];
+//#pragma mark- 创建一个消息对象
+//        NSNotification * notice = [NSNotification notificationWithName:@"123" object:nil userInfo:@{@"1234":cc}];
+//        //发送消息
+//        [[NSNotificationCenter defaultCenter]postNotification:notice];
+//        //        _labNumber.text = [NSString stringWithFormat:@"%d",b];
+//        [self.tableView reloadData];
+//    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

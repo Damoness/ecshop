@@ -57,7 +57,8 @@
 
 #pragma mark - ShoppingCart
 
-
+//获取购物车  toShoppingCartParams
+-(void)request_ShoppingCart_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
 
 #pragma mark - Bonus
 
