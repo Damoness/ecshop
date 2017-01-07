@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OrderModel : NSObject
+@interface OrderModel : BaseModel
 
 //@param goods_id       商品id
 //* @param address_id     收获地址id
@@ -39,6 +39,8 @@
 @property (nonatomic,strong) NSString *goods_attr_id;
 @property (nonatomic,strong) NSString *type;
 
+
+- (NSDictionary *)toCreateOrderParams;
 
 - (NSDictionary *)toParams;
 

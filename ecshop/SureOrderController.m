@@ -166,21 +166,39 @@
 -(void)sendMessage:(id)message
 {
     NSDictionary *dic=message[@"data"];
-    if (dic[@"user_name"]==[NSNull null]) {
-        personLab.text=@"";
-    }else if (dic[@"mobile"]==[NSNull null])
+    
+    NSLog(@"dic[@\"mobile\"]:%@",dic[@"mobile"]);
+    
+    
+    if(dic[@"user_name"]!= [NSNull null])
     {
-        phoneLab.text=@"";
-    }else if(dic[@"user_name"]!= [NSNull null]){
         personLab.text=dic[@"user_name"];
-    }else if (dic[@"mobile"]!=[NSNull null]){
-        phoneLab.text=dic[@"mobile"];
+        
+    }else{
+        
+        personLab.text=@"";
+        
     }
+    
+    if(dic[@"mobile"]!=[NSNull null]){
+        
+        phoneLab.text = dic[@"mobile"];
+        
+    }else{
+        
+        phoneLab.text=@"";
+        
+    }
+    
+    
     if(dic[@"address_id"]==[NSNull null]){
+        
         _addressId=@"";
-    }else if (dic[@"address_id"]!=[NSNull null]){
+        
+    }else{
         _addressId=dic[@"address_id"];
     }
+    
     if (self.address==NULL) {
         if (dic[@"address"]==[NSNull null]) {
             addressTextView.text=@"";
@@ -572,15 +590,26 @@
         model.type = @"1";
         
         WS(weakSelf);
-        [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:@"order/create" withParams:[model mj_keyValues] withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
-
-            CheckStandController * check=[[CheckStandController alloc]init];
-            check.jiage=data[@"data"][@"money_paid"];
-            check.orderNs=data[@"data"][@"order_sn"];
-            [weakSelf.navigationController pushViewController:check animated:YES];
-
+        
+        [[Ditiy_NetAPIManager sharedManager]request_CreateOrder_WithParams:[model toCreateOrderParams] andBlock:^(id data, NSError *error) {
+           
+            if (data) {
+                
+                CheckStandController * check=[[CheckStandController alloc]init];
+                check.jiage=data[@"data"][@"money_paid"];
+                check.orderNs=data[@"data"][@"order_sn"];
+                [weakSelf.navigationController pushViewController:check animated:YES];
+                
+            }
             
         }];
+        
+//        [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:@"order/create" withParams:[model mj_keyValues] withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+//
+//
+//
+//            
+//        }];
 
     }
     
