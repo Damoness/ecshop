@@ -17,7 +17,6 @@
 + (instancetype)sharedManager;
 
 
-
 #pragma mark - Login
 -(void)request_Login_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
 

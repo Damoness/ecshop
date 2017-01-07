@@ -30,7 +30,7 @@
 
 #define Width self.view.frame.size.width
 #define Height self.view.frame.size.height
-#define toolHeight 60
+#define toolHeight 60   //
 #define topHeight 70
 #define cellHeight 100
 @interface goodDetailViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,UIWebViewDelegate,sendRequestInfo,UIGestureRecognizerDelegate,UIAlertViewDelegate>
@@ -53,11 +53,11 @@
     UILabel * careLab;//关注的字
     UIView * viewww;
     
-    UIView *_cartAnimView;
+    UIImageView *_cartAnimView;
 }
 
 @property (nonatomic, strong) UITableView *table;
-@property (nonatomic, strong) UIView * headView;
+@property (nonatomic, strong) UIView * headView;     //
 @property (nonatomic, strong) UIView * footView;
 @property (nonatomic, strong) UIScrollView *scroll;//最大的容器scroll
 @property (nonatomic, strong) UIWebView *webV;
@@ -72,6 +72,8 @@
 @end
 
 @implementation goodDetailViewController
+
+
 -(void)viewWillAppear:(BOOL)animated{
 
     if ([LoginModel isLogin]) {
@@ -229,17 +231,17 @@
 {
 #pragma mark-table的设计搭建
     //创建头视图
-    _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 64, Width, (Height-64)/2)];
+    _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, (kScreenHeight-64)/2)];
     //滚动广告
     _headView.opaque=YES;
-    _headScroll=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, Width, (Height-64)/2)];
+    _headScroll=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, (kScreenHeight-64)/2)];
     _headScroll.delegate=self;
     _headScroll.pagingEnabled=YES;
     _headScroll.directionalLockEnabled=YES;
     //创建尾视图
-    _footView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, Width,(Height-64)/2-cellHeight)];
+    _footView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth,(kScreenHeight-64)/2-cellHeight)];
     UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame=CGRectMake(0, 0, Width, 40);
+    button.frame=CGRectMake(0, 0, kScreenWidth, 40);
     [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     NSArray * titleArr=@[@"已选:",@"件"];
     for (int i=0; i<2; i++) {
@@ -458,38 +460,40 @@
 #pragma mark-关注,购物车,加入购物车,立刻购买;toolBar的设计
 -(void)creatToolBar
 {
-    toolView=[[UIView alloc]initWithFrame:CGRectMake(0, Height-toolHeight, Width, toolHeight)];
-    toolView.backgroundColor=[UIColor colorWithRed:38/255.0 green:38/255.0 blue:38/255.0 alpha:1.0];
-    CGFloat size=self.view.frame.size.width/6;
+    toolView=[[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight-toolHeight, kScreenWidth, toolHeight)];
+    toolView.backgroundColor = RGB(38, 38, 38);
+    CGFloat size = kScreenWidth/6;
+    
     NSArray * arr=@[@"关注",@"购物车",@"加入购物车",@"立刻购买"];
     UIImage * imagerr;
     
-    NSString * strrr;
-    strrr=[attenStr stringValue];
+    NSString *isAttention;
+    isAttention=[attenStr stringValue];
     UIButton * button=[UIButton buttonWithType:UIButtonTypeCustom];
     button.frame=CGRectMake(0, 0, size, 40);
+    
     imagerr=[UIImage imageNamed:@"关注icon"];
     imagerr=[imagerr imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [button setImage:imagerr forState:UIControlStateNormal];
     [button addTarget:self action:@selector(buttonNext:) forControlEvents:UIControlEventTouchUpInside];
     button.tag=1500;
+    
     careLab=[[UILabel alloc]initWithFrame:CGRectMake(0, toolHeight-25, size, 15)];
     careLab.text=@"关注";
     careLab.textAlignment=NSTextAlignmentCenter;
     careLab.font=[UIFont systemFontOfSize:12];
     careLab.textColor=[UIColor whiteColor];
-    if ([strrr isEqualToString:@"0"]) {
+    if ([isAttention isEqualToString:@"0"]) {
         imagerr=[UIImage imageNamed:@"关注icon"];
         imagerr=[imagerr imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [button setImage:imagerr forState:UIControlStateNormal];
         careLab.text=@"关注";
     }
-    else if ([strrr isEqualToString:@"1"])
+    else if ([isAttention isEqualToString:@"1"])
     {
         imagerr=[UIImage imageNamed:@"已关注icon"];
         imagerr=[imagerr imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [button setImage:imagerr forState:UIControlStateNormal];
-        //careLab.frame=CGRectMake(10, toolHeight-25, 40, 15);
         careLab.text=@"已关注";
     }
     [toolView addSubview:button];
@@ -593,6 +597,7 @@
     myImage=dic[@"album"];
     attenStr=dic[@"is_attention"];
    //
+    
     [self creatToolBar];
     Str=dic[@"content"];
     NSString *strHTML=Str;
@@ -971,10 +976,37 @@
 }
 
 
+- (UIImage *)captureScrollView:(UIScrollView *)scrollView{
+    UIImage* image = nil;
+    UIGraphicsBeginImageContext(scrollView.contentSize);
+    {
+        CGPoint savedContentOffset = scrollView.contentOffset;
+        CGRect savedFrame = scrollView.frame;
+        scrollView.contentOffset = CGPointZero;
+        scrollView.frame = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height);
+        
+        [scrollView.layer renderInContext: UIGraphicsGetCurrentContext()];
+        image = UIGraphicsGetImageFromCurrentImageContext();
+        
+        scrollView.contentOffset = savedContentOffset;
+        scrollView.frame = savedFrame;
+    }
+    UIGraphicsEndImageContext();
+    
+    if (image != nil) {
+        return image;
+    }
+    return nil;
+}
+
 -(void)addAnimations
 {
+    
+    
+    UIImage *image = [Util captureView:_headView];
     _cartAnimView=[[UIImageView alloc] initWithFrame:_headView.frame];
-    _cartAnimView.backgroundColor = [UIColor blackColor];
+    _cartAnimView.image = image;
+    //_cartAnimView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:_cartAnimView];
     
     [UIView animateWithDuration:1.0 animations:^{

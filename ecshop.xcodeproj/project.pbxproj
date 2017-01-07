@@ -375,6 +375,7 @@
 		9C36AD121E0230AC0021C6CE /* shangpinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD0B1E0230AC0021C6CE /* shangpinModel.m */; };
 		9C36AD181E0230E30021C6CE /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD171E0230E30021C6CE /* LoginModel.m */; };
 		9C36AD1B1E02A6C30021C6CE /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD1A1E02A6C30021C6CE /* UserModel.m */; };
+		9CA6C14B1E209C7100290E9D /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6C14A1E209C7100290E9D /* Util.m */; };
 		9CA948F21E0BECB400E021C9 /* ShoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA948F11E0BECB400E021C9 /* ShoppingCartModel.m */; };
 		9CEF16E71E0CCD15009C15A3 /* Ditiy_NetAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEF16E61E0CCD15009C15A3 /* Ditiy_NetAPIManager.m */; };
 		9CEF16EA1E0CD120009C15A3 /* DitiyNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEF16E91E0CD120009C15A3 /* DitiyNetAPIClient.m */; };
@@ -1021,6 +1022,8 @@
 		9C36AD171E0230E30021C6CE /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
 		9C36AD191E02A6C30021C6CE /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		9C36AD1A1E02A6C30021C6CE /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		9CA6C1491E209C7100290E9D /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		9CA6C14A1E209C7100290E9D /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		9CA948F01E0BECB400E021C9 /* ShoppingCartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartModel.h; sourceTree = "<group>"; };
 		9CA948F11E0BECB400E021C9 /* ShoppingCartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartModel.m; sourceTree = "<group>"; };
 		9CEF16E51E0CCD15009C15A3 /* Ditiy_NetAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ditiy_NetAPIManager.h; sourceTree = "<group>"; };
@@ -2150,6 +2153,8 @@
 			children = (
 				9CEF16E41E0CCC8F009C15A3 /* Manager */,
 				9C36ACF91E0130EF0021C6CE /* OC_Category */,
+				9CA6C1491E209C7100290E9D /* Util.h */,
+				9CA6C14A1E209C7100290E9D /* Util.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -2652,6 +2657,7 @@
 				51F2716B1C0D939300619901 /* FMResultSet.m in Sources */,
 				3CAF87231C4E3FB00040FD74 /* PersonViewController.m in Sources */,
 				51FD42811C27940100D260A8 /* AFHTTPRequestOperation.m in Sources */,
+				9CA6C14B1E209C7100290E9D /* Util.m in Sources */,
 				51FD42131C27929A00D260A8 /* PopoveView.m in Sources */,
 				51F12F581C0C4982002C62D0 /* SDWebImagePrefetcher.m in Sources */,
 				51F12ECD1C0C14AA002C62D0 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
