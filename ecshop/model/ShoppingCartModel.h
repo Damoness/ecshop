@@ -17,10 +17,16 @@
 @property (nonatomic,strong) NSMutableArray *deletedGoodsIds;
 
 
+@property (nonatomic,strong) NSMutableArray<ShoppingCartGoodsModel *> *selectedGoods; //被选择将要结算的商品
+
 -(NSDictionary *)toShoppingCartParams;
 
 
 -(NSDictionary *)toDeleteGoodsFromShoppingCartParams;
+
+
+//用于获取确认订单的参数
+-(NSDictionary *)toGetConfirmOrderParams;
 
 
 @end

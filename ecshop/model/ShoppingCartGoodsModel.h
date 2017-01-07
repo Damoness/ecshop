@@ -29,7 +29,7 @@
 @property (nonatomic,strong)NSArray  *attrvalue_id;
 @property (nonatomic,strong)NSString *goods_img;
 
-
+//用于修改购物车商品数量
 -(NSDictionary *)toChangeNumOfGoodsFromShoppingCartParams;
 
 

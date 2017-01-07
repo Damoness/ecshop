@@ -20,6 +20,7 @@
 #import "AddressViewController.h"
 #import "UIColor+Hex.h"
 #import "OrderModel.h"
+#import "ShoppingCartModel.h"
 #define kColorOffButton [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]
 @interface SureOrderController ()<sendRequestInfo,UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
@@ -127,30 +128,24 @@
 -(void)reloadInfo
 {
     
-    // NSString *goodsId = nil;
-    GoodsModel *goodmodel1 = [GoodsModel new];
     //从购物车进来
     if (_tempArr !=NULL) {
         
-        for (int i = 0; i<_tempArr.count; i++) {
-            if (i==0) {
-                goodmodel1 = _tempArr[0];
-                goodPathId = [NSString stringWithFormat:@"%@-%d",goodmodel1.goods_id,goodmodel1.number];
-            }else{
-                goodmodel1 = _tempArr[i];
-                goodPathId = [NSString stringWithFormat:@"%@,%@-%d",goodPathId,goodmodel1.goods_id,goodmodel1.number];
-            }
-        }
+        ShoppingCartModel *model = [ShoppingCartModel new];
         
-        NSString *api_token = [RequestModel model:@"order" action:@"confirm"];
-        NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"goods_id":goodPathId};
-        __weak typeof(self) weakSelf = self;
-        [RequestModel requestWithDictionary:dict model:@"order" action:@"confirm" block:^(id result) {
-            NSDictionary *dic = result;
-            NSLog(@"获得的数据：%@",dic);
-            [weakSelf sendMessage:result];
+        model.selectedGoods = _tempArr;
+        
+        WS(ws);
+        [[Ditiy_NetAPIManager sharedManager]request_ConfirmOrder_WithParams:[model toGetConfirmOrderParams] andBlock:^(id data, NSError *error) {
+           
+            if (data) {
+                
+                [ws sendMessage:data];
+                
+            }
             
         }];
+
     }else if(_tempArr ==NULL){
         
         RequestModel * requ=[[RequestModel alloc]init];

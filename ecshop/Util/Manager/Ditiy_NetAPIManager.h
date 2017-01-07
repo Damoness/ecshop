@@ -23,6 +23,11 @@
 
 
 #pragma mark - Order
+
+//确认订单
+-(void)request_ConfirmOrder_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
+
+//创建订单
 -(void)request_CreateOrder_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
 
 

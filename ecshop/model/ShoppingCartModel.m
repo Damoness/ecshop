@@ -47,7 +47,34 @@
     
 }
 
-
+//用于获取确认订单的参数
+-(NSDictionary *)toGetConfirmOrderParams{
+    
+    NSMutableString *mStr = [NSMutableString new];
+    
+    if (self.selectedGoods && self.selectedGoods.count > 0) {
+        
+        [mStr appendFormat:@"%@-%d",self.selectedGoods.firstObject.goods_id,self.selectedGoods.firstObject.number];
+        
+    }
+    
+    if(self.selectedGoods.count >1){
+        
+        for (int i = 1; i < self.selectedGoods.count; i++) {
+            [mStr appendFormat:@",%@-%d",self.selectedGoods[i].goods_id,self.selectedGoods[i].number];
+        }
+        
+    }
+    
+    
+    NSMutableDictionary *params = @{
+                                    @"key":[LoginModel key],
+                                    @"goods_id":mStr
+                                    }.mutableCopy;
+    
+    return params;
+    
+}
 
 
 @end

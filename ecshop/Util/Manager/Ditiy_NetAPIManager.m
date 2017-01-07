@@ -71,6 +71,7 @@
 }
 
 
+
 -(void)request_CreateOrder_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block{
     
     NSString *toPath = @"order/create";
@@ -88,6 +89,25 @@
     
     
 }
+
+//确认订单
+-(void)request_ConfirmOrder_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block{
+    
+    NSString *toPath = @"order/confirm";
+    
+    [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:toPath withParams:params withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+        
+        
+        block(data,error);
+        
+        
+        
+    }];
+    
+    
+}
+
 
 -(void)request_AddAddress_WithParams:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block{
     
