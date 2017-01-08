@@ -118,7 +118,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             scope = "0"
@@ -171,38 +171,6 @@
             endingLineNumber = "608"
             landmarkName = "-downButClick:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SureOrderController downButClick:]"
-                  moduleName = "ecshop"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wudi/Documents/work/%E4%B8%AD%E6%8A%80%E5%90%8C%E5%88%9B/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E5%B9%B3%E5%8F%B0/ecshop%20%E6%9C%80%E7%BB%883-8/ecshop/SureOrderController.m"
-                  timestampString = "505479775.131592"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "614"
-                  endingLineNumber = "614"
-                  offsetFromSymbolStart = "2351">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SureOrderController downButClick:]"
-                  moduleName = "ecshop"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wudi/Documents/work/%E4%B8%AD%E6%8A%80%E5%90%8C%E5%88%9B/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E5%B9%B3%E5%8F%B0/ecshop%20%E6%9C%80%E7%BB%883-8/ecshop/SureOrderController.m"
-                  timestampString = "505479775.133717"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "614"
-                  endingLineNumber = "614"
-                  offsetFromSymbolStart = "2506">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -536,6 +504,22 @@
             startingLineNumber = "140"
             endingLineNumber = "140"
             landmarkName = "-reloadInfo"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ecshop/OrderConfirmController.m"
+            timestampString = "505552550.295036"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "593"
+            endingLineNumber = "593"
+            landmarkName = "-downButClick:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

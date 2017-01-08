@@ -12,7 +12,7 @@
 #import "AppDelegate.h"
 #import "MyGoodsViewCell.h"
 #import "LoginViewController.h"
-#import "SureOrderController.h"
+#import "OrderConfirmController.h"
 #import "MyTabBarViewController.h"
 #import "goodDetailViewController.h"
 #import "MyAttentionViewController.h"
@@ -370,7 +370,7 @@
     if ([self.labNumber.text isEqualToString:@"去结算"]) {
         return;
     }else{
-        SureOrderController *orderVC = [SureOrderController alloc];
+        OrderConfirmController *orderVC = [OrderConfirmController alloc];
         orderVC.tempArr = _orderArray;
         orderVC.priccc=[NSString stringWithFormat:@"%d",ss];
         MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;

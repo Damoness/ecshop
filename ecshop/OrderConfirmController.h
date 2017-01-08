@@ -1,5 +1,5 @@
 //
-//  SureOrderController.h
+//  OrderConfirmController.h
 //  ecshop
 //
 //  Created by jsyh-mac on 16/1/6.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SureOrderController : UIViewController
+@interface OrderConfirmController : UIViewController
 
 @property (nonatomic, copy) NSString *addressId; //地址ID
 @property (nonatomic, copy) NSString *address;//地址信息

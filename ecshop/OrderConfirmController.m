@@ -1,12 +1,12 @@
 //
-//  SureOrderController.m
+//  OrderConfirmController.m
 //  ecshop
 //
 //  Created by jsyh-mac on 16/1/6.
 //  Copyright © 2016年 jsyh. All rights reserved.
 //确认订单页
 
-#import "SureOrderController.h"
+#import "OrderConfirmController.h"
 #import "RequestModel.h"
 #import "AppDelegate.h"
 #import "UIImageView+AFNetworking.h"
@@ -22,7 +22,7 @@
 #import "OrderModel.h"
 #import "ShoppingCartModel.h"
 #define kColorOffButton [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]
-@interface SureOrderController ()<sendRequestInfo,UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
+@interface OrderConfirmController ()<sendRequestInfo,UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
     UITableView * tabble;//商品table
     NSMutableArray * goodDate;//商品信息数据源
@@ -54,7 +54,7 @@
 #define jiange 10
 @end
 
-@implementation SureOrderController
+@implementation OrderConfirmController
 -(void)viewWillAppear:(BOOL)animated
 {
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
@@ -134,6 +134,8 @@
         ShoppingCartModel *model = [ShoppingCartModel new];
         
         model.selectedGoods = _tempArr;
+        
+        goodPathId = [model toGetConfirmOrderParams][@"goods_id"];
         
         WS(ws);
         [[Ditiy_NetAPIManager sharedManager]request_ConfirmOrder_WithParams:[model toGetConfirmOrderParams] andBlock:^(id data, NSError *error) {

@@ -40,8 +40,8 @@
                                     @"expressage_id":self.expressage_id,
                                     @"money_paid":self.money_paid,
                                     @"shipping_fee":self.shipping_fee,
-                                    @"type":self.type
-                                    
+                                    @"type":self.type,
+                                    @"goods_id":self.goods_id
                                     }.mutableCopy;
     
     return params;

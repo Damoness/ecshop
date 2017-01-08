@@ -19,7 +19,7 @@
 #import "GoodBaseCell.h"
 #import "AFHTTPSessionManager.h"
 #import "thirdViewController.h"
-#import "SureOrderController.h"
+#import "OrderConfirmController.h"
 #import "JSONKit.h"
 #import "LoginViewController.h"
 #import "UIColor+Hex.h"
@@ -956,7 +956,7 @@
         } //立刻购买
         else if (btn.tag==1503){
             
-            SureOrderController * sure=[[SureOrderController alloc]init];
+            OrderConfirmController * sure=[[OrderConfirmController alloc]init];
             sure.sureId=self.goodID;
             if (valueID!=NULL) {
                 sure.smallId=valueID;

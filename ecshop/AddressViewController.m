@@ -14,7 +14,7 @@
 #import "AddressModel.h"
 #import "MyAddressViewCell.h"
 #import "NewAddressViewController.h"
-#import "SureOrderController.h"
+#import "OrderConfirmController.h"
 #import "SDRefresh.h"
 #import "UIColor+Hex.h"
 #import "MBProgressHUD+MJ.h"

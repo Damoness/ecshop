@@ -280,7 +280,7 @@
 		51F535311C3F956100A6E478 /* 支付-余额支付@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F5352B1C3F956100A6E478 /* 支付-余额支付@3x.png */; };
 		51F535321C3F956100A6E478 /* 支付-支付宝支付@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F5352C1C3F956100A6E478 /* 支付-支付宝支付@3x.png */; };
 		51F535331C3F956100A6E478 /* xiangyou@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F5352D1C3F956100A6E478 /* xiangyou@3x.png */; };
-		51F535391C3F96C700A6E478 /* SureOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F535381C3F96C700A6E478 /* SureOrderController.m */; };
+		51F535391C3F96C700A6E478 /* OrderConfirmController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F535381C3F96C700A6E478 /* OrderConfirmController.m */; };
 		51F5353C1C3F96E300A6E478 /* hongBaoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F5353B1C3F96E300A6E478 /* hongBaoView.m */; };
 		51F5353F1C3F96F600A6E478 /* ExpressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F5353E1C3F96F600A6E478 /* ExpressView.m */; };
 		51F535421C3F978A00A6E478 /* goodDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F535411C3F978A00A6E478 /* goodDetailViewController.m */; };
@@ -858,8 +858,8 @@
 		51F5352B1C3F956100A6E478 /* 支付-余额支付@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "支付-余额支付@3x.png"; sourceTree = "<group>"; };
 		51F5352C1C3F956100A6E478 /* 支付-支付宝支付@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "支付-支付宝支付@3x.png"; sourceTree = "<group>"; };
 		51F5352D1C3F956100A6E478 /* xiangyou@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xiangyou@3x.png"; sourceTree = "<group>"; };
-		51F535371C3F96C700A6E478 /* SureOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SureOrderController.h; sourceTree = "<group>"; };
-		51F535381C3F96C700A6E478 /* SureOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SureOrderController.m; sourceTree = "<group>"; };
+		51F535371C3F96C700A6E478 /* OrderConfirmController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderConfirmController.h; sourceTree = "<group>"; };
+		51F535381C3F96C700A6E478 /* OrderConfirmController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderConfirmController.m; sourceTree = "<group>"; };
 		51F5353A1C3F96E300A6E478 /* hongBaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hongBaoView.h; sourceTree = "<group>"; };
 		51F5353B1C3F96E300A6E478 /* hongBaoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hongBaoView.m; sourceTree = "<group>"; };
 		51F5353D1C3F96F600A6E478 /* ExpressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressView.h; sourceTree = "<group>"; };
@@ -1498,6 +1498,8 @@
 		51F12E851C0BE178002C62D0 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				51F535371C3F96C700A6E478 /* OrderConfirmController.h */,
+				51F535381C3F96C700A6E478 /* OrderConfirmController.m */,
 				51F12EE21C0C2AB0002C62D0 /* BaseViewController.h */,
 				51F12EE31C0C2AB0002C62D0 /* BaseViewController.m */,
 				51F12ED31C0C1C07002C62D0 /* firstViewController.h */,
@@ -1510,8 +1512,6 @@
 				3C7D67511C3525B200EAB2AB /* fourthViewController.m */,
 				51F535401C3F978A00A6E478 /* goodDetailViewController.h */,
 				51F535411C3F978A00A6E478 /* goodDetailViewController.m */,
-				51F535371C3F96C700A6E478 /* SureOrderController.h */,
-				51F535381C3F96C700A6E478 /* SureOrderController.m */,
 				51F7CA2D1C43614300586B72 /* CheckStandController.h */,
 				51F7CA2E1C43614300586B72 /* CheckStandController.m */,
 				51F5353A1C3F96E300A6E478 /* hongBaoView.h */,
@@ -2561,7 +2561,7 @@
 				3CD680691C58AB8600966E38 /* UserGuideViewController.m in Sources */,
 				51F12ED81C0C1C20002C62D0 /* secondViewController.m in Sources */,
 				51FD424E1C27936D00D260A8 /* MJRefreshBackStateFooter.m in Sources */,
-				51F535391C3F96C700A6E478 /* SureOrderController.m in Sources */,
+				51F535391C3F96C700A6E478 /* OrderConfirmController.m in Sources */,
 				3CDA0CF51C4C86DB00067DD8 /* OrderDetailViewController.m in Sources */,
 				51FD420D1C278B4600D260A8 /* sonAdvertisementView.m in Sources */,
 				5131DD6E1C44ECA200D8DFCA /* MyAccountViewController.m in Sources */,
