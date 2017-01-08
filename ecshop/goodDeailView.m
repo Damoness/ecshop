@@ -7,7 +7,7 @@
 //
 
 #import "goodDeailView.h"
-#import "goodDetailViewController.h"
+#import "GoodsDetailViewController.h"
 #import "GoodRightCell.h"
 #import "RequestModel.h"
 #import "UIImageView+AFNetworking.h"

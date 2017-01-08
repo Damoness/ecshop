@@ -9,7 +9,7 @@
 #import "firstViewController.h"
 #import "SearchViewController.h"
 #import "Masonry.h"
-#import "goodDetailViewController.h"
+#import "GoodsDetailViewController.h"
 #import "SearchListViewController.h"
 #import "MyTabBarViewController.h"
 #import "BarCodeViewController.h"
@@ -132,7 +132,7 @@
 }
 -(void)QRCodeScanFinishiResult:(NSString *)result
 {
-    goodDetailViewController* good=[[goodDetailViewController alloc]init];
+    GoodsDetailViewController* good=[[GoodsDetailViewController alloc]init];
     if ([result rangeOfString:@"goods_id:"].location !=NSNotFound) {
         int a=[[result substringFromIndex:9 ]intValue];
         good.goodID=[NSString stringWithFormat:@"%d",a] ;
@@ -245,7 +245,7 @@
         return YES;
     }else if([self isAllNum:_myType]){
         
-        goodDetailViewController * good=[[goodDetailViewController alloc]init];
+        GoodsDetailViewController * good=[[GoodsDetailViewController alloc]init];
         good.goodID=_myType;
         [self.navigationController pushViewController:good animated:NO];
     }

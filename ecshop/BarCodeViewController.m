@@ -142,7 +142,7 @@
 {
    
     NSString *stringValue;
-   // goodDetailViewController * good=[[goodDetailViewController alloc]init];
+   // GoodsDetailViewController * good=[[GoodsDetailViewController alloc]init];
     if ([metadataObjects count] >0)
     {
         AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex:0];

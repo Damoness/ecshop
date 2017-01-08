@@ -13,7 +13,7 @@
 #import "shangpinModel.h"
 #import "SDRefresh.h"
 #import "UIColor+Hex.h"
-#import "goodDetailViewController.h"
+#import "GoodsDetailViewController.h"
 #import "GoodsModel.h"
 #define kColorBack [UIColor colorWithRed:239/255.0 green:239/255.0 blue:244/255.0 alpha:1.0]
 @interface MyAttentionViewController ()<UITableViewDelegate,UITableViewDataSource,SDRefreshViewAnimationDelegate>
@@ -149,7 +149,7 @@
     return 140;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    goodDetailViewController *goodVC = [goodDetailViewController new];
+    GoodsDetailViewController *goodVC = [GoodsDetailViewController new];
     
     GoodsModel *model = self.array[indexPath.row];
     goodVC.goodID = model.goods_id;

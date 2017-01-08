@@ -1,5 +1,5 @@
 //
-//  goodDetailViewController.h
+//  GoodsDetailViewController.h
 //  ecshop
 //
 //  Created by jsyh-mac on 15/12/11.
@@ -23,7 +23,7 @@ typedef enum
     codeShow,//出现
     codeHide//隐藏
 }codeState;//枚举名字
-@interface goodDetailViewController : UIViewController
+@interface GoodsDetailViewController : UIViewController
 {
     CGPoint showPoint;//子视图出现时中心点的坐标
     CGPoint hidePoint;//子视图隐藏时的中心点的坐标

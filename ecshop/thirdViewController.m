@@ -14,7 +14,7 @@
 #import "LoginViewController.h"
 #import "OrderConfirmController.h"
 #import "MyTabBarViewController.h"
-#import "goodDetailViewController.h"
+#import "GoodsDetailViewController.h"
 #import "MyAttentionViewController.h"
 #import "SDRefresh.h"
 #import "UIColor+Hex.h"
@@ -663,7 +663,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     ShoppingCartGoodsModel *model = [ShoppingCartGoodsModel new];
     model =_goodsModelArray[indexPath.section];
-    goodDetailViewController *goodVC = [goodDetailViewController new];
+    GoodsDetailViewController *goodVC = [GoodsDetailViewController new];
     goodVC.goodID = model.goods_id;
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
     [tabbar hiddenTabbar:YES];

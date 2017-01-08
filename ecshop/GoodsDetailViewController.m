@@ -1,12 +1,12 @@
 //
-//  goodDetailViewController.m
+//  GoodsDetailViewController.m
 //  ecshop
 //
 //  Created by jsyh-mac on 15/12/11.
 //  Copyright © 2015年 jsyh. All rights reserved.
 //商品详情页
 
-#import "goodDetailViewController.h"
+#import "GoodsDetailViewController.h"
 #import "DetailTableCell.h"
 #import "MJRefresh.h"
 #import "RequestModel.h"
@@ -33,7 +33,7 @@
 #define toolHeight 60   //
 #define topHeight 70
 #define cellHeight 100
-@interface goodDetailViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,UIWebViewDelegate,sendRequestInfo,UIGestureRecognizerDelegate,UIAlertViewDelegate>
+@interface GoodsDetailViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,UIWebViewDelegate,sendRequestInfo,UIGestureRecognizerDelegate,UIAlertViewDelegate>
 {
     NSString * Price; //价格
     NSArray * myImage;//图片
@@ -71,7 +71,7 @@
 @property (nonatomic, strong) UIView * codeSmallView;
 @end
 
-@implementation goodDetailViewController
+@implementation GoodsDetailViewController
 
 
 -(void)viewWillAppear:(BOOL)animated{

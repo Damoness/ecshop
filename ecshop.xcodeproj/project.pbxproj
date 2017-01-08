@@ -283,7 +283,7 @@
 		51F535391C3F96C700A6E478 /* OrderConfirmController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F535381C3F96C700A6E478 /* OrderConfirmController.m */; };
 		51F5353C1C3F96E300A6E478 /* hongBaoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F5353B1C3F96E300A6E478 /* hongBaoView.m */; };
 		51F5353F1C3F96F600A6E478 /* ExpressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F5353E1C3F96F600A6E478 /* ExpressView.m */; };
-		51F535421C3F978A00A6E478 /* goodDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F535411C3F978A00A6E478 /* goodDetailViewController.m */; };
+		51F535421C3F978A00A6E478 /* GoodsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F535411C3F978A00A6E478 /* GoodsDetailViewController.m */; };
 		51F535451C3F984C00A6E478 /* goodDeailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F535441C3F984C00A6E478 /* goodDeailView.m */; };
 		51F6F5A21C47A83E00D9360B /* MyOrderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F6F5A01C47A83E00D9360B /* MyOrderViewCell.m */; };
 		51F6F5A31C47A83E00D9360B /* MyOrderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51F6F5A11C47A83E00D9360B /* MyOrderViewCell.xib */; };
@@ -864,8 +864,8 @@
 		51F5353B1C3F96E300A6E478 /* hongBaoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hongBaoView.m; sourceTree = "<group>"; };
 		51F5353D1C3F96F600A6E478 /* ExpressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressView.h; sourceTree = "<group>"; };
 		51F5353E1C3F96F600A6E478 /* ExpressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressView.m; sourceTree = "<group>"; };
-		51F535401C3F978A00A6E478 /* goodDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goodDetailViewController.h; sourceTree = "<group>"; };
-		51F535411C3F978A00A6E478 /* goodDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goodDetailViewController.m; sourceTree = "<group>"; };
+		51F535401C3F978A00A6E478 /* GoodsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailViewController.h; sourceTree = "<group>"; };
+		51F535411C3F978A00A6E478 /* GoodsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailViewController.m; sourceTree = "<group>"; };
 		51F535431C3F984C00A6E478 /* goodDeailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goodDeailView.h; sourceTree = "<group>"; };
 		51F535441C3F984C00A6E478 /* goodDeailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goodDeailView.m; sourceTree = "<group>"; };
 		51F6F59F1C47A83E00D9360B /* MyOrderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderViewCell.h; sourceTree = "<group>"; };
@@ -1500,6 +1500,8 @@
 			children = (
 				51F535371C3F96C700A6E478 /* OrderConfirmController.h */,
 				51F535381C3F96C700A6E478 /* OrderConfirmController.m */,
+				51F535401C3F978A00A6E478 /* GoodsDetailViewController.h */,
+				51F535411C3F978A00A6E478 /* GoodsDetailViewController.m */,
 				51F12EE21C0C2AB0002C62D0 /* BaseViewController.h */,
 				51F12EE31C0C2AB0002C62D0 /* BaseViewController.m */,
 				51F12ED31C0C1C07002C62D0 /* firstViewController.h */,
@@ -1510,8 +1512,6 @@
 				51F12EDA1C0C1C2B002C62D0 /* thirdViewController.m */,
 				3C7D67501C3525B200EAB2AB /* fourthViewController.h */,
 				3C7D67511C3525B200EAB2AB /* fourthViewController.m */,
-				51F535401C3F978A00A6E478 /* goodDetailViewController.h */,
-				51F535411C3F978A00A6E478 /* goodDetailViewController.m */,
 				51F7CA2D1C43614300586B72 /* CheckStandController.h */,
 				51F7CA2E1C43614300586B72 /* CheckStandController.m */,
 				51F5353A1C3F96E300A6E478 /* hongBaoView.h */,
@@ -2526,7 +2526,7 @@
 				51FD42501C27936D00D260A8 /* MJRefreshNormalHeader.m in Sources */,
 				3CA76AE21C51CE6B00207019 /* UIView+SDExtension.m in Sources */,
 				3C7D67481C35243100EAB2AB /* MyAttentionViewCell.m in Sources */,
-				51F535421C3F978A00A6E478 /* goodDetailViewController.m in Sources */,
+				51F535421C3F978A00A6E478 /* GoodsDetailViewController.m in Sources */,
 				5131DD4D1C44EAB800D8DFCA /* LoginViewController.m in Sources */,
 				51A2A50B1C2BF5BD006AEBFA /* qrencode.c in Sources */,
 				51A2A50E1C2BF5BD006AEBFA /* rscode.c in Sources */,

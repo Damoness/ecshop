@@ -15,7 +15,7 @@
 #import "AFHTTPSessionManager.h"
 #import "UIImageView+AFNetworking.h"
 #import "BarCodeViewController.h"
-#import "goodDetailViewController.h"
+#import "GoodsDetailViewController.h"
 #import "UIColor+Hex.h"
 #import "MyTabBarViewController.h"
 #import "AFNetworkReachabilityManager.h"
@@ -478,7 +478,7 @@
 }
 -(void)QRCodeScanFinishiResult:(NSString *)result
 {
-    goodDetailViewController* good=[[goodDetailViewController alloc]init];
+    GoodsDetailViewController* good=[[GoodsDetailViewController alloc]init];
     if ([result rangeOfString:@"goods_id:"].location !=NSNotFound) {
         int a=[[result substringFromIndex:9 ]intValue];
         good.goodID=[NSString stringWithFormat:@"%d",a] ;

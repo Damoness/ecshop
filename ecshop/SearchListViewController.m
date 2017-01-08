@@ -15,7 +15,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "RequestModel.h"
 #import "SearchViewController.h"
-#import "goodDetailViewController.h"
+#import "GoodsDetailViewController.h"
 #import "MJRefresh.h"
 #import "UIColor+Hex.h"
 #import "MyTabBarViewController.h"
@@ -382,7 +382,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.goodIDS=_datasource[indexPath.item][@"goods_id"];
-    goodDetailViewController *good=[[goodDetailViewController alloc]init];
+    GoodsDetailViewController *good=[[GoodsDetailViewController alloc]init];
     good.goodID=_goodIDS;
     [self.navigationController pushViewController:good animated:YES];
 }
@@ -422,7 +422,7 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     self.goodIDS=_datasource[indexPath.item][@"goods_id"];
-    goodDetailViewController *good=[[goodDetailViewController alloc]init];
+    GoodsDetailViewController *good=[[GoodsDetailViewController alloc]init];
     good.goodID=_goodIDS;
     [self.navigationController pushViewController:good animated:NO];
     NSDictionary *dict1=[NSDictionary dictionaryWithObjectsAndKeys:_datasource[indexPath.item][@"goods_id"],@"list", nil];
