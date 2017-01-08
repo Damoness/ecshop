@@ -30,4 +30,6 @@
 +(UserModel *)currentLoginUser;
 
 
+-(NSDictionary *)toLoginParams;
+
 @end

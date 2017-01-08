@@ -119,4 +119,16 @@ static  NSString *key;
     return userModel;
 }
 
+
+-(NSDictionary *)toLoginParams{
+    
+    NSDictionary *dic = @{
+                          @"user":self.user,
+                          @"passwd":self.passwd
+                          }.mutableCopy;
+    
+    
+    return dic;
+}
+
 @end

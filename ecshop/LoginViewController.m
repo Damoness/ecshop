@@ -166,7 +166,7 @@
     self.myLoginModel.user = userStr;
     self.myLoginModel.passwd = passwordStr;
     
-    [[Ditiy_NetAPIManager sharedManager]request_Login_WithParams:self.myLoginModel.mj_keyValues andBlock:^(id data, NSError *error) {
+    [[Ditiy_NetAPIManager sharedManager]request_Login_WithParams:[self.myLoginModel toLoginParams] andBlock:^(id data, NSError *error) {
         
         
         if (data) {
