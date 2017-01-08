@@ -13,7 +13,7 @@
 #import "RequestModel.h"
 #import "shangpinModel.h"
 #import "CheckStandController.h"
-#import "thirdViewController.h"
+#import "ThirdViewController.h"
 #import "OrderDetailViewController.h"
 #import "SDRefresh.h"
 #import "UIColor+Hex.h"
@@ -628,7 +628,7 @@
         NSDictionary *dic = result;
         NSLog(@"%@",dic);
         
-        thirdViewController *thirdVC = [thirdViewController new];
+        ThirdViewController *thirdVC = [ThirdViewController new];
         [weakSelf.navigationController pushViewController:thirdVC animated:YES];
         
         thirdVC.temp = @"1";

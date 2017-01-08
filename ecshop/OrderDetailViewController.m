@@ -12,7 +12,7 @@
 #import "RequestModel.h"
 #import "AppDelegate.h"
 #import "goodsModel.h"
-#import "thirdViewController.h"
+#import "ThirdViewController.h"
 #import "CheckStandController.h"
 #import "UIColor+Hex.h"
 #define TextHeight 100
@@ -360,7 +360,7 @@
         NSDictionary *dic = result;
         NSLog(@"%@",dic);
         
-        thirdViewController *thirdVC = [thirdViewController new];
+        ThirdViewController *thirdVC = [ThirdViewController new];
         [weakSelf.navigationController pushViewController:thirdVC animated:YES];
         
         thirdVC.temp = @"1";

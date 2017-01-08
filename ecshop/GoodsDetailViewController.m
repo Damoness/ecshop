@@ -13,12 +13,12 @@
 #import "UIImageView+AFNetworking.h"
 #import "goodDeailView.h"
 #import "SearchViewController.h"
-#import "firstViewController.h"
+#import "FirstViewController.h"
 #import "UMSocial.h"
 #import "QRCodeGenerator.h"
 #import "GoodBaseCell.h"
 #import "AFHTTPSessionManager.h"
-#import "thirdViewController.h"
+#import "ThirdViewController.h"
 #import "OrderConfirmController.h"
 #import "JSONKit.h"
 #import "LoginViewController.h"
@@ -893,7 +893,7 @@
     }
     else if(button.tag==1501)
     {
-        thirdViewController * third=[[thirdViewController alloc]init];
+        ThirdViewController * third=[[ThirdViewController alloc]init];
         third.temp = @"1";
         [self.navigationController pushViewController:third animated:NO];
         

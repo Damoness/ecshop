@@ -8,10 +8,10 @@
 
 #import "AppDelegate.h"
 #import "UMSocial.h"
-#import "firstViewController.h"
-#import "secondViewController.h"
-#import "thirdViewController.h"
-#import "fourthViewController.h"
+#import "FirstViewController.h"
+#import "SecondViewController.h"
+#import "ThirdViewController.h"
+#import "FourthViewController.h"
 #import "MyTabBarViewController.h"
 #import "UMSocialWechatHandler.h"
 #import "UMSocialQQHandler.h"
@@ -49,16 +49,16 @@
     [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
     
     
-    firstViewController *first=[[firstViewController alloc]init];
+    FirstViewController *first=[[FirstViewController alloc]init];
     
     UINavigationController *firstNV = [[UINavigationController alloc]initWithRootViewController:first];
     
-    secondViewController *second=[[secondViewController alloc]init];
+    SecondViewController *second=[[SecondViewController alloc]init];
     UINavigationController *secondNV = [[UINavigationController alloc]initWithRootViewController:second];
-    thirdViewController *third=[[thirdViewController alloc]init];
+    ThirdViewController *third=[[ThirdViewController alloc]init];
     
     UINavigationController *thirdNV = [[UINavigationController alloc]initWithRootViewController:third];
-    fourthViewController *fourth=[[fourthViewController alloc]init];
+    FourthViewController *fourth=[[FourthViewController alloc]init];
     UINavigationController *fourthNV = [[UINavigationController alloc]initWithRootViewController:fourth];
  
     NSArray *array=@[firstNV,secondNV,thirdNV,fourthNV];
