@@ -370,6 +370,10 @@
 		9C36AD121E0230AC0021C6CE /* shangpinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD0B1E0230AC0021C6CE /* shangpinModel.m */; };
 		9C36AD181E0230E30021C6CE /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD171E0230E30021C6CE /* LoginModel.m */; };
 		9C36AD1B1E02A6C30021C6CE /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36AD1A1E02A6C30021C6CE /* UserModel.m */; };
+		9C8DB7F11E22274600EECB48 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DB7EA1E22274600EECB48 /* FirstViewController.m */; };
+		9C8DB7F21E22274600EECB48 /* FourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DB7EC1E22274600EECB48 /* FourthViewController.m */; };
+		9C8DB7F31E22274600EECB48 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DB7EE1E22274600EECB48 /* SecondViewController.m */; };
+		9C8DB7F41E22274600EECB48 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DB7F01E22274600EECB48 /* ThirdViewController.m */; };
 		9CA6C14B1E209C7100290E9D /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6C14A1E209C7100290E9D /* Util.m */; };
 		9CA6C1671E20EEDA00290E9D /* ShoppingCartGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6C1611E20EEDA00290E9D /* ShoppingCartGoodsModel.m */; };
 		9CA6C1681E20EEDA00290E9D /* ShoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6C1641E20EEDA00290E9D /* ShoppingCartModel.m */; };
@@ -1009,6 +1013,14 @@
 		9C36AD171E0230E30021C6CE /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
 		9C36AD191E02A6C30021C6CE /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		9C36AD1A1E02A6C30021C6CE /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		9C8DB7E91E22274600EECB48 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		9C8DB7EA1E22274600EECB48 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		9C8DB7EB1E22274600EECB48 /* FourthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourthViewController.h; sourceTree = "<group>"; };
+		9C8DB7EC1E22274600EECB48 /* FourthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourthViewController.m; sourceTree = "<group>"; };
+		9C8DB7ED1E22274600EECB48 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		9C8DB7EE1E22274600EECB48 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		9C8DB7EF1E22274600EECB48 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
+		9C8DB7F01E22274600EECB48 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		9CA6C1491E209C7100290E9D /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		9CA6C14A1E209C7100290E9D /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		9CA6C1611E20EEDA00290E9D /* ShoppingCartGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartGoodsModel.m; sourceTree = "<group>"; };
@@ -1492,6 +1504,14 @@
 				51F535411C3F978A00A6E478 /* GoodsDetailViewController.m */,
 				51F12EE21C0C2AB0002C62D0 /* BaseViewController.h */,
 				51F12EE31C0C2AB0002C62D0 /* BaseViewController.m */,
+				9C8DB7E91E22274600EECB48 /* FirstViewController.h */,
+				9C8DB7EA1E22274600EECB48 /* FirstViewController.m */,
+				9C8DB7ED1E22274600EECB48 /* SecondViewController.h */,
+				9C8DB7EE1E22274600EECB48 /* SecondViewController.m */,
+				9C8DB7EF1E22274600EECB48 /* ThirdViewController.h */,
+				9C8DB7F01E22274600EECB48 /* ThirdViewController.m */,
+				9C8DB7EB1E22274600EECB48 /* FourthViewController.h */,
+				9C8DB7EC1E22274600EECB48 /* FourthViewController.m */,
 				51F7CA2D1C43614300586B72 /* CheckStandController.h */,
 				51F7CA2E1C43614300586B72 /* CheckStandController.m */,
 				51F5353A1C3F96E300A6E478 /* hongBaoView.h */,
@@ -2532,6 +2552,7 @@
 				51FD428E1C27940100D260A8 /* UIImageView+AFNetworking.m in Sources */,
 				9CA6C1691E20EEDA00290E9D /* GoodsModel.m in Sources */,
 				9C090A841E1B4872004EDB54 /* BaseModel.m in Sources */,
+				9C8DB7F31E22274600EECB48 /* SecondViewController.m in Sources */,
 				51FD42511C27936D00D260A8 /* MJRefreshStateHeader.m in Sources */,
 				9CEF16EA1E0CD120009C15A3 /* DitiyNetAPIClient.m in Sources */,
 				51FD42561C27936D00D260A8 /* UIView+MJExtension.m in Sources */,
@@ -2539,6 +2560,7 @@
 				3CD680691C58AB8600966E38 /* UserGuideViewController.m in Sources */,
 				51FD424E1C27936D00D260A8 /* MJRefreshBackStateFooter.m in Sources */,
 				51F535391C3F96C700A6E478 /* OrderConfirmController.m in Sources */,
+				9C8DB7F41E22274600EECB48 /* ThirdViewController.m in Sources */,
 				3CDA0CF51C4C86DB00067DD8 /* OrderDetailViewController.m in Sources */,
 				51FD420D1C278B4600D260A8 /* sonAdvertisementView.m in Sources */,
 				5131DD6E1C44ECA200D8DFCA /* MyAccountViewController.m in Sources */,
@@ -2623,8 +2645,10 @@
 				51FD42481C27936D00D260A8 /* MJRefreshHeader.m in Sources */,
 				51FD42551C27936D00D260A8 /* UIScrollView+MJRefresh.m in Sources */,
 				9C36AD0E1E0230AC0021C6CE /* MyAddressModel.m in Sources */,
+				9C8DB7F11E22274600EECB48 /* FirstViewController.m in Sources */,
 				51FD42101C278D6100D260A8 /* sonCollectCell.m in Sources */,
 				9CEF16F01E0D594C009C15A3 /* OrderModel.m in Sources */,
+				9C8DB7F21E22274600EECB48 /* FourthViewController.m in Sources */,
 				51F12ECA1C0C14AA002C62D0 /* MASViewAttribute.m in Sources */,
 				51F12F5A1C0C4982002C62D0 /* UIImageView+WebCache.m in Sources */,
 				51F271681C0D939300619901 /* FMDatabaseAdditions.m in Sources */,
