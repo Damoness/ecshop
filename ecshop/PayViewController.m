@@ -1,26 +1,26 @@
 //
-//  CheckStandController.m
+//  PayViewController.m
 //  ecshop
 //
 //  Created by jsyh-mac on 16/1/11.
 //  Copyright © 2016年 jsyh. All rights reserved.
 //收银台页
 
-#import "CheckStandController.h"
+#import "PayViewController.h"
 #import "MyOrderViewController.h"
 #import "AppDelegate.h"
 #import "AFHTTPSessionManager.h"
 #import "UIColor+Hex.h"
 #import "WXApiRequestHandler.h"
 #import <AlipaySDK/AlipaySDK.h>
-@interface CheckStandController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
+@interface PayViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
     UITableView * table;
     UILabel * lab2;
 }
 @end
 
-@implementation CheckStandController
+@implementation PayViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

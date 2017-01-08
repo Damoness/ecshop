@@ -13,7 +13,7 @@
 #import "ExpressView.h"
 #import "hongBaoView.h"
 #import "AFHTTPSessionManager.h"
-#import "CheckStandController.h"
+#import "PayViewController.h"
 #import "SureTableViewCell.h"
 #import "goodsModel.h"
 #import "MyTabBarViewController.h"
@@ -597,7 +597,7 @@
            
             if (data) {
                 
-                CheckStandController * check=[[CheckStandController alloc]init];
+                PayViewController * check=[[PayViewController alloc]init];
                 check.jiage=data[@"data"][@"money_paid"];
                 check.orderNs=data[@"data"][@"order_sn"];
                 [weakSelf.navigationController pushViewController:check animated:YES];

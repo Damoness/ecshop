@@ -12,7 +12,7 @@
 #import "AppDelegate.h"
 #import "RequestModel.h"
 #import "shangpinModel.h"
-#import "CheckStandController.h"
+#import "PayViewController.h"
 #import "ThirdViewController.h"
 #import "OrderDetailViewController.h"
 #import "SDRefresh.h"
@@ -607,7 +607,7 @@
 -(void)payAction:(UIButton *)button{
     shangpinModel *model = [shangpinModel new];
     model = _orderArray[button.tag];
-    CheckStandController * cherk=[[CheckStandController alloc]init];
+    PayViewController * cherk=[[PayViewController alloc]init];
     cherk.orderNs=model.orderId;
     [self.navigationController pushViewController:cherk animated:YES];
     

@@ -13,7 +13,7 @@
 #import "AppDelegate.h"
 #import "goodsModel.h"
 #import "ThirdViewController.h"
-#import "CheckStandController.h"
+#import "PayViewController.h"
 #import "UIColor+Hex.h"
 #define TextHeight 100
 #define cellHeight 50
@@ -372,7 +372,7 @@
 -(void)payAction:(UIButton *)button{
     shangpinModel *model = [shangpinModel new];
     model = _goodsArr[button.tag];
-    CheckStandController * cherk=[[CheckStandController alloc]init];
+    PayViewController * cherk=[[PayViewController alloc]init];
     cherk.orderNs=self.orderId;
     [self.navigationController pushViewController:cherk animated:YES];
     

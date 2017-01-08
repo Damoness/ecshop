@@ -283,7 +283,7 @@
 		51F535451C3F984C00A6E478 /* goodDeailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F535441C3F984C00A6E478 /* goodDeailView.m */; };
 		51F6F5A21C47A83E00D9360B /* MyOrderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F6F5A01C47A83E00D9360B /* MyOrderViewCell.m */; };
 		51F6F5A31C47A83E00D9360B /* MyOrderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51F6F5A11C47A83E00D9360B /* MyOrderViewCell.xib */; };
-		51F7CA2F1C43614300586B72 /* CheckStandController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F7CA2E1C43614300586B72 /* CheckStandController.m */; };
+		51F7CA2F1C43614300586B72 /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F7CA2E1C43614300586B72 /* PayViewController.m */; };
 		51F7F21E1C0E839000C1FAE6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51F7F21D1C0E839000C1FAE6 /* Info.plist */; };
 		51F7F2221C0EBA4B00C1FAE6 /* NSString+Hashing.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F7F2211C0EBA4B00C1FAE6 /* NSString+Hashing.m */; };
 		51F7F22C1C0EE70600C1FAE6 /* fenlei(youdidaogao)@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F7F2241C0EE70600C1FAE6 /* fenlei(youdidaogao)@2x.png */; };
@@ -863,8 +863,8 @@
 		51F6F59F1C47A83E00D9360B /* MyOrderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderViewCell.h; sourceTree = "<group>"; };
 		51F6F5A01C47A83E00D9360B /* MyOrderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderViewCell.m; sourceTree = "<group>"; };
 		51F6F5A11C47A83E00D9360B /* MyOrderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyOrderViewCell.xib; sourceTree = "<group>"; };
-		51F7CA2D1C43614300586B72 /* CheckStandController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckStandController.h; sourceTree = "<group>"; };
-		51F7CA2E1C43614300586B72 /* CheckStandController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckStandController.m; sourceTree = "<group>"; };
+		51F7CA2D1C43614300586B72 /* PayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayViewController.h; sourceTree = "<group>"; };
+		51F7CA2E1C43614300586B72 /* PayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayViewController.m; sourceTree = "<group>"; };
 		51F7F21D1C0E839000C1FAE6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51F7F2201C0EBA4B00C1FAE6 /* NSString+Hashing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hashing.h"; sourceTree = "<group>"; };
 		51F7F2211C0EBA4B00C1FAE6 /* NSString+Hashing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hashing.m"; sourceTree = "<group>"; };
@@ -1512,8 +1512,8 @@
 				9C8DB7F01E22274600EECB48 /* ThirdViewController.m */,
 				9C8DB7EB1E22274600EECB48 /* FourthViewController.h */,
 				9C8DB7EC1E22274600EECB48 /* FourthViewController.m */,
-				51F7CA2D1C43614300586B72 /* CheckStandController.h */,
-				51F7CA2E1C43614300586B72 /* CheckStandController.m */,
+				51F7CA2D1C43614300586B72 /* PayViewController.h */,
+				51F7CA2E1C43614300586B72 /* PayViewController.m */,
 				51F5353A1C3F96E300A6E478 /* hongBaoView.h */,
 				51F5353B1C3F96E300A6E478 /* hongBaoView.m */,
 				51F5353D1C3F96F600A6E478 /* ExpressView.h */,
@@ -2667,7 +2667,7 @@
 				51FD42131C27929A00D260A8 /* PopoveView.m in Sources */,
 				51F12F581C0C4982002C62D0 /* SDWebImagePrefetcher.m in Sources */,
 				51F12ECD1C0C14AA002C62D0 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
-				51F7CA2F1C43614300586B72 /* CheckStandController.m in Sources */,
+				51F7CA2F1C43614300586B72 /* PayViewController.m in Sources */,
 				51F12F561C0C4982002C62D0 /* SDWebImageDownloader.m in Sources */,
 				51FD424B1C27936D00D260A8 /* MJRefreshAutoStateFooter.m in Sources */,
 				9CEF16E71E0CCD15009C15A3 /* Ditiy_NetAPIManager.m in Sources */,

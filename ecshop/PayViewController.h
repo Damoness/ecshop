@@ -1,5 +1,5 @@
 //
-//  CheckStandController.h
+//  PayViewController.h
 //  ecshop
 //
 //  Created by jsyh-mac on 16/1/11.
@@ -8,7 +8,7 @@
 //收银台
 #import <UIKit/UIKit.h>
 
-@interface CheckStandController : UIViewController
+@interface PayViewController : UIViewController
 @property (nonatomic, copy) NSString * jiage;
 @property (nonatomic, copy) NSString * orderNs;
 
