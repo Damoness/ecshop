@@ -66,7 +66,7 @@
             [self POST:aPath parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
                 DebugLog(@"\n===========response===========\n%@:\n%@", aPath, [responseObject toConsole]);
                 
-                id error = [self handleResponse:responseObject autoShowError:NO];
+                id error = [self handleResponse:responseObject autoShowError:autoShowError];
                 
                 if (error) {
                     
@@ -108,6 +108,11 @@
     if(code !=1){
         
         error = [NSError errorWithDomain:baseURLStr code:code userInfo:responseJSON];
+        
+        if(autoShowError){
+            
+            [MBProgressHUD showError:responseJSON[@"msg"]];
+        }
         
         if(code == -220){ //用户未登录
             

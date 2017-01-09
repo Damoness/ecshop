@@ -1533,6 +1533,10 @@
 				5131DD5E1C44EBC500D8DFCA /* AddressViewController.m */,
 				5131DD601C44EBEF00D8DFCA /* NewAddressViewController.h */,
 				5131DD611C44EBEF00D8DFCA /* NewAddressViewController.m */,
+				516CE51A1C86DE0600E6DE87 /* CouponsViewController.h */,
+				516CE51B1C86DE0600E6DE87 /* CouponsViewController.m */,
+				5131DD661C44EC5800D8DFCA /* MyOrderViewController.h */,
+				5131DD671C44EC5800D8DFCA /* MyOrderViewController.m */,
 				51F5353A1C3F96E300A6E478 /* hongBaoView.h */,
 				51F5353B1C3F96E300A6E478 /* hongBaoView.m */,
 				51F5353D1C3F96F600A6E478 /* ExpressView.h */,
@@ -1547,8 +1551,6 @@
 				5131DD551C44EB4B00D8DFCA /* OpinionViewController.m */,
 				5131DD631C44EC2100D8DFCA /* ChooseAddressViewController.h */,
 				5131DD641C44EC2100D8DFCA /* ChooseAddressViewController.m */,
-				5131DD661C44EC5800D8DFCA /* MyOrderViewController.h */,
-				5131DD671C44EC5800D8DFCA /* MyOrderViewController.m */,
 				5131DD751C44ED1500D8DFCA /* MyAttentionViewController.h */,
 				5131DD761C44ED1500D8DFCA /* MyAttentionViewController.m */,
 				5131DD801C44ED8800D8DFCA /* RechargeViewController.h */,
@@ -1561,8 +1563,6 @@
 				3CB69F6A1C574EA1008F2320 /* UIColor+Hex.m */,
 				3CD680671C58AB8600966E38 /* UserGuideViewController.h */,
 				3CD680681C58AB8600966E38 /* UserGuideViewController.m */,
-				516CE51A1C86DE0600E6DE87 /* CouponsViewController.h */,
-				516CE51B1C86DE0600E6DE87 /* CouponsViewController.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";

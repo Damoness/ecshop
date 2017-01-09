@@ -109,6 +109,53 @@
     
 }
 
+
+//取消订单
+-(void)request_CancelOrder_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block{
+    
+    NSString *toPath = @"order/qorder";
+    
+    [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:toPath withParams:params withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+        
+        
+        block(data,error);
+        
+        
+        
+    }];
+    
+    
+    
+}
+
+//再次购买
+-(void)request_RebuyOrder_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block{
+    
+    NSString *toPath = @"order/recart";
+    
+    [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:toPath withParams:params withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+
+        block(data,error);
+
+    }];
+    
+}
+
+//确认收货
+-(void)request_ConfirmReceiveOrder_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block{
+    
+    
+    NSString *toPath = @"order/received";
+    
+    [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:toPath withParams:params withMethodType:Post autoShowError:YES andBlock:^(id data, NSError *error) {
+        
+        block(data,error);
+        
+    }];
+    
+}
+
 //确认订单
 -(void)request_ConfirmOrder_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block{
     

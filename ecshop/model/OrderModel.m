@@ -48,6 +48,45 @@
     
 }
 
+
+- (NSDictionary *)toCancelOrderParams{
+    
+    NSMutableDictionary *params = @{
+                                    @"key":[LoginModel key],
+                                    @"order_id":self.order_id
+                                    }.mutableCopy;
+    
+    return params;
+    
+}
+
+
+//再次购买参数
+- (NSDictionary *)toRebuyParams{
+    
+    NSMutableDictionary *params = @{
+                                    @"key":[LoginModel key],
+                                    @"order_id":self.order_id
+                                    }.mutableCopy;
+    
+    return params;
+    
+}
+
+
+//确认收货参数
+- (NSDictionary *)toConfirmReceiveOrderParams{
+    
+    
+    NSMutableDictionary *params = @{
+                                    @"key":[LoginModel key],
+                                    @"order_id":self.order_id
+                                    }.mutableCopy;
+    
+    return params;
+    
+}
+
 - (NSDictionary *)toParams{
     
     return  [super toParams];

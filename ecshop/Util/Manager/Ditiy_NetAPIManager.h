@@ -30,6 +30,15 @@
 //创建订单 toCreateOrderParams
 -(void)request_CreateOrder_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
 
+//取消订单 toCancelOrderParams
+-(void)request_CancelOrder_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
+
+//再次购买 toRebuyParams
+-(void)request_RebuyOrder_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
+
+//确认收到商品 toConfirmReceiveOrderParams
+-(void)request_ConfirmReceiveOrder_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
+
 typedef enum {
     OrderAll = 0, //所有订单
     OrderUnpayed, //待付款

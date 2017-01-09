@@ -39,8 +39,17 @@
 @property (nonatomic,strong) NSString *goods_attr_id;
 @property (nonatomic,strong) NSString *type;
 
+@property (nonatomic,strong) NSString *order_id;
 
 - (NSDictionary *)toCreateOrderParams;
+
+- (NSDictionary *)toCancelOrderParams;
+
+//再次购买参数
+- (NSDictionary *)toRebuyParams;
+
+//确认收货参数
+- (NSDictionary *)toConfirmReceiveOrderParams;
 
 - (NSDictionary *)toParams;
 

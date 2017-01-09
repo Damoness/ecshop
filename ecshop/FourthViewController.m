@@ -693,6 +693,7 @@
             
         }
         else if (indexPath.section == 2){
+            //红包
             CouponsViewController *myHBVC = [[CouponsViewController alloc]init];
             [self.navigationController pushViewController:myHBVC animated:YES];
         }else if (indexPath.section == 3){

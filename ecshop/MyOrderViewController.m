@@ -146,10 +146,25 @@
             ws.modArray = [[NSMutableArray alloc]init];
             for (NSDictionary *dictt in dict[@"goods"]) {
                 shangpinModel *model1 = [shangpinModel new];
-                model1.goodsName = dictt[@"goods_name"];
-                model1.goodsNumber = dictt[@"goods_number"];
-                model1.goodsPrice = dictt[@"goods_price"];
-                model1.goodsImage = dictt[@"goods_thumb"];
+                
+                if( dictt[@"goods_name"] == [NSNull null]){
+                    
+                    model1.goodsName = @"";
+                    model1.goodsNumber = @"";
+                    model1.goodsPrice = @"";
+                    model1.goodsImage = @"";
+                    
+                    
+                }else{
+                    
+                    model1.goodsName = dictt[@"goods_name"];
+                    model1.goodsNumber = dictt[@"goods_number"];
+                    model1.goodsPrice = dictt[@"goods_price"];
+                    model1.goodsImage = dictt[@"goods_thumb"];
+                    
+                }
+                
+
                 [ws.modArray addObject:model1];
             }
             model2.orderId = dict[@"order_id"];
@@ -270,10 +285,24 @@
             weakSelf.modArray = [[NSMutableArray alloc]init];
             for (NSDictionary *dictt in dict[@"goods"]) {
                 shangpinModel *model1 = [shangpinModel new];
-                model1.goodsName = dictt[@"goods_name"];
-                model1.goodsNumber = dictt[@"goods_number"];
-                model1.goodsPrice = dictt[@"goods_price"];
-                model1.goodsImage = dictt[@"goods_thumb"];
+                
+                if( dictt[@"goods_name"] == [NSNull null]){
+                    
+                    model1.goodsName = @"";
+                    model1.goodsNumber = @"";
+                    model1.goodsPrice = @"";
+                    model1.goodsImage = @"";
+                    
+                    
+                }else{
+                    
+                    model1.goodsName = dictt[@"goods_name"];
+                    model1.goodsNumber = dictt[@"goods_number"];
+                    model1.goodsPrice = dictt[@"goods_price"];
+                    model1.goodsImage = dictt[@"goods_thumb"];
+                    
+                }
+                
                 [weakSelf.modArray addObject:model1];
             }
             shangpinModel *model2 = [shangpinModel new];
@@ -570,16 +599,27 @@
     model = _orderArray[button.tag];
     
     NSLog(@"确认收货%@",model.orderId);
-    NSString *api_token = [RequestModel model:@"order" action:@"received"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"order_id":model.orderId};
-    __weak typeof(self) weakSelf = self;
-    [RequestModel requestWithDictionary:dict model:@"order" action:@"received" block:^(id result) {
-        NSDictionary *dic = result;
-        NSLog(@"获得的数据：%@",dic);
-        
-        
-        
-        [weakSelf waitpay:@"reciv_goods"];
+    
+    OrderModel *orderModel = [OrderModel new];
+    orderModel.order_id = model.orderId;
+    
+//    NSString *api_token = [RequestModel model:@"order" action:@"received"];
+//    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"order_id":model.orderId};
+//    __weak typeof(self) weakSelf = self;
+//    [RequestModel requestWithDictionary:dict model:@"order" action:@"received" block:^(id result) {
+//        NSDictionary *dic = result;
+//        NSLog(@"获得的数据：%@",dic);
+//        
+//        
+//        
+//        [weakSelf waitpay:@"reciv_goods"];
+//        
+//    }];
+    
+    WS(ws);
+    [[Ditiy_NetAPIManager sharedManager]request_ConfirmReceiveOrder_WithParams:[orderModel toConfirmReceiveOrderParams] andBlock:^(id data, NSError *error) {
+       
+        [ws waitpay:@"reciv_goods"];
         
     }];
     
@@ -596,9 +636,6 @@
     [RequestModel requestWithDictionary:dict model:@"order" action:@"qorder" block:^(id result) {
         NSDictionary *dic = result;
         NSLog(@"获得的数据：%@",dic);
-        
-        
-        
         
         [weakSelf.table reloadData];
     }];
@@ -621,20 +658,45 @@
     NSLog(@"%@",model);
     
 
-    NSString *api_token = [RequestModel model:@"order" action:@"recart"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"order_id":model.orderId};
-    __weak typeof(self) weakSelf = self;
-    [RequestModel requestWithDictionary:dict model:@"order" action:@"recart" block:^(id result) {
-        NSDictionary *dic = result;
-        NSLog(@"%@",dic);
+    OrderModel *orderModel = [OrderModel new];
+    orderModel.order_id = model.orderId;
+    
+//    
+//    NSString *api_token = [RequestModel model:@"order" action:@"recart"];
+//    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"order_id":model.orderId};
+//    __weak typeof(self) weakSelf = self;
+    
+    
+    WS(ws)
+    
+    [[Ditiy_NetAPIManager sharedManager]request_RebuyOrder_WithParams:[orderModel toRebuyParams] andBlock:^(id data, NSError *error) {
         
-        ThirdViewController *thirdVC = [ThirdViewController new];
-        [weakSelf.navigationController pushViewController:thirdVC animated:YES];
+        if (data) {
+            
+            ThirdViewController *thirdVC = [ThirdViewController new];
+            [ws.navigationController pushViewController:thirdVC animated:YES];
+            
+            thirdVC.temp = @"1";
+            
+            [ws.table reloadData];
+            
+        }
         
-        thirdVC.temp = @"1";
+
         
-        [weakSelf.table reloadData];
     }];
+    
+//    [RequestModel requestWithDictionary:dict model:@"order" action:@"recart" block:^(id result) {
+//        NSDictionary *dic = result;
+//        NSLog(@"%@",dic);
+//        
+//        ThirdViewController *thirdVC = [ThirdViewController new];
+//        [weakSelf.navigationController pushViewController:thirdVC animated:YES];
+//        
+//        thirdVC.temp = @"1";
+//        
+//        [weakSelf.table reloadData];
+//    }];
 }
 #pragma mark -刷新
 - (void)setupHeader
