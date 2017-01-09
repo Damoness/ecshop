@@ -70,6 +70,24 @@
     
 }
 
+//修改用户密码  toChangePasswordParams
+-(void)request_ChangePassword_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block{
+    
+    
+    NSString *toPath = @"user/modifypasswd";
+    
+    [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:toPath withParams:params withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+        
+        
+        block(data,error);
+        
+        
+        
+    }];
+    
+    
+}
 
 
 

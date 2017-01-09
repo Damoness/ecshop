@@ -30,4 +30,20 @@
     
 }
 
+
+//修改密码参数
+-(NSDictionary *)toChangePasswordParams{
+    
+    NSMutableDictionary *params = @{
+                                    @"key":[LoginModel key],
+                                    @"username":self.username,
+                                    @"user_pwd":self.currentPassword,
+                                    @"new_pwd":self.changePassword
+                                    }.mutableCopy;
+    
+    return params;
+    
+    
+}
+
 @end

@@ -39,7 +39,12 @@
 
 @property (nonatomic,strong)NSString *consume;
 
+@property (nonatomic,strong)NSString *username ,*currentPassword , *changePassword ,*changePasswordConfirm;
+
 -(NSDictionary *)toUserInfoParams;
 -(NSDictionary *)toUpdateUserInfoParams;
+
+//修改密码参数
+-(NSDictionary *)toChangePasswordParams;
 
 @end

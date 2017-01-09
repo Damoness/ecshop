@@ -49,8 +49,8 @@ typedef enum {
 -(void)request_UserInfo_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
 //更新用户信息  toUpdateUserInfoParams
 -(void)request_UpdateUserInfo_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
-
-
+//修改用户密码  toChangePasswordParams
+-(void)request_ChangePassword_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
 
 #pragma mark - Goods  
 
@@ -68,7 +68,6 @@ typedef enum {
 
 //获取商品详情 toDetailedGoodsInfoParams
 -(void)request_DetailedGoodsInfo_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
-
 
 
 

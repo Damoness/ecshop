@@ -11,6 +11,7 @@
 #import "Masonry.h"
 #import "RequestModel.h"
 #import "UIColor+Hex.h"
+#import "UserModel.h"
 #define kColorBack [UIColor colorWithRed:239/255.0 green:239/255.0 blue:244/255.0 alpha:1]
 #define kColorOffButton [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]
 @interface ChangePasswordViewController ()<UITextFieldDelegate>
@@ -80,20 +81,28 @@
     }
 }
 -(void)changePassword:(id)sender{
-    NSLog(@"修改密码");
-    NSString *api_token = [RequestModel model:@"user" action:@"modifypasswd"];
-    NSDictionary *dict = @{@"api_token":api_token,@"username":_userView.temp,@"new_pwd":_passwordView1.temp,@"user_pwd":_oldPassword.temp,@"key":self.tempDic[@"data"][@"key"]};
-    __weak typeof(self) weakSelf = self;
-    [RequestModel requestWithDictionary:dict model:@"user" action:@"modifypasswd" block:^(id result) {
-        NSDictionary *dic = result;
+//    NSLog(@"修改密码");
+//    NSString *api_token = [RequestModel model:@"user" action:@"modifypasswd"];
+//    NSDictionary *dict = @{@"api_token":api_token,@"username":_userView.temp,@"new_pwd":_passwordView1.temp,@"user_pwd":_oldPassword.temp,@"key":self.tempDic[@"data"][@"key"]};
+//    __weak typeof(self) weakSelf = self;
+    
+    WS(ws);
+    
+    UserModel *model = [UserModel new];
+    model.username = _userView.temp;
+    model.currentPassword = _oldPassword.temp;
+    model.changePassword =  _passwordView1.temp;
+    
+    [[Ditiy_NetAPIManager sharedManager]request_ChangePassword_WithParams:[model toChangePasswordParams] andBlock:^(id data, NSError *error) {
+       
         
-        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"" message:dic[@"msg"] preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
-        [alertVC addAction:cancelAction];
-        [alertVC addAction:okAction];
-        [weakSelf presentViewController:alertVC animated:YES completion:nil];
+        if (data) {
+            [MBProgressHUD showSuccess:data[@"msg"]];
+        }
+        
+        
     }];
+    
     
 }
 - (void)didReceiveMemoryWarning {
