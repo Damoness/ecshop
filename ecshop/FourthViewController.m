@@ -18,7 +18,6 @@
 #import "MyOrderViewController.h"
 #import "AddressViewController.h"
 #import "RequestModel.h"
-#import "PersonalInfoModel.h"
 #import "MyAttentionViewController.h"
 #import "RechargeViewController.h"
 #import "MyTabBarViewController.h"
@@ -36,8 +35,8 @@
 @property (nonatomic,strong)UITableView *table;
 @property (nonatomic,strong)NSString *mykey;
 @property (nonatomic,assign)NSInteger tagg;
-@property (nonatomic,strong)NSMutableArray *modArray;
-@property (nonatomic,strong)PersonalInfoModel *model;
+
+@property (nonatomic,strong)UserModel *model;
 //关注商品的label
 @property (nonatomic,strong)UILabel *labelForGoods1;
 //余额
@@ -737,33 +736,28 @@
  */
 #pragma mark--我的资料数据请求
 -(void)myAccount{
-    NSString *api_token = [RequestModel model:@"user" action:@"userinfo"];
-    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
+//    NSString *api_token = [RequestModel model:@"user" action:@"userinfo"];
+//    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
+//    
+//    __weak typeof(self) weakSelf = self;
     
-    __weak typeof(self) weakSelf = self;
-    [RequestModel requestWithDictionary:dict model:@"user" action:@"userinfo" block:^(id result) {
-        NSDictionary *dic = result;
-        weakSelf.modArray = [[NSMutableArray alloc]init];
-        for (NSMutableDictionary *dict in dic[@"data"]) {
-            weakSelf.model = [PersonalInfoModel new];
+    
+    WS(ws);
+    UserModel *userModel  = [UserModel new];
+    
+    [[Ditiy_NetAPIManager sharedManager]request_UserInfo_WithParams:[userModel toUserInfoParams] andBlock:^(id data, NSError *error) {
+        
+        if (data) {
             
-            weakSelf.model.user_id = dict[@"user_id"];//缺少
-            weakSelf.model.nick_name = dict[@"nick_name"];
-            weakSelf.model.sex = dict[@"sex"];
-            weakSelf.model.address = dict[@"address"];
-            weakSelf.model.mobile = dict[@"mobile"];
-            weakSelf.model.integration = dict[@"integration"];
-            weakSelf.model.attention = dict[@"attention"];
-            weakSelf.model.user_money = dict[@"user_money"];
-            weakSelf.model.pay = dict[@"pay"];
-            weakSelf.model.shipping_send = dict[@"shipping_send"];
-            weakSelf.model.cart_num = dict[@"cart_num"];
-            weakSelf.labelForGoods1.text = weakSelf.model.attention;
-            weakSelf.labelForBalance1.text = weakSelf.model.user_money;
-            weakSelf.labelForIntegration1.text = weakSelf.model.integration;
-            weakSelf.label1.text = weakSelf.model.nick_name;
-            NSString *a = [NSString stringWithFormat:@"%@",dict[@"pay"]];
-            NSString *b = [NSString stringWithFormat:@"%@",dict[@"shipping_send"]];
+            ws.model = [UserModel mj_objectWithKeyValues:data[@"data"][0]];
+            
+            
+            ws.labelForGoods1.text = ws.model.attention;
+            ws.labelForBalance1.text = ws.model.user_money;
+            ws.labelForIntegration1.text = ws.model.integration;
+            ws.label1.text = ws.model.nick_name;
+            NSString *a = [NSString stringWithFormat:@"%@",ws.model.pay];
+            NSString *b = [NSString stringWithFormat:@"%@",ws.model.shipping_send];
             
             
             if ([a isEqualToString:@"0"]) {
@@ -798,17 +792,84 @@
                 [smallView2 addSubview:smallLab2];
                 [button2 addSubview:smallView2];
             }
-            [weakSelf.modArray addObject:weakSelf.model];
-            NSString *c = [NSString stringWithFormat:@"%@",dict[@"cart_num"]];
+            NSString *c = [NSString stringWithFormat:@"%@",ws.model.cart_num];
             NSDictionary *dicc = [[NSDictionary alloc]init];
             dicc = @{@"cart_num":c};
 #pragma mark -- 发送购物车数量通知
             [[NSNotificationCenter defaultCenter] postNotificationName:@"cart_num" object:dicc];
             
+            
         }
         
-        
     }];
+    
+//    
+//    [RequestModel requestWithDictionary:dict model:@"user" action:@"userinfo" block:^(id result) {
+//        NSDictionary *dic = result;
+//        for (NSMutableDictionary *dict in dic[@"data"]) {
+//            weakSelf.model = [PersonalInfoModel new];
+//            
+//            weakSelf.model.user_id = dict[@"user_id"];//缺少
+//            weakSelf.model.nick_name = dict[@"nick_name"];
+//            weakSelf.model.sex = dict[@"sex"];
+//            weakSelf.model.address = dict[@"address"];
+//            weakSelf.model.mobile = dict[@"mobile"];
+//            weakSelf.model.integration = dict[@"integration"];
+//            weakSelf.model.attention = dict[@"attention"];
+//            weakSelf.model.user_money = dict[@"user_money"];
+//            weakSelf.model.pay = dict[@"pay"];
+//            weakSelf.model.shipping_send = dict[@"shipping_send"];
+//            weakSelf.model.cart_num = dict[@"cart_num"];
+//            weakSelf.labelForGoods1.text = weakSelf.model.attention;
+//            weakSelf.labelForBalance1.text = weakSelf.model.user_money;
+//            weakSelf.labelForIntegration1.text = weakSelf.model.integration;
+//            weakSelf.label1.text = weakSelf.model.nick_name;
+//            NSString *a = [NSString stringWithFormat:@"%@",dict[@"pay"]];
+//            NSString *b = [NSString stringWithFormat:@"%@",dict[@"shipping_send"]];
+//            
+//            
+//            if ([a isEqualToString:@"0"]) {
+//                
+//            }else{
+//                
+//                UIView *smallView1 = [[UIView alloc]initWithFrame:CGRectMake(button1.frame.size.width - 15, 3, 12, 12)];
+//                smallView1.backgroundColor = [UIColor redColor];
+//                [smallView1.layer setCornerRadius:6];
+//                UILabel *smallLab1 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 12, 12)];
+//                smallLab1.font = [UIFont systemFontOfSize:8];
+//                smallLab1.text = a;
+//                smallLab1.textAlignment = NSTextAlignmentCenter;
+//                smallLab1.textColor = [UIColor whiteColor];
+//                [smallView1 addSubview:smallLab1];
+//                [button1 addSubview:smallView1];
+//                
+//                
+//            }
+//            if ([b isEqualToString:@"0"]) {
+//                
+//            }else{
+//                
+//                UIView *smallView2 = [[UIView alloc]initWithFrame:CGRectMake(button2.frame.size.width - 15, 3, 12, 12)];
+//                smallView2.backgroundColor = [UIColor redColor];
+//                [smallView2.layer setCornerRadius:6];
+//                UILabel *smallLab2 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 12, 12)];
+//                smallLab2.font = [UIFont systemFontOfSize:8];
+//                smallLab2.text = b;
+//                smallLab2.textAlignment = NSTextAlignmentCenter;
+//                smallLab2.textColor = [UIColor whiteColor];
+//                [smallView2 addSubview:smallLab2];
+//                [button2 addSubview:smallView2];
+//            }
+//            NSString *c = [NSString stringWithFormat:@"%@",dict[@"cart_num"]];
+//            NSDictionary *dicc = [[NSDictionary alloc]init];
+//            dicc = @{@"cart_num":c};
+//#pragma mark -- 发送购物车数量通知
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"cart_num" object:dicc];
+//            
+//        }
+//        
+//        
+//    }];
 }
 -(void)setExtraCellLineHidden: (UITableView *)tableView
 {
