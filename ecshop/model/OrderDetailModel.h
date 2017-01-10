@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "GoodsModel.h"
 @interface OrderDetailModel : NSObject
 
 //"consignee" : "Damon",
@@ -48,7 +48,7 @@
 @property (nonatomic,strong)NSString  *shipping_fee;
 @property (nonatomic,strong)NSString  *order_amount;
 @property (nonatomic,strong)NSString  *add_time;
-@property (nonatomic,strong)NSArray   *goods;
+@property (nonatomic,strong)NSMutableArray<GoodsModel *>  *goods;
 
 
 @end

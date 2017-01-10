@@ -19,7 +19,7 @@
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{
-        _sharedClient = [[DitiyNetAPIClient alloc] initWithBaseURL:[NSURL URLWithString: baseURLStr]];
+        _sharedClient = [[DitiyNetAPIClient alloc] initWithBaseURL:[NSURL URLWithString: baseAPIURLStr]];
     });
     return _sharedClient;
 }
@@ -107,7 +107,7 @@
     
     if(code !=1){
         
-        error = [NSError errorWithDomain:baseURLStr code:code userInfo:responseJSON];
+        error = [NSError errorWithDomain:baseAPIURLStr code:code userInfo:responseJSON];
         
         if(autoShowError){
             

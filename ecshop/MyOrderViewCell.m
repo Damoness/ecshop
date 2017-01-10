@@ -12,6 +12,7 @@
 @implementation MyOrderViewCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     self.payBtn.layer.borderWidth = 0.5f;
     self.payBtn.layer.borderColor = [[UIColor redColor]CGColor];
     self.payBtn.layer.cornerRadius = 5;
@@ -36,6 +37,31 @@
     NSURL *url = [NSURL URLWithString:urlstr];
     [self.imgView setImageWithURL:url];
 }
+
+-(void)setMyGoodsModel:(GoodsModel *)model{
+    
+    if (_myGoodsModel != model) {
+        _myGoodsModel = model;
+        
+        self.goodsNameLab.font = [UIFont systemFontOfSize:15];
+        self.goodsPriceLab.font = [UIFont systemFontOfSize:15];
+        self.goodsNumberLab.font = [UIFont systemFontOfSize:15];
+        
+        self.goodsNameLab.text = model.goods_name;
+        self.goodsPriceLab.text = model.goods_price;
+        self.goodsNumberLab.text = [NSString stringWithFormat:@"数量：%@",model.goods_number];
+        self.realPayLab.text = [NSString stringWithFormat:@"%f",[model.goods_number intValue] * [model.goods_price doubleValue]];
+        
+        NSString *urlstr = [NSString stringWithFormat:@"%@/%@",baseURLStr,model.goods_thumb];
+        
+        [self.imgView setImageWithURL:[NSURL URLWithString:urlstr]];
+
+        
+    }
+    
+    
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     

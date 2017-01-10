@@ -17,7 +17,7 @@
 #import "UIColor+Hex.h"
 
 #import "OrderModel.h"
-
+#import "OrderDetailModel.h"
 #define TextHeight 100
 #define cellHeight 50
 #define jiange 10
@@ -42,6 +42,12 @@
 @property (nonatomic,strong)UITableView *tableView;
 //订单号
 @property (nonatomic,strong)UILabel *labId;
+
+
+@property (nonatomic,strong)OrderDetailModel *myOrderDetailModel;
+
+
+
 @end
 
 @implementation OrderDetailViewController
@@ -243,7 +249,7 @@
 #pragma mark --tableview
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 //    return _goodsArray.count;
-    return _goodsArr.count;
+    return _myOrderDetailModel.goods.count;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -257,97 +263,31 @@
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"MyOrderViewCell" owner:self options:nil]lastObject];
     }
-    cell.model = _goodsArr[indexPath.row];
+    cell.myGoodsModel = _myOrderDetailModel.goods[indexPath.row];
     return cell;
 }
 #pragma mark --解析数据
 -(void)myOrder{
 
-//    NSString *api_token = [RequestModel model:@"order" action:@"lorder"];
-//    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key],@"order_id":_orderId};
-//    __weak typeof(self) weakSelf = self;
-    
-    
-    WS(weakSelf)
+    WS(ws)
     OrderModel *myOrderModel = [OrderModel new];
     myOrderModel.order_id = _orderId;
-    
     
     [[Ditiy_NetAPIManager sharedManager]request_OrderDetailInfo_WithParams:[myOrderModel toOrderDetailInfoParams] andBlock:^(id data, NSError *error) {
        
         if (data) {
-
-            NSDictionary *dic = data;
-            weakSelf.goodsArr = [[NSMutableArray alloc]init];
-            for (NSDictionary *dicc in dic[@"data"]) {
-                for (NSDictionary *diccc in dicc[@"goods"]) {
-                    shangpinModel *model = [shangpinModel new];
-                    model.goodsName = diccc[@"goods_name"];
-                    model.goodsPrice = diccc[@"goods_price"];
-                    NSString *number = diccc[@"goods_number"];
-                    model.goodsNumber = number;
-                    model.goodsImage = diccc[@"goods_thumb"];
-                    [weakSelf.goodsArr addObject:model];
-                }
-                
-                weakSelf.model2 = [shangpinModel new];
-                weakSelf.model2.add_time = dicc[@"add_time"];
-                weakSelf.model2.address = dicc[@"address"];
-                weakSelf.model2.consignee = dicc[@"consignee"];
-                weakSelf.model2.mobile = dicc[@"mobile"];
-                weakSelf.model2.money_paid = dicc[@"money_paid"];
-                weakSelf.model2.order_amount = dicc[@"order_amount"];
-                weakSelf.model2.order_sn = dicc[@"order_sn"];
-                weakSelf.model2.order_status = dicc[@"order_status"];
-                weakSelf.model2.pay_name = dicc[@"pay_name"];
-                weakSelf.model2.shipping_fee = dicc[@"shipping_fee"];
-                weakSelf.model2.shipping_name = dicc[@"shipping_name"];
-                weakSelf.model2.total = dicc[@"total"];
-                weakSelf.labId.text = [NSString stringWithFormat:@"订单号：%@",_model2.order_sn];
-                personLab.text = weakSelf.model2.consignee;
-                phoneLab.text= weakSelf.model2.mobile;
-                labPayWay2.text = weakSelf.model2.pay_name;
-                labSend2.text = weakSelf.model2.shipping_name;
-                int a = [weakSelf.model2.money_paid intValue];
-                int b = [weakSelf.model2.shipping_fee intValue];
-                int c = a - b;
-                
-                goodsPrice3.text = [NSString stringWithFormat:@"￥%d",c];
-                goodsPrice4.text = [NSString stringWithFormat:@"+￥%@",_model2.shipping_fee];
-                real1.text = [NSString stringWithFormat:@"实付款：￥%@",_model2.money_paid];
-                textView.text = _model2.address;
-                NSString *time1 = [weakSelf.model2.order_sn substringToIndex:4];
-                NSString *time2 = [weakSelf.model2.order_sn substringWithRange:NSMakeRange(4, 2)];
-                NSString *time3 = [weakSelf.model2.order_sn substringWithRange:NSMakeRange(6, 2)];
-                NSString *time4 = [weakSelf.model2.order_sn substringWithRange:NSMakeRange(8, 2)];
-                NSString *time5 = [weakSelf.model2.order_sn substringWithRange:NSMakeRange(10, 2)];
-                NSString *time6 = [weakSelf.model2.order_sn substringWithRange:NSMakeRange(12, 2)];
-                creat2.text = [NSString stringWithFormat:@"%@-%@-%@ %@:%@:%@",time1,time2,time3,time4,time5,time6];
-                if ([weakSelf.model2.order_status isEqualToString:@"5"]) {
-                    labelTitle.text = @"已完成";
-                    [bottomBtn setTitle:@"再次购买" forState:UIControlStateNormal];
-                    
-                    [bottomBtn addTarget:weakSelf action:@selector(changeToBuy:) forControlEvents:UIControlEventTouchUpInside];
-                }else if ([weakSelf.model2.order_status isEqualToString:@"1"]){
-                    labelTitle.text = @"待付款";
-                    [bottomBtn setTitle:@"去支付" forState:UIControlStateNormal];
-                    [bottomBtn addTarget:weakSelf action:@selector(payAction:) forControlEvents:UIControlEventTouchUpInside];
-                    
-                }else if ([weakSelf.model2.order_status isEqualToString:@"2"]){
-                    labelTitle.text = @"取消订单";
-                    [bottomBtn setTitle:@"放回购物车" forState:UIControlStateNormal];
-                    [bottomBtn addTarget:weakSelf action:@selector(changeToBuy:) forControlEvents:UIControlEventTouchUpInside];
-                }else if ([weakSelf.model2.order_status isEqualToString:@"3"]){
-                    labelTitle.text = @"待发货";
-                    //                [bottomBtn setTitle:@"去支付" forState:UIControlStateNormal];
-                    bottomBtn.hidden = YES;
-                }else if ([weakSelf.model2.order_status isEqualToString:@"4"]){
-                    labelTitle.text = @"已发货";
-                    [bottomBtn setTitle:@"确认收货" forState:UIControlStateNormal];
-                    [bottomBtn addTarget:weakSelf action:@selector(received:) forControlEvents:UIControlEventTouchUpInside];
-                }
-            }
-            NSLog(@"%@",_goodsArr);
+            
+            
+            [OrderDetailModel mj_setupObjectClassInArray:^NSDictionary *{
+                return @{
+                         @"goods" : @"GoodsModel",
+                         };
+            }];
+            
+            
+            ws.myOrderDetailModel = [OrderDetailModel mj_objectWithKeyValues:[data[@"data"] firstObject]];
+            
+            
             /*
              UILabel *labSend2;//配送方式
              UILabel *goodsPrice3;//商品总额
@@ -356,7 +296,50 @@
              UILabel *real1 ;//实付款
              UILabel *labPayWay2;//支付方式
              */
-            [weakSelf.tableView reloadData];
+            
+            ws.labId.text = ws.myOrderDetailModel.order_sn;
+            personLab.text = ws.myOrderDetailModel.consignee;
+            phoneLab.text= ws.myOrderDetailModel.mobile;
+            labPayWay2.text = ws.myOrderDetailModel.pay_name;
+            labSend2.text = ws.myOrderDetailModel.shipping_name;
+            int a = [ws.myOrderDetailModel.money_paid intValue];
+            int b = [ws.myOrderDetailModel.shipping_fee intValue];
+            int c = a - b;
+            
+            goodsPrice3.text = [NSString stringWithFormat:@"￥%d",c];
+            goodsPrice4.text = [NSString stringWithFormat:@"+￥%@",ws.myOrderDetailModel.shipping_fee];
+            real1.text = [NSString stringWithFormat:@"实付款：￥%@",ws.myOrderDetailModel.money_paid];
+            textView.text = ws.myOrderDetailModel.address;
+            NSString *time1 = [ws.myOrderDetailModel.order_sn substringToIndex:4];
+            NSString *time2 = [ws.myOrderDetailModel.order_sn substringWithRange:NSMakeRange(4, 2)];
+            NSString *time3 = [ws.myOrderDetailModel.order_sn substringWithRange:NSMakeRange(6, 2)];
+            NSString *time4 = [ws.myOrderDetailModel.order_sn substringWithRange:NSMakeRange(8, 2)];
+            NSString *time5 = [ws.myOrderDetailModel.order_sn substringWithRange:NSMakeRange(10, 2)];
+            NSString *time6 = [ws.myOrderDetailModel.order_sn substringWithRange:NSMakeRange(12, 2)];
+            creat2.text = [NSString stringWithFormat:@"%@-%@-%@ %@:%@:%@",time1,time2,time3,time4,time5,time6];
+            if ([ws.myOrderDetailModel.order_status isEqualToString:@"5"]) {
+                labelTitle.text = @"已完成";
+                [bottomBtn setTitle:@"再次购买" forState:UIControlStateNormal];
+                [bottomBtn addTarget:ws action:@selector(changeToBuy:) forControlEvents:UIControlEventTouchUpInside];
+            }else if ([ws.myOrderDetailModel.order_status isEqualToString:@"1"]){
+                labelTitle.text = @"待付款";
+                [bottomBtn setTitle:@"去支付" forState:UIControlStateNormal];
+                [bottomBtn addTarget:ws action:@selector(payAction:) forControlEvents:UIControlEventTouchUpInside];
+                
+            }else if ([ws.myOrderDetailModel.order_status isEqualToString:@"2"]){
+                labelTitle.text = @"取消订单";
+                [bottomBtn setTitle:@"放回购物车" forState:UIControlStateNormal];
+                [bottomBtn addTarget:ws action:@selector(changeToBuy:) forControlEvents:UIControlEventTouchUpInside];
+            }else if ([ws.myOrderDetailModel.order_status isEqualToString:@"3"]){
+                labelTitle.text = @"待发货";
+                bottomBtn.hidden = YES;
+            }else if ([ws.myOrderDetailModel.order_status isEqualToString:@"4"]){
+                labelTitle.text = @"已发货";
+                [bottomBtn setTitle:@"确认收货" forState:UIControlStateNormal];
+                [bottomBtn addTarget:ws action:@selector(received:) forControlEvents:UIControlEventTouchUpInside];
+            }
+
+            [ws.tableView reloadData];
             
             
         }

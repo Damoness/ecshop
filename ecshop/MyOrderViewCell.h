@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "shangpinModel.h"
+#import "GoodsModel.h"
 @interface MyOrderViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UIButton *payBtn;
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *realPayLab;
 @property (nonatomic,strong)NSString *orderid;
 @property (nonatomic,strong)shangpinModel *model;
+@property (nonatomic,strong)GoodsModel *myGoodsModel;
 
 @property(nonatomic,strong)NSDictionary *tempDic;
 @end

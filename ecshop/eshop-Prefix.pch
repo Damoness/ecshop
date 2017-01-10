@@ -30,7 +30,8 @@
 #endif
 
 
-#define baseURLStr @"http://sitmarket.ditiy.com/shopapi/index.php"
+#define baseAPIURLStr @"http://sitmarket.ditiy.com/shopapi/index.php"
+#define baseURLStr @"http://sitmarket.ditiy.com"
 
 #define DebugLog(s, ...) NSLog(@"%s(%d): %@", __FUNCTION__, __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
 #define kTipAlert(_S_, ...)     [[[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:(_S_), ##__VA_ARGS__] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil] show]
