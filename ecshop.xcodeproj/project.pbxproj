@@ -374,6 +374,7 @@
 		9C8DB7F21E22274600EECB48 /* FourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DB7EC1E22274600EECB48 /* FourthViewController.m */; };
 		9C8DB7F31E22274600EECB48 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DB7EE1E22274600EECB48 /* SecondViewController.m */; };
 		9C8DB7F41E22274600EECB48 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DB7F01E22274600EECB48 /* ThirdViewController.m */; };
+		9CA571041E24BF5D00080486 /* OrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA571031E24BF5D00080486 /* OrderDetailModel.m */; };
 		9CA6C14B1E209C7100290E9D /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6C14A1E209C7100290E9D /* Util.m */; };
 		9CA6C1671E20EEDA00290E9D /* ShoppingCartGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6C1611E20EEDA00290E9D /* ShoppingCartGoodsModel.m */; };
 		9CA6C1681E20EEDA00290E9D /* ShoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6C1641E20EEDA00290E9D /* ShoppingCartModel.m */; };
@@ -1021,6 +1022,8 @@
 		9C8DB7EE1E22274600EECB48 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		9C8DB7EF1E22274600EECB48 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
 		9C8DB7F01E22274600EECB48 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
+		9CA571021E24BF5D00080486 /* OrderDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailModel.h; sourceTree = "<group>"; };
+		9CA571031E24BF5D00080486 /* OrderDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailModel.m; sourceTree = "<group>"; };
 		9CA6C1491E209C7100290E9D /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		9CA6C14A1E209C7100290E9D /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		9CA6C1611E20EEDA00290E9D /* ShoppingCartGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartGoodsModel.m; sourceTree = "<group>"; };
@@ -1537,6 +1540,8 @@
 				516CE51B1C86DE0600E6DE87 /* CouponsViewController.m */,
 				5131DD661C44EC5800D8DFCA /* MyOrderViewController.h */,
 				5131DD671C44EC5800D8DFCA /* MyOrderViewController.m */,
+				3CDA0CF31C4C86DB00067DD8 /* OrderDetailViewController.h */,
+				3CDA0CF41C4C86DB00067DD8 /* OrderDetailViewController.m */,
 				51F5353A1C3F96E300A6E478 /* hongBaoView.h */,
 				51F5353B1C3F96E300A6E478 /* hongBaoView.m */,
 				51F5353D1C3F96F600A6E478 /* ExpressView.h */,
@@ -1555,8 +1560,6 @@
 				5131DD761C44ED1500D8DFCA /* MyAttentionViewController.m */,
 				5131DD801C44ED8800D8DFCA /* RechargeViewController.h */,
 				5131DD811C44ED8800D8DFCA /* RechargeViewController.m */,
-				3CDA0CF31C4C86DB00067DD8 /* OrderDetailViewController.h */,
-				3CDA0CF41C4C86DB00067DD8 /* OrderDetailViewController.m */,
 				3CAF87211C4E3FB00040FD74 /* PersonViewController.h */,
 				3CAF87221C4E3FB00040FD74 /* PersonViewController.m */,
 				3CB69F691C574EA1008F2320 /* UIColor+Hex.h */,
@@ -2202,6 +2205,8 @@
 				9CA6C1661E20EEDA00290E9D /* GoodsModel.h */,
 				9CEF16EE1E0D594C009C15A3 /* OrderModel.h */,
 				9CEF16EF1E0D594C009C15A3 /* OrderModel.m */,
+				9CA571021E24BF5D00080486 /* OrderDetailModel.h */,
+				9CA571031E24BF5D00080486 /* OrderDetailModel.m */,
 				9C090A7F1E1B4466004EDB54 /* BonusModel.h */,
 				9C090A801E1B4466004EDB54 /* BonusModel.m */,
 			);
@@ -2599,6 +2604,7 @@
 				3C10838D1C3F43DB003E436B /* MD5DataSigner.m in Sources */,
 				5131DD7E1C44ED6100D8DFCA /* AboutViewController.m in Sources */,
 				51FD42901C27940100D260A8 /* UIWebView+AFNetworking.m in Sources */,
+				9CA571041E24BF5D00080486 /* OrderDetailModel.m in Sources */,
 				3C93DB1D1C59F484000CDDCF /* WXApiManager.m in Sources */,
 				9CA6C1671E20EEDA00290E9D /* ShoppingCartGoodsModel.m in Sources */,
 				9CA6C1681E20EEDA00290E9D /* ShoppingCartModel.m in Sources */,

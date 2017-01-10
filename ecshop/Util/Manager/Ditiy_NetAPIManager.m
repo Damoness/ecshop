@@ -279,6 +279,22 @@
     
 }
 
+-(void)request_OrderDetailInfo_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block{
+    
+    
+    NSString *toPath = @"order/lorder";
+    
+    [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:toPath withParams:params withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+        
+        
+        block(data,error);
+        
+        
+        
+    }];
+    
+}
 
 -(void)request_GetOrderList_withOrderType:(OrderType)type Params:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block{
     

@@ -24,7 +24,9 @@
 //* @param goods_attr_id  产品属性id
 //* @param type           区分是直接购买还是从购物车购买 0：购物车，1：直接购买
 
-@property (nonatomic,strong) NSString *key;
+
+
+
 @property (nonatomic,strong) NSString *goods_id;
 @property (nonatomic,strong) NSString *address_id;
 @property (nonatomic,strong) NSString *amount;
@@ -39,7 +41,7 @@
 @property (nonatomic,strong) NSString *goods_attr_id;
 @property (nonatomic,strong) NSString *type;
 
-@property (nonatomic,strong) NSString *order_id;
+@property (nonatomic,strong) NSString *order_id; // 订单编号
 
 - (NSDictionary *)toCreateOrderParams;
 
@@ -50,6 +52,9 @@
 
 //确认收货参数
 - (NSDictionary *)toConfirmReceiveOrderParams;
+
+//详细订单参数
+- (NSDictionary *)toOrderDetailInfoParams;
 
 - (NSDictionary *)toParams;
 

@@ -169,9 +169,6 @@
 {
     NSDictionary *dic=message[@"data"];
     
-    NSLog(@"dic[@\"mobile\"]:%@",dic[@"mobile"]);
-    
-    
     if(dic[@"user_name"]!= [NSNull null])
     {
         personLab.text=dic[@"user_name"];
@@ -582,7 +579,7 @@
         
         OrderModel *model = [OrderModel new];
         
-        model.key = [LoginModel key];
+        //model.key = [LoginModel key];
         model.goods_id = path2;
         model.address_id = _addressId;
         model.money_paid = totalPrice.text;

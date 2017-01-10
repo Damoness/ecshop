@@ -50,7 +50,8 @@ typedef enum {
 //获取订单列表    toParams
 -(void)request_GetOrderList_withOrderType:(OrderType)type Params:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block;
 
-
+//获取订单详细信息 toOrderDetailInfoParams
+-(void)request_OrderDetailInfo_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
 
 #pragma mark - User
 

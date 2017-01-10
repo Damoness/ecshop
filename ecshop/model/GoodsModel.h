@@ -10,11 +10,12 @@
 
 @interface GoodsModel : BaseModel
 @property (nonatomic,strong)NSString *goods_id; //
+
 @property (nonatomic,strong)NSString *goods_img;
 @property (nonatomic,strong)NSString *goods_name;
 @property (nonatomic,strong)NSString *goods_price;
 @property (nonatomic,assign)int number;
-//@property (nonatomic,strong)NSString *rec_id;   //加入购物后使用的id
+
 @property (nonatomic,strong)NSString *attrvalue_id;
 
 @property (nonatomic)Boolean is_attention; //是否关注

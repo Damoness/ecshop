@@ -87,6 +87,18 @@
     
 }
 
+//详细订单参数
+- (NSDictionary *)toOrderDetailInfoParams{
+    
+    NSMutableDictionary *params = @{
+                                    @"key":[LoginModel key],
+                                    @"order_id":self.order_id
+                                    }.mutableCopy;
+    
+    return params;
+    
+}
+
 - (NSDictionary *)toParams{
     
     return  [super toParams];
