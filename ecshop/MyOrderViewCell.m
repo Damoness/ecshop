@@ -40,15 +40,7 @@
 
 -(void)setMyGoodsModel:(GoodsModel *)model{
     
-    if (_myGoodsModel != model) {
-        _myGoodsModel = model;
-        
-        self.goodsNameLab.font = [UIFont systemFontOfSize:15];
-        self.goodsPriceLab.font = [UIFont systemFontOfSize:15];
-        self.goodsNumberLab.font = [UIFont systemFontOfSize:15];
-        
-        self.goodsNameLab.text = model.goods_name;
-        self.goodsPriceLab.text = model.goods_price;
+    if (_myGoodsModel != model) {           self.goodsPriceLab.text = model.goods_price;
         self.goodsNumberLab.text = [NSString stringWithFormat:@"数量：%@",model.goods_number];
         self.realPayLab.text = [NSString stringWithFormat:@"%f",[model.goods_number intValue] * [model.goods_price doubleValue]];
         
@@ -71,6 +63,9 @@
     NSLog(@"确认收货");
     NSString *api_token = [RequestModel model:@"user" action:@"received"];
     NSDictionary *dict = @{@"api_token":api_token,@"key":self.tempDic[@"data"][@"key"],@"order_id":orderid};
+    
+    
+    
     [RequestModel requestWithDictionary:dict model:@"user" action:@"received" block:^(id result) {
         NSDictionary *dic = result;
         NSLog(@"获得的数据：%@",dic);

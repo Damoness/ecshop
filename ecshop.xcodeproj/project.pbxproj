@@ -1542,6 +1542,10 @@
 				5131DD671C44EC5800D8DFCA /* MyOrderViewController.m */,
 				3CDA0CF31C4C86DB00067DD8 /* OrderDetailViewController.h */,
 				3CDA0CF41C4C86DB00067DD8 /* OrderDetailViewController.m */,
+				3CD680671C58AB8600966E38 /* UserGuideViewController.h */,
+				3CD680681C58AB8600966E38 /* UserGuideViewController.m */,
+				5131DD4E1C44EADC00D8DFCA /* MyTabBarViewController.h */,
+				5131DD4F1C44EADC00D8DFCA /* MyTabBarViewController.m */,
 				51F5353A1C3F96E300A6E478 /* hongBaoView.h */,
 				51F5353B1C3F96E300A6E478 /* hongBaoView.m */,
 				51F5353D1C3F96F600A6E478 /* ExpressView.h */,
@@ -1550,8 +1554,6 @@
 				51F271571C0D6D2200619901 /* SearchViewController.m */,
 				51F12F3A1C0C3F93002C62D0 /* SearchListViewController.h */,
 				51F12F3B1C0C3F93002C62D0 /* SearchListViewController.m */,
-				5131DD4E1C44EADC00D8DFCA /* MyTabBarViewController.h */,
-				5131DD4F1C44EADC00D8DFCA /* MyTabBarViewController.m */,
 				5131DD541C44EB4B00D8DFCA /* OpinionViewController.h */,
 				5131DD551C44EB4B00D8DFCA /* OpinionViewController.m */,
 				5131DD631C44EC2100D8DFCA /* ChooseAddressViewController.h */,
@@ -1564,8 +1566,6 @@
 				3CAF87221C4E3FB00040FD74 /* PersonViewController.m */,
 				3CB69F691C574EA1008F2320 /* UIColor+Hex.h */,
 				3CB69F6A1C574EA1008F2320 /* UIColor+Hex.m */,
-				3CD680671C58AB8600966E38 /* UserGuideViewController.h */,
-				3CD680681C58AB8600966E38 /* UserGuideViewController.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";

@@ -43,14 +43,14 @@
     [self.tabBarController.tabBar setHidden:YES];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
-    
-    NSString *url22 = @"http://sitmarket.ditiy.com/shopapi/index.php/goods/goodsinfo?goods_id=28";
-    
-    [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:@"goods/goodsinfo" withParams:@{@"goods_id":@"28"} withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
-        
-        
-        
-    }];
+//    
+//    NSString *url22 = @"http://sitmarket.ditiy.com/shopapi/index.php/goods/goodsinfo?goods_id=28";
+//    
+//    [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:@"goods/goodsinfo" withParams:@{@"goods_id":@"28"} withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+//        
+//        
+//        
+//    }];
     
 }
 - (void)viewDidLoad {

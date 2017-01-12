@@ -524,7 +524,6 @@
     }else if(self.tagg == 2){
         MyOrderViewController *myVC = [MyOrderViewController new];
         myVC.tagg = @"1";
-        myVC.tempDic = self.tempDic;
         [self.navigationController pushViewController:myVC animated:YES];
     }
     
@@ -540,7 +539,6 @@
     }else if (self.tagg == 2){
         MyOrderViewController *myVC = [MyOrderViewController new];
         myVC.tagg = @"3";
-        myVC.tempDic = self.tempDic;
         [self.navigationController pushViewController:myVC animated:YES];
     }
 }
@@ -555,7 +553,6 @@
     }else if (self.tagg == 2){
         MyOrderViewController *myVC = [MyOrderViewController new];
         myVC.tagg = @"4";
-        myVC.tempDic = self.tempDic;
         [self.navigationController pushViewController:myVC animated:YES];
     }
 }
@@ -570,7 +567,6 @@
     }else if (self.tagg == 2){
         MyOrderViewController *myVC = [MyOrderViewController new];
         myVC.tagg = @"5";
-        myVC.tempDic = self.tempDic;
         [self.navigationController pushViewController:myVC animated:YES];
     }
 }
@@ -681,7 +677,7 @@
             //我的订单
             MyOrderViewController *myVC = [MyOrderViewController new];
             myVC.tagg = @"0";
-            myVC.tempDic = self.tempDic;
+        
             myVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:myVC animated:YES];
         }else if(indexPath.section == 1){
@@ -696,6 +692,7 @@
             //红包
             CouponsViewController *myHBVC = [[CouponsViewController alloc]init];
             [self.navigationController pushViewController:myHBVC animated:YES];
+            
         }else if (indexPath.section == 3){
             //退出
             __weak typeof(self) weakSelf = self;
@@ -737,12 +734,7 @@
  */
 #pragma mark--我的资料数据请求
 -(void)myAccount{
-//    NSString *api_token = [RequestModel model:@"user" action:@"userinfo"];
-//    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
-//    
-//    __weak typeof(self) weakSelf = self;
-    
-    
+
     WS(ws);
     UserModel *userModel  = [UserModel new];
     

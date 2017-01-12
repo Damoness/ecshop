@@ -10,5 +10,5 @@
 
 @interface MyOrderViewController : UIViewController
 @property(nonatomic,strong)NSString *tagg;
-@property(nonatomic,strong)NSDictionary *tempDic;
+//@property(nonatomic,strong)NSDictionary *tempDic;
 @end

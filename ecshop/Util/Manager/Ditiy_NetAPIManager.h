@@ -53,6 +53,15 @@ typedef enum {
 //获取订单详细信息 toOrderDetailInfoParams
 -(void)request_OrderDetailInfo_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
 
+typedef enum{
+    PayWithBalance = 1 ,//余额支付
+    PayWithAlipay  = 4    //支付宝
+}PayType;
+
+//支付订单 toPayOrderParams
+-(void)request_PayOrder_WithPayType:(PayType)type Params:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block;
+
+
 #pragma mark - User
 
 //获取用户信息  toUserInfoParams

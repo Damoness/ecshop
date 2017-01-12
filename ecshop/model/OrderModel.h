@@ -58,4 +58,7 @@
 
 - (NSDictionary *)toParams;
 
+//支付订单参数
+- (NSDictionary *)toPayOrderParams;
+
 @end

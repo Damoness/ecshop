@@ -12,9 +12,10 @@
 #import "AppDelegate.h"
 @interface MyTabBarViewController ()
 {
-    UIImageView *customBar;
-    UILabel *smallLab1;
-    UIView *smallView1;
+    UIImageView *customBar; // 定制底部导航栏
+    
+    UILabel *shoppingCartBadgeLabel;
+    UIView *shoppingCartView;
 }
 @end
 
@@ -50,10 +51,10 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self creatUI];
+    [self initViews];
 
 }
--(void)creatUI
+-(void)initViews
 {
     
 #pragma mark --接收登录通知
@@ -101,19 +102,19 @@
         //            [button addSubview:badgeView];
         //            [customBar sendSubviewToBack:button];
         //        }
-        if (i == 2) {
-            smallView1 = [[UIView alloc]initWithFrame:CGRectMake(button.frame.size.width - 35, 3, 12, 12)];
-            smallView1.backgroundColor = [UIColor redColor];
-            [smallView1.layer setCornerRadius:6];
-            smallLab1 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 12, 12)];
-            smallLab1.font = [UIFont systemFontOfSize:8];
-            smallLab1.text = @"12";
-            smallLab1.textAlignment = NSTextAlignmentCenter;
-            smallLab1.textColor = [UIColor whiteColor];
-            [smallView1 addSubview:smallLab1];
-            [button addSubview:smallView1];
+        if (i == 2) { //购物车视图
+            shoppingCartView = [[UIView alloc]initWithFrame:CGRectMake(button.frame.size.width - 35, 3, 12, 12)];
+            shoppingCartView.backgroundColor = [UIColor redColor];
+            [shoppingCartView.layer setCornerRadius:6];
+            shoppingCartBadgeLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 12, 12)];
+            shoppingCartBadgeLabel.font = [UIFont systemFontOfSize:8];
+            shoppingCartBadgeLabel.text = @"12";
+            shoppingCartBadgeLabel.textAlignment = NSTextAlignmentCenter;
+            shoppingCartBadgeLabel.textColor = [UIColor whiteColor];
+            [shoppingCartView addSubview:shoppingCartBadgeLabel];
+            [button addSubview:shoppingCartView];
             
-            smallView1.hidden = YES;
+            shoppingCartView.hidden = YES;
             
         }
         [button setTitle:arr[i] forState:UIControlStateNormal];
@@ -178,16 +179,16 @@
 -(void)cartNum:(NSNotification *)sender{
 
     NSDictionary *dic = sender.object;
-    smallLab1.text = dic[@"cart_num"];
+    shoppingCartBadgeLabel.text = dic[@"cart_num"];
     if ([LoginModel isLogin]) {
-        smallView1.hidden = NO;
+        shoppingCartView.hidden = NO;
     }else{
-        smallView1.hidden = YES;
+        shoppingCartView.hidden = YES;
     }
 }
 -(void)quite:(NSNotification *)sender{
   
-    smallView1.hidden = YES;
+    shoppingCartView.hidden = YES;
     
 }
 @end

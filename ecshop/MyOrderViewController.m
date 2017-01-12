@@ -78,9 +78,6 @@
 }
 -(void)draw{
     
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
-    self.tempDic = app.tempDic;
     _table = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64) style:UITableViewStyleGrouped];
     _table.delegate = self;
     _table.dataSource = self;
@@ -91,9 +88,9 @@
 }
 //我的订单
 -(void)myOrder{
-    UIApplication *appli=[UIApplication sharedApplication];
-    AppDelegate *app=appli.delegate;
-    self.tempDic = app.tempDic;
+//    UIApplication *appli=[UIApplication sharedApplication];
+//    AppDelegate *app=appli.delegate;
+//    self.tempDic = app.tempDic;
 //    NSString *api_token = [RequestModel model:@"user" action:@"order"];
 //    NSDictionary *dict = @{@"api_token":api_token,@"key":[LoginModel key]};
 //    __weak typeof(self) weakSelf = self;

@@ -13,6 +13,7 @@
 #import "UIColor+Hex.h"
 #import "WXApiRequestHandler.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "OrderModel.h"
 @interface PayViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
     UITableView * table;
@@ -25,12 +26,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self createUI];
+    [self initViews];
     [self initNavigationBar];
     self.automaticallyAdjustsScrollViewInsets=NO;
-    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"订单中心" style:UIBarButtonItemStylePlain target:self action:@selector(centerBtn)];
+    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"订单中心" style:UIBarButtonItemStylePlain target:self action:@selector(orderCenterClicked)];
 }
--(void)createUI
+-(void)initViews
 {
     UIView * headView=[[UIView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 35)];
     UILabel * lab1=[[UILabel alloc]initWithFrame:CGRectMake(10, 7, 100, 20)];
@@ -52,12 +53,12 @@
     [self.view addSubview:table];
     
 }
--(void)centerBtn
+-(void)orderCenterClicked
 {
     MyOrderViewController * order=[[MyOrderViewController alloc]init];
-    order.tagg = @"0";
+    order.tagg = @"0";// 所以订单
     [self.navigationController pushViewController:order animated:YES];
-    //    [self presentViewController:order animated:YES completion:nil];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -107,8 +108,44 @@
 
     NSString * pathh;
     if (indexPath.section==0) {
-        UIAlertView * alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"确定使用您的账户余额支付吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        [alert show];
+
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定使用您的账户余额支付吗?"preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {
+
+                                                                
+                                                                  OrderModel *model = [OrderModel new];
+                                                                  model.order_id = _orderNs;
+                                                                  
+                                                                  
+                                                                  WS(ws)
+                                                                  [[Ditiy_NetAPIManager sharedManager]request_PayOrder_WithPayType:PayWithBalance Params:[model toPayOrderParams] andBlock:^(id data, NSError *error) {
+                                                                      
+                                                                      
+                                                                      if(data){
+                                                                          
+                                                                          [MBProgressHUD showSuccess:data[@"msg"]];
+                                                                          [ws.navigationController popToRootViewControllerAnimated:YES];
+                                                                          
+                                                                      }
+                                                                      
+                                                                      
+                                                                      
+                                                                  }];
+                                                                  
+
+                                                                  
+                                                              }];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler: nil];
+        
+        [alert addAction:cancelAction];
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        
     }else if (indexPath.section==1)
     {
         NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Setting" ofType:@"plist"];
@@ -135,30 +172,8 @@
     //        [self bizPay];
     //    }
 }
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex//点击弹窗按钮后
-{
-    NSLog(@"buttonIndex:%ld",(long)buttonIndex);
-    if (buttonIndex == 0) {//取消
-        
-    }else if (buttonIndex == 1){//确定
-        NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Setting" ofType:@"plist"];
-        NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-        NSString *url1 = data[@"url"];
-        
-        UIApplication * appli=[UIApplication sharedApplication];
-        NSString * pathp=[NSString stringWithFormat:@"%@/order/pay?key=%@&order_id=%@&type=1",url1,[LoginModel key],_orderNs];
-        AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
-        manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/html"];
-        manager.requestSerializer=[AFJSONRequestSerializer serializer];
-        [manager GET:pathp parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-            //NSLog(@"选择余额成功%@",responseObject);
-            UIAlertView * alll=[[UIAlertView alloc]initWithTitle:@"提示" message:responseObject[@"msg"] delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-            [alll show];
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            NSLog(@"%@",error.description);
-        }];
-    }
-}
+
+
 /*
  #pragma mark - Navigation
  

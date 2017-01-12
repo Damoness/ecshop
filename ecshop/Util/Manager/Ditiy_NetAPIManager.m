@@ -296,6 +296,29 @@
     
 }
 
+-(void)request_PayOrder_WithPayType:(PayType)type Params:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block{
+    
+    
+    
+    NSString *toPath = @"order/pay";
+    
+    NSMutableDictionary *mDic = [NSMutableDictionary dictionaryWithDictionary:params];
+    [mDic setObject:[NSString stringWithFormat:@"%d",type] forKey:@"type"];
+    
+    [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:toPath withParams:mDic withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+        
+        
+        block(data,error);
+        
+        
+        
+    }];
+    
+    
+    
+}
+
 -(void)request_GetOrderList_withOrderType:(OrderType)type Params:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block{
     
     NSString *toPath ;

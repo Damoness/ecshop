@@ -8,7 +8,6 @@
 
 #import "ThirdViewController.h"
 #import "RequestModel.h"
-//#import "GoodsModel.h"
 #import "AppDelegate.h"
 #import "MyGoodsViewCell.h"
 #import "LoginViewController.h"

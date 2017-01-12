@@ -99,6 +99,18 @@
     
 }
 
+//支付订单参数
+- (NSDictionary *)toPayOrderParams{
+    
+    NSMutableDictionary *params = @{
+                                    @"key":[LoginModel key],
+                                    @"order_id":self.order_id
+                                    }.mutableCopy;
+    
+    return params;
+    
+}
+
 - (NSDictionary *)toParams{
     
     return  [super toParams];

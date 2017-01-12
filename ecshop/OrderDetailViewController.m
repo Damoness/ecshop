@@ -55,18 +55,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    self.title = @"待收货";
-    [self draw];
+    [self initView];
     [self myOrder];
     [self initNavigationBar];
     // Do any additional setup after loading the view.
 }
--(void)draw{
+-(void)initView{
 #pragma mark-收货地址
+    
+    
     UIView * firstView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, TextHeight+80)];
     _labId = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
-//    shangpinModel *model = [shangpinModel new];
-//    model = _orderArray[0];
-//    NSString *orderSn = model.orderSn;
     _labId.text = [NSString stringWithFormat:@"订单号："];
     _labId.backgroundColor = [UIColor whiteColor];
     [firstView addSubview:_labId];
@@ -248,8 +247,9 @@
 */
 #pragma mark --tableview
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    return _goodsArray.count;
+    
     return _myOrderDetailModel.goods.count;
+    
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
