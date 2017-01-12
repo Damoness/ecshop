@@ -559,10 +559,6 @@
         kTipAlert(@"%@",@"亲,请选择运费");
         
     }else if (_yunfeiID !=NULL){
-//        UIApplication *appli=[UIApplication sharedApplication];
-//        AppDelegate *app=appli.delegate;
-//        NSString * receNs= app.tempDic[@"data"][@"key"];
-        
         
         NSString *key = [LoginModel key];
         
@@ -586,7 +582,15 @@
         model.amount = totalPrice.text;
         model.shipping_fee = _yunfei.text;
         model.expressage_id = _yunfeiID;
-        model.type = @"1";
+        
+        if (_sureId) {
+            model.type = @"1"; //直接购买
+        }else{
+            
+            model.type = @"0"; //购物车结算
+        }
+        
+        
         
         WS(weakSelf);
         

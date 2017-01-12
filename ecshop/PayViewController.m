@@ -148,25 +148,32 @@
         
     }else if (indexPath.section==1)
     {
-        NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Setting" ofType:@"plist"];
-        NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-        NSString *url1 = data[@"url"];
         
-        pathh=[NSString stringWithFormat:@"%@/order/pay?key=%@&order_id=%@&type=4",url1,[LoginModel key],_orderNs];
-        AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
-        manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/html"];
-        manager.requestSerializer=[AFJSONRequestSerializer serializer];
-        [manager GET:pathh parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSLog(@"选择支付宝成功%@",responseObject);
-            NSString * sttrr=responseObject[@"data"];
-            NSString *appScheme = @"alisdk";
-            [[AlipaySDK defaultService] payOrder:sttrr fromScheme:appScheme callback:^(NSDictionary *resultDic) {
-                //                    UIAlertView * aaa=[[UIAlertView alloc]initWithTitle:@"提示" message:@"购买成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                //                    [aaa show];
-            }];
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            NSLog(@"%@",error.description);
+        
+        OrderModel *model = [OrderModel new];
+        model.order_id = _orderNs;
+        
+        
+        WS(ws)
+        [[Ditiy_NetAPIManager sharedManager]request_PayOrder_WithPayType:PayWithAlipay Params:[model toPayOrderParams] andBlock:^(id data, NSError *error) {
+            
+            
+            if(data){
+                
+                NSString * orderStr=data[@"data"];
+                NSString *appScheme = @"alisdk123";
+                [[AlipaySDK defaultService] payOrder:orderStr fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+                    
+                    [MBProgressHUD showSuccess:@"购买成功"];
+                    [ws.navigationController popToRootViewControllerAnimated:YES];
+                }];
+                
+            }
+            
+            
+            
         }];
+        
     }
     //    else if(indexPath.section == 2){
     //        [self bizPay];
