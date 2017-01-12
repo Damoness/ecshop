@@ -153,7 +153,7 @@
         RequestModel * requ=[[RequestModel alloc]init];
         requ.delegate=self;
 
-        goodPathId=[NSString stringWithFormat:@"%@-%@",_sureId,_NumLab.text];
+        goodPathId=[NSString stringWithFormat:@"%@-%@",_sureId,_shopNum];
         NSString *path2=[goodPathId stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
         
         NSString *api_token = [RequestModel model:@"order" action:@"confirm"];

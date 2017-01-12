@@ -958,12 +958,15 @@
             
             OrderConfirmController * sure=[[OrderConfirmController alloc]init];
             sure.sureId=self.goodID;
+            
+            
             if (valueID!=NULL) {
                 sure.smallId=valueID;
             }else if (valueID==NULL)
             {
                 sure.smallId=[NSString stringWithFormat:@""];
             }
+            
             
             sure.shopNum=self.numLab.text;
             [self.navigationController pushViewController:sure animated:YES];

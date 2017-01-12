@@ -40,6 +40,6 @@ typedef enum
 @property (nonatomic, assign) DownViewState state3;
 @property (nonatomic, assign) TopViewState state;
 @property (nonatomic, assign) codeState CState;
-@property (nonatomic, strong) UILabel * numLab;
+@property (nonatomic, strong) UILabel * numLab;  //数量标签
 @property (nonatomic, strong) UILabel * colorLab;
 @end

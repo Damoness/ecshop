@@ -164,8 +164,20 @@
                 NSString *appScheme = @"alisdk123";
                 [[AlipaySDK defaultService] payOrder:orderStr fromScheme:appScheme callback:^(NSDictionary *resultDic) {
                     
-                    [MBProgressHUD showSuccess:@"购买成功"];
-                    [ws.navigationController popToRootViewControllerAnimated:YES];
+                    
+                    if([resultDic[@"resultStatus"]intValue] == 9000){
+                        
+                        [MBProgressHUD showSuccess:@"购买成功"];
+                        
+                        [ws.navigationController popToRootViewControllerAnimated:YES];
+                        
+                    }else{
+                        
+                        
+                        [MBProgressHUD showSuccess:resultDic[@"memo"]];
+                        
+                    }
+                    
                 }];
                 
             }
