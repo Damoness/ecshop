@@ -11,7 +11,7 @@
 #import "MJRefresh.h"
 #import "RequestModel.h"
 #import "UIImageView+AFNetworking.h"
-#import "goodDeailView.h"
+#import "GoodsDetailView.h"
 #import "SearchViewController.h"
 #import "FirstViewController.h"
 #import "UMSocial.h"
@@ -63,7 +63,7 @@
 @property (nonatomic, strong) UIWebView *webV;
 @property (nonatomic, strong) UIScrollView * headScroll;//滚动图
 @property (nonatomic, strong) UIPageControl * pagecontrol;
-@property (nonatomic, strong) goodDeailView * goodVC;
+@property (nonatomic, strong) GoodsDetailView * goodVC;
 @property (nonatomic, strong) UICollectionView * baseColl;//创建基本参数
 @property (nonatomic, strong) NSMutableArray * basedata;//基本参数的数据源
 @property (nonatomic, strong) NSDictionary * secondc; //侧边传来的数据
@@ -120,7 +120,7 @@
     UITapGestureRecognizer * tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(removeView:)];
     [self.view addGestureRecognizer:tap];
     
-    self.goodVC=[[goodDeailView alloc]init];
+    self.goodVC=[[GoodsDetailView alloc]init];
     _goodVC.recevieId=self.goodID;
     
     [self.navigationController.view addSubview:self.goodVC.view];

@@ -1,5 +1,5 @@
 //
-//  goodDeailView.h
+//  GoodsDetailView.h
 //  ecshop
 //
 //  Created by jsyh-mac on 15/12/15.
@@ -8,7 +8,7 @@
 
 #import "Sliderbar.h"
 
-@interface goodDeailView : Sliderbar
+@interface GoodsDetailView : Sliderbar
 
 @property (nonatomic, strong)UIImageView * iconImage;
 @property (nonatomic, strong)UILabel * price;//价格

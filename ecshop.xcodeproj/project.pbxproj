@@ -280,7 +280,7 @@
 		51F5353C1C3F96E300A6E478 /* hongBaoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F5353B1C3F96E300A6E478 /* hongBaoView.m */; };
 		51F5353F1C3F96F600A6E478 /* ExpressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F5353E1C3F96F600A6E478 /* ExpressView.m */; };
 		51F535421C3F978A00A6E478 /* GoodsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F535411C3F978A00A6E478 /* GoodsDetailViewController.m */; };
-		51F535451C3F984C00A6E478 /* goodDeailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F535441C3F984C00A6E478 /* goodDeailView.m */; };
+		51F535451C3F984C00A6E478 /* GoodsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F535441C3F984C00A6E478 /* GoodsDetailView.m */; };
 		51F6F5A21C47A83E00D9360B /* MyOrderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F6F5A01C47A83E00D9360B /* MyOrderViewCell.m */; };
 		51F6F5A31C47A83E00D9360B /* MyOrderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51F6F5A11C47A83E00D9360B /* MyOrderViewCell.xib */; };
 		51F7CA2F1C43614300586B72 /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F7CA2E1C43614300586B72 /* PayViewController.m */; };
@@ -859,8 +859,8 @@
 		51F5353E1C3F96F600A6E478 /* ExpressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressView.m; sourceTree = "<group>"; };
 		51F535401C3F978A00A6E478 /* GoodsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailViewController.h; sourceTree = "<group>"; };
 		51F535411C3F978A00A6E478 /* GoodsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailViewController.m; sourceTree = "<group>"; };
-		51F535431C3F984C00A6E478 /* goodDeailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goodDeailView.h; sourceTree = "<group>"; };
-		51F535441C3F984C00A6E478 /* goodDeailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goodDeailView.m; sourceTree = "<group>"; };
+		51F535431C3F984C00A6E478 /* GoodsDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailView.h; sourceTree = "<group>"; };
+		51F535441C3F984C00A6E478 /* GoodsDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailView.m; sourceTree = "<group>"; };
 		51F6F59F1C47A83E00D9360B /* MyOrderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderViewCell.h; sourceTree = "<group>"; };
 		51F6F5A01C47A83E00D9360B /* MyOrderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderViewCell.m; sourceTree = "<group>"; };
 		51F6F5A11C47A83E00D9360B /* MyOrderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyOrderViewCell.xib; sourceTree = "<group>"; };
@@ -1893,8 +1893,8 @@
 			children = (
 				51FD42081C278AF600D260A8 /* SliderViewController.h */,
 				51FD42091C278AF600D260A8 /* SliderViewController.m */,
-				51F535431C3F984C00A6E478 /* goodDeailView.h */,
-				51F535441C3F984C00A6E478 /* goodDeailView.m */,
+				51F535431C3F984C00A6E478 /* GoodsDetailView.h */,
+				51F535441C3F984C00A6E478 /* GoodsDetailView.m */,
 				51FD2F0C1C34BB4B0032FE14 /* GoodRightCell.h */,
 				51FD2F0D1C34BB4B0032FE14 /* GoodRightCell.m */,
 			);
@@ -2686,7 +2686,7 @@
 				3CD680571C58971000966E38 /* BarCodeViewController.m in Sources */,
 				519377FA1C8E632300B2A2B6 /* MBProgressHUD+MJ.m in Sources */,
 				9C36AD0F1E0230AC0021C6CE /* PersonalInfoModel.m in Sources */,
-				51F535451C3F984C00A6E478 /* goodDeailView.m in Sources */,
+				51F535451C3F984C00A6E478 /* GoodsDetailView.m in Sources */,
 				51F12F531C0C4982002C62D0 /* README.md in Sources */,
 				3C10838F1C3F43DB003E436B /* openssl_wrapper.m in Sources */,
 				51F12EC91C0C14AA002C62D0 /* MASLayoutConstraint.m in Sources */,

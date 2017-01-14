@@ -1,12 +1,12 @@
 //
-//  goodDeailView.m
+//  GoodsDetailView.m
 //  ecshop
 //
 //  Created by jsyh-mac on 15/12/15.
 //  Copyright © 2015年 jsyh. All rights reserved.
 //
 
-#import "goodDeailView.h"
+#import "GoodsDetailView.h"
 #import "GoodsDetailViewController.h"
 #import "GoodRightCell.h"
 #import "RequestModel.h"
@@ -15,8 +15,9 @@
 #import "AppDelegate.h"
 #import "JSONKit.h"
 #import "LoginViewController.h"
+#import "GoodsModel.h"
 #define imageH 100
-@interface goodDeailView ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,sendRequestInfo,UIAlertViewDelegate>
+@interface GoodsDetailView ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,sendRequestInfo,UIAlertViewDelegate>
 {
     NSString * valueId;//传入购物车内的id
     NSMutableString * countPrice;//折扣价格
@@ -28,7 +29,7 @@
 @property (nonatomic, strong) UICollectionView * goodColl;//collecion
 @end
 
-@implementation goodDeailView
+@implementation GoodsDetailView
 -(void)viewWillAppear:(BOOL)animated{
 
     if ([LoginModel isLogin]) {
@@ -46,11 +47,17 @@
 }
 #pragma mark-请求数据
 -(void)reloadInfomation{
-     NSString *api_token = [RequestModel model:@"goods" action:@"goodsinfo"];
-    NSDictionary *dict = @{@"api_token":api_token,@"goods_id":self.recevieId};
-//    __weak typeof(self) weakSelf = self;
-    [RequestModel requestWithDictionary:dict model:@"goods" action:@"goodsinfo" block:^(id result) {
-        [self sendMessage:result];
+
+    GoodsModel *model = [GoodsModel new];
+    
+    model.goods_id = self.recevieId;
+
+    
+    WS(ws)
+    [[Ditiy_NetAPIManager sharedManager]request_DetailedGoodsInfo_WithParams:[model toDetailedGoodsInfoParams] andBlock:^(id data, NSError *error) {
+       
+        [ws sendMessage:data];
+        
     }];
     
 }
@@ -286,10 +293,6 @@
 -(void)buttclick:(id)sender
 {
     
-    
-    
-    
-
     
     if ([LoginModel isLogin]) {
         
