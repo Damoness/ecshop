@@ -74,13 +74,13 @@
 -(void)reloadInfo
 {
     _collectDatasource=[[NSMutableArray alloc]init];
-    NSString *api_token = [RequestModel model:@"first" action:@"keywords"];
-    NSDictionary * dic;
-    dic= @{@"api_token":api_token};
-    [RequestModel requestWithDictionary:dic model:@"first" action:@"keywords" block:^(id result) {
-        [_collectDatasource addObjectsFromArray:result[@"data"]];
+    
+    [[Ditiy_NetAPIManager sharedManager]request_HotSearchKeyBlock:^(id data, NSError *error) {
+       
+        [_collectDatasource addObjectsFromArray:data[@"data"]];
         [_adCollect reloadData];
         [_secondAdCollect reloadData];
+        
     }];
     
 }

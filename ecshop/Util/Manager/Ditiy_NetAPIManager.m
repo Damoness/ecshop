@@ -524,4 +524,22 @@
     
 }
 
+
+
+//获取热搜关键字
+-(void)request_HotSearchKeyBlock:(void (^)(id data ,NSError *error))block{
+    
+    NSString *toPath = @"first/keywords";
+    
+    [[DitiyNetAPIClient sharedJsonClient]requestJsonDataWithPath:toPath withParams:nil withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+       
+        
+        block(data,error);
+        
+    }];
+    
+}
+
+
+
 @end

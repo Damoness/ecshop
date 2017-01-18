@@ -139,5 +139,10 @@ typedef enum{
 
 
 
+#pragma mark - Search 搜索
+
+//获取热搜关键字
+-(void)request_HotSearchKeyBlock:(void (^)(id data ,NSError *error))block;
+
 
 @end
