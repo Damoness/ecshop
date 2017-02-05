@@ -23,6 +23,7 @@
 #import "MyTabBarViewController.h"
 #import "UIColor+Hex.h"
 #import "CouponsViewController.h"
+#import "MyRetailViewController.h"
 //尾视图按钮高度
 #define kViewHeight 50
 #define kColorBack [UIColor colorWithRed:239/255.0 green:239/255.0 blue:244/255.0 alpha:1.0]
@@ -725,6 +726,11 @@
             //cell.lab.text = @"分销";
 //            CouponsViewController *myHBVC = [[CouponsViewController alloc]init];
 //            [self.navigationController pushViewController:myHBVC animated:YES];
+            
+            MyRetailViewController *myRetailVC = [[MyRetailViewController alloc]init];
+            
+            [self presentViewController:myRetailVC animated:YES completion:nil];
+            
         }
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];

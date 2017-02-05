@@ -382,6 +382,7 @@
 		9CFA5ECF1E471A0600673090 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFA5EAC1E471A0600673090 /* ThirdViewController.m */; };
 		9CFA5ED01E471A0600673090 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFA5EAE1E471A0600673090 /* UIColor+Hex.m */; };
 		9CFA5ED11E471A0600673090 /* UserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFA5EB01E471A0600673090 /* UserGuideViewController.m */; };
+		9CFA5ED41E47248400673090 /* MyRetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFA5ED31E47248400673090 /* MyRetailViewController.m */; };
 		9CFDBFE01E2B737400A75BCD /* SearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDBFDF1E2B737400A75BCD /* SearchModel.m */; };
 /* End PBXBuildFile section */
 
@@ -1039,6 +1040,8 @@
 		9CFA5EAE1E471A0600673090 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		9CFA5EAF1E471A0600673090 /* UserGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserGuideViewController.h; sourceTree = "<group>"; };
 		9CFA5EB01E471A0600673090 /* UserGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserGuideViewController.m; sourceTree = "<group>"; };
+		9CFA5ED21E47248400673090 /* MyRetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRetailViewController.h; sourceTree = "<group>"; };
+		9CFA5ED31E47248400673090 /* MyRetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRetailViewController.m; sourceTree = "<group>"; };
 		9CFDBFDE1E2B737400A75BCD /* SearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchModel.h; sourceTree = "<group>"; };
 		9CFDBFDF1E2B737400A75BCD /* SearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchModel.m; sourceTree = "<group>"; };
 		CD8F558534F74A5EEBE4F568 /* Pods-ecshop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecshop.release.xcconfig"; path = "Pods/Target Support Files/Pods-ecshop/Pods-ecshop.release.xcconfig"; sourceTree = "<group>"; };
@@ -2160,6 +2163,14 @@
 		9CFA5E6F1E471A0600673090 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				9CFA5E7F1E471A0600673090 /* FirstViewController.h */,
+				9CFA5E801E471A0600673090 /* FirstViewController.m */,
+				9CFA5EA71E471A0600673090 /* SecondViewController.h */,
+				9CFA5EA81E471A0600673090 /* SecondViewController.m */,
+				9CFA5EAB1E471A0600673090 /* ThirdViewController.h */,
+				9CFA5EAC1E471A0600673090 /* ThirdViewController.m */,
+				9CFA5E831E471A0600673090 /* FourthViewController.h */,
+				9CFA5E841E471A0600673090 /* FourthViewController.m */,
 				9CFA5E701E471A0600673090 /* AboutViewController.h */,
 				9CFA5E711E471A0600673090 /* AboutViewController.m */,
 				9CFA5E721E471A0600673090 /* AboutViewController.xib */,
@@ -2175,12 +2186,8 @@
 				9CFA5E7C1E471A0600673090 /* CouponsViewController.m */,
 				9CFA5E7D1E471A0600673090 /* ExpressView.h */,
 				9CFA5E7E1E471A0600673090 /* ExpressView.m */,
-				9CFA5E7F1E471A0600673090 /* FirstViewController.h */,
-				9CFA5E801E471A0600673090 /* FirstViewController.m */,
 				9CFA5E811E471A0600673090 /* ForgetPasswordViewController.h */,
 				9CFA5E821E471A0600673090 /* ForgetPasswordViewController.m */,
-				9CFA5E831E471A0600673090 /* FourthViewController.h */,
-				9CFA5E841E471A0600673090 /* FourthViewController.m */,
 				9CFA5E851E471A0600673090 /* GoodsDetailViewController.h */,
 				9CFA5E861E471A0600673090 /* GoodsDetailViewController.m */,
 				9CFA5E871E471A0600673090 /* hongBaoView.h */,
@@ -2215,16 +2222,14 @@
 				9CFA5EA41E471A0600673090 /* SearchListViewController.m */,
 				9CFA5EA51E471A0600673090 /* SearchViewController.h */,
 				9CFA5EA61E471A0600673090 /* SearchViewController.m */,
-				9CFA5EA71E471A0600673090 /* SecondViewController.h */,
-				9CFA5EA81E471A0600673090 /* SecondViewController.m */,
 				9CFA5EA91E471A0600673090 /* SettingViewController.h */,
 				9CFA5EAA1E471A0600673090 /* SettingViewController.m */,
-				9CFA5EAB1E471A0600673090 /* ThirdViewController.h */,
-				9CFA5EAC1E471A0600673090 /* ThirdViewController.m */,
 				9CFA5EAD1E471A0600673090 /* UIColor+Hex.h */,
 				9CFA5EAE1E471A0600673090 /* UIColor+Hex.m */,
 				9CFA5EAF1E471A0600673090 /* UserGuideViewController.h */,
 				9CFA5EB01E471A0600673090 /* UserGuideViewController.m */,
+				9CFA5ED21E47248400673090 /* MyRetailViewController.h */,
+				9CFA5ED31E47248400673090 /* MyRetailViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -2684,6 +2689,7 @@
 				3C10838A1C3F43DB003E436B /* base64.m in Sources */,
 				51F12EC61C0C14AA002C62D0 /* MASCompositeConstraint.m in Sources */,
 				51FD420A1C278AF600D260A8 /* SliderViewController.m in Sources */,
+				9CFA5ED41E47248400673090 /* MyRetailViewController.m in Sources */,
 				9CFA5EBC1E471A0600673090 /* GoodsDetailViewController.m in Sources */,
 				51F2716A1C0D939300619901 /* FMDatabaseQueue.m in Sources */,
 				3C7D67431C35242600EAB2AB /* MyGoodsViewCell.m in Sources */,
