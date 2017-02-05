@@ -17,7 +17,7 @@
 	<key>WXappSecret</key>
 	<string>9f6d0aae0c0709389fbafca536da345d</string>
 	<key>shareurl</key>
-	<string>http://sitmarket.ditiy.com/shopapi/index.php/goods_index</string>
+	<string>http://market.ditiy.com/shopapi/index.php/goods_index</string>
 	<key>QQWithAppId</key>
 	<string>1104948775</string>
 	<key>QQappKey</key>
