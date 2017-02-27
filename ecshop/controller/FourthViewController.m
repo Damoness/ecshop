@@ -145,24 +145,23 @@
     _userView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     _userView.hidden = YES;
     [self initNavigationBar];
+    
     //背景图
-    //    UIImageView *imgView = [[UIImageView alloc]initWithFrame:[app createFrameWithX:0 andY:0 andWidth:375 andHeight:250]];
     UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, (self.view.frame.size.height/7)*2)];
     imgView.userInteractionEnabled = YES;
-    UIImage *image = [UIImage imageNamed:@"会员中心-已登录-背景1.png"];
-    
-    imgView.image = image;
-    
+    imgView.image = [UIImage imageNamed:@"会员中心-已登录-背景1.png"];
     [_userView addSubview:imgView];
+    
+    
+    //跳转到编辑个人信息
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, 64, imgView.frame.size.width, imgView.frame.size.height - 64);
     [button addTarget:self action:@selector(changeToMine:) forControlEvents:UIControlEventTouchUpInside];
     [_userView addSubview:button];
+    
+    
     //头像
-    
     _headView1 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 90, self.view.frame.size.width/5, self.view.frame.size.width/5)];
-    
-    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *imageFilePath = [documentsDirectory stringByAppendingPathComponent:@"selfPhoto.jpg"];
@@ -176,13 +175,12 @@
         UIImage *headImg = [UIImage imageNamed:@"null_head.png"];
         _headView1.image = headImg;
     }
-    
-    
     [_userView addSubview:_headView1];
+    
+    
     //底部色块
-    
+
     UIView *backgroudView = [[UIView alloc]initWithFrame:CGRectMake(0, imgView.frame.size.height - 40, self.view.frame.size.width, 40)];
-    
     UIImageView *backImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
     UIImage *backImg = [UIImage imageNamed:@"login_title_foot_bg.png"];
     backImageView.image = backImg;
@@ -190,8 +188,6 @@
     [imgView addSubview:backgroudView];
     //关注商品按钮
     UIButton *goodsBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    
     goodsBtn.frame = CGRectMake(0, imgView.frame.size.height - 40, self.view.frame.size.width/3, 40);
     //关注商品数量
     
@@ -389,7 +385,7 @@
     if (self.tagg == 1) {
         return 3;
     }else{
-        return 5;
+        return 6;
     }
     
 }
@@ -587,7 +583,7 @@
     }else if (section == 1) {
         return 10;
     }else{
-        return 9;
+        return 1;
     }
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -628,18 +624,29 @@
             }
             
         }else if(indexPath.section == 1){
-            cell.lab.text = @"地址管理";
-            cell.img.image = [UIImage imageNamed:@"个人中心-地址管理icon.png"];
+            cell.lab.text = @"我的分享";
+            cell.myRightLabel.text = @"查看分享信息";
+            cell.img.image = [UIImage imageNamed:@"myshare"];
         }else if(indexPath.section == 2){
-            cell.lab.text = @"我的红包";
-            cell.img.image = [UIImage imageNamed:@"huiyuanzhongxin_hongbao"];
+            cell.lab.text = @"评价/晒单";
+            cell.myRightLabel.text = @"查看评价/晒单";
+            cell.img.image = [UIImage imageNamed:@"myevaluate"];
         }else if(indexPath.section == 3){
-            cell.focusStyle = UITableViewCellFocusStyleDefault;
-            [cell setAccessoryType:UITableViewCellAccessoryNone];
-            cell.lab.text = @"退出";
-            cell.img.image = [UIImage imageNamed:@"个人中心-退出icon.png"];
+            cell.lab.text = @"我的收藏";
+            cell.myRightLabel.text = @"商品收藏/店铺收藏";
+            cell.img.image = [UIImage imageNamed:@"mycollect"];
         }else if(indexPath.section == 4){
-            cell.lab.text = @"分销";
+            cell.lab.text = @"收货地址";
+            cell.myRightLabel.text = @"添加/修改";
+            cell.img.image = [UIImage imageNamed:@"mylocation"];
+        }else if(indexPath.section == 5){
+            
+            //cell.focusStyle = UITableViewCellFocusStyleDefault;
+            //[cell setAccessoryType:UITableViewCellAccessoryNone];
+            cell.lab.text = @"退出";
+            cell.myRightLabel.text = @"退出用户登录";
+            cell.img.image = [UIImage imageNamed:@"个人中心-退出icon.png"];
+
         }
         return cell;
     }else{
@@ -684,20 +691,38 @@
         
             myVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:myVC animated:YES];
-        }else if(indexPath.section == 1){
+        }else if(indexPath.section == 1){//我的分享
+    
+            
+            
+            
+        }
+        else if (indexPath.section == 2){//评价/晒单
+//            //红包
+//            CouponsViewController *myHBVC = [[CouponsViewController alloc]init];
+//            [self.navigationController pushViewController:myHBVC animated:YES];
+            
+        }else if (indexPath.section == 3){//我的收藏
+      
+            
+        }else if(indexPath.section == 4){//收货地址
+            //cell.lab.text = @"分销";
+//            CouponsViewController *myHBVC = [[CouponsViewController alloc]init];
+//            [self.navigationController pushViewController:myHBVC animated:YES];
+            
+//            MyRetailViewController *myRetailVC = [[MyRetailViewController alloc]init];
+//            
+//            [self presentViewController:myRetailVC animated:YES completion:nil];
+            
             //地址管理
             AddressViewController *addressVC = [AddressViewController new];
             addressVC.tempDic = self.tempDic;
             addressVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:addressVC animated:YES];
             
-        }
-        else if (indexPath.section == 2){
-            //红包
-            CouponsViewController *myHBVC = [[CouponsViewController alloc]init];
-            [self.navigationController pushViewController:myHBVC animated:YES];
             
-        }else if (indexPath.section == 3){
+        }else if(indexPath.section == 5){//退出
+        
             //退出
             __weak typeof(self) weakSelf = self;
             UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"" message:@"您确定要退出吗？"preferredStyle:UIAlertControllerStyleAlert];
@@ -721,16 +746,6 @@
             [alertVC addAction:cancelAction];
             [alertVC addAction:okAction];
             [self presentViewController:alertVC animated:YES completion:nil];
-            
-        }else if(indexPath.section == 4){
-            //cell.lab.text = @"分销";
-//            CouponsViewController *myHBVC = [[CouponsViewController alloc]init];
-//            [self.navigationController pushViewController:myHBVC animated:YES];
-            
-            MyRetailViewController *myRetailVC = [[MyRetailViewController alloc]init];
-            
-            [self presentViewController:myRetailVC animated:YES completion:nil];
-            
         }
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
