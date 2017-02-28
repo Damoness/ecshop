@@ -39,6 +39,10 @@
     NSString *QQWithAppId = data[@"QQWithAppId"];
     NSString *QQappKey = data[@"QQappKey"];
     
+    
+
+    
+    
     //友盟分享
     [UMSocialData setAppKey:UMSharekey];
     //微信分享

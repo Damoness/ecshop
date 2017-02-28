@@ -24,6 +24,8 @@
 #import "UIColor+Hex.h"
 #import "CouponsViewController.h"
 #import "MyRetailViewController.h"
+#import "MemberRegisterViewController.h"
+
 //尾视图按钮高度
 #define kViewHeight 50
 #define kColorBack [UIColor colorWithRed:239/255.0 green:239/255.0 blue:244/255.0 alpha:1.0]
@@ -693,7 +695,9 @@
             [self.navigationController pushViewController:myVC animated:YES];
         }else if(indexPath.section == 1){//我的分享
     
-            
+            MemberRegisterViewController *mrVC = [MemberRegisterViewController new];
+            mrVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:mrVC animated:YES];
             
             
         }
@@ -701,6 +705,10 @@
 //            //红包
 //            CouponsViewController *myHBVC = [[CouponsViewController alloc]init];
 //            [self.navigationController pushViewController:myHBVC animated:YES];
+            
+            UIViewController *vc = [UIViewController new];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
             
         }else if (indexPath.section == 3){//我的收藏
       
