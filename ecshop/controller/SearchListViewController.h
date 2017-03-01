@@ -14,6 +14,6 @@
 @property (nonatomic, copy) NSString * goodIDS;//商品id
 @property (nonatomic, copy) NSString * gooddid;//从第二页面调过来的
 @property (nonatomic, strong) NSMutableArray * secondArr;//接受filtrate
-@property (nonatomic, copy) NSString * typeStay;//type的状态
+@property (nonatomic, copy) NSString * typeState;//type的状态
 @property (nonatomic, copy) NSString * goodType;
 @end

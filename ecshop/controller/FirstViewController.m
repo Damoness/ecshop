@@ -159,7 +159,8 @@
     NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
     NSString *url1 = data[@"shareurl"];
     
-    NSString *urlStr=url1;
+    NSString *urlStr= indexURLStr;
+    
     NSURL *url=[NSURL URLWithString:urlStr];
     requestt = [[NSURLRequest alloc]initWithURL:url];
     [_webview loadRequest:requestt];
@@ -224,7 +225,7 @@
     
     
     
-    if ([newUrl isEqualToString:url1])
+    if ([newUrl isEqualToString:indexURLStr])
     {
         return YES;
     }
@@ -234,9 +235,9 @@
     
     if (!([newUrl rangeOfString:@"type"].location==NSNotFound)) {
     
-//        SearchListViewController * search=[[SearchListViewController alloc]init];
-//        search.typeStay=_myType;
-//        [self.navigationController pushViewController:search animated:NO];
+        SearchListViewController * search=[[SearchListViewController alloc]init];
+        search.typeState=_myType;
+        [self.navigationController pushViewController:search animated:NO];
         
     }else if(!([newUrl rangeOfString:@"ad"].location==NSNotFound)){
         

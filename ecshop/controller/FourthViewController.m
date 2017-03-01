@@ -49,6 +49,15 @@
 //用户名
 @property (nonatomic,strong)UILabel *label1;
 
+//分享豆
+@property (nonatomic,strong)UILabel *shareBeanLabel;
+//分享劵
+@property (nonatomic,strong)UILabel *shareTicketLabel;
+
+//用户身份
+@property (nonatomic,strong)UILabel *rankNameLabel;
+
+
 //登录视图
 @property (nonatomic,strong)UIView *loginView;
 //用户视图
@@ -144,26 +153,37 @@
 -(void)configUserView{
     
     
-    _userView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    _userView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
     _userView.hidden = YES;
     [self initNavigationBar];
     
+
+    
     //背景图
-    UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, (self.view.frame.size.height/7)*2)];
+    UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, (kScreenHeight/7)*2)];
     imgView.userInteractionEnabled = YES;
-    imgView.image = [UIImage imageNamed:@"会员中心-已登录-背景1.png"];
+    //imgView.image = [UIImage imageNamed:@"会员中心-已登录-背景1.png"];
+    imgView.backgroundColor = RGB(255, 71, 2);
     [_userView addSubview:imgView];
+    
+//    
+//    UIButton *settingButton = [[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth - 80, 20, 60, 30)];
+//    [settingButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [settingButton setTitle:@"设置" forState:UIControlStateNormal];
+//    
+//    
+//    [_userView addSubview:settingButton];
     
     
     //跳转到编辑个人信息
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0, 64, imgView.frame.size.width, imgView.frame.size.height - 64);
+    button.frame = CGRectMake(0, 0, imgView.frame.size.width, imgView.frame.size.height - 64);
     [button addTarget:self action:@selector(changeToMine:) forControlEvents:UIControlEventTouchUpInside];
     [_userView addSubview:button];
     
     
     //头像
-    _headView1 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 90, self.view.frame.size.width/5, self.view.frame.size.width/5)];
+    _headView1 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 90,kScreenWidth/5, kScreenWidth/5)];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *imageFilePath = [documentsDirectory stringByAppendingPathComponent:@"selfPhoto.jpg"];
@@ -178,6 +198,12 @@
         _headView1.image = headImg;
     }
     [_userView addSubview:_headView1];
+    
+    
+    
+    //imgView
+    
+
     
     
     //底部色块
@@ -260,6 +286,93 @@
     UIView *viewLine2 = [[UIView alloc]initWithFrame:CGRectMake((self.view.frame.size.width/3)*2, imgView.frame.size.height - 35, 1, 30)];
     viewLine2.backgroundColor = [UIColor whiteColor];
     [imgView addSubview:viewLine2];
+    
+    
+    
+    UIView *shareBeanView = ({
+        
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0,imgView.frame.size.height - 80 , kScreenWidth/2, 80)];
+        
+        view.backgroundColor = RGB(255, 71, 2);
+        
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth/4- 20, 80/2-20, 20, 20)];
+        
+        
+        imageView.image = [UIImage imageNamed:@"mybean"];
+        
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth/4 + 5, 80/2 - 20, 80, 20)];
+        label.text = @"分享豆";
+        label.font = [UIFont systemFontOfSize:14];
+        label.textColor = [UIColor whiteColor];
+        
+        self.shareBeanLabel = [[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth/4 - 80 + 10 , 80/2 + 10, 160, 20)];
+        self.shareBeanLabel.text = @"0.0";
+        self.shareBeanLabel.textAlignment = NSTextAlignmentCenter;
+        self.shareBeanLabel.font = [UIFont systemFontOfSize:16];
+        self.shareBeanLabel.textColor = [UIColor whiteColor];
+        
+        [view addSubview:label];
+        [view addSubview:imageView];
+        [view addSubview: self.shareBeanLabel];
+        
+        view.layer.borderWidth = 0.5;
+        view.layer.borderColor = [[UIColor grayColor] CGColor];
+        
+        view;
+    });
+    
+
+    UIView *shareTicketView = ({
+        
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(kScreenWidth/2,imgView.frame.size.height - 80 , kScreenWidth/2, 80)];
+        
+        view.backgroundColor = RGB(255, 71, 2);
+        
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth/4- 20, 80/2-20, 20, 20)];
+        
+        imageView.image = [UIImage imageNamed:@"voucher"];
+        
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth/4 + 5, 80/2 - 20, 80, 20)];
+        label.text = @"分享券";
+        label.font = [UIFont systemFontOfSize:14];
+        label.textColor = [UIColor whiteColor];
+        
+        self.shareTicketLabel = [[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth/4 - 80 + 10 , 80/2 + 10, 160, 20)];
+        self.shareTicketLabel.text = @"0.0";
+        self.shareTicketLabel.textAlignment = NSTextAlignmentCenter;
+        self.shareTicketLabel.font = [UIFont systemFontOfSize:16];
+        self.shareTicketLabel.textColor = [UIColor whiteColor];
+        
+        [view addSubview:label];
+        [view addSubview:imageView];
+        [view addSubview: self.shareTicketLabel];
+        
+        view.layer.borderWidth = 0.5;
+        view.layer.borderColor = [[UIColor grayColor] CGColor];
+        
+        view;
+    });
+    
+    self.rankNameLabel = ({
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth - 60, imgView.frame.size.height /2 - 10, 70, 20)];
+        
+        
+        label.text = @"消费者";
+        label.font = [UIFont systemFontOfSize:14];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.textColor = [UIColor whiteColor];
+        label.backgroundColor = RGB(179, 56, 11);
+        label.layer.cornerRadius = 10;
+        label.layer.masksToBounds = YES;
+        label;
+    
+    });
+    
+        
+    [imgView addSubview:shareBeanView];
+    [imgView addSubview:shareTicketView];
+    [imgView addSubview:self.rankNameLabel];
+    
     
     
     _table = [[UITableView alloc]initWithFrame:CGRectMake(0, (self.view.frame.size.height/7)*2 + 64, self.view.frame.size.width, (self.view.frame.size.height/7)*4 - 44) style:UITableViewStyleGrouped];
@@ -600,7 +713,6 @@
             if (indexPath.row == 0) {
                 cell.lab.text = @"我的订单";
                 cell.img.image = [UIImage imageNamed:@"个人中心-我的订单icon.png"];
-                
             }
             
         }else if(indexPath.section == 1){
@@ -786,6 +898,11 @@
             ws.labelForBalance1.text = ws.model.user_money;
             ws.labelForIntegration1.text = ws.model.integration;
             ws.label1.text = ws.model.nick_name;
+            
+            ws.shareTicketLabel.text = ws.model.integration;
+            ws.shareBeanLabel.text = ws.model.user_money;
+            ws.rankNameLabel.text = ws.model.rank_name;
+            
             NSString *a = [NSString stringWithFormat:@"%@",ws.model.pay];
             NSString *b = [NSString stringWithFormat:@"%@",ws.model.shipping_send];
             

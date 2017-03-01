@@ -19,6 +19,7 @@
 #import "MJRefresh.h"
 #import "UIColor+Hex.h"
 #import "MyTabBarViewController.h"
+///#import "UIImageView+WebCache.h"
 #define topHeight 50   //综合,销量,筛选栏的高度
 @interface SearchListViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UITableViewDelegate,UITableViewDataSource,sendRequestInfo>{
     BOOL changeItem;//点击改变列表排布方式
@@ -78,8 +79,8 @@
     //初始化排序的初始状态
     _btnOrder=@"1";
     
-    _view1=[[UIView alloc]initWithFrame:CGRectMake(0, 64+topHeight, self.view.frame.size.width, self.view.frame.size.height)];
-    _view2=[[UIView alloc]initWithFrame:CGRectMake(0, 64+topHeight, self.view.frame.size.width, self.view.frame.size.height)];
+    _view1=[[UIView alloc]initWithFrame:CGRectMake(0, 64+topHeight, kScreenWidth, kScreenHeight)];
+    _view2=[[UIView alloc]initWithFrame:CGRectMake(0, 64+topHeight, kScreenWidth, kScreenHeight)];
     [self createTable];
     //请求数据
     [self reloadRequestInfo];
@@ -94,7 +95,7 @@
     
 }
 #pragma mark-请求数据
--(void)reloadRequestInfo
+-(void)reloadRequestInfo2
 {
     
     RequestModel *rev=[[RequestModel alloc]init];
@@ -102,22 +103,68 @@
     
     NSString * path2=[NSString stringWithFormat:@"%@",_secondArr];
     NSString * path3=[path2 stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    if (self.typeStay==NULL) {
-        self.typeStay=@"";
+    if (self.typeState==NULL) {
+        self.typeState=@"";
     }if (self.gooddid==NULL) {
         self.gooddid=@"";
     }if (self.secondLab==NULL) {
         self.secondLab=@"";
     }
     NSString *api_token = [RequestModel model:@"first" action:@"index"];
-    NSDictionary *dict = @{@"api_token":api_token,@"keyword":self.secondLab,@"cat_id":self.gooddid,@"type":@"search",@"order":_btnOrder,@"page":@1,@"filtrate":path3,@"maintype":@"",@"c":self.typeStay};
+    
+//    NSDictionary *dict = @{@"api_token":api_token,@"keyword":self.secondLab,@"cat_id":self.gooddid,@"type":@"search",@"order":_btnOrder,@"page":@1,@"filtrate":path3,@"maintype":self.typeStay,@"c":self.typeStay};
+    
+    NSDictionary *dict = @{@"api_token":api_token,@"keyword":self.secondLab,@"type":self.typeState,@"order":_btnOrder,@"page":@1,@"maintype":self.typeState};
+    
     __weak typeof(self) weakSelf = self;
+    
+    
     [RequestModel requestWithDictionary:dict model:@"first" action:@"index" block:^(id result) {
         [weakSelf sendMessage:result];
         
     }];
 
 }
+
+-(void)reloadRequestInfo
+{
+    
+    RequestModel *rev=[[RequestModel alloc]init];
+    rev.delegate=self;
+    
+
+    NSMutableDictionary *params = [NSMutableDictionary new];
+    
+    
+    if ([self.typeState isEqualToString:@"search"]) {
+        
+//        params=@{@"keyword":self.secondLab,@"cat_id":self.gooddid,@"type":@"search",@"order":_btnOrder,@"page":@1,@"filtrate":path3,@"maintype":self.typeStay,@"c":self.typeStay};
+        
+        params = @{@"type":@"search",@"keyword":self.secondLab,@"order":_btnOrder,@"page":@1}.mutableCopy;
+        
+
+        
+    }
+    else{
+        
+       params = @{@"type":@"search",@"c":self.typeState,@"order":_btnOrder,@"page":@1}.mutableCopy;
+        
+
+    }
+   
+    
+//    params = @{@"keyword":self.secondLab,@"type":@"search",@"order":_btnOrder,@"page":@1}.mutableCopy;
+    
+
+    __weak typeof(self) weakSelf = self;
+
+    [RequestModel requestWithDictionary:params model:@"first" action:@"index" block:^(id result) {
+        [weakSelf sendMessage:result];
+        
+    }];
+    
+}
+
 -(void)sendMessage:(id)message{
     if (![message[@"code"] isEqual:@"0"]) {
         
@@ -169,7 +216,7 @@
 -(void)createTable
 {
     [self.view addSubview:_view1];
-    _table=[[UITableView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width,self.view.frame.size.height-64-topHeight)];
+    _table=[[UITableView alloc]initWithFrame:CGRectMake(0, 0,kScreenWidth,kScreenHeight-64-topHeight)];
     _table.delegate=self;
     _table.dataSource=self;
 //    UIView *view = [UIView new];
@@ -203,7 +250,7 @@
     
     for (int i=0; i<4; i++) {
         UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame=CGRectMake(i*self.view.frame.size.width/4, 64, self.view.frame.size.width/4, topHeight);
+        button.frame=CGRectMake(i*kScreenWidth/4, 64, kScreenWidth/4, topHeight);
         [button setTitle:titleArr[i] forState:UIControlStateNormal];
         if (i==1) {
             [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
@@ -211,6 +258,7 @@
             [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         }
         [button addTarget:self action:@selector(buttonlist1:) forControlEvents:UIControlEventTouchUpInside];
+        
         UIImage *image2=[UIImage imageNamed:imageArr[i]];
         image2=[image2 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [button setImage:image2 forState:UIControlStateNormal];
@@ -348,7 +396,7 @@
     NSString *str2=_datasource[indexPath.row][@"image"];
     NSString *str3=[str stringByAppendingString:str2];
     NSURL *url =[NSURL URLWithString:str3];
-    //[cell.iconImage.image setImageWithURL:url];
+    [cell.iconImage setImageWithURL:url];
     cell.monnn.text=@"¥";
     cell.nameLab.text=_datasource[indexPath.row][@"title"];
     cell.priceLab.text=_datasource[indexPath.row][@"price"];

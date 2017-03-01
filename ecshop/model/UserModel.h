@@ -19,12 +19,18 @@
 @property(nonatomic,strong)NSString *birthday;
 @property(nonatomic,strong)NSString *email;
 
-//积分
-@property(nonatomic,strong)NSString *integration;
 //关注数量
 @property(nonatomic,strong)NSString *attention;
-//钱
+
+//分享卷
+@property(nonatomic,strong)NSString *integration;
+
+//分享豆
 @property (nonatomic,strong)NSString *user_money;
+
+//用户类型
+@property (nonatomic,strong)NSString *rank_name;
+
 
 //待付款数量
 @property (nonatomic,strong)NSString *pay;

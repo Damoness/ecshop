@@ -45,7 +45,7 @@
         _pickerView.backgroundColor = [UIColor lightGrayColor];
         
        
-        _pickerView.frame = CGRectMake(0, WDToolBarHeight, _pickerView.frame.size.width, _pickerView.frame.size.height);
+        _pickerView.frame = CGRectMake(0, WDToolBarHeight, kScreenWidth, _pickerView.frame.size.height);
         _pickeviewHeight = _pickerView.frame.size.height;
         
         CGFloat toolViewX = 0;

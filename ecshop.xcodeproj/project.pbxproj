@@ -344,9 +344,9 @@
 		9C03D5B81E64329700D5F4E6 /* myshare.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D5A61E64329600D5F4E6 /* myshare.png */; };
 		9C03D5B91E64329700D5F4E6 /* myshare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D5A71E64329600D5F4E6 /* myshare@2x.png */; };
 		9C03D5BA1E64329700D5F4E6 /* myshare@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D5A81E64329600D5F4E6 /* myshare@3x.png */; };
-		9C03D5BB1E64329700D5F4E6 /* voucher.png.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D5A91E64329600D5F4E6 /* voucher.png.png */; };
-		9C03D5BC1E64329700D5F4E6 /* voucher.png@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D5AA1E64329600D5F4E6 /* voucher.png@2x.png */; };
-		9C03D5BD1E64329700D5F4E6 /* voucher.png@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D5AB1E64329600D5F4E6 /* voucher.png@3x.png */; };
+		9C03D5BB1E64329700D5F4E6 /* voucher.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D5A91E64329600D5F4E6 /* voucher.png */; };
+		9C03D5BC1E64329700D5F4E6 /* voucher@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D5AA1E64329600D5F4E6 /* voucher@2x.png */; };
+		9C03D5BD1E64329700D5F4E6 /* voucher@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D5AB1E64329600D5F4E6 /* voucher@3x.png */; };
 		9C03D5C11E645E0500D5F4E6 /* MemberRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03D5BF1E645E0500D5F4E6 /* MemberRegisterViewController.m */; };
 		9C03D5C21E645E0500D5F4E6 /* MemberRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D5C01E645E0500D5F4E6 /* MemberRegisterViewController.xib */; };
 		9C03D5D01E651AD600D5F4E6 /* id_fm.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D5C41E651AD600D5F4E6 /* id_fm.png */; };
@@ -363,6 +363,8 @@
 		9C03D5DB1E651AD600D5F4E6 /* id_zm@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D5CF1E651AD600D5F4E6 /* id_zm@3x.png */; };
 		9C03D5DF1E655F3300D5F4E6 /* WDPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03D5DE1E655F3300D5F4E6 /* WDPickView.m */; };
 		9C03D5E11E655F5C00D5F4E6 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D5E01E655F5C00D5F4E6 /* Address.plist */; };
+		9C03D5E41E65A19B00D5F4E6 /* CurveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03D5E31E65A19B00D5F4E6 /* CurveView.m */; };
+		9C03D5E71E65A20000D5F4E6 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03D5E61E65A20000D5F4E6 /* CustomButton.m */; };
 		9C0889391E1219C000951AEF /* NSObject+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0889381E1219C000951AEF /* NSObject+Common.m */; };
 		9C090A811E1B4466004EDB54 /* BonusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C090A801E1B4466004EDB54 /* BonusModel.m */; };
 		9C090A841E1B4872004EDB54 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C090A831E1B4872004EDB54 /* BaseModel.m */; };
@@ -983,9 +985,9 @@
 		9C03D5A61E64329600D5F4E6 /* myshare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myshare.png; sourceTree = "<group>"; };
 		9C03D5A71E64329600D5F4E6 /* myshare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myshare@2x.png"; sourceTree = "<group>"; };
 		9C03D5A81E64329600D5F4E6 /* myshare@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myshare@3x.png"; sourceTree = "<group>"; };
-		9C03D5A91E64329600D5F4E6 /* voucher.png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = voucher.png.png; sourceTree = "<group>"; };
-		9C03D5AA1E64329600D5F4E6 /* voucher.png@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voucher.png@2x.png"; sourceTree = "<group>"; };
-		9C03D5AB1E64329600D5F4E6 /* voucher.png@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voucher.png@3x.png"; sourceTree = "<group>"; };
+		9C03D5A91E64329600D5F4E6 /* voucher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = voucher.png; sourceTree = "<group>"; };
+		9C03D5AA1E64329600D5F4E6 /* voucher@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voucher@2x.png"; sourceTree = "<group>"; };
+		9C03D5AB1E64329600D5F4E6 /* voucher@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voucher@3x.png"; sourceTree = "<group>"; };
 		9C03D5BE1E645E0500D5F4E6 /* MemberRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberRegisterViewController.h; sourceTree = "<group>"; };
 		9C03D5BF1E645E0500D5F4E6 /* MemberRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberRegisterViewController.m; sourceTree = "<group>"; };
 		9C03D5C01E645E0500D5F4E6 /* MemberRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemberRegisterViewController.xib; sourceTree = "<group>"; };
@@ -1004,6 +1006,10 @@
 		9C03D5DD1E655F3300D5F4E6 /* WDPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDPickView.h; sourceTree = "<group>"; };
 		9C03D5DE1E655F3300D5F4E6 /* WDPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDPickView.m; sourceTree = "<group>"; };
 		9C03D5E01E655F5C00D5F4E6 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
+		9C03D5E21E65A19B00D5F4E6 /* CurveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurveView.h; sourceTree = "<group>"; };
+		9C03D5E31E65A19B00D5F4E6 /* CurveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurveView.m; sourceTree = "<group>"; };
+		9C03D5E51E65A20000D5F4E6 /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
+		9C03D5E61E65A20000D5F4E6 /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
 		9C0889371E1219C000951AEF /* NSObject+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Common.h"; sourceTree = "<group>"; };
 		9C0889381E1219C000951AEF /* NSObject+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Common.m"; sourceTree = "<group>"; };
 		9C090A7F1E1B4466004EDB54 /* BonusModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusModel.h; sourceTree = "<group>"; };
@@ -1654,6 +1660,10 @@
 		51F12E891C0BE1A3002C62D0 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				9C03D5E51E65A20000D5F4E6 /* CustomButton.h */,
+				9C03D5E61E65A20000D5F4E6 /* CustomButton.m */,
+				9C03D5E21E65A19B00D5F4E6 /* CurveView.h */,
+				9C03D5E31E65A19B00D5F4E6 /* CurveView.m */,
 				51F8F6721C31130900709CEF /* 基本参数 */,
 				51F718551C23B8F600A654ED /* 抽屉气泡 */,
 				51F718541C23B8C500A654ED /* SearchListCell */,
@@ -2179,9 +2189,9 @@
 				9C03D5A61E64329600D5F4E6 /* myshare.png */,
 				9C03D5A71E64329600D5F4E6 /* myshare@2x.png */,
 				9C03D5A81E64329600D5F4E6 /* myshare@3x.png */,
-				9C03D5A91E64329600D5F4E6 /* voucher.png.png */,
-				9C03D5AA1E64329600D5F4E6 /* voucher.png@2x.png */,
-				9C03D5AB1E64329600D5F4E6 /* voucher.png@3x.png */,
+				9C03D5A91E64329600D5F4E6 /* voucher.png */,
+				9C03D5AA1E64329600D5F4E6 /* voucher@2x.png */,
+				9C03D5AB1E64329600D5F4E6 /* voucher@3x.png */,
 			);
 			name = "我的";
 			path = "image/我的";
@@ -2303,6 +2313,10 @@
 				9CFA5E701E471A0600673090 /* AboutViewController.h */,
 				9CFA5E711E471A0600673090 /* AboutViewController.m */,
 				9CFA5E721E471A0600673090 /* AboutViewController.xib */,
+				9CFA5EA31E471A0600673090 /* SearchListViewController.h */,
+				9CFA5EA41E471A0600673090 /* SearchListViewController.m */,
+				9CFA5EA51E471A0600673090 /* SearchViewController.h */,
+				9CFA5EA61E471A0600673090 /* SearchViewController.m */,
 				9CFA5E731E471A0600673090 /* AddressViewController.h */,
 				9CFA5E741E471A0600673090 /* AddressViewController.m */,
 				9CFA5E751E471A0600673090 /* BaseViewController.h */,
@@ -2347,10 +2361,6 @@
 				9CFA5EA01E471A0600673090 /* RechargeViewController.m */,
 				9CFA5EA11E471A0600673090 /* RegisterViewController.h */,
 				9CFA5EA21E471A0600673090 /* RegisterViewController.m */,
-				9CFA5EA31E471A0600673090 /* SearchListViewController.h */,
-				9CFA5EA41E471A0600673090 /* SearchListViewController.m */,
-				9CFA5EA51E471A0600673090 /* SearchViewController.h */,
-				9CFA5EA61E471A0600673090 /* SearchViewController.m */,
 				9CFA5EA91E471A0600673090 /* SettingViewController.h */,
 				9CFA5EAA1E471A0600673090 /* SettingViewController.m */,
 				9CFA5EAD1E471A0600673090 /* UIColor+Hex.h */,
@@ -2495,7 +2505,7 @@
 				3CA76AEB1C51CFEB00207019 /* a0y.png in Resources */,
 				51FD42A61C27974200D260A8 /* shouye@2x.png in Resources */,
 				5117ECD61C96A9EA002DB66D /* ic_network_error.png in Resources */,
-				9C03D5BC1E64329700D5F4E6 /* voucher.png@2x.png in Resources */,
+				9C03D5BC1E64329700D5F4E6 /* voucher@2x.png in Resources */,
 				51F7F22E1C0EE70600C1FAE6 /* tab-qiehuan(liebiaoxingshi)@2x.png in Resources */,
 				9C03D5D51E651AD600D5F4E6 /* id_samplef@3x.png in Resources */,
 				514120A41C87CAD8004EFE7F /* bouns_content_bg_notstarted@2x.png in Resources */,
@@ -2551,7 +2561,7 @@
 				9C03D5B91E64329700D5F4E6 /* myshare@2x.png in Resources */,
 				9C03D5B31E64329600D5F4E6 /* mycollect@2x.png in Resources */,
 				518A0A4D1C4CD449009815C4 /* 80.png in Resources */,
-				9C03D5BB1E64329700D5F4E6 /* voucher.png.png in Resources */,
+				9C03D5BB1E64329700D5F4E6 /* voucher.png in Resources */,
 				51F2712A1C0D28EF00619901 /* tabc2@2x.png in Resources */,
 				3CA76AE81C51CFEB00207019 /* a0v.png in Resources */,
 				9C03D5B21E64329600D5F4E6 /* myevaluate@3x.png in Resources */,
@@ -2584,7 +2594,7 @@
 				9C03D5AF1E64329600D5F4E6 /* mycollect.png in Resources */,
 				51F271281C0D28EF00619901 /* tabc0@2x.png in Resources */,
 				51FD425B1C27939C00D260A8 /* HJCAdjustNumButton.bundle in Resources */,
-				9C03D5BD1E64329700D5F4E6 /* voucher.png@3x.png in Resources */,
+				9C03D5BD1E64329700D5F4E6 /* voucher@3x.png in Resources */,
 				3C9C02A01C10109900AEC4B9 /* 会员中心-未登录-背景.png in Resources */,
 				3C7D673A1C35240B00EAB2AB /* AddressViewCell.xib in Resources */,
 				518A0A561C4CD464009815C4 /* 640x960.png in Resources */,
@@ -2766,6 +2776,7 @@
 				9CFA5EC61E471A0600673090 /* OrderDetailViewController.m in Sources */,
 				51FD424A1C27936D00D260A8 /* MJRefreshAutoNormalFooter.m in Sources */,
 				9CFA5EB31E471A0600673090 /* AddressViewController.m in Sources */,
+				9C03D5E71E65A20000D5F4E6 /* CustomButton.m in Sources */,
 				51A2A5081C2BF5BD006AEBFA /* bitstream.c in Sources */,
 				3C93DB1E1C59F484000CDDCF /* WXApiRequestHandler.m in Sources */,
 				51FD41FE1C278A0800D260A8 /* SearchListCollect.m in Sources */,
@@ -2823,6 +2834,7 @@
 				9CFA5EBF1E471A0600673090 /* MyAccountViewController.m in Sources */,
 				51FD42831C27940100D260A8 /* AFHTTPSessionManager.m in Sources */,
 				51FD42481C27936D00D260A8 /* MJRefreshHeader.m in Sources */,
+				9C03D5E41E65A19B00D5F4E6 /* CurveView.m in Sources */,
 				51FD42551C27936D00D260A8 /* UIScrollView+MJRefresh.m in Sources */,
 				9CFA5ECE1E471A0600673090 /* SettingViewController.m in Sources */,
 				9C36AD0E1E0230AC0021C6CE /* MyAddressModel.m in Sources */,

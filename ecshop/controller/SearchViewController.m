@@ -184,7 +184,7 @@
 {
     _firstLab=_collectDatasource[indexPath.item];
     SearchListViewController *list=[[SearchListViewController alloc]init];
-    
+    list.typeState = @"search";
     list.secondLab=_firstLab;
     NSMutableArray *pin=[[NSMutableArray alloc]init];
     [pin addObjectsFromArray:[[serDBModel shareDBModel]selectInfo]];
@@ -243,6 +243,7 @@
     
     self.firstLab=shangpin.titleName;
     SearchListViewController *list=[[SearchListViewController alloc]init];
+    list.typeState = @"search";
     list.secondLab=_firstLab;
     [self.navigationController pushViewController:list animated:YES];
     
@@ -307,7 +308,7 @@
             }
             self.firstLab=_textField.text;
             SearchListViewController *list=[[SearchListViewController alloc]init];
-            
+            list.typeState = @"search";
             list.secondLab=_firstLab;
             [self.navigationController pushViewController:list animated:YES];
         }
