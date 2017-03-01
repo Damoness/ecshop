@@ -21,6 +21,42 @@
 }
 
 
+-(void)request_PhoneVerifyCode_WithParam:(NSString *)phone andBlock:(void (^)(id data,NSError *error))block{
+    
+    
+    NSString *path = [NSString stringWithFormat:@"%@/mobile/v_user_distributer_profile_getmobileauthcode.php",baseURLStr];
+    
+    NSDictionary *dic = @{
+                          @"mobile_phone":phone
+                          };
+    
+    
+    
+    AFHTTPSessionManager *manager =  [AFHTTPSessionManager manager];
+    
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/plain", @"text/javascript", @"text/json", @"text/html", nil];
+    
+    [manager GET:path parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+       
+        NSString *str =  [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+
+        block(str,nil);
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        
+        block(nil,error);
+        
+        
+    }];
+
+    
+    
+    
+}
+
 -(void)request_Login_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block{
     
     NSString *path = @"user/login";

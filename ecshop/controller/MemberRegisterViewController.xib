@@ -611,6 +611,9 @@
                             <state key="normal" title="获取验证码">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="phoneVerifyCodeAction:" destination="-1" eventType="touchUpInside" id="R6V-IK-9hq"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

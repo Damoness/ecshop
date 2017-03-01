@@ -56,6 +56,9 @@
     
     [self initViews];
     
+    
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -184,6 +187,21 @@
     [self.navigationController popViewControllerAnimated:YES];
     
 }
+
+
+- (IBAction)phoneVerifyCodeAction:(UIButton *)sender {
+    
+    
+    [[Ditiy_NetAPIManager sharedManager]request_PhoneVerifyCode_WithParam:@"13202264038" andBlock:^(id data, NSError *error) {
+        
+        
+        
+    }];
+    
+    
+}
+
+
 /*
 #pragma mark - Navigation
 

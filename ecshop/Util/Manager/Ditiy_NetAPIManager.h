@@ -17,6 +17,10 @@
 + (instancetype)sharedManager;
 
 
+-(void)request_PhoneVerifyCode_WithParam:(NSString *)phone andBlock:(void (^)(id data,NSError *error))block;
+
+
+
 #pragma mark - Login
 
 //用户登录    toLoginParams
