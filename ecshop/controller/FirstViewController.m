@@ -230,26 +230,66 @@
         return YES;
     }
     
-    //return NO;
-    _myType = [[newUrl componentsSeparatedByString:@"/"] lastObject];
+//    //return NO;
+//    _myType = [[newUrl componentsSeparatedByString:@"/"] lastObject];
+//    
+//    if (!([newUrl rangeOfString:@"type"].location==NSNotFound)) {
+//    
+//        SearchListViewController * search=[[SearchListViewController alloc]init];
+//        search.typeState=_myType;
+//        [self.navigationController pushViewController:search animated:NO];
+//        
+//    }else if(!([newUrl rangeOfString:@"ad"].location==NSNotFound)){
+//        
+//        newUrl = url1;
+//        
+//        return YES;
+//    }else if([self isAllNum:_myType]){
+//        
+//        GoodsDetailViewController * good=[[GoodsDetailViewController alloc]init];
+//        good.goodID=_myType;
+//        [self.navigationController pushViewController:good animated:NO];
+//    }
     
-    if (!([newUrl rangeOfString:@"type"].location==NSNotFound)) {
-    
-        SearchListViewController * search=[[SearchListViewController alloc]init];
-        search.typeState=_myType;
-        [self.navigationController pushViewController:search animated:NO];
-        
-    }else if(!([newUrl rangeOfString:@"ad"].location==NSNotFound)){
-        
-        newUrl = url1;
+    if ([newUrl containsString:@".php"]) {
         
         return YES;
-    }else if([self isAllNum:_myType]){
         
-        GoodsDetailViewController * good=[[GoodsDetailViewController alloc]init];
-        good.goodID=_myType;
-        [self.navigationController pushViewController:good animated:NO];
+    }else{
+        
+        NSArray *separatedArray = [newUrl componentsSeparatedByString:@"/"];
+        
+        long no = [separatedArray count];
+        
+        if ([separatedArray[no - 2] isEqualToString:@"goodsid"]) {
+            
+            GoodsDetailViewController * good=[[GoodsDetailViewController alloc]init];
+            good.goodID=separatedArray[no -1];
+            [self.navigationController pushViewController:good animated:NO];
+            
+            return NO;
+            
+        }
+        else if ([separatedArray[no - 2] isEqualToString:@"type"]){
+            
+            SearchListViewController * search=[[SearchListViewController alloc]init];
+            search.typeState=separatedArray[no -1];
+            [self.navigationController pushViewController:search animated:NO];
+            
+            return NO;
+            
+        }   else if ([separatedArray[no - 2] isEqualToString:@"icon"]){
+
+            
+            return NO;
+            
+        }
+        
+        
+        
+        
     }
+    
     
     return NO;
 }
