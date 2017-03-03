@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import "AppDelegate.h"
 #import "RegisterViewController.h"
-#import "AFHTTPRequestOperationManager.h"
+//#import "AFHTTPRequestOperationManager.h"
 #import "RequestModel.h"
 #import "ForgetPasswordViewController.h"
 #import "NSString+Hashing.h"

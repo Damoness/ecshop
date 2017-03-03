@@ -162,13 +162,15 @@
     ChooseAddressViewController *chooseVC = [[ChooseAddressViewController alloc]init];
 
     __weak typeof(self) weakSelf = self;
-    [chooseVC returnText:^(NSString *province, NSString *city, NSString *area, NSString *proId, NSString *cityId, NSString *areaId) {
+    
+    chooseVC.returnTextBlock = ^(NSString *province, NSString *city, NSString *area, NSString *proId, NSString *cityId, NSString *areaId) {
         weakSelf.lab5.text = [NSString stringWithFormat:@"%@%@%@",province,city,area];
         weakSelf.province = proId;
         weakSelf.city = cityId;
         weakSelf.area = areaId;
         
-    }];
+    };
+    
     [self.navigationController pushViewController:chooseVC animated:YES];
     
 }

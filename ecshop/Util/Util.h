@@ -14,4 +14,7 @@
 
 +(UIImage *)captureView:(UIView*)view;
 
+
++(NSString *)imageBase64WithDataURL:(UIImage *)image;
+
 @end

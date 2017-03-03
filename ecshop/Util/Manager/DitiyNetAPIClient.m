@@ -58,8 +58,25 @@
     
     switch (method) {
         case Get:
+        {
+            [self GET:aPath parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+                
+                DebugLog(@"\n===========response===========\n%@:\n%@", aPath, [responseObject toConsole]);
+                
+                block(responseObject,nil);
+                
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                
+                
+                DebugLog(@"\n===========response===========\n%@:\n%@", aPath, error);
+                
+                
+                block(nil,error);
+                
+            }];
             
             break;
+        }
             
         case Post:
         {

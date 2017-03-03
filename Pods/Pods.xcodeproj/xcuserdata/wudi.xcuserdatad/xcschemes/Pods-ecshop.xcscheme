@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '8905E259255AC3FB974497F13F69E46A'
+               BlueprintIdentifier = '631CE7141C155D4321C3E2EF4B8E4823'
                BlueprintName = 'Pods-ecshop'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-ecshop.a'>

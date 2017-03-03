@@ -30,13 +30,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    
+    self.title = @"选择地址";
+    
     self.view.backgroundColor = [UIColor whiteColor];
     [self draw];
-    [self initNavigationBar];
+    //[self initNavigationBar];
     self.iderstr = nil;
     self.iderstr = @"1";
     [self myProvince:@"province" ider:self.iderstr];
     // Do any additional setup after loading the view.
+    
+    
 }
 -(void)draw{
     self.tableView = [[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];
@@ -141,9 +147,10 @@
  // Pass the selected object to the new view controller.
  }
  */
-- (void)returnText:(ReturnTextBlock)block {
-    self.returnTextBlock = block;
-}
+
+//- (void)returnText:(ReturnTextBlock)block {
+//    self.returnTextBlock = block;
+//}
 #pragma mark -- 自定义导航栏
 - (void)initNavigationBar{
     

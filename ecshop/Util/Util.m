@@ -24,4 +24,22 @@
 
 
 
++ (NSString *)imageBase64WithDataURL:(UIImage *)image
+{
+    NSData *imageData =nil;
+    NSString *mimeType =nil;
+    
+    //图片要压缩的比例，此处100根据需求，自行设置
+    CGFloat x =100 / image.size.height;
+    if (x >1)
+    {
+        x = 1.0;
+    }
+    imageData = UIImageJPEGRepresentation(image, x);
+    mimeType = @"image/jpeg";
+    return [NSString stringWithFormat:@"data:%@;base64,%@", mimeType,
+            [imageData base64EncodedStringWithOptions:0]];
+}
+
+
 @end

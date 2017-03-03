@@ -17,9 +17,22 @@
 + (instancetype)sharedManager;
 
 
+//注册分销商
+-(void)request_RegisterSharingMan_WithParams:(NSDictionary *)params andBlock:(void (^)(id data, NSError *error))block;
+
+//注册分销商
+-(void)request_RegisterSharingMan_WithParams:(NSDictionary *)params andProgress:(void (^)(float progress))progress andBlock:(void (^)(id data, NSError *error))block;
+
+
+//获取手机号验证码
 -(void)request_PhoneVerifyCode_WithParam:(NSString *)phone andBlock:(void (^)(id data,NSError *error))block;
 
+//请求将系
+-(void)request_KingSeriesBlock:(void (^)(id data,NSError *error))block;
 
+//http://sitmarket.ditiy.com/mobile/api.php?act=get_platform_code&return_data=json
+//获取平台码
+-(void)request_PlatformCodeBlock:(void (^)(id data,NSError *error))block;
 
 #pragma mark - Login
 

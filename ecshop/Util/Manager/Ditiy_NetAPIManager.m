@@ -20,11 +20,151 @@
     return shared_manager;
 }
 
+//注册分销商
+-(void)request_RegisterSharingMan_WithParams:(NSDictionary *)params andProgress:(void (^)(float progress))progress andBlock:(void (^)(id data, NSError *error))block{
+    
+    //http://sitmarket.ditiy.com/mobile/api_user_distributer_profile_save.php
+    
+    NSString *path = [NSString stringWithFormat:@"%@/mobile/api_user_distributer_profile_save.php",baseURLStr];
+    
+    
+    AFHTTPSessionManager *manager =  [AFHTTPSessionManager manager];
+    
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/plain", @"text/javascript", @"text/json", @"text/html", nil];
+    
+    
+    [manager POST:path parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        
+        UIImage *image =  [UIImage imageNamed:@"1"];
+        
+        NSData *fileData = UIImageJPEGRepresentation(image, 1);
+        
+        // 设置上传图片的名字
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyyMMddHHmmss";
+        NSString *str = [formatter stringFromDate:[NSDate date]];
+        NSString *fileName = [NSString stringWithFormat:@"%@.png", str];
+        
+        
+        [formData appendPartWithFileData:fileData name:@"edi_card_face" fileName:fileName mimeType:@"image/png"];
+        
+        [formData appendPartWithFileData:fileData name:@"edi_card_back" fileName:fileName mimeType:@"image/png"];
+        
+        
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        progress(uploadProgress.completedUnitCount/ uploadProgress.totalUnitCount);
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        block(responseObject,nil);
+        NSLog(@"%@",[responseObject toConsole]);
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        block(nil,error);
+    }];
+
+}
+
+
+//注册分销商
+-(void)request_RegisterSharingMan_WithParams:(NSDictionary *)params andBlock:(void (^)(id data, NSError *error))block{
+    
+    //http://sitmarket.ditiy.com/mobile/api_user_distributer_profile_save.php
+    
+    NSString *path = [NSString stringWithFormat:@"%@/mobile/api_user_distributer_profile_save.php",baseURLStr];
+    
+    
+    AFHTTPSessionManager *manager =  [AFHTTPSessionManager manager];
+    
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/plain", @"text/javascript", @"text/json", @"text/html", nil];
+    
+    
+    [manager POST:path parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+    
+        // 设置上传图片的名字
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyyMMddHHmmss";
+        NSString *str = [formatter stringFromDate:[NSDate date]];
+        NSString *fileName = [NSString stringWithFormat:@"%@.png", str];
+        
+        
+        [formData appendPartWithFileData:UIImageJPEGRepresentation(params[@"edi_card_face"], 1) name:@"edi_card_face" fileName:fileName mimeType:@"image/png"];
+        
+        [formData appendPartWithFileData:UIImageJPEGRepresentation(params[@"edi_card_back"], 1) name:@"edi_card_back" fileName:fileName mimeType:@"image/png"];
+        
+        
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        //progress(uploadProgress.completedUnitCount/ uploadProgress.totalUnitCount);
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        block(responseObject,nil);
+        NSLog(@"%@",[responseObject toConsole]);
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        block(nil,error);
+    }];
+    
+//    [manager POST:path parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+//        
+//        
+//        UIImage *image =  [UIImage imageNamed:@"1"];
+////        
+//        [formData appendPartWithFormData:UIImagePNGRepresentation(image) name:@"edi_card_face"];
+//        [formData appendPartWithFormData:UIImagePNGRepresentation(image) name:@"edi_card_back"];
+//        
+//        //NSString *theImagePath = [[NSBundle mainBundle] pathForResource:@"1" ofType:@"png"];
+//
+////        [formData appendPartWithFileURL:[NSURL URLWithString:theImagePath] name:@"edi_card_face" error:nil];
+////        [formData appendPartWithFileURL:[NSURL URLWithString:theImagePath] name:@"edi_card_back" error:nil];
+//
+//    } success:^(NSURLSessionDataTask *task, id responseObject) {
+//        
+//        block(responseObject,nil);
+//        //NSLog(@"%@",[responseObject toConsole]);
+//        
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//        
+//        block(nil,error);
+//
+//        
+//    }];
+    
+    
+//    [manager GET:path parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+//        
+//        NSString *str =  [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+//        
+//        block(str,nil);
+//        
+//        
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//        
+//        
+//        block(nil,error);
+//        
+//        
+//    }];
+}
+
+
 
 -(void)request_PhoneVerifyCode_WithParam:(NSString *)phone andBlock:(void (^)(id data,NSError *error))block{
     
     
-    NSString *path = [NSString stringWithFormat:@"%@/mobile/v_user_distributer_profile_getmobileauthcode.php",baseURLStr];
+    NSString *path = [NSString stringWithFormat:@"%@/mobile/api/getmobileauthcode.php",baseURLStr];
     
     NSDictionary *dic = @{
                           @"mobile_phone":phone
@@ -32,28 +172,62 @@
     
     
     
-    AFHTTPSessionManager *manager =  [AFHTTPSessionManager manager];
+//    AFHTTPSessionManager *manager =  [AFHTTPSessionManager manager];
+//    
+//    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/plain", @"text/javascript", @"text/json", @"text/html", nil];
+//    
+//    [manager GET:path parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+//
+//        block(responseObject,nil);
+//        
+//        
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//        
+//        
+//        block(nil,error);
+//        
+//        
+//    }];
     
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/plain", @"text/javascript", @"text/json", @"text/html", nil];
     
-    [manager GET:path parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
-       
-        NSString *str =  [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
 
-        block(str,nil);
+    [[DitiyNetAPIClient sharedJsonClient]requestJsonDataWithPath:path withParams:dic withMethodType:Get autoShowError:NO andBlock:^(id data, NSError *error) {
+      
+        block(data,error);
+        
+    }];
+    
+}
+
+//请求将系
+-(void)request_KingSeriesBlock:(void (^)(id data,NSError *error))block{
+    
+    NSString *path = [NSString stringWithFormat:@"%@/mobile/api/get_generalinfo.php",baseURLStr];
+    
+    [[DitiyNetAPIClient sharedJsonClient]requestJsonDataWithPath:path withParams:nil withMethodType:Get autoShowError:NO andBlock:^(id data, NSError *error) {
         
         
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
-        
-        block(nil,error);
+        block(data,error);
         
         
     }];
+    
+    
+}
 
+//获取平台码
+-(void)request_PlatformCodeBlock:(void (^)(id data,NSError *error))block{
+
+    NSString *path = [NSString stringWithFormat:@"%@/mobile/api.php?act=get_platform_code&return_data=json",baseURLStr];
     
-    
+    [[DitiyNetAPIClient sharedJsonClient]requestJsonDataWithPath:path withParams:nil withMethodType:Get autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+        
+        block(data,error);
+        
+        
+    }];
     
 }
 
