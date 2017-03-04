@@ -548,12 +548,12 @@
                   moduleName = "ecshop"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wudi/Documents/work/%E4%B8%AD%E6%8A%80%E5%90%8C%E5%88%9B/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E5%B9%B3%E5%8F%B0/ecshop%20%E6%9C%80%E7%BB%883-8/ecshop/MyOrderViewCell.m"
-                  timestampString = "510244514.451915"
+                  timestampString = "510288536.325618"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "43"
                   endingLineNumber = "43"
-                  offsetFromSymbolStart = "46">
+                  offsetFromSymbolStart = "56">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -563,12 +563,12 @@
                   moduleName = "ecshop"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wudi/Documents/work/%E4%B8%AD%E6%8A%80%E5%90%8C%E5%88%9B/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E5%B9%B3%E5%8F%B0/ecshop%20%E6%9C%80%E7%BB%883-8/ecshop/MyOrderViewCell.m"
-                  timestampString = "510244514.454728"
+                  timestampString = "510288536.328455"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "43"
                   endingLineNumber = "43"
-                  offsetFromSymbolStart = "67">
+                  offsetFromSymbolStart = "88">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -714,22 +714,6 @@
             startingLineNumber = "175"
             endingLineNumber = "175"
             landmarkName = "-sendMessage:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ecshop/controller/FirstViewController.m"
-            timestampString = "510244446.545021"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
-            landmarkName = "-webView:shouldStartLoadWithRequest:navigationType:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

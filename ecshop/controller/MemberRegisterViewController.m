@@ -291,6 +291,12 @@
 //获取验证码按钮 响应
 - (IBAction)phoneVerifyCode_Action:(UIButton *)sender {
     
+    if([self.phoneTextField.text isEmptyStr]){
+        
+        [self showAlertWithMessage:@"请填写手机号"];
+        return;
+        
+    }
 
     [MBProgressHUD showHUDAddedTo:self.view animated:true];
     

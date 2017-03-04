@@ -281,12 +281,21 @@
         }   else if ([separatedArray[no - 2] isEqualToString:@"icon"]){
 
             
+            if ([separatedArray[no -1] isEqualToString:@"catalog"]) {//商品分类
+                
+                
+            }
+            else if ([separatedArray[no -1] isEqualToString:@"agent"]){//代理区
+                
+                
+            }
+            
+            
             return NO;
             
         }
         
-        
-        
+
         
     }
     
