@@ -287,6 +287,16 @@
             }
             else if ([separatedArray[no -1] isEqualToString:@"agent"]){//代理区
                 
+//                
+//                MyTabBarViewController * tabBarViewController = (MyTabBarViewController * )self.tabBarController;
+//                UINavigationController * nav = [tabBarViewController.viewControllers objectAtIndex:0];
+//                [self.navigationController popToRootViewControllerAnimated:NO];
+//                [nav popToRootViewControllerAnimated:YES];
+//                
+//                
+//                UIButton * button = [[UIButton alloc]init];
+//                button.tag = 100;
+//                [tabBarViewController buttonClicked:button];
                 
             }
             

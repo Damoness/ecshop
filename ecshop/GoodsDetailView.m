@@ -78,7 +78,7 @@
     
     pprice=dic[@"shop_price"];
     _price.text=pprice;
-    [_iconImage setImageWithURL:dic[@"album"][0]];
+    [_iconImage setImageWithURL:[NSURL URLWithString:dic[@"album"][0]]];
     _bianHao.text=dic[@"goods_sn"];
     [_goodColl reloadData];
 }
