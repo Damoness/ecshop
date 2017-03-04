@@ -493,7 +493,9 @@
         cell=[[SureTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:stringg];
         cell.layer.borderWidth=0.4;
     }
-    [cell.iconImage setImageWithURL:goodDate[indexPath.row][@"goods_img"]];
+    
+    
+    [cell.iconImage setImageWithURL:[NSURL URLWithString:goodDate[indexPath.row][@"goods_img"]]];
     cell.priceLab.text=goodDate[indexPath.row][@"price"];
     cell.nameLab.text=goodDate[indexPath.row][@"title"];
     if (_tempArr==NULL) {
