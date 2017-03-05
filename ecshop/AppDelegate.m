@@ -16,7 +16,7 @@
 #import "UMSocialWechatHandler.h"
 #import "UMSocialQQHandler.h"
 #import "UserGuideViewController.h"
-#import "WXApiManager.h"
+#import "WXApi.h"
 #import <AlipaySDK/AlipaySDK.h>
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
@@ -45,10 +45,6 @@
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(NSIntegerMin, NSIntegerMin) forBarMetrics:UIBarMetricsDefault];
     
-    //[self.navigationController setNavigationBarHidden:NO animated:NO];
-
-    
-    
     //友盟分享
     [UMSocialData setAppKey:UMSharekey];
     //微信分享
@@ -72,27 +68,26 @@
     UINavigationController *fourthNV = [[UINavigationController alloc]initWithRootViewController:fourth];
  
     NSArray *array=@[firstNV,secondNV,thirdNV,fourthNV];
+    
     MyTabBarViewController *tab=[[MyTabBarViewController alloc]init];
-    tab.tabBar.hidden = YES;
-#warning 内存泄露
+    
     tab.viewControllers=array;
-//    [tab.viewControllers objectAtIndex:0];
+    
     UIButton * button = [[UIButton alloc]init];
     button.tag = 100;
     [tab buttonClicked:button];
-  
-//      UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:tab];
-    tab.delegate=self;
+    
+    //tab.delegate=self;
 #pragma mark --接收登录通知
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(loginSuccess:) name:@"login" object:nil];
 #pragma mark --接收退出通知
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(quiteSuccess:) name:@"quite" object:nil];
-  // self.window.rootViewController=tab;
+
     self.window.rootViewController=tab;
     
     
-    //向微信注册wxd930ea5d5a258f4f
-    [WXApi registerApp:@"wxb4ba3c02aa476ea1" withDescription:@"demo 2.0"];
+    //向微信注册wx40fbb60e2d770512
+    [WXApi registerApp:MXWechatAPPID];
 
     
    // [self gotoDaoHangYe];
@@ -126,9 +121,11 @@
 {
     if ([UMSocialSnsService handleOpenURL:url]) {
         return [UMSocialSnsService handleOpenURL:url];
-    }else if([WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]]){
+    }
+    else if([WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]]){
         return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
-    }else{
+    }
+    else{
         //跳转支付宝钱包进行支付，处理支付结果
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
@@ -178,7 +175,7 @@
     if ([WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]]) {
         return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
     }else{
-        
+    
         //跳转支付宝钱包进行支付，处理支付结果
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
@@ -188,7 +185,8 @@
     }
 }
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    return  [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
+//    return  [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
+    return YES;
 }
 
 @end

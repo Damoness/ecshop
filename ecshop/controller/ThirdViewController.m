@@ -87,7 +87,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
-    [tabbar hiddenTabbar:NO];
+    [tabbar hideCustomTabbar:NO];
     
     
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -102,19 +102,18 @@
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     if ([self.temp isEqualToString:@"1"]) {
-        self.tabBarController.tabBar.hidden=YES;
-        //
+
         btn1.hidden = NO;
         btn2.hidden = NO;
         MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
         
-        [tabbar hiddenTabbar:YES];
+        [tabbar hideCustomTabbar:YES];
     }else{
-        self.tabBarController.tabBar.hidden=YES;
+        
         btn1.hidden = YES;
         btn2.hidden = YES;
         MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
-        [tabbar hiddenTabbar:NO];
+        [tabbar hideCustomTabbar:NO];
     }
     
     _goodsArr = [[NSMutableArray alloc]init];
@@ -224,7 +223,7 @@
     
     LoginViewController *loginVC = [[LoginViewController alloc]init];
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
-    [tabbar hiddenTabbar:YES];
+    [tabbar hideCustomTabbar:YES];
     loginVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:loginVC animated:YES];
     
@@ -373,9 +372,9 @@
         orderVC.tempArr = _orderArray;
         orderVC.priccc=[NSString stringWithFormat:@"%d",ss];
         MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
-        [tabbar hiddenTabbar:YES];
+        [tabbar hideCustomTabbar:YES];
         orderVC.hidesBottomBarWhenPushed = YES;
-        //        self.tabBarController.tabBar.hidden = YES;
+
         [self.navigationController pushViewController:orderVC animated:YES];
     }
     
@@ -665,7 +664,7 @@
     GoodsDetailViewController *goodVC = [GoodsDetailViewController new];
     goodVC.goodID = model.goods_id;
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
-    [tabbar hiddenTabbar:YES];
+    [tabbar hideCustomTabbar:YES];
     goodVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:goodVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];

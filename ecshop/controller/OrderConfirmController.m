@@ -59,7 +59,7 @@
 {
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
     
-    [tabbar hiddenTabbar:YES];
+    [tabbar hideCustomTabbar:YES];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

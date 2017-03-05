@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>访问您的照相机</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
@@ -27,9 +25,11 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>wechat</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wx710c0d9fbe1eb970</string>
+				<string>wx40fbb60e2d770512</string>
 			</array>
 		</dict>
 		<dict>
@@ -249,6 +249,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>访问您的照相机</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>访问您的相册</string>
 	<key>UILaunchImageFile</key>

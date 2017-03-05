@@ -92,7 +92,7 @@
     
     self.tabBarController.tabBar.hidden=YES;
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
-    [tabbar hiddenTabbar:NO];
+    [tabbar hideCustomTabbar:NO];
     
     AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     self.tempDic = app.tempDic;
@@ -144,7 +144,7 @@
 -(void)change:(id)sender{
     SettingViewController *settingVC = [SettingViewController new];
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
-    [tabbar hiddenTabbar:YES];
+    [tabbar hideCustomTabbar:YES];
     settingVC.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:settingVC animated:YES];
@@ -394,13 +394,13 @@
 -(void)goodsAction:(id)sender{
     MyAttentionViewController *myAttentionVC = [MyAttentionViewController new];
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
-    [tabbar hiddenTabbar:YES];
+    [tabbar hideCustomTabbar:YES];
     [self.navigationController pushViewController:myAttentionVC animated:YES];
 }
 #pragma mark --跳转到充值页面
 -(void)changeToCharge:(id)sender{
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
-    [tabbar hiddenTabbar:YES];
+    [tabbar hideCustomTabbar:YES];
     RechargeViewController *reVC = [RechargeViewController new];
     reVC.temp = _labelForBalance1.text;
     [self.navigationController pushViewController:reVC animated:YES];
@@ -409,7 +409,7 @@
 -(void)changeToMine:(id)sender{
     MyAccountViewController *myVC = [MyAccountViewController new];
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
-    [tabbar hiddenTabbar:YES];
+    [tabbar hideCustomTabbar:YES];
     myVC.hidesBottomBarWhenPushed = YES;
     myVC.tempDic = self.tempDic;
     myVC.userName = self.userName;
@@ -480,13 +480,13 @@
 }
 -(void)changeToLogin:(id)sender{
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
-    [tabbar hiddenTabbar:YES];
+    [tabbar hideCustomTabbar:YES];
     LoginViewController *loginVC = [[LoginViewController alloc]init];
     [self.navigationController pushViewController:loginVC animated:YES];
 }
 -(void)changeToRegister:(id)sender{
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
-    [tabbar hiddenTabbar:YES];
+    [tabbar hideCustomTabbar:YES];
     RegisterViewController *registerVC = [[RegisterViewController alloc]init];
     [self.navigationController pushViewController:registerVC animated:YES];
 }
@@ -630,7 +630,7 @@
 -(void)payAction:(id)sender{
     NSLog(@"待付款");
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
-    [tabbar hiddenTabbar:YES];
+    [tabbar hideCustomTabbar:YES];
     if (self.tagg == 1) {
         LoginViewController *registerVC = [LoginViewController new];
         [self.navigationController pushViewController:registerVC animated:YES];
@@ -645,7 +645,7 @@
 -(void)sendAction:(id)sender{
     NSLog(@"待发货");
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
-    [tabbar hiddenTabbar:YES];
+    [tabbar hideCustomTabbar:YES];
     if (self.tagg == 1) {
         LoginViewController *registerVC = [LoginViewController new];
         [self.navigationController pushViewController:registerVC animated:YES];
@@ -659,7 +659,7 @@
 -(void)receivedAction:(id)sender{
     NSLog(@"待收货");
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
-    [tabbar hiddenTabbar:YES];
+    [tabbar hideCustomTabbar:YES];
     if (self.tagg == 1) {
         LoginViewController *registerVC = [LoginViewController new];
         [self.navigationController pushViewController:registerVC animated:YES];
@@ -673,7 +673,7 @@
 -(void)customerAction:(id)sender{
     NSLog(@"售后");
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
-    [tabbar hiddenTabbar:YES];
+    [tabbar hideCustomTabbar:YES];
     if (self.tagg == 1) {
         LoginViewController *registerVC = [LoginViewController new];
         [self.navigationController pushViewController:registerVC animated:YES];
@@ -771,7 +771,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
-    [tabbar hiddenTabbar:YES];
+    [tabbar hideCustomTabbar:YES];
 #pragma mark --未登录选择cell
     if (self.tagg == 1) {
         if (indexPath.section == 0) {
@@ -792,7 +792,7 @@
             LoginViewController *registerVC = [LoginViewController new];
             registerVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:registerVC animated:YES];
-            //[tabbar hiddenTabbar:NO];
+            //[tabbar hideCustomTabbar:NO];
         }
         
     }
@@ -854,9 +854,8 @@
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"quite" object:nil];
                 weakSelf.loginView.hidden = NO;
                 weakSelf.userView.hidden = YES;
-                weakSelf.tabBarController.tabBar.hidden=YES;
                 MyTabBarViewController * tabbar =(MyTabBarViewController *)weakSelf.navigationController.tabBarController;
-                [tabbar hiddenTabbar:NO];
+                [tabbar hideCustomTabbar:NO];
                 weakSelf.tagg = 1;
                 [weakSelf.table reloadData];
                 

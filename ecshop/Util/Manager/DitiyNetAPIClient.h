@@ -6,6 +6,8 @@
 //  Copyright © 2016年 jsyh. All rights reserved.
 //
 
+//#import "AFHTTPSessionManager.h"
+
 #import "AFHTTPSessionManager.h"
 
 @interface DitiyNetAPIClient : AFHTTPSessionManager

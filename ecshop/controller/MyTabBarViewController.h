@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MyTabBarViewController : UITabBarController
--(void)hiddenTabbar:(BOOL)hiden;
--(void)buttonClicked:(UIButton *)button;
+-(void)hideCustomTabbar:(BOOL)hiden; //隐藏定制的tabBar
+-(void)buttonClicked:(UIButton *)button; //
 @end

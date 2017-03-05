@@ -7,7 +7,8 @@
 //
 
 #import "MyAttentionViewCell.h"
-#import "UIImageView+WebCache.h"
+#import "UIImageView+AFNetworking.h"
+
 @implementation MyAttentionViewCell
 
 - (void)awakeFromNib {

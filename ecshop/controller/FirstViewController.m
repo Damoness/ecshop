@@ -30,7 +30,7 @@
     [super viewDidAppear:animated];
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
     
-    [tabbar hiddenTabbar:NO];
+    [tabbar hideCustomTabbar:NO];
     
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
@@ -39,7 +39,7 @@
     //    [super viewWillAppear:animated];
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
     
-    [tabbar hiddenTabbar:NO];
+    [tabbar hideCustomTabbar:NO];
     [self.tabBarController.tabBar setHidden:YES];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
@@ -283,7 +283,16 @@
             
             if ([separatedArray[no -1] isEqualToString:@"catalog"]) {//商品分类
                 
+                MyTabBarViewController *tab =(MyTabBarViewController *)self.navigationController.tabBarController;
+               
+            
+                UIButton * button = [[UIButton alloc]init];
+                button.tag = 101;
+                [tab buttonClicked:button];
                 
+                tab.selectedIndex = 2;
+                
+                return NO;
             }
             else if ([separatedArray[no -1] isEqualToString:@"agent"]){//代理区
                 
@@ -297,6 +306,9 @@
 //                UIButton * button = [[UIButton alloc]init];
 //                button.tag = 100;
 //                [tabBarViewController buttonClicked:button];
+                
+   
+                
                 
             }
             

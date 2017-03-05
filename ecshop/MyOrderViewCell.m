@@ -8,7 +8,7 @@
 
 #import "MyOrderViewCell.h"
 #import "RequestModel.h"
-#import "UIImageView+WebCache.h"
+#import "UIImageView+AFNetworking.h"
 @implementation MyOrderViewCell
 
 - (void)awakeFromNib {

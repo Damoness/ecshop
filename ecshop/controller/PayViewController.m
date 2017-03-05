@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 #import "AFHTTPSessionManager.h"
 #import "UIColor+Hex.h"
-#import "WXApiRequestHandler.h"
+#import "WXApi.h"
 #import <AlipaySDK/AlipaySDK.h>
 #import "OrderModel.h"
 @interface PayViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
@@ -66,7 +66,7 @@
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
@@ -91,11 +91,11 @@
         cell.textLabel.text=@"支付宝支付";
         cell.detailTextLabel.text=@"支付宝安全支付";
     }
-    //    else if(indexPath.section == 2){
-    //        cell.textLabel.text = @"微信支付";
-    //        cell.imageView.image = [UIImage imageNamed:@"支付-微信支付"];
-    //        cell.detailTextLabel.text=@"微信支付";
-    //    }
+    else if(indexPath.section == 2){
+            cell.textLabel.text = @"微信支付";
+            cell.imageView.image = [UIImage imageNamed:@"支付-微信支付"];
+            cell.detailTextLabel.text=@"微信支付";
+    }
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -106,7 +106,6 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 
-    NSString * pathh;
     if (indexPath.section==0) {
 
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定使用您的账户余额支付吗?"preferredStyle:UIAlertControllerStyleAlert];
@@ -187,11 +186,101 @@
         }];
         
     }
-    //    else if(indexPath.section == 2){
-    //        [self bizPay];
-    //    }
+    else if(indexPath.section == 2){
+            //[self bizPay];
+        
+        OrderModel *model = [OrderModel new];
+        model.order_id = _orderNs;
+        
+        //[self payWithWeChat];
+        
+        WS(ws)
+        [[Ditiy_NetAPIManager sharedManager]request_PayOrder_WithPayType:PayWithWeChat Params:[model toPayOrderParams] andBlock:^(id data, NSError *error) {
+            
+            if(data){
+                
+                PayReq *request = [[PayReq alloc] init];
+                
+                request.openID = data[@"data"][@"appid"];
+                
+                /** 商家向财付通申请的商家id */
+                request.partnerId = data[@"data"][@"mch_id"];
+                /** 预支付订单 */
+                request.prepayId= data[@"data"][@"prepay_id"];
+                /** 商家根据财付通文档填写的数据和签名 */
+                request.package = @"Sign=WXPay";
+                /** 随机串，防重发 */
+                request.nonceStr= data[@"data"][@"nonce_str"];
+                
+                // 将当前时间转化成时间戳
+                NSDate *datenow = [NSDate date];
+                NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[datenow timeIntervalSince1970]];
+                UInt32 timeStamp =[timeSp intValue];
+                request.timeStamp= timeStamp;
+                
+                /** 时间戳，防重发 */
+                request.timeStamp= timeStamp;
+                
+                // 签名加密
+                MXWechatSignAdaptor *md5 = [[MXWechatSignAdaptor alloc] init];
+                
+                /** 商家根据微信开放平台文档对数据做的签名 */
+                request.sign=[md5 createMD5SingForPay:request.openID
+                                            partnerid:request.partnerId
+                                             prepayid:request.prepayId
+                                              package:request.package
+                                             noncestr:request.nonceStr
+                                            timestamp:request.timeStamp];
+                /*! @brief 发送请求到微信，等待微信返回onResp
+                 *
+                 * 函数调用后，会切换到微信的界面。第三方应用程序等待微信返回onResp。微信在异步处理完成后一定会调用onResp。支持以下类型
+                 * SendAuthReq、SendMessageToWXReq、PayReq等。
+                 * @param req 具体的发送请求，在调用函数后，请自己释放。
+                 * @return 成功返回YES，失败返回NO。
+                 */
+                [WXApi sendReq: request];
+                
+                
+                
+            }
+            
+            
+            
+        }];
+        
+        
+        
+    }
 }
 
+
+-(void)payWithWeChat{
+    
+    
+    PayReq *request = [[PayReq alloc] init];
+    
+    /** 商家向财付通申请的商家id */
+    request.partnerId = @"1220277201";
+    /** 预支付订单 */
+    request.prepayId= @"82010380001603250865be9c4c063c30";
+    /** 商家根据财付通文档填写的数据和签名 */
+    request.package = @"Sign=WXPay";
+    /** 随机串，防重发 */
+    request.nonceStr= @"lUu5qloVJV7rrJlr";
+    /** 时间戳，防重发 */
+    request.timeStamp= 1458893985;
+    /** 商家根据微信开放平台文档对数据做的签名 */
+    request.sign= @"b640c1a4565b476db096f4d34b8a9e71960b0123";
+    /*! @brief 发送请求到微信，等待微信返回onResp
+     *
+     * 函数调用后，会切换到微信的界面。第三方应用程序等待微信返回onResp。微信在异步处理完成后一定会调用onResp。支持以下类型
+     * SendAuthReq、SendMessageToWXReq、PayReq等。
+     * @param req 具体的发送请求，在调用函数后，请自己释放。
+     * @return 成功返回YES，失败返回NO。
+     */
+    [WXApi sendReq: request];
+    
+}
 
 /*
  #pragma mark - Navigation
@@ -233,12 +322,12 @@
     [btn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:btn];
     
-    UIButton *rightBtn = [[UIButton alloc]initWithFrame:CGRectMake(label.frame.origin.x + label.frame.size.width + 10, 25, 80, 30)];
-    [rightBtn setTitle:@"订单中心" forState:UIControlStateNormal];
-    [rightBtn setTitleColor:[UIColor colorWithHexString:navigationRightColor] forState:UIControlStateNormal];
-    rightBtn.titleLabel.font = [UIFont systemFontOfSize:rightFont];
-    [rightBtn addTarget:self action:@selector(centerBtn) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:rightBtn];
+//    UIButton *rightBtn = [[UIButton alloc]initWithFrame:CGRectMake(label.frame.origin.x + label.frame.size.width + 10, 25, 80, 30)];
+//    [rightBtn setTitle:@"订单中心" forState:UIControlStateNormal];
+//    [rightBtn setTitleColor:[UIColor colorWithHexString:navigationRightColor] forState:UIControlStateNormal];
+//    rightBtn.titleLabel.font = [UIFont systemFontOfSize:rightFont];
+//    [rightBtn addTarget:self action:@selector(centerBtn) forControlEvents:UIControlEventTouchUpInside];
+//    [view addSubview:rightBtn];
     [self.view addSubview:view];
     
     
@@ -246,14 +335,14 @@
 -(void)back{
     [self.navigationController popViewControllerAnimated:YES];
 }
-- (void)bizPay {
-    NSString *res = [WXApiRequestHandler jumpToBizPay];
-    if( ![@"" isEqual:res] ){
-        UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"支付失败" message:res delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        
-        [alter show];
-        
-    }
-    
-}
+//- (void)bizPay {
+//    NSString *res = [WXApiRequestHandler jumpToBizPay];
+//    if( ![@"" isEqual:res] ){
+//        UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"支付失败" message:res delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        
+//        [alter show];
+//        
+//    }
+//    
+//}
 @end

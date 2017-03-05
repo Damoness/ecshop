@@ -13,7 +13,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "AFHTTPSessionManager.h"
 #import "AppDelegate.h"
-#import "JSONKit.h"
+//#import "JSONKit.h"
 #import "LoginViewController.h"
 #import "GoodsModel.h"
 #define imageH 100

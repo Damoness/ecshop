@@ -14,6 +14,8 @@
 {
     UIImageView *customBar; // 定制底部导航栏
     
+    
+    
     UILabel *shoppingCartBadgeLabel;
     UIView *shoppingCartView;
 }
@@ -61,8 +63,7 @@
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(cartNum:) name:@"cart_num" object:nil];
     
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(quite:) name:@"quite" object:nil];
-    
-    
+
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Setting" ofType:@"plist"];
     NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
     NSString *tabBarItemFont = data[@"tabBarItemFont"];
@@ -78,18 +79,15 @@
     
     self.tabBar.hidden=YES;
     customBar = [[UIImageView alloc]init];
-    //获取屏幕的尺寸
-    CGSize size = [UIScreen mainScreen].bounds.size;
     //设置customBar位置和大小，屏幕的最低部
-    customBar.frame = CGRectMake(0, size.height - 49, size.width, 49);
-//    [customBar setBackgroundColor:[UIColor colorWithRed:38/255.0 green:38/255.0 blue:38/255.0 alpha:1.0]];
+    customBar.frame = CGRectMake(0, kScreenHeight - 49, kScreenWidth, 49);
     [customBar setBackgroundColor:[UIColor colorWithHexString:tabBarBackgroundColor]];
     [self.view addSubview:customBar];
     NSArray *arr=@[tabbar1,tabbar2,tabbar3,tabbar4];
     for (int i = 0; i < 4; i++)
     {
         UIButton *button = [[UIButton alloc]init];
-        button.frame = CGRectMake(i * size.width/4, 0, size.width/4, 49);
+        button.frame = CGRectMake(i * kScreenWidth/4, 0, kScreenWidth/4, 49);
         [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"tab%d",i]] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"tab%d",i]] forState:UIControlStateHighlighted];
         [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"tabc%d",i]] forState:UIControlStateSelected];
@@ -140,18 +138,18 @@
     }
     customBar.userInteractionEnabled = YES;
 }
--(void)hiddenTabbar:(BOOL)hiden
+-(void)hideCustomTabbar:(BOOL)hiden
 {
-    CGSize size = [UIScreen mainScreen].bounds.size;
     [UIView animateWithDuration:0.5 animations:^{
         if (hiden) {
-            customBar.frame = CGRectMake(0, size.height, size.width, 49);
+            customBar.frame = CGRectMake(0, kScreenHeight, kScreenWidth, 49);
         }
         else
         {
-            customBar.frame = CGRectMake(0, size.height - 49, size.width, 49);
+            customBar.frame = CGRectMake(0, kScreenHeight - 49, kScreenWidth, 49);
         }
     }];
+    
 }
 -(void)buttonClicked:(UIButton *)button
 {
@@ -166,7 +164,13 @@
     UIButton * tabBarBtn = [customBar viewWithTag:button.tag];
     tabBarBtn.selected = YES;
     self.selectedIndex = button.tag - 100;
+    
 }
+
+
+
+
+
 - (void)dealloc {
     NSLog(@"%@ --%@",NSStringFromClass([self class]),NSStringFromSelector(_cmd));
 }

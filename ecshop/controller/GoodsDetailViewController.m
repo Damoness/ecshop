@@ -20,7 +20,7 @@
 #import "AFHTTPSessionManager.h"
 #import "ThirdViewController.h"
 #import "OrderConfirmController.h"
-#import "JSONKit.h"
+//#import "JSONKit.h"
 #import "LoginViewController.h"
 #import "UIColor+Hex.h"
 #import "MyTabBarViewController.h"
@@ -94,7 +94,7 @@
     self.view.opaque=YES;
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
     
-    [tabbar hiddenTabbar:YES];
+    [tabbar hideCustomTabbar:YES];
     
     [self initNavigationBar];
     [super viewDidLoad];

@@ -7,7 +7,7 @@
 //
 
 #import "PendingPaymentViewCell.h"
-#import "UIImageView+WebCache.h"
+#import "UIImageView+AFNetworking.h"
 #import "RequestModel.h"
 @implementation PendingPaymentViewCell
 

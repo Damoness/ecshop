@@ -72,7 +72,8 @@ typedef enum {
 
 typedef enum{
     PayWithBalance = 1 ,//余额支付
-    PayWithAlipay  = 4    //支付宝
+    PayWithAlipay  = 4 ,   //支付宝
+    PayWithWeChat  = 5    //微信
 }PayType;
 
 //支付订单 toPayOrderParams

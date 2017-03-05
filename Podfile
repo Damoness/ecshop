@@ -11,6 +11,7 @@ target 'ecshop' do
   pod 'MJExtension', '~> 3.0.13'
   pod 'IQKeyboardManager' , '~> 4.0.7'
   pod 'AFNetworking', '~> 3.1.0'
+  pod 'SDWebImage', '~>3.8.2'
 
 
 end
