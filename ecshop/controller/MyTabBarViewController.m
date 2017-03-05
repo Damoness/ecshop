@@ -15,9 +15,6 @@
 @interface MyTabBarViewController ()
 {
     UIImageView *customBar; // 定制底部导航栏
-    
-    
-    
     UILabel *shoppingCartBadgeLabel;
     UIView *shoppingCartView; //
 }
@@ -39,9 +36,10 @@
 {
     [super viewWillAppear:animated];
      [self.tabBarController.selectedViewController viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = YES;
+     self.navigationController.navigationBar.hidden = YES;
 #pragma mark -- 引导页
-//    [self setIntroductionView];
+
+    
         if (![[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]) {
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
             [self setIntroductionView];
@@ -58,6 +56,8 @@
     [self initViews];
 
 }
+
+
 -(void)initViews
 {
     
@@ -79,9 +79,7 @@
 //    NSString *tabbar3 = data[@"tabbar3"];
 //    NSString *tabbar4 = data[@"tabbar4"];
     
-    
-    
-    
+
     self.tabBar.hidden=YES;
     customBar = [[UIImageView alloc]init];
     //设置customBar位置和大小，屏幕的最低部
@@ -207,12 +205,19 @@
 }
 
 
-
+-(void)selectButtonWithIndex:(NSInteger)index{
+    
+    
+    
+    
+    
+}
 
 
 - (void)dealloc {
     NSLog(@"%@ --%@",NSStringFromClass([self class]),NSStringFromSelector(_cmd));
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

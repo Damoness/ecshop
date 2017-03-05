@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface MyTabBarViewController : UITabBarController
+
 -(void)hideCustomTabbar:(BOOL)hiden; //隐藏定制的tabBar
+
 -(void)buttonClicked:(UIButton *)button; //
+
+
+-(void)selectButtonWithIndex:(NSInteger)index; //选中第几个button
+
+
 @end

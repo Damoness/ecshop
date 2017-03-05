@@ -69,7 +69,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self initNavigationBar];
+    //[self initNavigationBar];
     
     [self initViews];
 
@@ -185,6 +185,9 @@
 }
 
 - (void)initViews{
+    
+    
+    self.title = @"申请分享员";
     
     self.proviceTextField.delegate = self;
     self.codeTextField.delegate = self;

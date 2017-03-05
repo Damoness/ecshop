@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+//IB_DESIGNABLE
 @interface CustomButton : UIButton
 
-@property (nonatomic, assign) IBInspectable UIColor *bgColor;
+//IBInspectable
+@property (nonatomic, strong) IBInspectable UIColor *bgColor;
 
+
+@property (nonatomic, assign) IBInspectable int badgeNo;
 
 @end

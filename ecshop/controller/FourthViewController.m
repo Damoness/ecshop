@@ -79,8 +79,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //self.title = @"我的";
-    self.view.backgroundColor = kColorBack;
+    self.title = @"我的";
+    
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    
+    self.view.backgroundColor = kColor_UIView_BackgroundColor;
     
     [self configLoginView];
     
@@ -155,7 +158,7 @@
     
     _userView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
     _userView.hidden = YES;
-    [self initNavigationBar];
+    //[self initNavigationBar];
     
 
     
@@ -163,7 +166,7 @@
     UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, (kScreenHeight/7)*2)];
     imgView.userInteractionEnabled = YES;
     //imgView.image = [UIImage imageNamed:@"会员中心-已登录-背景1.png"];
-    imgView.backgroundColor = RGB(255, 71, 2);
+    imgView.backgroundColor = kColor_NavigationBar_BarTintColor;
     [_userView addSubview:imgView];
     
 //    
@@ -293,7 +296,7 @@
         
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0,imgView.frame.size.height - 80 , kScreenWidth/2, 80)];
         
-        view.backgroundColor = RGB(255, 71, 2);
+        view.backgroundColor = kColor_NavigationBar_BarTintColor;
         
         UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth/4- 20, 80/2-20, 20, 20)];
         
@@ -326,7 +329,7 @@
         
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(kScreenWidth/2,imgView.frame.size.height - 80 , kScreenWidth/2, 80)];
         
-        view.backgroundColor = RGB(255, 71, 2);
+        view.backgroundColor = kColor_NavigationBar_BarTintColor;
         
         UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth/4- 20, 80/2-20, 20, 20)];
         
@@ -422,7 +425,7 @@
     _loginView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     _loginView.hidden = NO;
     
-    [self initNavigationBar];
+    //[self initNavigationBar];
     //背景图
     UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, (self.view.frame.size.height/7)*2)];
     UIImage *image = [UIImage imageNamed:@"会员中心-未登录-背景.png"];
@@ -734,7 +737,7 @@
         if (indexPath.section == 0) {
             if (indexPath.row == 0) {
                 cell.lab.text = @"我的订单";
-                cell.img.image = [UIImage imageNamed:@"个人中心-我的订单icon.png"];
+                //cell.img.image = [UIImage imageNamed:@"个人中心-我的订单icon.png"];
             }
             
         }else if(indexPath.section == 1){

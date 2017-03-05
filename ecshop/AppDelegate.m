@@ -12,6 +12,7 @@
 #import "SecondViewController.h"
 #import "ThirdViewController.h"
 #import "FourthViewController.h"
+#import "MyViewController.h"
 #import "MyTabBarViewController.h"
 #import "UMSocialWechatHandler.h"
 #import "UMSocialQQHandler.h"
@@ -42,8 +43,19 @@
     
     
     UIImage *backButtonImage = [[UIImage imageNamed:@"back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 30, 0, 0)];
+//    UIImage *backButtonImage = [[UIImage imageNamed:@"nav_arrow.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 30, 0, 0)];
+    //UIImage *backButtonImage  = [UIImage imageNamed:@"nav_arrow"];
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(NSIntegerMin, NSIntegerMin) forBarMetrics:UIBarMetricsDefault];
+
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],
+    NSForegroundColorAttributeName:kColor_NavigationBar_TitleColor}];
+    
+    
+    [UINavigationBar appearance].barTintColor = kColor_NavigationBar_BarTintColor;
+    
+    //[UINavigationBar appearance].backgroundColor = RGB(230, 37, 137);
     
     //友盟分享
     [UMSocialData setAppKey:UMSharekey];
@@ -66,8 +78,10 @@
     UINavigationController *thirdNV = [[UINavigationController alloc]initWithRootViewController:third];
     FourthViewController *fourth=[[FourthViewController alloc]init];
     UINavigationController *fourthNV = [[UINavigationController alloc]initWithRootViewController:fourth];
+    
+    MyViewController *myVC = [[MyViewController alloc]init];
  
-    NSArray *array=@[firstNV,secondNV,thirdNV,fourthNV];
+    NSArray *array=@[firstNV,secondNV,thirdNV,myVC];
     
     MyTabBarViewController *tab=[[MyTabBarViewController alloc]init];
     
