@@ -113,6 +113,7 @@
         btn1.hidden = YES;
         btn2.hidden = YES;
         MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
+        self.tabBarController.tabBar.hidden = YES;
         [tabbar hideCustomTabbar:NO];
     }
     

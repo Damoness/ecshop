@@ -54,3 +54,9 @@
 
 
 
+
+
+//通知
+#define kNotification_ShoppingCart_No @"kNotification_ShoppingCart_No" //购物车数量通知
+
+

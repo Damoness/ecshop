@@ -10,6 +10,8 @@
 #import "UIColor+Hex.h"
 #import "UserGuideViewController.h"
 #import "AppDelegate.h"
+#import "UIButton+Common.h"
+#import "CustomButton.h"
 @interface MyTabBarViewController ()
 {
     UIImageView *customBar; // 定制底部导航栏
@@ -17,7 +19,7 @@
     
     
     UILabel *shoppingCartBadgeLabel;
-    UIView *shoppingCartView;
+    UIView *shoppingCartView; //
 }
 @end
 
@@ -60,46 +62,68 @@
 {
     
 #pragma mark --接收登录通知
-    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(cartNum:) name:@"cart_num" object:nil];
+    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(setShoppingCartLabelNo:) name:kNotification_ShoppingCart_No object:nil];
     
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(quite:) name:@"quite" object:nil];
-
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Setting" ofType:@"plist"];
-    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-    NSString *tabBarItemFont = data[@"tabBarItemFont"];
-    //字体大小
-    int tabBarFont = [tabBarItemFont intValue];
-    NSString *tabBarBackgroundColor = data[@"tabBarBackgroundColor"];
-    NSString *tabBarIitmColorAfter = data[@"tabBarIitmColorAfter"];
-    NSString *tabBarIitmColorBefore = data[@"tabBarIitmColorBefore"];
-    NSString *tabbar1 = data[@"tabbar1"];
-    NSString *tabbar2 = data[@"tabbar2"];
-    NSString *tabbar3 = data[@"tabbar3"];
-    NSString *tabbar4 = data[@"tabbar4"];
+//
+//    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Setting" ofType:@"plist"];
+//    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+//    NSString *tabBarItemFont = data[@"tabBarItemFont"];
+//    //字体大小
+//    int tabBarFont = [tabBarItemFont intValue];
+//    NSString *tabBarBackgroundColor = data[@"tabBarBackgroundColor"];
+//    NSString *tabBarIitmColorAfter = data[@"tabBarIitmColorAfter"];
+//    NSString *tabBarIitmColorBefore = data[@"tabBarIitmColorBefore"];
+//    NSString *tabbar1 = data[@"tabbar1"];
+//    NSString *tabbar2 = data[@"tabbar2"];
+//    NSString *tabbar3 = data[@"tabbar3"];
+//    NSString *tabbar4 = data[@"tabbar4"];
+    
+    
+    
     
     self.tabBar.hidden=YES;
     customBar = [[UIImageView alloc]init];
     //设置customBar位置和大小，屏幕的最低部
     customBar.frame = CGRectMake(0, kScreenHeight - 49, kScreenWidth, 49);
-    [customBar setBackgroundColor:[UIColor colorWithHexString:tabBarBackgroundColor]];
+    [customBar setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:customBar];
-    NSArray *arr=@[tabbar1,tabbar2,tabbar3,tabbar4];
+    NSArray *arr=@[@{
+                       @"title":@"首页",
+                       @"normalImageName":@"tab_home_gray",
+                       @"selectedImageName":@"tab_home"
+                       },
+                   @{
+                       @"title":@"分类",
+                       @"normalImageName":@"tab_classification_gray",
+                       @"selectedImageName":@"tab_classification"
+                       },
+                   @{
+                       @"title":@"购物车",
+                       @"normalImageName":@"tab_shopping_gray",
+                       @"selectedImageName":@"tab_shopping"
+                       },
+                   @{
+                       @"title":@"我的",
+                       @"normalImageName":@"tab_user_gray",
+                       @"selectedImageName":@"tab_user"
+                       }];
+    
+    
     for (int i = 0; i < 4; i++)
     {
         UIButton *button = [[UIButton alloc]init];
+        
+//        if (i == 1) {
+//            button = [CustomButton new];
+//        }
+        
         button.frame = CGRectMake(i * kScreenWidth/4, 0, kScreenWidth/4, 49);
-        [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"tab%d",i]] forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"tab%d",i]] forState:UIControlStateHighlighted];
-        [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"tabc%d",i]] forState:UIControlStateSelected];
-        //        if (i==3) {
-        //            JSBadgeView *badgeView=[[JSBadgeView alloc]initWithParentView:button alignment:JSBadgeViewAlignmentTopRight];
-        //           // badgeView.badgeText=_numLab.text;
-        //            badgeView.badgeTextColor=[UIColor whiteColor];
-        //            badgeView.backgroundColor=[UIColor redColor];
-        //            badgeView.badgePositionAdjustment = CGPointMake(-15, 10);
-        //            [button addSubview:badgeView];
-        //            [customBar sendSubviewToBack:button];
-        //        }
+        [button setImage:[UIImage imageNamed:arr[i][@"normalImageName"]] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:arr[i][@"normalImageName"]] forState:UIControlStateHighlighted];
+        [button setImage:[UIImage imageNamed:arr[i][@"selectedImageName"]] forState:UIControlStateSelected];
+
+        
         if (i == 2) { //购物车视图
             shoppingCartView = [[UIView alloc]initWithFrame:CGRectMake(button.frame.size.width - 35, 3, 12, 12)];
             shoppingCartView.backgroundColor = [UIColor redColor];
@@ -115,24 +139,38 @@
             shoppingCartView.hidden = YES;
             
         }
-        [button setTitle:arr[i] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor colorWithHexString:tabBarIitmColorBefore] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor colorWithHexString:tabBarIitmColorBefore] forState:UIControlStateHighlighted];
-        [button setTitleColor:[UIColor colorWithHexString:tabBarIitmColorAfter] forState:UIControlStateSelected];
+        [button setTitle:arr[i][@"title"] forState:UIControlStateNormal];
+        [button setTitleColor:RGB(156, 156, 156) forState:UIControlStateNormal];
+        [button setTitleColor:RGB(156, 156, 156) forState:UIControlStateHighlighted];
+        [button setTitleColor:RGB(230, 37, 137) forState:UIControlStateSelected];
         [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        button.titleLabel.font = [UIFont systemFontOfSize:tabBarFont];
-        if (i==2) {
-            button.titleEdgeInsets = UIEdgeInsetsMake(35, -25, 0, 5);
-            button.imageEdgeInsets = UIEdgeInsetsMake(0,20, 15, -5);
-        }
-        else if(i==3){
-            button.titleEdgeInsets = UIEdgeInsetsMake(35, -22, 0, 5);
-            button.imageEdgeInsets = UIEdgeInsetsMake(0,20, 15, 0);
-        }else
-        {
-            button.titleEdgeInsets = UIEdgeInsetsMake(35, -25, 0, 12);
-            button.imageEdgeInsets = UIEdgeInsetsMake(0,12, 15, 0);
-        }
+        button.titleLabel.font = [UIFont systemFontOfSize:12];
+        
+        
+        //button.titleEdgeInsets = UIEdgeInsetsMake(35, 0, 0, 0);
+//        button.imageEdgeInsets = UIEdgeInsetsMake(0,20, 15, -5);
+        
+
+        [button verticalImageAndTitle:5];
+
+//        if (i ==0 || i ==2) {
+//            button.backgroundColor = [UIColor blueColor];
+//        }
+//        
+//        button.titleLabel.backgroundColor = [UIColor greenColor];
+        
+//        if (i==2) {
+//            button.titleEdgeInsets = UIEdgeInsetsMake(35, -25, 0, 5);
+//            button.imageEdgeInsets = UIEdgeInsetsMake(0,20, 15, -5);
+//        }
+//        else if(i==3){
+//            button.titleEdgeInsets = UIEdgeInsetsMake(35, -22, 0, 5);
+//            button.imageEdgeInsets = UIEdgeInsetsMake(0,20, 15, 0);
+//        }else
+//        {
+//            button.titleEdgeInsets = UIEdgeInsetsMake(35, -25, 0, 12);
+//            button.imageEdgeInsets = UIEdgeInsetsMake(0,12, 15, 0);
+//        }
         button.tag = 100 + i;
         [customBar addSubview:button];
     }
@@ -143,6 +181,7 @@
     [UIView animateWithDuration:0.5 animations:^{
         if (hiden) {
             customBar.frame = CGRectMake(0, kScreenHeight, kScreenWidth, 49);
+            
         }
         else
         {
@@ -179,8 +218,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-
--(void)cartNum:(NSNotification *)sender{
+//设置购物车图片数量
+-(void)setShoppingCartLabelNo:(NSNotification *)sender{
 
     NSDictionary *dic = sender.object;
     shoppingCartBadgeLabel.text = dic[@"cart_num"];

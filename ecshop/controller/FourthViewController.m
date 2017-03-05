@@ -939,10 +939,11 @@
                 [button2 addSubview:smallView2];
             }
             NSString *c = [NSString stringWithFormat:@"%@",ws.model.cart_num];
+            
             NSDictionary *dicc = [[NSDictionary alloc]init];
             dicc = @{@"cart_num":c};
 #pragma mark -- 发送购物车数量通知
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"cart_num" object:dicc];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_ShoppingCart_No object:dicc];
             
             
         }
