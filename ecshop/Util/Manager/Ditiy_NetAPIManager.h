@@ -107,6 +107,9 @@ typedef enum{
 -(void)request_DetailedGoodsInfo_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
 
 
+//获取商品详情 toDetailedGoodsInfoParams
+-(void)request_DetailedGoodsInfoV2_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
+
 
 #pragma mark - ShoppingCart
 

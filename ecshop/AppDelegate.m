@@ -19,6 +19,7 @@
 #import "UserGuideViewController.h"
 #import "WXApi.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "LoginViewController.h"
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
 @end
@@ -42,8 +43,8 @@
     
     
     
-    UIImage *backButtonImage = [[UIImage imageNamed:@"back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 30, 0, 0)];
-//    UIImage *backButtonImage = [[UIImage imageNamed:@"nav_arrow.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 30, 0, 0)];
+//    UIImage *backButtonImage = [[UIImage imageNamed:@"back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 30, 0, 0)];
+    UIImage *backButtonImage = [[UIImage imageNamed:@"nav_arrow.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 30, 0, 0)];
     //UIImage *backButtonImage  = [UIImage imageNamed:@"nav_arrow"];
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(NSIntegerMin, NSIntegerMin) forBarMetrics:UIBarMetricsDefault];
@@ -80,8 +81,9 @@
     UINavigationController *fourthNV = [[UINavigationController alloc]initWithRootViewController:fourth];
     
     MyViewController *myVC = [[MyViewController alloc]init];
+    UINavigationController *myNV = [[UINavigationController alloc]initWithRootViewController:myVC];
  
-    NSArray *array=@[firstNV,secondNV,thirdNV,myVC];
+    NSArray *array=@[firstNV,secondNV,thirdNV,myNV];
     
     MyTabBarViewController *tab=[[MyTabBarViewController alloc]init];
     
@@ -92,8 +94,13 @@
     [tab buttonClicked:button];
     
     //tab.delegate=self;
+    
+    
+    
+    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(popUserLogin) name:kNotification_User_UnLogin object:nil];
+    
 #pragma mark --接收登录通知
-    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(loginSuccess:) name:@"login" object:nil];
+    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(loginSuccess:) name:kNotification_Login_Success object:nil];
 #pragma mark --接收退出通知
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(quiteSuccess:) name:@"quite" object:nil];
 
@@ -121,6 +128,16 @@
 //        
 //    }];
 //}
+
+-(void)popUserLogin{
+    
+    
+    LoginViewController *lVC = [LoginViewController new];
+    
+    [self.window.rootViewController presentViewController:lVC animated:YES completion:nil];
+    
+}
+
 -(void)loginSuccess:(NSNotification *)sender{
     NSLog(@"%@",sender.object);
     NSDictionary *dic = sender.object;

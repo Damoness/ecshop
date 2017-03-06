@@ -178,12 +178,24 @@
             [LoginModel setKey:data[@"data"][@"key"]];
             
             
-            [weakSelf.navigationController popViewControllerAnimated:YES];
+            if(self.navigationController && self.navigationController.viewControllers.count > 0){
+                
+                     [weakSelf.navigationController popViewControllerAnimated:YES];
+                
+            }else{
+                
+
+                [weakSelf dismissViewControllerAnimated:YES completion:nil];
+                
+            }
+            
+            
+       
             
              NSDictionary *dicc = @{@"dic":data,@"userName":userStr};
 #pragma mark -- 注册通知各页已经登录
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:dicc];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Login_Success object:dicc];
             
         }
         
@@ -282,10 +294,11 @@
     
 }
 -(void)back{
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"login" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotification_Login_Success object:nil];
  
 }
 @end

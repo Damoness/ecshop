@@ -680,6 +680,22 @@
     
 }
 
+//获取商品详情 toDetailedGoodsInfoParams
+-(void)request_DetailedGoodsInfoV2_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block{
+    //http://sitmarket.ditiy.com/mobile/api_goods.php
+    
+    NSString *path = [NSString stringWithFormat:@"%@/mobile/api_goods.php",baseURLStr];
+    
+    [[DitiyNetAPIClient sharedJsonClient]requestJsonDataWithPath:path withParams:nil withMethodType:Get autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+        
+        block(data,error);
+        
+        
+    }];
+    
+}
+
 
 //获取购物车
 -(void)request_ShoppingCart_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block{

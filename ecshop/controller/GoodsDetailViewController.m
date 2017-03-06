@@ -567,6 +567,18 @@
         
     }];
     
+//    WS(ws)
+//    [[Ditiy_NetAPIManager sharedManager]request_DetailedGoodsInfoV2_WithParams:[model toDetailedGoodsInfoParams] andBlock:^(id data, NSError *error) {
+//        
+//        if(data){
+//            
+//            
+//            
+//        }
+//        
+//    }];
+    
+    
     
     
 }

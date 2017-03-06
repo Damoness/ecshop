@@ -44,7 +44,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initNavigationBar];
+    
+    [self initViews];
+    
+    //[self initNavigationBar];
     if ([self.tagg isEqualToString:@"0"]) {
         
         [self myOrder];       //所有订单
@@ -76,6 +79,33 @@
     self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
 }
+
+
+-(void)initViews{
+    
+    self.navigationController.navigationBar.hidden = NO;
+    
+    if ([self.tagg isEqualToString:@"0"]) {
+        self.label.text = @"全部订单";
+        
+    }else if ([self.tagg isEqualToString:@"1"]){
+        self.label.text = @"待付款";
+        
+        
+    }else if ([self.tagg isEqualToString:@"3"]){
+        self.label.text = @"待发货";
+        
+        
+    }else if ([self.tagg isEqualToString:@"4"]){
+        self.label.text = @"待收货";
+        
+        
+    }else if ([self.tagg isEqualToString:@"5"]){
+        self.label.text = @"已完成";
+    }
+    
+}
+
 -(void)draw{
     
     _table = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64) style:UITableViewStyleGrouped];

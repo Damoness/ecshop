@@ -107,7 +107,13 @@
     //self.contentMode = UIViewContentModeRedraw;
     
 //    [self setBackgroundImage:[self imageWithColor:[UIColor redColor]] forState:UIControlStateNormal];
+    
+//    self.layer.borderColor = RGB(226, 226, 226).CGColor;
+//    self.layer.borderWidth = 0.5;
+    
+    
     [self setBackgroundImage:[self imageWithColor:[UIColor grayColor]] forState:UIControlStateHighlighted];
+    //[self setBackgroundImage:[self imageWithColor:[UIColor grayColor]] forState:UIControlStateSelected];
     
     _badgeLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width - 15, 3, 15, 15)];
 

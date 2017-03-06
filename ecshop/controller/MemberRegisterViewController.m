@@ -189,6 +189,8 @@
     
     self.title = @"申请分享员";
     
+    self.navigationController.navigationBar.hidden = false;
+    
     self.proviceTextField.delegate = self;
     self.codeTextField.delegate = self;
     self.invitationCodeTextField.delegate = self;

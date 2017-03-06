@@ -136,6 +136,9 @@
             
             if ([LoginModel isLogin]) {
                 [LoginModel doLogout];
+                
+                [[NSNotificationCenter defaultCenter]postNotificationName:kNotification_User_UnLogin object:nil];
+                
             }
             
         }
