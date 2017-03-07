@@ -9,7 +9,7 @@
 #import "UserGuideViewController.h"
 #import "UIColor+Hex.h"
 #import "ViewController.h"
-#define imgCount 5
+#define imgCount 4
 @interface UserGuideViewController ()<UIScrollViewDelegate>
 {
     UIPageControl *pageCtr;
@@ -41,7 +41,7 @@
     
     for (int i = 1; i < imgCount + 1; i++) {
         UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth*(i-1), 0, kScreenWidth, kScreenHeight)];
-        NSString *imgName = [NSString stringWithFormat:@"%d.png",i];
+        NSString *imgName = [NSString stringWithFormat:@"loading%d",i];
         [imageview setImage:[UIImage imageNamed:imgName]];
         imageview.userInteractionEnabled = YES;    //打开imageview3的用户交互;否则下面的button无法响应
         scrollView.userInteractionEnabled = YES;

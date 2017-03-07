@@ -41,7 +41,13 @@
 @property (nonatomic,strong) NSString *goods_attr_id;
 @property (nonatomic,strong) NSString *type;
 
+
+
+
+
 @property (nonatomic,strong) NSString *order_id; // 订单编号
+
+@property (nonatomic,strong) NSString *payType;  //支付类型
 
 - (NSDictionary *)toCreateOrderParams;
 
@@ -60,5 +66,8 @@
 
 //支付订单参数
 - (NSDictionary *)toPayOrderParams;
+
+//H5支付订单参数
+- (NSDictionary *)toPayOrderH5Params;
 
 @end

@@ -439,6 +439,7 @@
 		9CA6C1681E20EEDA00290E9D /* ShoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6C1641E20EEDA00290E9D /* ShoppingCartModel.m */; };
 		9CA6C1691E20EEDA00290E9D /* GoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6C1651E20EEDA00290E9D /* GoodsModel.m */; };
 		9CCBA58F1E67C13E000A7BEB /* SharingManModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCBA58E1E67C13E000A7BEB /* SharingManModel.m */; };
+		9CDD28A61E6D69EA00FD2CB5 /* H5ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD28A51E6D69EA00FD2CB5 /* H5ViewController.m */; };
 		9CEB41D01E6966C100E15FC6 /* MYColorBackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB41C91E6966C100E15FC6 /* MYColorBackView.m */; };
 		9CEB41D11E6966C100E15FC6 /* MYPresentAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB41CB1E6966C100E15FC6 /* MYPresentAnimationManager.m */; };
 		9CEB41D21E6966C100E15FC6 /* MYPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB41CD1E6966C100E15FC6 /* MYPresentationController.m */; };
@@ -1137,6 +1138,8 @@
 		9CA6C1661E20EEDA00290E9D /* GoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsModel.h; sourceTree = "<group>"; };
 		9CCBA58D1E67C13E000A7BEB /* SharingManModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharingManModel.h; sourceTree = "<group>"; };
 		9CCBA58E1E67C13E000A7BEB /* SharingManModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharingManModel.m; sourceTree = "<group>"; };
+		9CDD28A41E6D69EA00FD2CB5 /* H5ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = H5ViewController.h; sourceTree = "<group>"; };
+		9CDD28A51E6D69EA00FD2CB5 /* H5ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = H5ViewController.m; sourceTree = "<group>"; };
 		9CEB41C81E6966C100E15FC6 /* MYColorBackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYColorBackView.h; sourceTree = "<group>"; };
 		9CEB41C91E6966C100E15FC6 /* MYColorBackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYColorBackView.m; sourceTree = "<group>"; };
 		9CEB41CA1E6966C100E15FC6 /* MYPresentAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPresentAnimationManager.h; sourceTree = "<group>"; };
@@ -1651,6 +1654,7 @@
 			isa = PBXGroup;
 			children = (
 				9C36ACF61E0128E80021C6CE /* eshop-Prefix.pch */,
+				9CDD28A31E6D68FD00FD2CB5 /* H5 */,
 				9C36ACF81E0130EF0021C6CE /* Util */,
 				51F12E8A1C0BE1B7002C62D0 /* other */,
 				9C36ACFD1E0230AC0021C6CE /* model */,
@@ -2456,6 +2460,15 @@
 			path = "引导页";
 			sourceTree = "<group>";
 		};
+		9CDD28A31E6D68FD00FD2CB5 /* H5 */ = {
+			isa = PBXGroup;
+			children = (
+				9CDD28A41E6D69EA00FD2CB5 /* H5ViewController.h */,
+				9CDD28A51E6D69EA00FD2CB5 /* H5ViewController.m */,
+			);
+			path = H5;
+			sourceTree = "<group>";
+		};
 		9CEB41C71E6966C100E15FC6 /* MYDropMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -3003,6 +3016,7 @@
 				51F12E761C0BE168002C62D0 /* ViewController.m in Sources */,
 				51F6F5A21C47A83E00D9360B /* MyOrderViewCell.m in Sources */,
 				9C36AD121E0230AC0021C6CE /* shangpinModel.m in Sources */,
+				9CDD28A61E6D69EA00FD2CB5 /* H5ViewController.m in Sources */,
 				9CFA5EBD1E471A0600673090 /* hongBaoView.m in Sources */,
 				9CFA5EC91E471A0600673090 /* RechargeViewController.m in Sources */,
 				9CEB41D61E6966D300E15FC6 /* SmallDropMenu.m in Sources */,

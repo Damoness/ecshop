@@ -20,6 +20,23 @@
     return shared_manager;
 }
 
+//获取导航页图片
+-(void)request_WelcomeGuidePicBlock:(void (^)(id data,NSError *error))block{
+    
+    NSString *path = @"Welcome/guidePicture";
+    
+    [[DitiyNetAPIClient sharedJsonClient]requestJsonDataWithPath:path withParams:nil withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+        
+        
+        block(data,error);
+        
+        
+    }];
+    
+    
+}
+
 //注册分销商
 -(void)request_RegisterSharingMan_WithParams:(NSDictionary *)params andProgress:(void (^)(float progress))progress andBlock:(void (^)(id data, NSError *error))block{
     
@@ -69,6 +86,40 @@
         block(nil,error);
     }];
 
+}
+
+//更新支付结果
+-(void)request_UpdatePayResult_WithParams:(NSDictionary *)params andBlock:(void (^)(id data, NSError *error))block{
+    
+    NSString *path = [NSString stringWithFormat:@"%@/mobile/api_weixin_paysuccess.php",baseURLStr];
+    
+ 
+        AFHTTPSessionManager *manager =  [AFHTTPSessionManager manager];
+    
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/plain", @"text/javascript", @"text/json", @"text/html", nil];
+    
+        [manager POST:path parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+    
+            block(responseObject,nil);
+    
+    
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    
+    
+            block(nil,error);
+            
+            
+        }];
+    
+    
+//    [[DitiyNetAPIClient sharedJsonClient]requestJsonDataWithPath:path withParams:params withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+//        
+//        block(data,error);
+//        
+//    }];
+    
+    
 }
 
 
@@ -766,6 +817,28 @@
     
 }
 
+
+-(void)request_PayOrder_AppH5_WithPayType:(PayType)type Params:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block{
+    
+    
+    NSString *toPath = @"order/appH5Pay";
+    
+    NSMutableDictionary *mDic = [NSMutableDictionary dictionaryWithDictionary:params];
+    [mDic setObject:[NSString stringWithFormat:@"%d",type] forKey:@"type"];
+    
+    [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:toPath withParams:mDic withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+        
+        
+        block(data,error);
+        
+        
+        
+    }];
+    
+    
+    
+}
 
 
 @end

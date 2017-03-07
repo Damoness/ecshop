@@ -9,8 +9,18 @@
 
 #import <Foundation/Foundation.h>
 
+
+@protocol WXApiManagerDelegate <NSObject>
+
+-(void)managerDidReceivePayResponse:(PayResp *)response;
+
+@end
+
+
 @interface WXApiManager : NSObject<WXApiDelegate>
 
 + (instancetype)sharedManager;
+
+@property (nonatomic,assign) id<WXApiManagerDelegate>delegate;
 
 @end

@@ -17,6 +17,9 @@
 + (instancetype)sharedManager;
 
 
+//获取导航页图片
+-(void)request_WelcomeGuidePicBlock:(void (^)(id data,NSError *error))block;
+
 //注册分销商
 -(void)request_RegisterSharingMan_WithParams:(NSDictionary *)params andBlock:(void (^)(id data, NSError *error))block;
 
@@ -164,6 +167,19 @@ typedef enum{
 
 //获取热搜关键字
 -(void)request_HotSearchKeyBlock:(void (^)(id data ,NSError *error))block;
+
+
+
+#pragma mark - H5用
+
+//更新支付结果
+-(void)request_UpdatePayResult_WithParams:(NSDictionary *)params andBlock:(void (^)(id data, NSError *error))block;
+
+//支付订单 toPayOrderParams
+-(void)request_PayOrder_AppH5_WithPayType:(PayType)type Params:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block;
+
+
+#pragma mark - H5用
 
 
 @end

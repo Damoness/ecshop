@@ -111,6 +111,19 @@
     
 }
 
+
+//H5支付订单参数
+- (NSDictionary *)toPayOrderH5Params{
+    
+    NSMutableDictionary *params = @{
+                                    @"order_id":self.order_id,
+                                    @"type":self.payType
+                                    }.mutableCopy;
+    
+    return params;
+    
+}
+
 - (NSDictionary *)toParams{
     
     return  [super toParams];

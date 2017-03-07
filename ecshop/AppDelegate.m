@@ -20,6 +20,7 @@
 #import "WXApi.h"
 #import <AlipaySDK/AlipaySDK.h>
 #import "LoginViewController.h"
+#import "H5ViewController.h"
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
 @end
@@ -58,14 +59,14 @@
     
     //[UINavigationBar appearance].backgroundColor = RGB(230, 37, 137);
     
-    //友盟分享
-    [UMSocialData setAppKey:UMSharekey];
-    //微信分享
-    [UMSocialWechatHandler setWXAppId:WXAppId appSecret:WXappSecret url:url];
-    //手机qq分享
-    [UMSocialQQHandler setQQWithAppId:QQWithAppId appKey:QQappKey url:url];
-    //如果你要支持不同的屏幕方向，需要这样设置，否则在iPhone只支持一个竖屏方向
-    [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
+//    //友盟分享
+//    [UMSocialData setAppKey:UMSharekey];
+//    //微信分享
+//    [UMSocialWechatHandler setWXAppId:WXAppId appSecret:WXappSecret url:url];
+//    //手机qq分享
+//    [UMSocialQQHandler setQQWithAppId:QQWithAppId appKey:QQappKey url:url];
+//    //如果你要支持不同的屏幕方向，需要这样设置，否则在iPhone只支持一个竖屏方向
+//    [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
     
     
     FirstViewController *first=[[FirstViewController alloc]init];
@@ -104,7 +105,17 @@
 #pragma mark --接收退出通知
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(quiteSuccess:) name:@"quite" object:nil];
 
+    
     self.window.rootViewController=tab;
+    
+    
+ 
+    
+    H5ViewController *h5VC = [H5ViewController new];
+
+    UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:h5VC];
+    
+    self.window.rootViewController = nc;
     
     
     //向微信注册wx40fbb60e2d770512
@@ -150,25 +161,18 @@
 }
 -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
 {
-    if ([UMSocialSnsService handleOpenURL:url]) {
-        return [UMSocialSnsService handleOpenURL:url];
-    }
-    else if([WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]]){
+    
+    if ([url.absoluteString hasPrefix:MXWechatAPPID]) {
+        
         return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
-    }
-    else{
-        //跳转支付宝钱包进行支付，处理支付结果
+        
+    }else{
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
         }];
         return YES;
     }
-    
-//    BOOL result=[UMSocialSnsService handleOpenURL:url];
-//    if (result==FALSE) {
-//        //调用其他SDK,例如支付宝SDK
-//        return  [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
-//    }
+
     
 }
 
@@ -203,17 +207,17 @@
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
     
-    if ([WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]]) {
+    if ([url.absoluteString hasPrefix:MXWechatAPPID]) {
+        
         return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
+        
     }else{
-    
-        //跳转支付宝钱包进行支付，处理支付结果
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
         }];
-        
         return YES;
     }
+
 }
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
 //    return  [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];

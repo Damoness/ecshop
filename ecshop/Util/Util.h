@@ -17,4 +17,7 @@
 
 +(NSString *)imageBase64WithDataURL:(UIImage *)image;
 
+
++(NSMutableDictionary *)getURLParameters:(NSString *)urlStr;
+
 @end
