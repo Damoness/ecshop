@@ -118,15 +118,8 @@
     NSMutableString *urlStr = [NSMutableString stringWithString:request.URL.absoluteString];
     
     NSLog(@"urlStr:%@",urlStr);
-    //
-    //    if ([urlStr hasSuffix:@"is_app=y"]) {
-    //
-    //        NSLog(@"urlStr:-YES%@",urlStr);
-    //
-    //        return YES;
-    //
-    //    }
-    //    else
+    
+    
     if ([urlStr containsString:kURL_Order_PayFromUnpay] && [urlStr hasSuffix:@"is_pay=1"]) {
         
         
@@ -159,23 +152,23 @@
         
         _myOrderModel.order_id = [[Util getURLParameters:urlStr] objectForKey:@"order_id"];
         
-//        WS(ws)
-//        [[Ditiy_NetAPIManager sharedManager]request_PayOrder_AppH5_WithPayType:[_myOrderModel.payType intValue] Params:[_myOrderModel toPayOrderH5Params] andBlock:^(id data, NSError *error) {
-//            
-//            if(data && [ws.myOrderModel.payType intValue] == PayWithWeChat){
-//                
-//                [ws sendWechatPay:data];
-//                
-//            }else if (data && [ws.myOrderModel.payType intValue] == PayWithAlipay){
-//                
-//                NSLog(@"支付宝支付");
-//                
-//                [ws sendAlipay:data];
-//                
-//                
-//            }
-//            
-//        }];
+        //        WS(ws)
+        //        [[Ditiy_NetAPIManager sharedManager]request_PayOrder_AppH5_WithPayType:[_myOrderModel.payType intValue] Params:[_myOrderModel toPayOrderH5Params] andBlock:^(id data, NSError *error) {
+        //
+        //            if(data && [ws.myOrderModel.payType intValue] == PayWithWeChat){
+        //
+        //                [ws sendWechatPay:data];
+        //
+        //            }else if (data && [ws.myOrderModel.payType intValue] == PayWithAlipay){
+        //
+        //                NSLog(@"支付宝支付");
+        //
+        //                [ws sendAlipay:data];
+        //
+        //
+        //            }
+        //
+        //        }];
         
         [self request_PayOrder_AppH5];
         
@@ -201,38 +194,9 @@
         
         [webView loadRequest:mRequest];
         
-        //        NSMutableURLRequest *mRequest = request;
-        //
-        //        [mRequest setValue:@"y" forHTTPHeaderField:@"is_app"];
-        //
-        //        [webView loadRequest:mRequest];
-        
         return NO;
         
-    }
-//    else if ([urlStr isEqualToString:kURL_Order_Finished] && [request valueForHTTPHeaderField:@"is_app"] == nil){
-//        
-//        //NSLog(@"%@",[request allHTTPHeaderFields]);
-//        
-//        
-//        NSMutableURLRequest *mRequest = request;
-//        
-//        [mRequest setValue:@"y" forHTTPHeaderField:@"is_app"];
-//        
-//        
-//        
-//        [mRequest setHTTPMethod:@"POST"];
-//        
-//        //NSLog(@"%@",[request allHTTPHeaderFields]);
-//        
-//        [webView loadRequest:mRequest];
-//        
-//        return NO;
-//        
-//        
-//        
-//    }
-    else  if([urlStr containsString:kURL_Order_PayWithWeixin] || [urlStr containsString:kURL_Order_PayWithAlipay]) {
+    }else  if([urlStr containsString:kURL_Order_PayWithWeixin] || [urlStr containsString:kURL_Order_PayWithAlipay]) {
         
         
         NSString *orderIdAndPayType = [_webView stringByEvaluatingJavaScriptFromString:@"get_order_id_for_app()"];
@@ -248,7 +212,7 @@
         
         NSArray *arrayData = [orderIdAndPayType componentsSeparatedByString:@"_"];
         
-
+        
         NSLog(@"%@,%@",arrayData[0],arrayData[1]);
         
         
@@ -265,40 +229,40 @@
             
         }
         
-                // 获取当前页面的标题
-                NSString *title = [_webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-                NSLog(@"title %@", title);
+        // 获取当前页面的标题
+        NSString *title = [_webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+        NSLog(@"title %@", title);
         
         
         [self request_PayOrder_AppH5];
         
         
-//        WS(ws)
-//        [[Ditiy_NetAPIManager sharedManager]request_PayOrder_AppH5_WithPayType:[_myOrderModel.payType intValue] Params:[_myOrderModel toPayOrderH5Params] andBlock:^(id data, NSError *error) {
-//            
-//            
-//            //[ws.myOrderModel.payType intValue] == PayWithWeChat
-//            
-//            
-//            NSLog(@"ws.myOrderModel.payType:%d, PayWithWeChat:%d ",[ws.myOrderModel.payType intValue],PayWithWeChat);
-//            
-//            
-//            
-//            if(data && [ws.myOrderModel.payType intValue] == PayWithWeChat){
-//                
-//                NSLog(@"微信支付");
-//                
-//                [ws sendWechatPay:data];
-//            }else if (data && [ws.myOrderModel.payType intValue] == PayWithAlipay){
-//                
-//                NSLog(@"支付宝支付");
-//                
-//                [ws sendAlipay:data];
-//                
-//                
-//            }
-//            
-//        }];
+        //        WS(ws)
+        //        [[Ditiy_NetAPIManager sharedManager]request_PayOrder_AppH5_WithPayType:[_myOrderModel.payType intValue] Params:[_myOrderModel toPayOrderH5Params] andBlock:^(id data, NSError *error) {
+        //
+        //
+        //            //[ws.myOrderModel.payType intValue] == PayWithWeChat
+        //
+        //
+        //            NSLog(@"ws.myOrderModel.payType:%d, PayWithWeChat:%d ",[ws.myOrderModel.payType intValue],PayWithWeChat);
+        //
+        //
+        //
+        //            if(data && [ws.myOrderModel.payType intValue] == PayWithWeChat){
+        //
+        //                NSLog(@"微信支付");
+        //
+        //                [ws sendWechatPay:data];
+        //            }else if (data && [ws.myOrderModel.payType intValue] == PayWithAlipay){
+        //
+        //                NSLog(@"支付宝支付");
+        //
+        //                [ws sendAlipay:data];
+        //
+        //
+        //            }
+        //
+        //        }];
         
         
         return NO;
@@ -331,6 +295,16 @@
 
 //请求服务端支付接口
 -(void)request_PayOrder_AppH5{
+    
+    
+    if ([_myOrderModel.payType intValue] == PayWithWeChat && ![WXApi isWXAppInstalled]) {
+        
+        
+        [MBProgressHUD showError:@"请安装微信后使用微信支付"];
+        
+        return;
+        
+    }
     
     
     
@@ -366,6 +340,8 @@
 }
 
 -(void)sendWechatPay:(id)data{
+    
+    
     
     PayReq *request = [[PayReq alloc] init];
     
@@ -420,17 +396,21 @@
     [[AlipaySDK defaultService] payOrder:orderStr fromScheme:appScheme callback:^(NSDictionary *resultDic) {
         
         
-        if([resultDic[@"resultStatus"]intValue] == 9000){
+        if([resultDic[@"resultStatus"]intValue] == 9000){ //成功
             
-            [MBProgressHUD showSuccess:@"购买成功"];
+            //[MBProgressHUD showSuccess:@"购买成功"];
             
             [self UpdatePayResultSuccess:YES];
+            
+        }else if([resultDic[@"resultStatus"] intValue] == 6001) //用户取消
+        {
+            
+            [MBProgressHUD showError:@"用户取消支付"];
             
         }else{
             
             [MBProgressHUD showError:resultDic[@"memo"]];
             [self UpdatePayResultSuccess:NO];
-            
         }
         
     }];
@@ -454,9 +434,9 @@
     //                             @"pay_result":@"00"
     //                             };
     //891
-//    NSString *order_id = [[NSString stringWithFormat:@"order_id=%@",_myOrderModel.order_id]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    NSString *pay_result = [[NSString stringWithFormat:@"pay_result=00"]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    NSString *pay_type = [[NSString stringWithFormat:@"pay_type=微信"]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    //    NSString *order_id = [[NSString stringWithFormat:@"order_id=%@",_myOrderModel.order_id]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    //    NSString *pay_result = [[NSString stringWithFormat:@"pay_result=00"]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    //    NSString *pay_type = [[NSString stringWithFormat:@"pay_type=微信"]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     //
     //                    NSMutableData *postData = [NSMutableData new];
@@ -464,7 +444,7 @@
     //                    postData appendBytes:<#(nonnull const void *)#> length:<#(NSUInteger)#>
     //_myOrderModel.order_id
     
-
+    
     
     NSString *pay_type = [_myOrderModel.payType intValue] == PayWithAlipay ? @"支付宝":@"微信";
     NSString *pay_result = success ? @"00":@"11";
@@ -536,7 +516,7 @@
     }else{
         
         
-         //[self UpdatePayResultSuccess:NO];
+        //[self UpdatePayResultSuccess:NO];
         
         [MBProgressHUD showError:response[@"memo"]];
         
