@@ -159,24 +159,27 @@
         
         _myOrderModel.order_id = [[Util getURLParameters:urlStr] objectForKey:@"order_id"];
         
-        WS(ws)
-        [[Ditiy_NetAPIManager sharedManager]request_PayOrder_AppH5_WithPayType:[_myOrderModel.payType intValue] Params:[_myOrderModel toPayOrderH5Params] andBlock:^(id data, NSError *error) {
-            
-            if(data && [ws.myOrderModel.payType intValue] == PayWithWeChat){
-                
-                [ws sendWechatPay:data];
-                
-            }else if (data && [ws.myOrderModel.payType intValue] == PayWithAlipay){
-                
-                NSLog(@"支付宝支付");
-                
-                [ws sendAlipay:data];
-                
-                
-            }
-            
-        }];
+//        WS(ws)
+//        [[Ditiy_NetAPIManager sharedManager]request_PayOrder_AppH5_WithPayType:[_myOrderModel.payType intValue] Params:[_myOrderModel toPayOrderH5Params] andBlock:^(id data, NSError *error) {
+//            
+//            if(data && [ws.myOrderModel.payType intValue] == PayWithWeChat){
+//                
+//                [ws sendWechatPay:data];
+//                
+//            }else if (data && [ws.myOrderModel.payType intValue] == PayWithAlipay){
+//                
+//                NSLog(@"支付宝支付");
+//                
+//                [ws sendAlipay:data];
+//                
+//                
+//            }
+//            
+//        }];
         
+        [self request_PayOrder_AppH5];
+        
+        return NO;
         
     }else if([urlStr isEqualToString:kURL_Order_Submit]) {
         
@@ -232,17 +235,20 @@
     else  if([urlStr containsString:kURL_Order_PayWithWeixin] || [urlStr containsString:kURL_Order_PayWithAlipay]) {
         
         
-        NSLog(@"webViewDidFinishLoad:%@",webView);
+        NSString *orderIdAndPayType = [_webView stringByEvaluatingJavaScriptFromString:@"get_order_id_for_app()"];
+        NSLog(@"get_order_id_and_paytype_for_app %@", orderIdAndPayType);
         
-        NSString *orderId = [_webView stringByEvaluatingJavaScriptFromString:@"get_order_id_for_app()"];
-        NSLog(@"orderId %@", orderId);
+        if ([orderIdAndPayType isEqualToString:@""]) {
+            
+            DebugLog(@"%@",@"orderIdAndPayType isEqualToString:@\"\"");
+            return NO;
+        }
         
         //微信支付，支付宝
         
-        NSArray *arrayData = [orderId componentsSeparatedByString:@"_"];
+        NSArray *arrayData = [orderIdAndPayType componentsSeparatedByString:@"_"];
         
-        
-        
+
         NSLog(@"%@,%@",arrayData[0],arrayData[1]);
         
         
@@ -264,32 +270,35 @@
                 NSLog(@"title %@", title);
         
         
-        WS(ws)
-        [[Ditiy_NetAPIManager sharedManager]request_PayOrder_AppH5_WithPayType:[_myOrderModel.payType intValue] Params:[_myOrderModel toPayOrderH5Params] andBlock:^(id data, NSError *error) {
-            
-            
-            //[ws.myOrderModel.payType intValue] == PayWithWeChat
-            
-            
-            NSLog(@"ws.myOrderModel.payType:%d, PayWithWeChat:%d ",[ws.myOrderModel.payType intValue],PayWithWeChat);
-            
-            
-            
-            if(data && [ws.myOrderModel.payType intValue] == PayWithWeChat){
-                
-                NSLog(@"微信支付");
-                
-                [ws sendWechatPay:data];
-            }else if (data && [ws.myOrderModel.payType intValue] == PayWithAlipay){
-                
-                NSLog(@"支付宝支付");
-                
-                [ws sendAlipay:data];
-                
-                
-            }
-            
-        }];
+        [self request_PayOrder_AppH5];
+        
+        
+//        WS(ws)
+//        [[Ditiy_NetAPIManager sharedManager]request_PayOrder_AppH5_WithPayType:[_myOrderModel.payType intValue] Params:[_myOrderModel toPayOrderH5Params] andBlock:^(id data, NSError *error) {
+//            
+//            
+//            //[ws.myOrderModel.payType intValue] == PayWithWeChat
+//            
+//            
+//            NSLog(@"ws.myOrderModel.payType:%d, PayWithWeChat:%d ",[ws.myOrderModel.payType intValue],PayWithWeChat);
+//            
+//            
+//            
+//            if(data && [ws.myOrderModel.payType intValue] == PayWithWeChat){
+//                
+//                NSLog(@"微信支付");
+//                
+//                [ws sendWechatPay:data];
+//            }else if (data && [ws.myOrderModel.payType intValue] == PayWithAlipay){
+//                
+//                NSLog(@"支付宝支付");
+//                
+//                [ws sendAlipay:data];
+//                
+//                
+//            }
+//            
+//        }];
         
         
         return NO;
@@ -309,10 +318,6 @@
     
     [MBProgressHUD hideHUDForView:self.view animated:true];
     
-    
-    
-    
-    
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
     
@@ -322,6 +327,43 @@
 }
 
 
+//request_PayOrder_AppH5_WithPayType
+
+//请求服务端支付接口
+-(void)request_PayOrder_AppH5{
+    
+    
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    WS(ws)
+    [[Ditiy_NetAPIManager sharedManager]request_PayOrder_AppH5_WithPayType:[_myOrderModel.payType intValue] Params:[_myOrderModel toPayOrderH5Params] andBlock:^(id data, NSError *error) {
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        if (data) {
+            
+            
+            if([ws.myOrderModel.payType intValue] == PayWithWeChat){
+                
+                NSLog(@"调用微信支付");
+                [ws sendWechatPay:data];
+                
+            }else if ([ws.myOrderModel.payType intValue] == PayWithAlipay){
+                
+                NSLog(@"调用支付宝支付");
+                
+                [ws sendAlipay:data];
+                
+            }
+            
+            
+        }
+        
+        
+    }];
+    
+}
 
 -(void)sendWechatPay:(id)data{
     
@@ -385,7 +427,6 @@
             [self UpdatePayResultSuccess:YES];
             
         }else{
-            
             
             [MBProgressHUD showError:resultDic[@"memo"]];
             [self UpdatePayResultSuccess:NO];
