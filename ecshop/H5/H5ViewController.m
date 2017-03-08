@@ -144,6 +144,11 @@
             
             _myOrderModel.payType = [NSString stringWithFormat:@"%d",PayWithAlipay];
             
+        }else{
+            
+            
+            return YES;
+            
         }
         
         
