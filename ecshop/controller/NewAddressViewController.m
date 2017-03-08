@@ -177,7 +177,7 @@
 #pragma mark --保存联系人
 -(void)saveBtnAction:(id)sender{
     NSLog(@"保存");
-    NSString *api_token = [RequestModel model:@"goods" action:@"address"];
+    //NSString *api_token = [RequestModel model:@"goods" action:@"address"];
     
     if (self.tempId == nil) { // 新增
 

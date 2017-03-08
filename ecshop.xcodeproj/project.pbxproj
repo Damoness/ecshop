@@ -23,6 +23,7 @@
 		51F12E701C0BE168002C62D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F12E6F1C0BE168002C62D0 /* main.m */; };
 		51F2716D1C0D945C00619901 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F2716C1C0D945C00619901 /* libsqlite3.tbd */; settings = {ATTRIBUTES = (Required, ); }; };
 		59E8816C07D4D4D907FFB7C4 /* libPods-ecshop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA6EA264374C0A113009A8C /* libPods-ecshop.a */; };
+		9C4CD7D41E6FD0B5004D78D7 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4CD7D31E6FD0B5004D78D7 /* UIColor+Hex.m */; };
 		9CDD2FDB1E6FB24300FD2CB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD2CD01E6FB24100FD2CB5 /* Assets.xcassets */; };
 		9CDD2FDC1E6FB24300FD2CB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD2CD21E6FB24100FD2CB5 /* LaunchScreen.storyboard */; };
 		9CDD2FDD1E6FB24300FD2CB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD2CD41E6FB24100FD2CB5 /* Main.storyboard */; };
@@ -63,7 +64,6 @@
 		9CDD30001E6FB24300FD2CB5 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2D191E6FB24100FD2CB5 /* SettingViewController.m */; };
 		9CDD30011E6FB24300FD2CB5 /* SliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2D1B1E6FB24100FD2CB5 /* SliderViewController.m */; };
 		9CDD30021E6FB24300FD2CB5 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2D1D1E6FB24100FD2CB5 /* ThirdViewController.m */; };
-		9CDD30031E6FB24300FD2CB5 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2D1F1E6FB24100FD2CB5 /* UIColor+Hex.m */; };
 		9CDD30041E6FB24300FD2CB5 /* UserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2D211E6FB24100FD2CB5 /* UserGuideViewController.m */; };
 		9CDD30051E6FB24300FD2CB5 /* H5ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2D241E6FB24100FD2CB5 /* H5ViewController.m */; };
 		9CDD30061E6FB24300FD2CB5 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD2D261E6FB24100FD2CB5 /* 1.png */; };
@@ -495,7 +495,9 @@
 		51F12E6F1C0BE168002C62D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		51F2716C1C0D945C00619901 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		6BA6EA264374C0A113009A8C /* libPods-ecshop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ecshop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9CDD2CD01E6FB24100FD2CB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9C4CD7D21E6FD0B5004D78D7 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		9C4CD7D31E6FD0B5004D78D7 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		9CDD2CD01E6FB24100FD2CB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ecshop/Assets.xcassets; sourceTree = "<group>"; };
 		9CDD2CD31E6FB24100FD2CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CDD2CD51E6FB24100FD2CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		9CDD2CD71E6FB24100FD2CB5 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
@@ -569,8 +571,6 @@
 		9CDD2D1B1E6FB24100FD2CB5 /* SliderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderViewController.m; sourceTree = "<group>"; };
 		9CDD2D1C1E6FB24100FD2CB5 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
 		9CDD2D1D1E6FB24100FD2CB5 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
-		9CDD2D1E1E6FB24100FD2CB5 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
-		9CDD2D1F1E6FB24100FD2CB5 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		9CDD2D201E6FB24100FD2CB5 /* UserGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserGuideViewController.h; sourceTree = "<group>"; };
 		9CDD2D211E6FB24100FD2CB5 /* UserGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserGuideViewController.m; sourceTree = "<group>"; };
 		9CDD2D231E6FB24100FD2CB5 /* H5ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = H5ViewController.h; sourceTree = "<group>"; };
@@ -1194,6 +1194,7 @@
 				513757101C291F710065CC0C /* Security.framework */,
 				51F2716C1C0D945C00619901 /* libsqlite3.tbd */,
 				51F12E6D1C0BE168002C62D0 /* ecshop */,
+				9CDD2CD01E6FB24100FD2CB5 /* Assets.xcassets */,
 				51F12E6C1C0BE168002C62D0 /* Products */,
 				440C9346187356CC6D78CCAA /* Pods */,
 				0BA2E66A02782EEAC0F98218 /* Frameworks */,
@@ -1211,16 +1212,15 @@
 		51F12E6D1C0BE168002C62D0 /* ecshop */ = {
 			isa = PBXGroup;
 			children = (
-				9CDD2CD01E6FB24100FD2CB5 /* Assets.xcassets */,
-				9CDD2CD11E6FB24100FD2CB5 /* Base.lproj */,
 				9CDD2CD61E6FB24100FD2CB5 /* controller */,
 				9CDD2D221E6FB24100FD2CB5 /* H5 */,
+				9CDD2F9B1E6FB24300FD2CB5 /* View */,
 				9CDD2D251E6FB24100FD2CB5 /* Image */,
 				9CDD2E351E6FB24200FD2CB5 /* Model */,
 				9CDD2E5A1E6FB24200FD2CB5 /* Other */,
 				9CDD2E631E6FB24200FD2CB5 /* Util */,
 				9CDD2E741E6FB24200FD2CB5 /* Vendor */,
-				9CDD2F9B1E6FB24300FD2CB5 /* View */,
+				9CDD2CD11E6FB24100FD2CB5 /* Base.lproj */,
 				51F12E6E1C0BE168002C62D0 /* Supporting Files */,
 			);
 			path = ecshop;
@@ -1317,8 +1317,6 @@
 				9CDD2D1B1E6FB24100FD2CB5 /* SliderViewController.m */,
 				9CDD2D1C1E6FB24100FD2CB5 /* ThirdViewController.h */,
 				9CDD2D1D1E6FB24100FD2CB5 /* ThirdViewController.m */,
-				9CDD2D1E1E6FB24100FD2CB5 /* UIColor+Hex.h */,
-				9CDD2D1F1E6FB24100FD2CB5 /* UIColor+Hex.m */,
 				9CDD2D201E6FB24100FD2CB5 /* UserGuideViewController.h */,
 				9CDD2D211E6FB24100FD2CB5 /* UserGuideViewController.m */,
 			);
@@ -1799,6 +1797,8 @@
 		9CDD2E691E6FB24200FD2CB5 /* OC_Category */ = {
 			isa = PBXGroup;
 			children = (
+				9C4CD7D21E6FD0B5004D78D7 /* UIColor+Hex.h */,
+				9C4CD7D31E6FD0B5004D78D7 /* UIColor+Hex.m */,
 				9CDD2E6A1E6FB24200FD2CB5 /* NSDictionary+Common.h */,
 				9CDD2E6B1E6FB24200FD2CB5 /* NSDictionary+Common.m */,
 				9CDD2E6C1E6FB24200FD2CB5 /* NSObject+Common.h */,
@@ -2778,7 +2778,6 @@
 				9CDD31211E6FB24400FD2CB5 /* NSString+Common.m in Sources */,
 				9CDD2FFE1E6FB24300FD2CB5 /* SearchViewController.m in Sources */,
 				9CDD31401E6FB24400FD2CB5 /* qrspec.c in Sources */,
-				9CDD30031E6FB24300FD2CB5 /* UIColor+Hex.m in Sources */,
 				9CDD31A51E6FB24500FD2CB5 /* sonCollectCell.m in Sources */,
 				9CDD2FFF1E6FB24300FD2CB5 /* SecondViewController.m in Sources */,
 				9CDD31161E6FB24400FD2CB5 /* ShoppingCartModel.m in Sources */,
@@ -2828,6 +2827,7 @@
 				9CDD310D1E6FB24400FD2CB5 /* OrderDetailModel.m in Sources */,
 				9CDD31871E6FB24400FD2CB5 /* DetailTableCell.m in Sources */,
 				9CDD31181E6FB24400FD2CB5 /* AppDelegate.m in Sources */,
+				9C4CD7D41E6FD0B5004D78D7 /* UIColor+Hex.m in Sources */,
 				9CDD31981E6FB24400FD2CB5 /* MyOrderViewCell.m in Sources */,
 				9CDD31B41E6FB71100FD2CB5 /* FMDatabase.m in Sources */,
 				9CDD31531E6FB24400FD2CB5 /* MJRefreshFooter.m in Sources */,
