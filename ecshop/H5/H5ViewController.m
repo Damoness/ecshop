@@ -193,28 +193,30 @@
         
         return NO;
         
-    }else if ([urlStr isEqualToString:kURL_Order_Finished] && [request valueForHTTPHeaderField:@"is_app"] == nil){
-        
-        //NSLog(@"%@",[request allHTTPHeaderFields]);
-        
-        
-        NSMutableURLRequest *mRequest = request;
-        
-        [mRequest setValue:@"y" forHTTPHeaderField:@"is_app"];
-        
-        
-        
-        [mRequest setHTTPMethod:@"POST"];
-        
-        //NSLog(@"%@",[request allHTTPHeaderFields]);
-        
-        [webView loadRequest:mRequest];
-        
-        return NO;
-        
-        
-        
-    }else  if([urlStr containsString:kURL_Order_PayWithWeixin]) {
+    }
+//    else if ([urlStr isEqualToString:kURL_Order_Finished] && [request valueForHTTPHeaderField:@"is_app"] == nil){
+//        
+//        //NSLog(@"%@",[request allHTTPHeaderFields]);
+//        
+//        
+//        NSMutableURLRequest *mRequest = request;
+//        
+//        [mRequest setValue:@"y" forHTTPHeaderField:@"is_app"];
+//        
+//        
+//        
+//        [mRequest setHTTPMethod:@"POST"];
+//        
+//        //NSLog(@"%@",[request allHTTPHeaderFields]);
+//        
+//        [webView loadRequest:mRequest];
+//        
+//        return NO;
+//        
+//        
+//        
+//    }
+    else  if([urlStr containsString:kURL_Order_PayWithWeixin]) {
         
         
         NSLog(@"webViewDidFinishLoad:%@",webView);
@@ -244,9 +246,9 @@
             
         }
         
-        //        // 获取当前页面的标题
-        //        NSString *title = [_webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-        //        NSLog(@"title %@", title);
+                // 获取当前页面的标题
+                NSString *title = [_webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+                NSLog(@"title %@", title);
         
         
         WS(ws)
