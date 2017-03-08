@@ -24,6 +24,7 @@
 		51F2716D1C0D945C00619901 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F2716C1C0D945C00619901 /* libsqlite3.tbd */; settings = {ATTRIBUTES = (Required, ); }; };
 		59E8816C07D4D4D907FFB7C4 /* libPods-ecshop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA6EA264374C0A113009A8C /* libPods-ecshop.a */; };
 		9C4CD7D41E6FD0B5004D78D7 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4CD7D31E6FD0B5004D78D7 /* UIColor+Hex.m */; };
+		9C5191B01E6FED0C00576BE3 /* AlipayApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5191AF1E6FED0C00576BE3 /* AlipayApiManager.m */; };
 		9CDD2FDB1E6FB24300FD2CB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD2CD01E6FB24100FD2CB5 /* Assets.xcassets */; };
 		9CDD2FDC1E6FB24300FD2CB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD2CD21E6FB24100FD2CB5 /* LaunchScreen.storyboard */; };
 		9CDD2FDD1E6FB24300FD2CB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD2CD41E6FB24100FD2CB5 /* Main.storyboard */; };
@@ -479,6 +480,8 @@
 		6BA6EA264374C0A113009A8C /* libPods-ecshop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ecshop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C4CD7D21E6FD0B5004D78D7 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		9C4CD7D31E6FD0B5004D78D7 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		9C5191AE1E6FED0C00576BE3 /* AlipayApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlipayApiManager.h; sourceTree = "<group>"; };
+		9C5191AF1E6FED0C00576BE3 /* AlipayApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlipayApiManager.m; sourceTree = "<group>"; };
 		9CDD2CD01E6FB24100FD2CB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ecshop/Assets.xcassets; sourceTree = "<group>"; };
 		9CDD2CD31E6FB24100FD2CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CDD2CD51E6FB24100FD2CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
@@ -1198,6 +1201,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9C5191AD1E6FEC7C00576BE3 /* AlipayTool */ = {
+			isa = PBXGroup;
+			children = (
+				9C5191AE1E6FED0C00576BE3 /* AlipayApiManager.h */,
+				9C5191AF1E6FED0C00576BE3 /* AlipayApiManager.m */,
+			);
+			path = AlipayTool;
+			sourceTree = "<group>";
+		};
 		9CDD2CD11E6FB24100FD2CB5 /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
@@ -1766,6 +1778,7 @@
 		9CDD2E751E6FB24200FD2CB5 /* AlipaySDK */ = {
 			isa = PBXGroup;
 			children = (
+				9C5191AD1E6FEC7C00576BE3 /* AlipayTool */,
 				9CDD2E761E6FB24200FD2CB5 /* AlipaySDK.bundle */,
 				9CDD2E771E6FB24200FD2CB5 /* AlipaySDK.framework */,
 			);
@@ -2756,6 +2769,7 @@
 				9CDD31141E6FB24400FD2CB5 /* SharingManModel.m in Sources */,
 				9CDD31521E6FB24400FD2CB5 /* MJRefreshComponent.m in Sources */,
 				9CDD311C1E6FB24400FD2CB5 /* ViewController.m in Sources */,
+				9C5191B01E6FED0C00576BE3 /* AlipayApiManager.m in Sources */,
 				9CDD314F1E6FB24400FD2CB5 /* NSString+Hashing.m in Sources */,
 				9CDD2FE01E6FB24300FD2CB5 /* AddressViewController.m in Sources */,
 				9CDD2FF91E6FB24300FD2CB5 /* PayViewController.m in Sources */,

@@ -21,6 +21,7 @@
 #import <AlipaySDK/AlipaySDK.h>
 #import "LoginViewController.h"
 #import "H5ViewController.h"
+#import "AlipayApiManager.h"
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
 @end
@@ -167,8 +168,12 @@
         return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
         
     }else{
+        
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
+            
+            [[AlipayApiManager sharedManager]handleAlipayResult:resultDic];
+            
         }];
         return YES;
     }
