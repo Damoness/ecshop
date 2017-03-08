@@ -167,7 +167,7 @@
         
         return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
         
-    }else{
+    }else if([url.host isEqualToString:@"safepay"]){
         
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
@@ -177,7 +177,8 @@
         }];
         return YES;
     }
-
+    
+    return YES;
     
 }
 
@@ -216,12 +217,17 @@
         
         return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
         
-    }else{
+    }else if([url.host isEqualToString:@"safepay"]){
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
+            
+            [[AlipayApiManager sharedManager]handleAlipayResult:resultDic];
+            
         }];
         return YES;
     }
+             
+    return YES;
 
 }
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
