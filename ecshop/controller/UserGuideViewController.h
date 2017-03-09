@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UserGuideViewController : UIViewController
-
+-(instancetype)initWithRootViewController:(UIViewController *)rootViewController;
 @end

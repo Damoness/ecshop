@@ -44,13 +44,8 @@
     [WXApiManager sharedManager].delegate = self;
     [AlipayApiManager sharedManager].delegate = self;
     
-    if (![[NSUserDefaults standardUserDefaults]boolForKey:@"kHasLaunched"]) {
-        
-        [self showUserGuiderVC];
-        
-        [[NSUserDefaults standardUserDefaults]setBool:true forKey:@"kHasLaunched"];
-        
-    }
+
+    
     
 }
 

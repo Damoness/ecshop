@@ -22,6 +22,7 @@
 #import "LoginViewController.h"
 #import "H5ViewController.h"
 #import "AlipayApiManager.h"
+#import "UserGuideViewController.h"
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
 @end
@@ -54,8 +55,6 @@
     
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],
     NSForegroundColorAttributeName:kColor_NavigationBar_TitleColor}];
-    
-    
     [UINavigationBar appearance].barTintColor = kColor_NavigationBar_BarTintColor;
     
     //[UINavigationBar appearance].backgroundColor = RGB(230, 37, 137);
@@ -68,6 +67,54 @@
 //    [UMSocialQQHandler setQQWithAppId:QQWithAppId appKey:QQappKey url:url];
 //    //如果你要支持不同的屏幕方向，需要这样设置，否则在iPhone只支持一个竖屏方向
 //    [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
+    
+    
+    //向微信注册wx40fbb60e2d770512
+    [WXApi registerApp:MXWechatAPPID];
+
+
+    
+    UIViewController *vc = [self h5RootViewController];
+    
+    
+    if (![[NSUserDefaults standardUserDefaults]boolForKey:@"kHasLaunched"]) {
+        
+        
+        UserGuideViewController *ugVC =  [[UserGuideViewController alloc]initWithRootViewController:vc];
+    
+        self.window.rootViewController = ugVC;
+        
+        [[NSUserDefaults standardUserDefaults]setBool:true forKey:@"kHasLaunched"];
+        
+    }else{
+        
+        self.window.rootViewController = vc;
+        
+    }
+    
+    return YES;    
+}
+
+
+
+//h5版本
+-(UIViewController *)h5RootViewController{
+    
+    
+    
+    H5ViewController *h5VC = [H5ViewController new];
+    
+    //UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:h5VC];
+    
+    //self.window.rootViewController = h5VC;
+    
+    
+    return h5VC;
+}
+
+
+//原生版本
+-(UIViewController *)nativeRootViewController{
     
     
     FirstViewController *first=[[FirstViewController alloc]init];
@@ -84,7 +131,7 @@
     
     MyViewController *myVC = [[MyViewController alloc]init];
     UINavigationController *myNV = [[UINavigationController alloc]initWithRootViewController:myVC];
- 
+    
     NSArray *array=@[firstNV,secondNV,thirdNV,myNV];
     
     MyTabBarViewController *tab=[[MyTabBarViewController alloc]init];
@@ -105,27 +152,13 @@
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(loginSuccess:) name:kNotification_Login_Success object:nil];
 #pragma mark --接收退出通知
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(quiteSuccess:) name:@"quite" object:nil];
+    
 
+    return tab;
     
-    self.window.rootViewController=tab;
-    
-    
- 
-    
-    H5ViewController *h5VC = [H5ViewController new];
-
-    //UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:h5VC];
-    
-    self.window.rootViewController = h5VC;
-    
-    
-    //向微信注册wx40fbb60e2d770512
-    [WXApi registerApp:MXWechatAPPID];
-
-    
-   // [self gotoDaoHangYe];
-    return YES;    
 }
+
+
 //-(void)gotoDaoHangYe
 //{
 //    NSFileManager *manager = [NSFileManager defaultManager];
