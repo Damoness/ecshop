@@ -7,11 +7,8 @@
 //启动页
 
 #import "UserGuideViewController.h"
-#import "UIColor+Hex.h"
-#import "ViewController.h"
 #import "UIImageView+WebCache.h"
-#import "H5ViewController.h"
-//#define imagViewNo 3
+
 @interface UserGuideViewController ()<UIScrollViewDelegate>
 {
     UIPageControl *pageCtr;
@@ -136,6 +133,8 @@
         if (_rootViewController) {
             
             [UIApplication sharedApplication].keyWindow.rootViewController = _rootViewController;
+            
+            
         }
         
     }];

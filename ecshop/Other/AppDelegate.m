@@ -31,6 +31,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    
     self.window=[[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor=[UIColor whiteColor];
     [self.window makeKeyWindow];
@@ -73,6 +75,8 @@
     [WXApi registerApp:MXWechatAPPID];
 
 
+    
+    
     
     UIViewController *vc = [self h5RootViewController];
     
