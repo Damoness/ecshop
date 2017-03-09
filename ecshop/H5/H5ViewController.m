@@ -44,24 +44,32 @@
 }
 
 
+//- (BOOL)prefersStatusBarHidden {
+//    return YES;
+//}
+
+
 -(void)initViews{
     
     
     self.myOrderModel = [OrderModel new];
     
-    UIImage *backButtonImage = [UIImage imageNamed:@"nav_arrow.png"];
+//    UIImage *backButtonImage = [UIImage imageNamed:@"nav_arrow.png"];
+//    
+//    
+//    UIButton *backButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 22, 22)];
+//    
+//    [backButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    [backButton setBackgroundImage:backButtonImage forState:UIControlStateNormal];
+//    
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:backButton];
+//    
+    
+    CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];
     
     
-    UIButton *backButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 22, 22)];
-    
-    [backButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
-    
-    [backButton setBackgroundImage:backButtonImage forState:UIControlStateNormal];
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:backButton];
-    
-    
-    _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, rectStatus.size.height, kScreenWidth, kScreenHeight - rectStatus.size.height)];
     
     _webView.delegate = self;
     
@@ -108,12 +116,13 @@
 
 //http://sitmarket.ditiy.com/mobile/flow.php?step=done
 
-#define kURL2 @"http://sitmarket.ditiy.com/mobile/flow.php?step=cart"
+#define kURL2 @"http://sitmarket.ditiy.com/mobile/user.php"
 
 #define kURL_Order_PayFromUnpay @"http://sitmarket.ditiy.com/mobile/user.php?act=order_detail&order_id" // 代付款里面进入支付
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
+    NSLog(@"shouldStartLoadWithRequest-----");
     
     NSMutableString *urlStr = [NSMutableString stringWithString:request.URL.absoluteString];
     
@@ -181,9 +190,7 @@
         
     }else if([urlStr isEqualToString:kURL_Order_Submit]) {
         
-        
-        NSLog(@"urlStr-加参数:%@",urlStr);
-        
+
         if ([[[urlStr componentsSeparatedByString:@"/"]lastObject]containsString:@"?"]) {
             
             [urlStr appendString:@"&is_app=y"];
@@ -194,7 +201,11 @@
             
         }
         
-        NSMutableURLRequest *mRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
+        NSLog(@"urlStr-加参数:%@",urlStr);
+        
+        NSMutableURLRequest *mRequest = (NSMutableURLRequest *)request;
+        
+        [mRequest setURL:[NSURL URLWithString:urlStr]];
         
         
         [webView loadRequest:mRequest];
@@ -280,18 +291,31 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
     
+    
+    NSLog(@"webViewDidStartLoad-----");
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:true];
     
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    
+    NSLog(@"webViewDidFinishLoad-----");
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    //[MBProgressHUD hideAllHUDsForView:self.view animated:NO];
     
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
     
-    NSLog(@"%@",error);
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    //NSLog(@"%@",error);
+    
+    NSLog(@"didFailLoadWithError-----%@",error);
+    
+    //[MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     
 }
 
@@ -318,7 +342,10 @@
     WS(ws)
     [[Ditiy_NetAPIManager sharedManager]request_PayOrder_AppH5_WithPayType:[_myOrderModel.payType intValue] Params:[_myOrderModel toPayOrderH5Params] andBlock:^(id data, NSError *error) {
         
+
+        //[MBProgressHUD hideHUDForView:self.view animated:YES];
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
         
         if (data) {
             

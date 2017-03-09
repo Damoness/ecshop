@@ -114,9 +114,9 @@
     
     H5ViewController *h5VC = [H5ViewController new];
 
-    UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:h5VC];
+    //UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:h5VC];
     
-    self.window.rootViewController = nc;
+    self.window.rootViewController = h5VC;
     
     
     //向微信注册wx40fbb60e2d770512
