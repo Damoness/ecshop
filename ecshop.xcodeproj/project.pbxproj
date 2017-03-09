@@ -457,6 +457,7 @@
 		9CDD31B61E6FB71100FD2CB5 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD31AF1E6FB71100FD2CB5 /* FMDatabasePool.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9CDD31B71E6FB71100FD2CB5 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD31B11E6FB71100FD2CB5 /* FMDatabaseQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9CDD31B81E6FB71100FD2CB5 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD31B31E6FB71100FD2CB5 /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9CE02B0F1E7154AE0017145F /* UIWebView+JavaScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE02B0E1E7154AE0017145F /* UIWebView+JavaScript.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1089,6 +1090,8 @@
 		9CDD31B11E6FB71100FD2CB5 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
 		9CDD31B21E6FB71100FD2CB5 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		9CDD31B31E6FB71100FD2CB5 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		9CE02B0D1E7154AE0017145F /* UIWebView+JavaScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+JavaScript.h"; sourceTree = "<group>"; };
+		9CE02B0E1E7154AE0017145F /* UIWebView+JavaScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+JavaScript.m"; sourceTree = "<group>"; };
 		CD8F558534F74A5EEBE4F568 /* Pods-ecshop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecshop.release.xcconfig"; path = "Pods/Target Support Files/Pods-ecshop/Pods-ecshop.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1739,6 +1742,8 @@
 		9CDD2E691E6FB24200FD2CB5 /* OC_Category */ = {
 			isa = PBXGroup;
 			children = (
+				9CE02B0D1E7154AE0017145F /* UIWebView+JavaScript.h */,
+				9CE02B0E1E7154AE0017145F /* UIWebView+JavaScript.m */,
 				9C4CD7D21E6FD0B5004D78D7 /* UIColor+Hex.h */,
 				9C4CD7D31E6FD0B5004D78D7 /* UIColor+Hex.m */,
 				9CDD2E6A1E6FB24200FD2CB5 /* NSDictionary+Common.h */,
@@ -2693,6 +2698,7 @@
 				9CDD31A31E6FB24500FD2CB5 /* Sliderbar.m in Sources */,
 				9CDD31641E6FB24400FD2CB5 /* MYPresentAnimationManager.m in Sources */,
 				9CDD31381E6FB24400FD2CB5 /* SDRefreshHeaderView.m in Sources */,
+				9CE02B0F1E7154AE0017145F /* UIWebView+JavaScript.m in Sources */,
 				9CDD31B81E6FB71100FD2CB5 /* FMResultSet.m in Sources */,
 				9CDD31811E6FB24400FD2CB5 /* AddressViewCell.m in Sources */,
 				9CDD31101E6FB24400FD2CB5 /* RequestModel.m in Sources */,

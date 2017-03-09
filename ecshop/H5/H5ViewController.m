@@ -7,6 +7,9 @@
 //
 
 #import "H5ViewController.h"
+
+#import "UserGuideViewController.h"
+
 #import "OrderModel.h"
 #import "Util.h"
 #import "WXApiManager.h"
@@ -41,8 +44,29 @@
     [WXApiManager sharedManager].delegate = self;
     [AlipayApiManager sharedManager].delegate = self;
     
+    if (![[NSUserDefaults standardUserDefaults]boolForKey:@"kHasLaunched"]) {
+        
+        [self showUserGuiderVC];
+        
+        [[NSUserDefaults standardUserDefaults]setBool:true forKey:@"kHasLaunched"];
+        
+    }
+    
 }
 
+
+-(void)showUserGuiderVC{
+    
+    UserGuideViewController *ugVC = [UserGuideViewController new];
+    
+    
+    [self addChildViewController:ugVC];
+    
+    
+    [self.view addSubview:ugVC.view];
+    
+    
+}
 
 //- (BOOL)prefersStatusBarHidden {
 //    return YES;
@@ -72,6 +96,8 @@
     _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, rectStatus.size.height, kScreenWidth, kScreenHeight - rectStatus.size.height)];
     
     _webView.delegate = self;
+    _webView.scrollView.bounces = NO;
+    _webView.scrollView.showsVerticalScrollIndicator = NO;
     
     [self.view addSubview:_webView];
     

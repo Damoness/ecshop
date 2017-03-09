@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "UIWebView+JavaScript.h"
 @interface H5ViewController : ViewController
 
 @end

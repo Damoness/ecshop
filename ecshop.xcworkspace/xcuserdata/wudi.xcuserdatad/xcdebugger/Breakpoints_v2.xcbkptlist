@@ -834,11 +834,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ecshop/H5/H5ViewController.m"
-            timestampString = "510718477.007529"
+            timestampString = "510733184.608294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "503"
-            endingLineNumber = "503"
+            startingLineNumber = "509"
+            endingLineNumber = "509"
             landmarkName = "-UpdatePayResultSuccess:"
             landmarkType = "7">
          </BreakpointContent>
@@ -850,11 +850,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ecshop/H5/H5ViewController.m"
-            timestampString = "510685762.935439"
+            timestampString = "510733184.608294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
             landmarkName = "-webView:shouldStartLoadWithRequest:navigationType:"
             landmarkType = "7">
          </BreakpointContent>
@@ -866,11 +866,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ecshop/H5/H5ViewController.m"
-            timestampString = "510685762.935439"
+            timestampString = "510733184.608294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "-webView:shouldStartLoadWithRequest:navigationType:"
             landmarkType = "7">
          </BreakpointContent>
@@ -882,11 +882,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ecshop/H5/H5ViewController.m"
-            timestampString = "510718477.007529"
+            timestampString = "510733184.608294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "561"
-            endingLineNumber = "561"
+            startingLineNumber = "567"
+            endingLineNumber = "567"
             landmarkName = "-alipayApiManagerDidReceivePayResponse:"
             landmarkType = "7">
          </BreakpointContent>
@@ -904,6 +904,38 @@
             startingLineNumber = "165"
             endingLineNumber = "165"
             landmarkName = "-application:openURL:options:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ecshop/controller/UserGuideViewController.m"
+            timestampString = "510721943.049672"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "-requestData"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ecshop/Util/OC_Category/UIWebView+JavaScript.m"
+            timestampString = "510743793.427079"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "-webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
