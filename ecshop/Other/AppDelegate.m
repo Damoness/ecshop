@@ -162,22 +162,6 @@
     
 }
 
-
-//-(void)gotoDaoHangYe
-//{
-//    NSFileManager *manager = [NSFileManager defaultManager];
-//    [manager createFileAtPath:[NSHomeDirectory() stringByAppendingString:@"/aa.text"] contents:nil attributes:nil];
-//    
-//    [UIView animateWithDuration:0.2 animations:^{
-//      UIImageView
-//        
-//    } completion:^(BOOL finished) {
-////        [scrollView removeFromSuperview];
-////        [pageCtr removeFromSuperview];
-//        
-//    }];
-//}
-
 -(void)popUserLogin{
     
     

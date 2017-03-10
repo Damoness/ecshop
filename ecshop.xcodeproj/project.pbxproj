@@ -2958,7 +2958,7 @@
 					"$(PROJECT_DIR)/ecshop/Vendor/umeng_ios_social_sdk_4.4_arm64_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/ecshop/Vendor/umeng_ios_social_sdk_4.4_arm64_custom/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ditiy.eshop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ditiy.app.CloudShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3004,7 +3004,7 @@
 					"$(PROJECT_DIR)/ecshop/Vendor/umeng_ios_social_sdk_4.4_arm64_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/ecshop/Vendor/umeng_ios_social_sdk_4.4_arm64_custom/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ditiy.eshop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ditiy.app.CloudShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
