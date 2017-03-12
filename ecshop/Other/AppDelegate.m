@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "UMSocial.h"
 #import "FirstViewController.h"
+#import "IndexViewController.h"
 #import "SecondViewController.h"
 #import "ThirdViewController.h"
 #import "FourthViewController.h"
@@ -37,14 +38,14 @@
     self.window.backgroundColor=[UIColor whiteColor];
     [self.window makeKeyWindow];
     
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Setting" ofType:@"plist"];
-    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-    NSString *UMSharekey = data[@"UMSharekey"];
-    NSString *WXAppId = data[@"WXAppId"];
-    NSString *WXappSecret = data[@"WXappSecret"];
-    NSString *url = data[@"url"];
-    NSString *QQWithAppId = data[@"QQWithAppId"];
-    NSString *QQappKey = data[@"QQappKey"];
+//    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Setting" ofType:@"plist"];
+//    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+//    NSString *UMSharekey = data[@"UMSharekey"];
+//    NSString *WXAppId = data[@"WXAppId"];
+//    NSString *WXappSecret = data[@"WXappSecret"];
+//    NSString *url = data[@"url"];
+//    NSString *QQWithAppId = data[@"QQWithAppId"];
+//    NSString *QQappKey = data[@"QQappKey"];
     
     
     
@@ -76,9 +77,16 @@
 
 
     
+//    IndexViewController *iVC = [IndexViewController new];
+//    UINavigationController *iNC = [[UINavigationController alloc]initWithRootViewController:iVC];
+//    
+//    
+//    self.window.rootViewController = iNC;
+//    
+//    return YES;
     
     
-    UIViewController *vc = [self h5RootViewController];
+    UIViewController *vc = [self nativeRootViewController];
     
     
     if (![[NSUserDefaults standardUserDefaults]boolForKey:@"kHasLaunched"]) {
@@ -93,6 +101,7 @@
     }else{
         
         self.window.rootViewController = vc;
+   
         
     }
     
@@ -122,8 +131,13 @@
     
     
     FirstViewController *first=[[FirstViewController alloc]init];
-    
     UINavigationController *firstNV = [[UINavigationController alloc]initWithRootViewController:first];
+    first.automaticallyAdjustsScrollViewInsets = NO;
+    
+    IndexViewController *iVC = [IndexViewController new];
+    UINavigationController *iNC = [[UINavigationController alloc]initWithRootViewController:iVC];
+    iVC.automaticallyAdjustsScrollViewInsets = NO;
+    
     
     SecondViewController *second=[[SecondViewController alloc]init];
     UINavigationController *secondNV = [[UINavigationController alloc]initWithRootViewController:second];
@@ -136,7 +150,7 @@
     MyViewController *myVC = [[MyViewController alloc]init];
     UINavigationController *myNV = [[UINavigationController alloc]initWithRootViewController:myVC];
     
-    NSArray *array=@[firstNV,secondNV,thirdNV,myNV];
+    NSArray *array=@[iNC,secondNV,thirdNV,myNV];
     
     MyTabBarViewController *tab=[[MyTabBarViewController alloc]init];
     
@@ -148,7 +162,7 @@
     
     //tab.delegate=self;
     
-    
+    //return iNC;
     
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(popUserLogin) name:kNotification_User_UnLogin object:nil];
     

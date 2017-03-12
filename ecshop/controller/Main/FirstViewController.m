@@ -20,47 +20,45 @@
     UIView *topView;//导航栏
    // UIView * viewww;
 }
+
+
 @property (nonatomic, strong) UIWebView *webview;
 
 @end
 
 @implementation FirstViewController
+
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
     
     [tabbar hideCustomTabbar:NO];
     
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
+
 -(void)viewWillAppear:(BOOL)animated
 {
-    //    [super viewWillAppear:animated];
+    [super viewWillAppear:animated];
     MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
     
     [tabbar hideCustomTabbar:NO];
     [self.tabBarController.tabBar setHidden:YES];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
-//    
-//    NSString *url22 = @"http://sitmarket.ditiy.com/shopapi/index.php/goods/goodsinfo?goods_id=28";
-//    
-//    [[DitiyNetAPIClient sharedJsonClient] requestJsonDataWithPath:@"goods/goodsinfo" withParams:@{@"goods_id":@"28"} withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
-//        
-//        
-//        
-//    }];
     
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor=[UIColor whiteColor];
-    [self createUI];
+    
+    
+    [self initViews];
    // [self afn];
-    self.navigationController.navigationBar.hidden=YES;
     
-    
+
 }
 //-(void)afn
 //{
@@ -121,15 +119,24 @@
 //    
 //}
 #pragma mark-扫一扫点击事件
--(void)bitBtn:(id)sender
+-(void)scan_Action:(id)sender
 {
     BarCodeViewController * code=[[BarCodeViewController alloc]init];
     code.delegate=self;
-    [self presentViewController:code animated:YES completion:^{
-        
-    }];
+    [self presentViewController:code animated:YES completion:nil];
     
 }
+
+
+//消息点击事件
+-(void)message_Action:(id)sender
+{
+    
+}
+
+
+
+
 -(void)QRCodeScanFinishiResult:(NSString *)result
 {
     GoodsDetailViewController* good=[[GoodsDetailViewController alloc]init];
@@ -143,30 +150,23 @@
     }
     
 }
-//消息点击事件
--(void)bitBtn2:(id)sender
-{
-    
-}
+
 
 //创建主界面
--(void)createUI
+-(void)initViews
 {
-    _webview=[[UIWebView alloc]initWithFrame:CGRectMake(0,-20, self.view.frame.size.width, self.view.frame.size.height+20)];
-    self.webview.backgroundColor = [UIColor whiteColor];
+    
+    self.navigationController.navigationBar.hidden=YES;
+    
+    _webview=[[UIWebView alloc]initWithFrame:CGRectMake(0,0, kScreenWidth, kScreenHeight)];
+    _webview.scrollView.showsVerticalScrollIndicator = NO;
+    _webview.scrollView.bounces = NO;
     _webview.delegate=self;
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Setting" ofType:@"plist"];
-    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-    NSString *url1 = data[@"shareurl"];
-    
-    NSString *urlStr= indexURLStr;
-    
-    NSURL *url=[NSURL URLWithString:urlStr];
-    requestt = [[NSURLRequest alloc]initWithURL:url];
-    [_webview loadRequest:requestt];
+    [_webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:indexURLStr]]];
     [self.view addSubview:_webview];
+    
 #pragma mark-左侧扫一扫  右侧消息
-    topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
+    topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 64)];
     topView.backgroundColor = [UIColor redColor];
     topView.alpha = 0;
     [self.view addSubview:topView];
@@ -177,25 +177,25 @@
     image1=[image1 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [button setImage:image1 forState:UIControlStateNormal];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(bitBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(scan_Action:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
     //右侧消息
     UIButton * button2=[UIButton buttonWithType:UIButtonTypeCustom];
-    button2.frame=CGRectMake(self.view.frame.size.width-50, 24, 50, 40);
+    button2.frame=CGRectMake(kScreenWidth-50, 24, 50, 40);
     UIImage * image2=[UIImage imageNamed:@"home_head_icon_information"];
     [button2 setImage:image2 forState:UIControlStateNormal];
     [button2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [button2 addTarget:self action:@selector(bitBtn2:) forControlEvents:UIControlEventTouchUpInside];
+    [button2 addTarget:self action:@selector(message_Action:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button2];
 #pragma mark-搜索
     UIButton *searchBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    searchBtn.frame=CGRectMake(56, 25, self.view.frame.size.width-109, 32);
+    searchBtn.frame=CGRectMake(55, 25, kScreenWidth - 110, 32);
     searchBtn.backgroundColor = [UIColor whiteColor];
     searchBtn.layer.borderWidth=1;
     searchBtn.layer.borderColor=[UIColor lightGrayColor].CGColor;
     searchBtn.layer.cornerRadius = 5;
     searchBtn.layer.masksToBounds=YES;
-    [searchBtn addTarget:self action:@selector(pushSearch) forControlEvents:UIControlEventTouchUpInside];
+    [searchBtn addTarget:self action:@selector(search_Action) forControlEvents:UIControlEventTouchUpInside];
     UIImage * imagebtn=[UIImage imageNamed:@"search"];
     imagebtn=[imagebtn imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UIImageView * imageviewLeft=[[UIImageView alloc]initWithFrame:CGRectMake(12, 8, 18, 18)];
@@ -229,27 +229,6 @@
     {
         return YES;
     }
-    
-//    //return NO;
-//    _myType = [[newUrl componentsSeparatedByString:@"/"] lastObject];
-//    
-//    if (!([newUrl rangeOfString:@"type"].location==NSNotFound)) {
-//    
-//        SearchListViewController * search=[[SearchListViewController alloc]init];
-//        search.typeState=_myType;
-//        [self.navigationController pushViewController:search animated:NO];
-//        
-//    }else if(!([newUrl rangeOfString:@"ad"].location==NSNotFound)){
-//        
-//        newUrl = url1;
-//        
-//        return YES;
-//    }else if([self isAllNum:_myType]){
-//        
-//        GoodsDetailViewController * good=[[GoodsDetailViewController alloc]init];
-//        good.goodID=_myType;
-//        [self.navigationController pushViewController:good animated:NO];
-//    }
     
     if ([newUrl containsString:@".php"]) {
         
@@ -296,19 +275,6 @@
             }
             else if ([separatedArray[no -1] isEqualToString:@"agent"]){//代理区
                 
-//                
-//                MyTabBarViewController * tabBarViewController = (MyTabBarViewController * )self.tabBarController;
-//                UINavigationController * nav = [tabBarViewController.viewControllers objectAtIndex:0];
-//                [self.navigationController popToRootViewControllerAnimated:NO];
-//                [nav popToRootViewControllerAnimated:YES];
-//                
-//                
-//                UIButton * button = [[UIButton alloc]init];
-//                button.tag = 100;
-//                [tabBarViewController buttonClicked:button];
-                
-   
-                
                 
             }
             
@@ -324,19 +290,9 @@
     
     return NO;
 }
-             
-- (BOOL)isAllNum:(NSString *)string{
- unichar c;
- for (int i=0; i<string.length;i++) {
-     c=[string characterAtIndex:i];
-     if (!isdigit(c)) {
-         return NO;
-     }
- }
- return YES;
-}
+
 #pragma mark-点击我跳转点击事件
--(void)pushSearch
+-(void)search_Action
 {
     SearchViewController *search=[[SearchViewController alloc]init];
     [self.navigationController pushViewController:search animated:NO];
@@ -354,8 +310,7 @@
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     NSLog(@"offset---scroll:%f",self.webview.scrollView.contentOffset.y);
-    [self.webview.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew
-                                 context:nil];
+    //[self.webview.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{

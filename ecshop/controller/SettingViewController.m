@@ -244,7 +244,21 @@
     
     
 }
+
 -(void)back{
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    if (self.navigationController && self.navigationController.viewControllers.count > 0) {
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }else{
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
+    }
+    
+    
 }
+
+
 @end

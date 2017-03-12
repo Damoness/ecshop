@@ -740,11 +740,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ecshop/controller/FirstViewController.m"
-            timestampString = "510378124.84763"
+            timestampString = "510840979.659176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "286"
-            endingLineNumber = "286"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
             landmarkName = "-webView:shouldStartLoadWithRequest:navigationType:"
             landmarkType = "7">
          </BreakpointContent>
@@ -897,13 +897,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ecshop/Other/AppDelegate.m"
-            timestampString = "510805467.914929"
+            filePath = "ecshop/Util/OC_Category/UIWebView+JavaScript.m"
+            timestampString = "510743793.427079"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
-            landmarkName = "-application:openURL:options:"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "-webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -913,13 +913,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ecshop/Util/OC_Category/UIWebView+JavaScript.m"
-            timestampString = "510743793.427079"
+            filePath = "ecshop/Controller/SettingViewController.m"
+            timestampString = "510991945.403956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "-webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
+            landmarkName = "-back"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -21,14 +21,7 @@
 @end
 
 @implementation MyTabBarViewController
--(void)setIntroductionView
-{
-    
-    UserGuideViewController *userVC = [[UserGuideViewController alloc]init];
-    [self addChildViewController:userVC];
-    [self.view addSubview:userVC.view];
-    
-}
+
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
     [viewController viewWillAppear:NO];
 }
@@ -37,19 +30,7 @@
     [super viewWillAppear:animated];
      [self.tabBarController.selectedViewController viewWillAppear:animated];
      self.navigationController.navigationBar.hidden = YES;
-#pragma mark -- 引导页
 
-    
-        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]) {
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
-            [self setIntroductionView];
-    
-            //启动引导页
-        }else{
-            //不是第一次启动的话
-            
-        }
-  
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -9,7 +9,6 @@
 #import "LoginViewController.h"
 #import "AppDelegate.h"
 #import "RegisterViewController.h"
-//#import "AFHTTPRequestOperationManager.h"
 #import "RequestModel.h"
 #import "ForgetPasswordViewController.h"
 #import "NSString+Hashing.h"
@@ -21,6 +20,8 @@
 #define kColorOffButton [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]
 @interface LoginViewController ()<UITextFieldDelegate>
 @property (nonatomic,strong)UIButton *passwordBtn;
+
+
 //用户名
 @property (nonatomic,strong)UITextField *userText;
 //密码
@@ -49,14 +50,12 @@
     UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, (self.view.frame.size.height/7)*2)];
     UIImage *image = [UIImage imageNamed:@"会员中心-已登录-背景1.png"];
     imgView.image = image;
+    
+    
+    
     [self.view addSubview:imgView];
-    //头像
-    UIImageView *headView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 100, self.view.frame.size.width/5, self.view.frame.size.width/5)];
-    UIImage *headImg = [UIImage imageNamed:@"null_head.png"];
-    headView.image = headImg;
-    [self.view addSubview:headView];
+    
     //账号
-
     UIView *view1 = [[UIView alloc]initWithFrame:CGRectMake(0, imgView.frame.origin.y + imgView.frame.size.height, self.view.frame.size.width, 50)];
     view1.backgroundColor = [UIColor whiteColor];
 
@@ -109,6 +108,7 @@
     view3.backgroundColor = kColorBack;
     [self.view addSubview:view3];
     
+    
     //登录按钮
     _loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 
@@ -120,6 +120,8 @@
     [_loginBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [_loginBtn addTarget:self action:@selector(actionForLogin:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_loginBtn];
+    
+    
     //快速注册
     UIButton *registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 
@@ -275,6 +277,7 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
     view.backgroundColor = [UIColor colorWithHexString:naviBGColor];
+    view.backgroundColor = [UIColor redColor];
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(100, 20, self.view.frame.size.width - 200, 44)];
     label.text = @"登录";
     label.textAlignment = NSTextAlignmentCenter;
@@ -295,7 +298,15 @@
 }
 -(void)back{
     
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.navigationController && self.navigationController.viewControllers.count > 0) {
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }else{
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
+    }
 }
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotification_Login_Success object:nil];

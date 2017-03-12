@@ -489,7 +489,7 @@
     }
 }
 #pragma mark-搜索
--(void)pushSearch
+-(void)search_Action
 {
     SearchViewController *search=[[SearchViewController alloc]init];
     [self.navigationController pushViewController:search animated:YES];

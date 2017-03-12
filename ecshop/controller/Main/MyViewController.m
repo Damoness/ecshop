@@ -260,6 +260,12 @@
     
     if (![LoginModel isLogin]) {
         
+        
+
+        LoginViewController *lVC = [LoginViewController new];
+        
+        [self presentViewController:lVC animated:YES completion:nil];
+        
         return;
     }
     
