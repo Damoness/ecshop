@@ -277,7 +277,6 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
     view.backgroundColor = [UIColor colorWithHexString:naviBGColor];
-    view.backgroundColor = [UIColor redColor];
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(100, 20, self.view.frame.size.width - 200, 44)];
     label.text = @"登录";
     label.textAlignment = NSTextAlignmentCenter;

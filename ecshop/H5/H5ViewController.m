@@ -44,9 +44,6 @@
     [WXApiManager sharedManager].delegate = self;
     [AlipayApiManager sharedManager].delegate = self;
     
-
-    
-    
 }
 
 
@@ -68,40 +65,7 @@
 //}
 
 
--(void)initViews{
-    
-    
-    self.myOrderModel = [OrderModel new];
-    
-//    UIImage *backButtonImage = [UIImage imageNamed:@"nav_arrow.png"];
-//    
-//    
-//    UIButton *backButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 22, 22)];
-//    
-//    [backButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    [backButton setBackgroundImage:backButtonImage forState:UIControlStateNormal];
-//    
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:backButton];
-//    
-    
-    CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];
-    
-    
-    _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, rectStatus.size.height, kScreenWidth, kScreenHeight - rectStatus.size.height)];
-    
-    _webView.delegate = self;
-    _webView.scrollView.bounces = NO;
-    _webView.scrollView.showsVerticalScrollIndicator = NO;
-    
-    [self.view addSubview:_webView];
-    
-    
-    [self.webView loadRequest:[[NSURLRequest alloc]initWithURL:[NSURL URLWithString:@"http://sitmarket.ditiy.com/mobile/"]]];
-    
-    
-    
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -123,23 +87,32 @@
     
     [self.webView goBack];
     
+    
 }
 
+
+//[NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/user.php"]
+
+//#define kURL_Base  @"http://sitmarket.ditiy.com"
+#define kURL_Base  @"http://www.fxj2017.com"
 //http://sitmarket.ditiy.com/mobile/weixinpay.php?out_trade_no=915
 
-#define kURL_Order_Submit @"http://sitmarket.ditiy.com/mobile/flow.php?step=checkout" //立即购买
 
-#define kURL_Order_Finished @"http://sitmarket.ditiy.com/mobile/flow.php?step=done" //提交订单成功
+#define kURL_Index [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/"] //首页地址
+//kURL_Base
 
-#define kURL_Order_PayWithWeixin @"http://sitmarket.ditiy.com/mobile/weixinpay.php?out_trade_no=" //微信支付 （包含）
-#define kURL_Order_PayWithAlipay @"http://sitmarket.ditiy.com/mobile/pay/alipayapi.php?out_trade_no=" //支付宝支付 (包含)
+#define kURL_Order_Submit [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/flow.php?step=checkout"] //立即购买
+
+#define kURL_Order_Finished [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/flow.php?step=done"] //提交订单成功
+#define kURL_Order_Finished2  [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/flow.php?step=checkout?is_app="]
+
+#define kURL_Order_PayWithWeixin [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/weixinpay.php?out_trade_no="] //微信支付 （包含）
+#define kURL_Order_PayWithAlipay [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/pay/alipayapi.php?out_trade_no="] //支付宝支付 (包含)
 
 
-//http://sitmarket.ditiy.com/mobile/flow.php?step=done
+#define kURL2 [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/user.php"]
 
-#define kURL2 @"http://sitmarket.ditiy.com/mobile/user.php"
-
-#define kURL_Order_PayFromUnpay @"http://sitmarket.ditiy.com/mobile/user.php?act=order_detail&order_id" // 代付款里面进入支付
+#define kURL_Order_PayFromUnpay [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/user.php?act=order_detail&order_id"] // 代付款里面进入支付
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
@@ -209,7 +182,7 @@
         
         return NO;
         
-    }else if([urlStr isEqualToString:kURL_Order_Submit]) {
+    }else if([urlStr isEqualToString:kURL_Order_Submit] || [urlStr isEqualToString:kURL_Order_Finished2]) {
         
 
         if ([[[urlStr componentsSeparatedByString:@"/"]lastObject]containsString:@"?"]) {
@@ -310,10 +283,45 @@
     return  true;
 }
 
+-(void)initViews{
+    
+    
+    self.myOrderModel = [OrderModel new];
+    
+    //    UIImage *backButtonImage = [UIImage imageNamed:@"nav_arrow.png"];
+    //
+    //
+    //    UIButton *backButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 22, 22)];
+    //
+    //    [backButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    //
+    //    [backButton setBackgroundImage:backButtonImage forState:UIControlStateNormal];
+    //
+    //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:backButton];
+    //
+    
+    CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];
+    
+    
+    _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, rectStatus.size.height, kScreenWidth, kScreenHeight - rectStatus.size.height)];
+    
+    _webView.delegate = self;
+    _webView.scrollView.bounces = NO;
+    _webView.scrollView.showsVerticalScrollIndicator = NO;
+    
+    [self.view addSubview:_webView];
+    
+    
+    [self.webView loadRequest:[[NSURLRequest alloc]initWithURL:[NSURL URLWithString:kURL_Index]]];
+    
+    
+    
+}
+
 - (void)webViewDidStartLoad:(UIWebView *)webView{
     
     
-    NSLog(@"webViewDidStartLoad-----");
+    //NSLog(@"webViewDidStartLoad-----@%",[NSString stringWithFormat:@"%@%@",kURL_Base,kURL_Order_Submit]);
     
     [MBProgressHUD showHUDAddedTo:self.view animated:true];
     

@@ -33,12 +33,16 @@
 #endif
 
 
-#define baseAPIURLStr @"http://sitmarket.ditiy.com/shopapi/index.php"
-#define baseURLStr @"http://sitmarket.ditiy.com"
 
-#define retailURLStr @"http://sitmarket.ditiy.com/mobile/v_user.php" //分销URL
+//#define baseURLStr @"http://sitmarket.ditiy.com"
+#define baseURLStr @"http://www.fxj2017.com"  //生产
 
-#define indexURLStr @"http://sitmarket.ditiy.com/mobile/app_index.php" // 首页地址  //http://market.ditiy.com/shopapi/index.php/goods_index
+#define baseAPIURLStr [NSString stringWithFormat:@"%@%@",baseURLStr,@"/shopapi/index.php"]
+
+
+#define retailURLStr [NSString stringWithFormat:@"%@%@",baseURLStr,@"/mobile/v_user.php"] //分销URL
+
+#define indexURLStr [NSString stringWithFormat:@"%@%@",baseURLStr,@"/mobile/app_index.php"] // 首页地址  //http://market.ditiy.com/shopapi/index.php/goods_index
 //#define indexURLStr @"http://market.ditiy.com/shopapi/index.php/goods_index"
 
 

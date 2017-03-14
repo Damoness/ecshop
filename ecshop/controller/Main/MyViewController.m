@@ -15,7 +15,9 @@
 #import "AddressViewController.h"
 #import "MyAttentionViewController.h"
 #import "MyOrderViewController.h"
+#import "SettingViewController.h"
 
+#import "MyTabBarViewController.h"
 @interface MyViewController ()
 
 
@@ -98,6 +100,10 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBar.hidden = true;
+    
+    
+    MyTabBarViewController *myTbVC = (MyTabBarViewController *) self.navigationController.tabBarController;
+    [myTbVC hideCustomTabbar:NO];
 }
 
 
@@ -111,13 +117,16 @@
 //}
 
 
--(void)viewDidDisappear:(BOOL)animated{
-    
-    [super viewDidDisappear:animated];
-    
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     self.navigationController.navigationBar.hidden = false;
+
     
+    MyTabBarViewController *myTbVC = (MyTabBarViewController *) self.navigationController.tabBarController;
+    
+    [myTbVC hideCustomTabbar:YES];
 }
+
 
 
 -(void)requestData{
@@ -308,6 +317,16 @@
     
 }
 
+
+- (IBAction)setting_Action:(UIButton *)sender {
+    
+    
+    SettingViewController *sVC = [SettingViewController new];
+    
+    [self.navigationController pushViewController:sVC animated:YES];
+    
+    
+}
 
 
 

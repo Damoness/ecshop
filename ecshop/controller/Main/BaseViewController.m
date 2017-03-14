@@ -8,14 +8,21 @@
 
 #import "BaseViewController.h"
 
+
+#define kColor_BaseView
+
 @interface BaseViewController ()
 
 @end
 
 @implementation BaseViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = kColor_UIView_BackgroundColor ;
     
 }
 

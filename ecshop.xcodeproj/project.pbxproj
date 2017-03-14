@@ -26,6 +26,10 @@
 		9C225C551E753ABF004CC46D /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C225C531E753ABF004CC46D /* IndexViewController.m */; };
 		9C4CD7D41E6FD0B5004D78D7 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4CD7D31E6FD0B5004D78D7 /* UIColor+Hex.m */; };
 		9C5191B01E6FED0C00576BE3 /* AlipayApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5191AF1E6FED0C00576BE3 /* AlipayApiManager.m */; };
+		9CAFC7611E763C5600D92CCB /* ShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFC75F1E763C5600D92CCB /* ShoppingCartViewController.m */; };
+		9CAFC7621E763C5600D92CCB /* ShoppingCartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CAFC7601E763C5600D92CCB /* ShoppingCartViewController.xib */; };
+		9CB367F31E77DA660036EEC9 /* ZPUnlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB367F21E77DA660036EEC9 /* ZPUnlockView.m */; };
+		9CB367F61E77DB110036EEC9 /* ZPFmdbTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB367F51E77DB110036EEC9 /* ZPFmdbTool.m */; };
 		9CDD2FDB1E6FB24300FD2CB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD2CD01E6FB24100FD2CB5 /* Assets.xcassets */; };
 		9CDD2FDC1E6FB24300FD2CB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD2CD21E6FB24100FD2CB5 /* LaunchScreen.storyboard */; };
 		9CDD2FDD1E6FB24300FD2CB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD2CD41E6FB24100FD2CB5 /* Main.storyboard */; };
@@ -481,6 +485,13 @@
 		9C4CD7D31E6FD0B5004D78D7 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		9C5191AE1E6FED0C00576BE3 /* AlipayApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlipayApiManager.h; sourceTree = "<group>"; };
 		9C5191AF1E6FED0C00576BE3 /* AlipayApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlipayApiManager.m; sourceTree = "<group>"; };
+		9CAFC75E1E763C5600D92CCB /* ShoppingCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartViewController.h; sourceTree = "<group>"; };
+		9CAFC75F1E763C5600D92CCB /* ShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartViewController.m; sourceTree = "<group>"; };
+		9CAFC7601E763C5600D92CCB /* ShoppingCartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingCartViewController.xib; sourceTree = "<group>"; };
+		9CB367F11E77DA660036EEC9 /* ZPUnlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPUnlockView.h; sourceTree = "<group>"; };
+		9CB367F21E77DA660036EEC9 /* ZPUnlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPUnlockView.m; sourceTree = "<group>"; };
+		9CB367F41E77DB110036EEC9 /* ZPFmdbTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPFmdbTool.h; sourceTree = "<group>"; };
+		9CB367F51E77DB110036EEC9 /* ZPFmdbTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPFmdbTool.m; sourceTree = "<group>"; };
 		9CDD2CD01E6FB24100FD2CB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ecshop/Assets.xcassets; sourceTree = "<group>"; };
 		9CDD2CD31E6FB24100FD2CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CDD2CD51E6FB24100FD2CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
@@ -1201,6 +1212,15 @@
 			path = AlipayTool;
 			sourceTree = "<group>";
 		};
+		9CB367F01E77DA660036EEC9 /* ZPUnlockView */ = {
+			isa = PBXGroup;
+			children = (
+				9CB367F11E77DA660036EEC9 /* ZPUnlockView.h */,
+				9CB367F21E77DA660036EEC9 /* ZPUnlockView.m */,
+			);
+			path = ZPUnlockView;
+			sourceTree = "<group>";
+		};
 		9CDD2CD11E6FB24100FD2CB5 /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
@@ -1630,6 +1650,8 @@
 			children = (
 				9CDD2E641E6FB24200FD2CB5 /* Manager */,
 				9CDD2E691E6FB24200FD2CB5 /* OC_Category */,
+				9CB367F41E77DB110036EEC9 /* ZPFmdbTool.h */,
+				9CB367F51E77DB110036EEC9 /* ZPFmdbTool.m */,
 				9CDD2E721E6FB24200FD2CB5 /* Util.h */,
 				9CDD2E731E6FB24200FD2CB5 /* Util.m */,
 			);
@@ -1669,6 +1691,7 @@
 		9CDD2E741E6FB24200FD2CB5 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				9CB367F01E77DA660036EEC9 /* ZPUnlockView */,
 				9CDD2E751E6FB24200FD2CB5 /* AlipaySDK */,
 				9CDD2EE11E6FB24200FD2CB5 /* HJCAdjustNumButton */,
 				9CDD2EE51E6FB24200FD2CB5 /* Lib */,
@@ -2205,6 +2228,9 @@
 			children = (
 				9CE02B291E72D4410017145F /* BaseViewController.h */,
 				9CE02B2A1E72D4410017145F /* BaseViewController.m */,
+				9CAFC75E1E763C5600D92CCB /* ShoppingCartViewController.h */,
+				9CAFC75F1E763C5600D92CCB /* ShoppingCartViewController.m */,
+				9CAFC7601E763C5600D92CCB /* ShoppingCartViewController.xib */,
 				9C225C521E753ABF004CC46D /* IndexViewController.h */,
 				9C225C531E753ABF004CC46D /* IndexViewController.m */,
 				9CE02B2B1E72D4410017145F /* FirstViewController.h */,
@@ -2438,6 +2464,7 @@
 				9CDD2FDB1E6FB24300FD2CB5 /* Assets.xcassets in Resources */,
 				9CDD302B1E6FB24300FD2CB5 /* share_friend@3x.png in Resources */,
 				9CDD30911E6FB24300FD2CB5 /* 个人中心-地址管理icon.png in Resources */,
+				9CAFC7621E763C5600D92CCB /* ShoppingCartViewController.xib in Resources */,
 				9CDD30AA1E6FB24300FD2CB5 /* id_zm.png in Resources */,
 				9CDD30741E6FB24300FD2CB5 /* my_collection@2x.png in Resources */,
 				9CDD301E1E6FB24300FD2CB5 /* gengduo@2x.png in Resources */,
@@ -2693,6 +2720,7 @@
 				9CDD316D1E6FB24400FD2CB5 /* XMLDictionary.m in Sources */,
 				9CDD31351E6FB24400FD2CB5 /* HJCAjustNumButton.m in Sources */,
 				9CE02B7C1E72D4410017145F /* PersonViewController.m in Sources */,
+				9CAFC7611E763C5600D92CCB /* ShoppingCartViewController.m in Sources */,
 				9C225C551E753ABF004CC46D /* IndexViewController.m in Sources */,
 				9CDD310E1E6FB24400FD2CB5 /* OrderModel.m in Sources */,
 				9CDD31071E6FB24400FD2CB5 /* BaseModel.m in Sources */,
@@ -2705,6 +2733,7 @@
 				9CDD31921E6FB24400FD2CB5 /* MyAddressViewCell.m in Sources */,
 				9CDD31581E6FB24400FD2CB5 /* MJRefreshBackGifFooter.m in Sources */,
 				9CDD31611E6FB24400FD2CB5 /* UIScrollView+MJRefresh.m in Sources */,
+				9CB367F31E77DA660036EEC9 /* ZPUnlockView.m in Sources */,
 				9CDD315C1E6FB24400FD2CB5 /* MJRefreshNormalHeader.m in Sources */,
 				9CDD31171E6FB24400FD2CB5 /* UserModel.m in Sources */,
 				9CDD319A1E6FB24400FD2CB5 /* PendingPaymentViewCell.m in Sources */,
@@ -2724,6 +2753,7 @@
 				9CDD310B1E6FB24400FD2CB5 /* LoginModel.m in Sources */,
 				9CDD31231E6FB24400FD2CB5 /* Util.m in Sources */,
 				9CE02B7E1E72D4410017145F /* RegisterViewController.m in Sources */,
+				9CB367F61E77DB110036EEC9 /* ZPFmdbTool.m in Sources */,
 				9CDD319E1E6FB24500FD2CB5 /* SearchListCollect.m in Sources */,
 				9CDD31461E6FB24400FD2CB5 /* MASLayoutConstraint.m in Sources */,
 				9CE02B631E72D4410017145F /* CouponsViewController.m in Sources */,
@@ -2934,7 +2964,7 @@
 					"$(PROJECT_DIR)/ecshop/Vendor/umeng_ios_social_sdk_4.4_arm64_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/ecshop/Vendor/umeng_ios_social_sdk_4.4_arm64_custom/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ditiy.app.CloudShop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ditiy.app.CloudShop.S;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -2980,7 +3010,7 @@
 					"$(PROJECT_DIR)/ecshop/Vendor/umeng_ios_social_sdk_4.4_arm64_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/ecshop/Vendor/umeng_ios_social_sdk_4.4_arm64_custom/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ditiy.app.CloudShop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ditiy.app.CloudShop.S;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

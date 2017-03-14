@@ -13,7 +13,7 @@
 #import "SecondViewController.h"
 #import "ThirdViewController.h"
 #import "FourthViewController.h"
-#import "MyViewController.h"
+
 #import "MyTabBarViewController.h"
 #import "UMSocialWechatHandler.h"
 #import "UMSocialQQHandler.h"
@@ -24,6 +24,8 @@
 #import "H5ViewController.h"
 #import "AlipayApiManager.h"
 #import "UserGuideViewController.h"
+#import "MyViewController.h"
+#import "ShoppingCartViewController.h"
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
 @end
@@ -86,7 +88,7 @@
 //    return YES;
     
     
-    UIViewController *vc = [self nativeRootViewController];
+    UIViewController *vc = [self h5RootViewController];
     
     
     if (![[NSUserDefaults standardUserDefaults]boolForKey:@"kHasLaunched"]) {
@@ -142,15 +144,24 @@
     SecondViewController *second=[[SecondViewController alloc]init];
     UINavigationController *secondNV = [[UINavigationController alloc]initWithRootViewController:second];
     ThirdViewController *third=[[ThirdViewController alloc]init];
-    
     UINavigationController *thirdNV = [[UINavigationController alloc]initWithRootViewController:third];
+    
+    
+    ShoppingCartViewController *scVC = [ShoppingCartViewController new];
+    UINavigationController *scNC = [[UINavigationController alloc]initWithRootViewController:scVC];
+    
     FourthViewController *fourth=[[FourthViewController alloc]init];
     UINavigationController *fourthNV = [[UINavigationController alloc]initWithRootViewController:fourth];
+    
+    
+
+    
+    
     
     MyViewController *myVC = [[MyViewController alloc]init];
     UINavigationController *myNV = [[UINavigationController alloc]initWithRootViewController:myVC];
     
-    NSArray *array=@[iNC,secondNV,thirdNV,myNV];
+    NSArray *array=@[iNC,secondNV,scNC,myNV];
     
     MyTabBarViewController *tab=[[MyTabBarViewController alloc]init];
     
@@ -191,6 +202,7 @@
     self.tempDic = dic[@"dic"];
     self.userName = dic[@"userName"];
 }
+
 -(void)quiteSuccess:(NSNotification *)sender{
     self.tempDic = nil;
     self.userName = nil;

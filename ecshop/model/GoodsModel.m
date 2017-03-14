@@ -71,7 +71,7 @@
     
     
     NSMutableDictionary *params = @{
-                                    @"key":[LoginModel key],
+                                    //@"key":[LoginModel key],
                                     @"goods_id":self.goods_id,
                                     }.mutableCopy;
     

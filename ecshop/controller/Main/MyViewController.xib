@@ -77,9 +77,24 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFF-lC-XcK">
+                                    <rect key="frame" x="20" y="28" width="50" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="50" id="Xwr-AB-MwW"/>
+                                        <constraint firstAttribute="height" constant="30" id="xZS-vr-r3R"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <state key="normal" title="设置">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="setting_Action:" destination="-1" eventType="touchUpInside" id="yvs-bL-1pf"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.90196078430000004" green="0.1450980392" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
+                                <constraint firstItem="GFF-lC-XcK" firstAttribute="leading" secondItem="lga-A1-Pth" secondAttribute="leading" constant="20" id="2xB-Ck-9P4"/>
                                 <constraint firstItem="Reh-zd-p1f" firstAttribute="centerY" secondItem="lga-A1-Pth" secondAttribute="centerY" id="KqU-6Y-OZg"/>
                                 <constraint firstItem="eE6-ea-Ega" firstAttribute="bottom" secondItem="Reh-zd-p1f" secondAttribute="bottom" constant="-1" id="P0S-HK-SXr"/>
                                 <constraint firstItem="pE7-53-ATD" firstAttribute="top" secondItem="Reh-zd-p1f" secondAttribute="bottom" constant="10" id="SjN-xN-hjX"/>
@@ -88,6 +103,7 @@
                                 <constraint firstItem="pE7-53-ATD" firstAttribute="centerX" secondItem="lga-A1-Pth" secondAttribute="centerX" id="mMv-jm-UbJ"/>
                                 <constraint firstItem="eE6-ea-Ega" firstAttribute="trailing" secondItem="Reh-zd-p1f" secondAttribute="trailing" constant="-1" id="nd6-BJ-mYU"/>
                                 <constraint firstItem="Reh-zd-p1f" firstAttribute="top" secondItem="ztu-U8-xe3" secondAttribute="bottom" constant="10" id="vpU-Q0-syA"/>
+                                <constraint firstItem="GFF-lC-XcK" firstAttribute="top" secondItem="lga-A1-Pth" secondAttribute="top" constant="28" id="yh9-kW-Vcn"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zN-87-xU9">

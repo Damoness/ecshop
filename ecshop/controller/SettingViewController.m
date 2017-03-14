@@ -10,10 +10,13 @@
 #import "SettingViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "AboutViewController.h"
-#import "UIColor+Hex.h"
 #define kColorBack [UIColor colorWithRed:239/255.0 green:239/255.0 blue:244/255.0 alpha:1.0]
+
+
 @interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource>
+
 @property(nonatomic,strong)UITableView *tableview;
+
 
 @end
 
@@ -21,13 +24,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self draw];
-    [self initNavigationBar];
-    self.view.backgroundColor = kColorBack;
-    // Do any additional setup after loading the view.
+    [self initViews];
+
 }
--(void)draw{
-    _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 45, self.view.frame.size.width, self.view.frame.size.height/2 - 45) style:UITableViewStylePlain];
+-(void)initViews{
+    
+    //self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.title = @"更多";
+    
+    _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
    
     _tableview.delegate = self;
     _tableview.dataSource = self;
@@ -40,12 +46,22 @@
 #pragma mark tableview
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    
+
+    if (section == 0) {
+        
+        return 2;
+        
+    }else if (section ==1){
+        
+        return 2;
+    }
+    
+    return 0;
     
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    
     return 2;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -54,22 +70,16 @@
     
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    if (section == 1) {
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 20)];
-        view.backgroundColor = kColorBack;
-        
-        return view;
-    }else if(section == 0){
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 20)];
-        view.backgroundColor = kColorBack;
-        
-        return view;
-    }else{
-        return nil;
-    }
+    
+    
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 20)];
+    view.backgroundColor = kColorBack;
+    
+    return view;
     
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     static NSString *string = @"SettingViewCell";
     SettingViewCell *cell = [tableView dequeueReusableCellWithIdentifier:string];
     if (cell == nil) {
@@ -77,45 +87,77 @@
     }
     if (indexPath.section == 0) {
         
-        cell.textLabel.text = @"关于我们";
-        cell.textLabel.font = [UIFont systemFontOfSize:15];
-        cell.detailTextLabel.text = @"V1.01";
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:15];
+        if (indexPath.row == 0) { //关于我们
+            
+            NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+            // app名称
+            NSString *app_Name = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+            // app版本
+            NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+            // app build版本
+            NSString *app_build = [infoDictionary objectForKey:@"CFBundleVersion"];
+            
+            cell.textLabel.text = @"关于我们";
+            cell.textLabel.font = [UIFont systemFontOfSize:15];
+            cell.detailTextLabel.text = app_Version;
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:15];
+            
+        }else if (indexPath.row == 1){ //清楚本地缓存
+            
+            UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
+            but.frame = CGRectMake(0, 0, self.view.frame.size.width, cell.frame.size.height);
+            [but addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
+            [cell addSubview:but];
+            
+            cell.textLabel.text = @"清除本地缓存";
+            cell.textLabel.font = [UIFont systemFontOfSize:15];
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+            NSString *path = [paths lastObject];
+            NSString *str = [NSString stringWithFormat:@"缓存%.1fM", [self folderSizeAtPath:path]];
+            cell.detailTextLabel.text = str;
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:15];
+            [cell setAccessoryType:UITableViewCellAccessoryNone];
+            
+        }
         
-    }else{
-        UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
-        but.frame = CGRectMake(0, 0, self.view.frame.size.width, cell.frame.size.height);
-        [but addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
-        [cell addSubview:but];
+
         
-        cell.textLabel.text = @"清除本地缓存";
-        cell.textLabel.font = [UIFont systemFontOfSize:15];
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    }else if (indexPath.section == 1){
         
-        NSString *path = [paths lastObject];
+        if (indexPath.row == 0) {
+            
+            cell.textLabel.text = @"手势解锁";
+            
+        }else if (indexPath.row == 1){
+            
+            cell.textLabel.text = @"指纹解锁";
+            
+        }
+
         
-        
-        
-        NSString *str = [NSString stringWithFormat:@"缓存%.1fM", [self folderSizeAtPath:path]];
-        cell.detailTextLabel.text = str;
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:15];
-        [cell setAccessoryType:UITableViewCellAccessoryNone];
     }
     return cell;
 }
+
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 44;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     if (indexPath.section == 0) {
+        
         AboutViewController *aboutView = [AboutViewController new];
         [self.navigationController pushViewController:aboutView animated:YES];
+        
     }else{
         
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -139,6 +181,8 @@
     return 0;
     
 }
+
+
 
 //遍历文件夹获得文件夹大小，返回多少M
 
@@ -213,52 +257,7 @@
     
     
 }
-#pragma mark -- 自定义导航栏
-- (void)initNavigationBar{
-    
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Setting" ofType:@"plist"];
-    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-    NSString *naviBGColor = data[@"navigationBGColor"];
-    NSString *navigationTitleFont = data[@"navigationTitleFont"];
-    int titleFont = [navigationTitleFont intValue];
-    NSString *naiigationTitleColor = data[@"naiigationTitleColor"];
-    
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
-    view.backgroundColor = [UIColor colorWithHexString:naviBGColor];
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(100, 20, self.view.frame.size.width - 200, 44)];
-    label.text = @"更多";
-    label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont systemFontOfSize:titleFont];
-    label.textColor = [UIColor colorWithHexString:naiigationTitleColor];
-    [view addSubview:label];
-    
-    UIImage *img = [UIImage imageNamed:@"back.png"];
-    UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(12, 12, 20, 20)];
-    imgView.image = img;
-    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 20, 40, 40)];
-    [btn addSubview:imgView];
-    [btn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:btn];
-    [self.view addSubview:view];
-    
-    
-}
 
--(void)back{
-    
-    if (self.navigationController && self.navigationController.viewControllers.count > 0) {
-        
-        [self.navigationController popViewControllerAnimated:YES];
-        
-    }else{
-        
-        [self dismissViewControllerAnimated:YES completion:nil];
-        
-    }
-    
-    
-}
 
 
 @end
