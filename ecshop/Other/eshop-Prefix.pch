@@ -18,6 +18,7 @@
 
 #ifdef __OBJC__
 
+
 #import "MXWechatConfig.h"
 
 #import "NSDictionary+Common.h"

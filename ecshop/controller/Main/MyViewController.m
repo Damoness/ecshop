@@ -18,6 +18,10 @@
 #import "SettingViewController.h"
 
 #import "MyTabBarViewController.h"
+//#import "LAContext.h"
+
+@import LocalAuthentication;
+
 @interface MyViewController ()
 
 
@@ -104,6 +108,21 @@
     
     MyTabBarViewController *myTbVC = (MyTabBarViewController *) self.navigationController.tabBarController;
     [myTbVC hideCustomTabbar:NO];
+    
+    
+    LAContext *context = [[LAContext alloc] init];
+    __block  NSString *message;
+    
+    // Show the authentication UI with our reason string.
+    [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:@"Unlock access to locked feature" reply:^(BOOL success, NSError *authenticationError) {
+        if (success) {
+            message = @"evaluatePolicy: succes";
+        }
+        else {
+            message = [NSString stringWithFormat:@"evaluatePolicy: %@", authenticationError.localizedDescription];
+        }
+        
+    }];
 }
 
 

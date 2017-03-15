@@ -7,15 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class ZPUnlockView;
 @protocol ZPUnlockViewDelegate <NSObject>
 
--(void)ZPUnlockViewDidFinishUnlock:(NSString *)password; //完成解锁
+-(void)ZPUnlockView:(ZPUnlockView *)ZPUnlockView didFinishDraw:(NSString *)password;//完成手势绘制
 
 @end
 
 
 @interface ZPUnlockView : UIView
+
+
+-(void)reset;
+
+-(void)resetWrong;
 
 @property (nonatomic,weak) id<ZPUnlockViewDelegate> delegate;
 

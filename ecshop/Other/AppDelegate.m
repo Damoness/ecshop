@@ -88,7 +88,7 @@
 //    return YES;
     
     
-    UIViewController *vc = [self h5RootViewController];
+    UIViewController *vc = [self nativeRootViewController];
     
     
     if (![[NSUserDefaults standardUserDefaults]boolForKey:@"kHasLaunched"]) {

@@ -26,10 +26,23 @@
 		9C225C551E753ABF004CC46D /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C225C531E753ABF004CC46D /* IndexViewController.m */; };
 		9C4CD7D41E6FD0B5004D78D7 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4CD7D31E6FD0B5004D78D7 /* UIColor+Hex.m */; };
 		9C5191B01E6FED0C00576BE3 /* AlipayApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5191AF1E6FED0C00576BE3 /* AlipayApiManager.m */; };
+		9C98F8831E79368700D69DA3 /* FingerprintLockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C98F8811E79368700D69DA3 /* FingerprintLockViewController.m */; };
+		9C98F8841E79368700D69DA3 /* FingerprintLockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C98F8821E79368700D69DA3 /* FingerprintLockViewController.xib */; };
 		9CAFC7611E763C5600D92CCB /* ShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFC75F1E763C5600D92CCB /* ShoppingCartViewController.m */; };
 		9CAFC7621E763C5600D92CCB /* ShoppingCartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CAFC7601E763C5600D92CCB /* ShoppingCartViewController.xib */; };
 		9CB367F31E77DA660036EEC9 /* ZPUnlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB367F21E77DA660036EEC9 /* ZPUnlockView.m */; };
 		9CB367F61E77DB110036EEC9 /* ZPFmdbTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB367F51E77DB110036EEC9 /* ZPFmdbTool.m */; };
+		9CB367FA1E77FC990036EEC9 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB367F91E77FC990036EEC9 /* SettingViewController.m */; };
+		9CB367FE1E77FCEF0036EEC9 /* SettingGesturePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB367FC1E77FCEF0036EEC9 /* SettingGesturePasswordViewController.m */; };
+		9CB367FF1E77FCEF0036EEC9 /* SettingGesturePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CB367FD1E77FCEF0036EEC9 /* SettingGesturePasswordViewController.xib */; };
+		9CB368021E78027B0036EEC9 /* gesture_node_error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CB368001E78027B0036EEC9 /* gesture_node_error@2x.png */; };
+		9CB368031E78027B0036EEC9 /* gesture_node_error@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CB368011E78027B0036EEC9 /* gesture_node_error@3x.png */; };
+		9CB368061E7802850036EEC9 /* gesture_node_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CB368041E7802850036EEC9 /* gesture_node_highlighted@2x.png */; };
+		9CB368071E7802850036EEC9 /* gesture_node_highlighted@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CB368051E7802850036EEC9 /* gesture_node_highlighted@3x.png */; };
+		9CB3680A1E78028D0036EEC9 /* gesture_node_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CB368081E78028D0036EEC9 /* gesture_node_normal@2x.png */; };
+		9CB3680B1E78028D0036EEC9 /* gesture_node_normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CB368091E78028D0036EEC9 /* gesture_node_normal@3x.png */; };
+		9CB3680F1E7824D90036EEC9 /* SettingConfirmGesturePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB3680D1E7824D90036EEC9 /* SettingConfirmGesturePasswordViewController.m */; };
+		9CB368101E7824D90036EEC9 /* SettingConfirmGesturePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CB3680E1E7824D90036EEC9 /* SettingConfirmGesturePasswordViewController.xib */; };
 		9CDD2FDB1E6FB24300FD2CB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD2CD01E6FB24100FD2CB5 /* Assets.xcassets */; };
 		9CDD2FDC1E6FB24300FD2CB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD2CD21E6FB24100FD2CB5 /* LaunchScreen.storyboard */; };
 		9CDD2FDD1E6FB24300FD2CB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD2CD41E6FB24100FD2CB5 /* Main.storyboard */; };
@@ -455,9 +468,10 @@
 		9CE02B7E1E72D4410017145F /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE02B521E72D4410017145F /* RegisterViewController.m */; };
 		9CE02B7F1E72D4410017145F /* SearchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE02B541E72D4410017145F /* SearchListViewController.m */; };
 		9CE02B801E72D4410017145F /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE02B561E72D4410017145F /* SearchViewController.m */; };
-		9CE02B811E72D4410017145F /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE02B581E72D4410017145F /* SettingViewController.m */; };
 		9CE02B821E72D4410017145F /* SliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE02B5A1E72D4410017145F /* SliderViewController.m */; };
 		9CE02B831E72D4410017145F /* UserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE02B5C1E72D4410017145F /* UserGuideViewController.m */; };
+		9CE520451E78F354003A0C45 /* SettingUnlockTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE520431E78F354003A0C45 /* SettingUnlockTableViewCell.m */; };
+		9CE520461E78F354003A0C45 /* SettingUnlockTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CE520441E78F354003A0C45 /* SettingUnlockTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -485,6 +499,9 @@
 		9C4CD7D31E6FD0B5004D78D7 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		9C5191AE1E6FED0C00576BE3 /* AlipayApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlipayApiManager.h; sourceTree = "<group>"; };
 		9C5191AF1E6FED0C00576BE3 /* AlipayApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlipayApiManager.m; sourceTree = "<group>"; };
+		9C98F8801E79368700D69DA3 /* FingerprintLockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FingerprintLockViewController.h; sourceTree = "<group>"; };
+		9C98F8811E79368700D69DA3 /* FingerprintLockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FingerprintLockViewController.m; sourceTree = "<group>"; };
+		9C98F8821E79368700D69DA3 /* FingerprintLockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FingerprintLockViewController.xib; sourceTree = "<group>"; };
 		9CAFC75E1E763C5600D92CCB /* ShoppingCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartViewController.h; sourceTree = "<group>"; };
 		9CAFC75F1E763C5600D92CCB /* ShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartViewController.m; sourceTree = "<group>"; };
 		9CAFC7601E763C5600D92CCB /* ShoppingCartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingCartViewController.xib; sourceTree = "<group>"; };
@@ -492,6 +509,20 @@
 		9CB367F21E77DA660036EEC9 /* ZPUnlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPUnlockView.m; sourceTree = "<group>"; };
 		9CB367F41E77DB110036EEC9 /* ZPFmdbTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPFmdbTool.h; sourceTree = "<group>"; };
 		9CB367F51E77DB110036EEC9 /* ZPFmdbTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPFmdbTool.m; sourceTree = "<group>"; };
+		9CB367F81E77FC990036EEC9 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		9CB367F91E77FC990036EEC9 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		9CB367FB1E77FCEF0036EEC9 /* SettingGesturePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingGesturePasswordViewController.h; sourceTree = "<group>"; };
+		9CB367FC1E77FCEF0036EEC9 /* SettingGesturePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingGesturePasswordViewController.m; sourceTree = "<group>"; };
+		9CB367FD1E77FCEF0036EEC9 /* SettingGesturePasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingGesturePasswordViewController.xib; sourceTree = "<group>"; };
+		9CB368001E78027B0036EEC9 /* gesture_node_error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gesture_node_error@2x.png"; sourceTree = "<group>"; };
+		9CB368011E78027B0036EEC9 /* gesture_node_error@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gesture_node_error@3x.png"; sourceTree = "<group>"; };
+		9CB368041E7802850036EEC9 /* gesture_node_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gesture_node_highlighted@2x.png"; sourceTree = "<group>"; };
+		9CB368051E7802850036EEC9 /* gesture_node_highlighted@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gesture_node_highlighted@3x.png"; sourceTree = "<group>"; };
+		9CB368081E78028D0036EEC9 /* gesture_node_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gesture_node_normal@2x.png"; sourceTree = "<group>"; };
+		9CB368091E78028D0036EEC9 /* gesture_node_normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gesture_node_normal@3x.png"; sourceTree = "<group>"; };
+		9CB3680C1E7824D90036EEC9 /* SettingConfirmGesturePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingConfirmGesturePasswordViewController.h; sourceTree = "<group>"; };
+		9CB3680D1E7824D90036EEC9 /* SettingConfirmGesturePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingConfirmGesturePasswordViewController.m; sourceTree = "<group>"; };
+		9CB3680E1E7824D90036EEC9 /* SettingConfirmGesturePasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingConfirmGesturePasswordViewController.xib; sourceTree = "<group>"; };
 		9CDD2CD01E6FB24100FD2CB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ecshop/Assets.xcassets; sourceTree = "<group>"; };
 		9CDD2CD31E6FB24100FD2CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CDD2CD51E6FB24100FD2CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
@@ -1085,12 +1116,13 @@
 		9CE02B541E72D4410017145F /* SearchListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchListViewController.m; sourceTree = "<group>"; };
 		9CE02B551E72D4410017145F /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		9CE02B561E72D4410017145F /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
-		9CE02B571E72D4410017145F /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
-		9CE02B581E72D4410017145F /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		9CE02B591E72D4410017145F /* SliderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderViewController.h; sourceTree = "<group>"; };
 		9CE02B5A1E72D4410017145F /* SliderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderViewController.m; sourceTree = "<group>"; };
 		9CE02B5B1E72D4410017145F /* UserGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserGuideViewController.h; sourceTree = "<group>"; };
 		9CE02B5C1E72D4410017145F /* UserGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserGuideViewController.m; sourceTree = "<group>"; };
+		9CE520421E78F354003A0C45 /* SettingUnlockTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingUnlockTableViewCell.h; sourceTree = "<group>"; };
+		9CE520431E78F354003A0C45 /* SettingUnlockTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingUnlockTableViewCell.m; sourceTree = "<group>"; };
+		9CE520441E78F354003A0C45 /* SettingUnlockTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingUnlockTableViewCell.xib; sourceTree = "<group>"; };
 		CD8F558534F74A5EEBE4F568 /* Pods-ecshop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecshop.release.xcconfig"; path = "Pods/Target Support Files/Pods-ecshop/Pods-ecshop.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1215,10 +1247,31 @@
 		9CB367F01E77DA660036EEC9 /* ZPUnlockView */ = {
 			isa = PBXGroup;
 			children = (
+				9CB368001E78027B0036EEC9 /* gesture_node_error@2x.png */,
+				9CB368011E78027B0036EEC9 /* gesture_node_error@3x.png */,
+				9CB368041E7802850036EEC9 /* gesture_node_highlighted@2x.png */,
+				9CB368051E7802850036EEC9 /* gesture_node_highlighted@3x.png */,
+				9CB368081E78028D0036EEC9 /* gesture_node_normal@2x.png */,
+				9CB368091E78028D0036EEC9 /* gesture_node_normal@3x.png */,
 				9CB367F11E77DA660036EEC9 /* ZPUnlockView.h */,
 				9CB367F21E77DA660036EEC9 /* ZPUnlockView.m */,
 			);
 			path = ZPUnlockView;
+			sourceTree = "<group>";
+		};
+		9CB367F71E77FC7C0036EEC9 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				9CB367F81E77FC990036EEC9 /* SettingViewController.h */,
+				9CB367F91E77FC990036EEC9 /* SettingViewController.m */,
+				9CB367FB1E77FCEF0036EEC9 /* SettingGesturePasswordViewController.h */,
+				9CB367FC1E77FCEF0036EEC9 /* SettingGesturePasswordViewController.m */,
+				9CB367FD1E77FCEF0036EEC9 /* SettingGesturePasswordViewController.xib */,
+				9CB3680C1E7824D90036EEC9 /* SettingConfirmGesturePasswordViewController.h */,
+				9CB3680D1E7824D90036EEC9 /* SettingConfirmGesturePasswordViewController.m */,
+				9CB3680E1E7824D90036EEC9 /* SettingConfirmGesturePasswordViewController.xib */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		9CDD2CD11E6FB24100FD2CB5 /* Base.lproj */ = {
@@ -2143,6 +2196,9 @@
 				9CDD2FD81E6FB24300FD2CB5 /* sonCollectCell.m */,
 				9CDD2FD91E6FB24300FD2CB5 /* SureTableViewCell.h */,
 				9CDD2FDA1E6FB24300FD2CB5 /* SureTableViewCell.m */,
+				9CE520421E78F354003A0C45 /* SettingUnlockTableViewCell.h */,
+				9CE520431E78F354003A0C45 /* SettingUnlockTableViewCell.m */,
+				9CE520441E78F354003A0C45 /* SettingUnlockTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2160,6 +2216,7 @@
 		9CE02B101E72D4410017145F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9CB367F71E77FC7C0036EEC9 /* Settings */,
 				9CE02B281E72D4410017145F /* Main */,
 				9CE02B111E72D4410017145F /* AboutViewController.h */,
 				9CE02B121E72D4410017145F /* AboutViewController.m */,
@@ -2213,12 +2270,13 @@
 				9CE02B541E72D4410017145F /* SearchListViewController.m */,
 				9CE02B551E72D4410017145F /* SearchViewController.h */,
 				9CE02B561E72D4410017145F /* SearchViewController.m */,
-				9CE02B571E72D4410017145F /* SettingViewController.h */,
-				9CE02B581E72D4410017145F /* SettingViewController.m */,
 				9CE02B591E72D4410017145F /* SliderViewController.h */,
 				9CE02B5A1E72D4410017145F /* SliderViewController.m */,
 				9CE02B5B1E72D4410017145F /* UserGuideViewController.h */,
 				9CE02B5C1E72D4410017145F /* UserGuideViewController.m */,
+				9C98F8801E79368700D69DA3 /* FingerprintLockViewController.h */,
+				9C98F8811E79368700D69DA3 /* FingerprintLockViewController.m */,
+				9C98F8821E79368700D69DA3 /* FingerprintLockViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2415,6 +2473,7 @@
 				9CDD30491E6FB24300FD2CB5 /* tab_home.png in Resources */,
 				9CDD30551E6FB24300FD2CB5 /* tab_shopping.png in Resources */,
 				9CDD30BC1E6FB24400FD2CB5 /* tiaojianshaixuan(weixuanzhong)@2x.png in Resources */,
+				9C98F8841E79368700D69DA3 /* FingerprintLockViewController.xib in Resources */,
 				9CDD30181E6FB24300FD2CB5 /* contacts.png in Resources */,
 				9CDD315E1E6FB24400FD2CB5 /* MJRefresh.bundle in Resources */,
 				9CDD30F41E6FB24400FD2CB5 /* mylocation.png in Resources */,
@@ -2430,6 +2489,7 @@
 				9CDD30A21E6FB24300FD2CB5 /* id_fm@2x.png in Resources */,
 				9CDD31771E6FB24400FD2CB5 /* UMSShareListController.xib in Resources */,
 				9CDD30791E6FB24300FD2CB5 /* my_evaluate.png in Resources */,
+				9CB368061E7802850036EEC9 /* gesture_node_highlighted@2x.png in Resources */,
 				9CDD30711E6FB24300FD2CB5 /* my_arrow@2x.png in Resources */,
 				9CDD304A1E6FB24300FD2CB5 /* tab_home@2x.png in Resources */,
 				9CDD30061E6FB24300FD2CB5 /* 1.png in Resources */,
@@ -2449,6 +2509,7 @@
 				9CDD304F1E6FB24300FD2CB5 /* tab_service.png in Resources */,
 				9CDD30A31E6FB24300FD2CB5 /* id_fm@3x.png in Resources */,
 				9CDD30C11E6FB24400FD2CB5 /* 单选框1.png in Resources */,
+				9CB368021E78027B0036EEC9 /* gesture_node_error@2x.png in Resources */,
 				9CDD30B61E6FB24400FD2CB5 /* home_head_icon_saoyisao@2x.png in Resources */,
 				9CDD30261E6FB24300FD2CB5 /* select_cart_goods1.png in Resources */,
 				9CDD2FDC1E6FB24300FD2CB5 /* LaunchScreen.storyboard in Resources */,
@@ -2461,6 +2522,7 @@
 				9CDD30D71E6FB24400FD2CB5 /* search@3x.png in Resources */,
 				9CDD311B1E6FB24400FD2CB5 /* Setting.plist in Resources */,
 				9CDD31821E6FB24400FD2CB5 /* AddressViewCell.xib in Resources */,
+				9CB368071E7802850036EEC9 /* gesture_node_highlighted@3x.png in Resources */,
 				9CDD2FDB1E6FB24300FD2CB5 /* Assets.xcassets in Resources */,
 				9CDD302B1E6FB24300FD2CB5 /* share_friend@3x.png in Resources */,
 				9CDD30911E6FB24300FD2CB5 /* 个人中心-地址管理icon.png in Resources */,
@@ -2473,6 +2535,7 @@
 				9CDD30C21E6FB24400FD2CB5 /* 单选框（选中).png in Resources */,
 				9CDD31241E6FB24400FD2CB5 /* AlipaySDK.bundle in Resources */,
 				9CDD30101E6FB24300FD2CB5 /* 640x1136.png in Resources */,
+				9CB368031E78027B0036EEC9 /* gesture_node_error@3x.png in Resources */,
 				9CDD30841E6FB24300FD2CB5 /* my_sex_w@3x.png in Resources */,
 				9CDD31951E6FB24400FD2CB5 /* MyAttentionViewCell.xib in Resources */,
 				9CDD304E1E6FB24300FD2CB5 /* tab_home_gray@3x.png in Resources */,
@@ -2488,6 +2551,7 @@
 				9CDD306B1E6FB24300FD2CB5 /* loading4@2x.png in Resources */,
 				9CDD305B1E6FB24300FD2CB5 /* tab_user.png in Resources */,
 				9CDD30111E6FB24300FD2CB5 /* 640x960.png in Resources */,
+				9CB3680B1E78028D0036EEC9 /* gesture_node_normal@3x.png in Resources */,
 				9CDD30571E6FB24300FD2CB5 /* tab_shopping@3x.png in Resources */,
 				9CDD30461E6FB24300FD2CB5 /* tab_classification_gray.png in Resources */,
 				9CDD30D91E6FB24400FD2CB5 /* tab-qiehuan(pubuliu)@3x.png in Resources */,
@@ -2498,6 +2562,7 @@
 				9CDD31361E6FB24400FD2CB5 /* sdRefeshView_arrow@2x.png in Resources */,
 				9CDD30561E6FB24300FD2CB5 /* tab_shopping@2x.png in Resources */,
 				9CDD30BB1E6FB24400FD2CB5 /* tab-qiehuan(pubuliu)@2x.png in Resources */,
+				9CB368101E7824D90036EEC9 /* SettingConfirmGesturePasswordViewController.xib in Resources */,
 				9CDD30241E6FB24300FD2CB5 /* pick_bg@2x.png in Resources */,
 				9CDD302C1E6FB24300FD2CB5 /* shouye@2x.png in Resources */,
 				9CDD305F1E6FB24300FD2CB5 /* tab_user_gray@2x.png in Resources */,
@@ -2506,6 +2571,7 @@
 				9CDD31021E6FB24400FD2CB5 /* login_title_foot_bg.png in Resources */,
 				9CDD30D61E6FB24400FD2CB5 /* huiyuanzhongxin_hongbao@3x.png in Resources */,
 				9CDD30F11E6FB24400FD2CB5 /* myevaluate.png in Resources */,
+				9CB367FF1E77FCEF0036EEC9 /* SettingGesturePasswordViewController.xib in Resources */,
 				9CDD30EE1E6FB24400FD2CB5 /* mycollect.png in Resources */,
 				9CDD30B41E6FB24300FD2CB5 /* fenlei(yougaodaodi)@2x.png in Resources */,
 				9CDD30271E6FB24300FD2CB5 /* select_cart_goods2.png in Resources */,
@@ -2527,6 +2593,7 @@
 				9CDD308E1E6FB24300FD2CB5 /* my_wait_Sgoods.png in Resources */,
 				9CDD30C51E6FB24400FD2CB5 /* 我的订单-去付款（等待付款）-人icon@2x.png in Resources */,
 				9CDD31721E6FB24400FD2CB5 /* UMSCommentInputControlleriPad.xib in Resources */,
+				9CE520461E78F354003A0C45 /* SettingUnlockTableViewCell.xib in Resources */,
 				9CDD30DF1E6FB24400FD2CB5 /* 我的订单 -去付款（等待付款）-装饰@3x.png in Resources */,
 				9CDD30B11E6FB24300FD2CB5 /* del@2x.png in Resources */,
 				9CDD30D51E6FB24400FD2CB5 /* home_head_icon_saoyisao@3x.png in Resources */,
@@ -2545,6 +2612,7 @@
 				9CDD30661E6FB24300FD2CB5 /* loading2@3x.png in Resources */,
 				9CDD306A1E6FB24300FD2CB5 /* loading4.png in Resources */,
 				9CDD301A1E6FB24300FD2CB5 /* detailsuo@2x.png in Resources */,
+				9CB3680A1E78028D0036EEC9 /* gesture_node_normal@2x.png in Resources */,
 				9CDD30721E6FB24300FD2CB5 /* my_arrow@3x.png in Resources */,
 				9CDD30CA1E6FB24400FD2CB5 /* back@2x.png in Resources */,
 				9CDD309F1E6FB24300FD2CB5 /* 关注icon@2x.png in Resources */,
@@ -2658,6 +2726,7 @@
 				9CDD315B1E6FB24400FD2CB5 /* MJRefreshGifHeader.m in Sources */,
 				9CDD315D1E6FB24400FD2CB5 /* MJRefreshStateHeader.m in Sources */,
 				9CDD319C1E6FB24400FD2CB5 /* PopoveView.m in Sources */,
+				9C98F8831E79368700D69DA3 /* FingerprintLockViewController.m in Sources */,
 				9CDD313D1E6FB24400FD2CB5 /* QRCodeGenerator.m in Sources */,
 				9CE02B741E72D4410017145F /* MyAttentionViewController.m in Sources */,
 				9CDD311D1E6FB24400FD2CB5 /* Ditiy_NetAPIManager.m in Sources */,
@@ -2671,6 +2740,7 @@
 				9CDD31561E6FB24400FD2CB5 /* MJRefreshAutoNormalFooter.m in Sources */,
 				9CDD31451E6FB24400FD2CB5 /* MASConstraintMaker.m in Sources */,
 				9CE02B5F1E72D4410017145F /* AddressViewController.m in Sources */,
+				9CB367FE1E77FCEF0036EEC9 /* SettingGesturePasswordViewController.m in Sources */,
 				9CDD314A1E6FB24400FD2CB5 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				9CDD316A1E6FB24400FD2CB5 /* MXWechatPayHandler.m in Sources */,
 				9CDD31121E6FB24400FD2CB5 /* serDBModel.m in Sources */,
@@ -2725,6 +2795,7 @@
 				9CDD310E1E6FB24400FD2CB5 /* OrderModel.m in Sources */,
 				9CDD31071E6FB24400FD2CB5 /* BaseModel.m in Sources */,
 				9CDD31961E6FB24400FD2CB5 /* MyGoodsViewCell.m in Sources */,
+				9CB3680F1E7824D90036EEC9 /* SettingConfirmGesturePasswordViewController.m in Sources */,
 				9CE02B791E72D4410017145F /* OrderConfirmController.m in Sources */,
 				9CDD31671E6FB24400FD2CB5 /* SmallDropMenu.m in Sources */,
 				9CE02B701E72D4410017145F /* ThirdViewController.m in Sources */,
@@ -2773,10 +2844,10 @@
 				9CDD31871E6FB24400FD2CB5 /* DetailTableCell.m in Sources */,
 				9CE02B821E72D4410017145F /* SliderViewController.m in Sources */,
 				9CDD31181E6FB24400FD2CB5 /* AppDelegate.m in Sources */,
+				9CE520451E78F354003A0C45 /* SettingUnlockTableViewCell.m in Sources */,
 				9C4CD7D41E6FD0B5004D78D7 /* UIColor+Hex.m in Sources */,
 				9CE02B751E72D4410017145F /* MyOrderViewController.m in Sources */,
 				9CDD31981E6FB24400FD2CB5 /* MyOrderViewCell.m in Sources */,
-				9CE02B811E72D4410017145F /* SettingViewController.m in Sources */,
 				9CDD31531E6FB24400FD2CB5 /* MJRefreshFooter.m in Sources */,
 				9CDD310F1E6FB24400FD2CB5 /* PersonalInfoModel.m in Sources */,
 				9CDD311F1E6FB24400FD2CB5 /* NSDictionary+Common.m in Sources */,
@@ -2799,6 +2870,7 @@
 				9CDD319D1E6FB24400FD2CB5 /* RegisterView.m in Sources */,
 				9CDD310A1E6FB24400FD2CB5 /* GoodsModel.m in Sources */,
 				51F12E701C0BE168002C62D0 /* main.m in Sources */,
+				9CB367FA1E77FC990036EEC9 /* SettingViewController.m in Sources */,
 				9CDD31651E6FB24400FD2CB5 /* MYPresentationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

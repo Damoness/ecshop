@@ -87,7 +87,6 @@
     NSLog(@"%@,%s,%@",NSStringFromClass([self class]),__FUNCTION__,self);
    
         // 设置每个按钮的frame
-        CGFloat marginSartX = 20;
         CGFloat margin = 15;
     
         // 列（和行）的个数
@@ -103,7 +102,7 @@
             int col = i % columns;
             
             CGFloat x = margin + col * (W + margin);
-            CGFloat y = marginSartX+margin + row * (H + margin);
+            CGFloat y = margin + row * (H + margin);
             
             btn.frame = CGRectMake(x, y, W, H);
             
@@ -178,7 +177,21 @@
 //    }
     
     if (self.selectedbuttonsArray.count >0) {
-        [self judgePassword];
+       // [self judgePassword];
+        
+        NSMutableString *mstr = [NSMutableString string];
+        [self.selectedbuttonsArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            UIButton *btn = obj;
+            [mstr appendFormat:@"%@",@(btn.tag)];
+        }];
+        
+        
+        if (_delegate && [_delegate respondsToSelector:@selector(ZPUnlockView:didFinishDraw:)]) {
+            [_delegate ZPUnlockView:self didFinishDraw:mstr];
+        }
+        
+        //[self reset];
+        
     }
     
    
@@ -213,6 +226,31 @@
 }
 
 
+-(void)reset{
+    
+    
+    for (UIButton *btn in self.selectedbuttonsArray) {
+        btn.selected = NO;
+    }
+    [self.selectedbuttonsArray removeAllObjects];
+    
+}
+
+-(void)resetWrong{
+    
+    for (UIButton *btn in self.selectedbuttonsArray) {
+        btn.enabled = NO;
+        btn.selected = NO;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            btn.enabled = YES;
+            
+        });
+        
+    }
+    [self.selectedbuttonsArray removeAllObjects];
+    
+}
+
 //判断是否密码正确
 - (void)judgePassword{
     NSMutableString *mstr = [NSMutableString string];
@@ -221,10 +259,10 @@
         [mstr appendFormat:@"%@",@(btn.tag)];
     }];
     
-    if(_delegate && [_delegate respondsToSelector:@selector(ZPUnlockViewDidFinishUnlock:)]){
-        
-        [_delegate ZPUnlockViewDidFinishUnlock:mstr];
-    }
+//    if(_delegate && [_delegate respondsToSelector:@selector(ZPUnlockViewDidFinishUnlock:)]){
+//        
+//        [_delegate ZPUnlockViewDidFinishUnlock:mstr];
+//    }
     
     NSString *str = [[ZPFmdbTool sharedDatabaseQueue]querylastPassword];
     
