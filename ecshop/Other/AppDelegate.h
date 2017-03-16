@@ -14,6 +14,6 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic)NSDictionary *tempDic;
 @property (strong, nonatomic)NSString *userName;
--(CGRect)createFrameWithX:(CGFloat)x andY:(CGFloat)y andWidth:(CGFloat)width andHeight:(CGFloat)height;
+
 @end
 

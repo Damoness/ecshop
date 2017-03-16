@@ -27,7 +27,9 @@
 		9C4CD7D41E6FD0B5004D78D7 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4CD7D31E6FD0B5004D78D7 /* UIColor+Hex.m */; };
 		9C5191B01E6FED0C00576BE3 /* AlipayApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5191AF1E6FED0C00576BE3 /* AlipayApiManager.m */; };
 		9C98F8831E79368700D69DA3 /* FingerprintLockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C98F8811E79368700D69DA3 /* FingerprintLockViewController.m */; };
-		9C98F8841E79368700D69DA3 /* FingerprintLockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C98F8821E79368700D69DA3 /* FingerprintLockViewController.xib */; };
+		9C98F8891E7942EE00D69DA3 /* fingerprint.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C98F8861E7942EE00D69DA3 /* fingerprint.png */; };
+		9C98F88A1E7942EE00D69DA3 /* fingerprint@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C98F8871E7942EE00D69DA3 /* fingerprint@2x.png */; };
+		9C98F88B1E7942EE00D69DA3 /* fingerprint@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C98F8881E7942EE00D69DA3 /* fingerprint@3x.png */; };
 		9CAFC7611E763C5600D92CCB /* ShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFC75F1E763C5600D92CCB /* ShoppingCartViewController.m */; };
 		9CAFC7621E763C5600D92CCB /* ShoppingCartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CAFC7601E763C5600D92CCB /* ShoppingCartViewController.xib */; };
 		9CB367F31E77DA660036EEC9 /* ZPUnlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB367F21E77DA660036EEC9 /* ZPUnlockView.m */; };
@@ -331,15 +333,6 @@
 		9CDD31401E6FB24400FD2CB5 /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2EFB1E6FB24200FD2CB5 /* qrspec.c */; };
 		9CDD31411E6FB24400FD2CB5 /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2EFD1E6FB24200FD2CB5 /* rscode.c */; };
 		9CDD31421E6FB24400FD2CB5 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2EFF1E6FB24200FD2CB5 /* split.c */; };
-		9CDD31431E6FB24400FD2CB5 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2F031E6FB24200FD2CB5 /* MASCompositeConstraint.m */; };
-		9CDD31441E6FB24400FD2CB5 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2F061E6FB24200FD2CB5 /* MASConstraint.m */; };
-		9CDD31451E6FB24400FD2CB5 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2F081E6FB24200FD2CB5 /* MASConstraintMaker.m */; };
-		9CDD31461E6FB24400FD2CB5 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2F0A1E6FB24200FD2CB5 /* MASLayoutConstraint.m */; };
-		9CDD31471E6FB24400FD2CB5 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2F0E1E6FB24200FD2CB5 /* MASViewAttribute.m */; };
-		9CDD31481E6FB24400FD2CB5 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2F101E6FB24200FD2CB5 /* MASViewConstraint.m */; };
-		9CDD31491E6FB24400FD2CB5 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2F121E6FB24200FD2CB5 /* NSArray+MASAdditions.m */; };
-		9CDD314A1E6FB24400FD2CB5 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2F151E6FB24200FD2CB5 /* NSLayoutConstraint+MASDebugAdditions.m */; };
-		9CDD314B1E6FB24400FD2CB5 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2F171E6FB24200FD2CB5 /* View+MASAdditions.m */; };
 		9CDD314C1E6FB24400FD2CB5 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2F1B1E6FB24200FD2CB5 /* MBProgressHUD+MJ.m */; };
 		9CDD314D1E6FB24400FD2CB5 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD2F1C1E6FB24200FD2CB5 /* MBProgressHUD.bundle */; };
 		9CDD314E1E6FB24400FD2CB5 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2F1E1E6FB24200FD2CB5 /* MBProgressHUD.m */; };
@@ -501,7 +494,9 @@
 		9C5191AF1E6FED0C00576BE3 /* AlipayApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlipayApiManager.m; sourceTree = "<group>"; };
 		9C98F8801E79368700D69DA3 /* FingerprintLockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FingerprintLockViewController.h; sourceTree = "<group>"; };
 		9C98F8811E79368700D69DA3 /* FingerprintLockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FingerprintLockViewController.m; sourceTree = "<group>"; };
-		9C98F8821E79368700D69DA3 /* FingerprintLockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FingerprintLockViewController.xib; sourceTree = "<group>"; };
+		9C98F8861E7942EE00D69DA3 /* fingerprint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fingerprint.png; sourceTree = "<group>"; };
+		9C98F8871E7942EE00D69DA3 /* fingerprint@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fingerprint@2x.png"; sourceTree = "<group>"; };
+		9C98F8881E7942EE00D69DA3 /* fingerprint@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fingerprint@3x.png"; sourceTree = "<group>"; };
 		9CAFC75E1E763C5600D92CCB /* ShoppingCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartViewController.h; sourceTree = "<group>"; };
 		9CAFC75F1E763C5600D92CCB /* ShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartViewController.m; sourceTree = "<group>"; };
 		9CAFC7601E763C5600D92CCB /* ShoppingCartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingCartViewController.xib; sourceTree = "<group>"; };
@@ -854,29 +849,6 @@
 		9CDD2EFE1E6FB24200FD2CB5 /* rscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rscode.h; sourceTree = "<group>"; };
 		9CDD2EFF1E6FB24200FD2CB5 /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
 		9CDD2F001E6FB24200FD2CB5 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
-		9CDD2F021E6FB24200FD2CB5 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
-		9CDD2F031E6FB24200FD2CB5 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
-		9CDD2F041E6FB24200FD2CB5 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
-		9CDD2F051E6FB24200FD2CB5 /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
-		9CDD2F061E6FB24200FD2CB5 /* MASConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraint.m; sourceTree = "<group>"; };
-		9CDD2F071E6FB24200FD2CB5 /* MASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
-		9CDD2F081E6FB24200FD2CB5 /* MASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMaker.m; sourceTree = "<group>"; };
-		9CDD2F091E6FB24200FD2CB5 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
-		9CDD2F0A1E6FB24200FD2CB5 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASLayoutConstraint.m; sourceTree = "<group>"; };
-		9CDD2F0B1E6FB24200FD2CB5 /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
-		9CDD2F0C1E6FB24200FD2CB5 /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
-		9CDD2F0D1E6FB24200FD2CB5 /* MASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
-		9CDD2F0E1E6FB24200FD2CB5 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
-		9CDD2F0F1E6FB24200FD2CB5 /* MASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
-		9CDD2F101E6FB24200FD2CB5 /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
-		9CDD2F111E6FB24200FD2CB5 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
-		9CDD2F121E6FB24200FD2CB5 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditions.m"; sourceTree = "<group>"; };
-		9CDD2F131E6FB24200FD2CB5 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
-		9CDD2F141E6FB24200FD2CB5 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
-		9CDD2F151E6FB24200FD2CB5 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
-		9CDD2F161E6FB24200FD2CB5 /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
-		9CDD2F171E6FB24200FD2CB5 /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
-		9CDD2F181E6FB24200FD2CB5 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		9CDD2F1A1E6FB24200FD2CB5 /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		9CDD2F1B1E6FB24200FD2CB5 /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		9CDD2F1C1E6FB24200FD2CB5 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
@@ -1244,6 +1216,16 @@
 			path = AlipayTool;
 			sourceTree = "<group>";
 		};
+		9C98F8851E7942EE00D69DA3 /* 登录 */ = {
+			isa = PBXGroup;
+			children = (
+				9C98F8861E7942EE00D69DA3 /* fingerprint.png */,
+				9C98F8871E7942EE00D69DA3 /* fingerprint@2x.png */,
+				9C98F8881E7942EE00D69DA3 /* fingerprint@3x.png */,
+			);
+			path = "登录";
+			sourceTree = "<group>";
+		};
 		9CB367F01E77DA660036EEC9 /* ZPUnlockView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1295,11 +1277,12 @@
 		9CDD2D251E6FB24100FD2CB5 /* Image */ = {
 			isa = PBXGroup;
 			children = (
-				9CDD2D261E6FB24100FD2CB5 /* 1.png */,
+				9CDD2D621E6FB24100FD2CB5 /* V2 */,
 				9CDD2D271E6FB24100FD2CB5 /* 1024.png */,
 				9CDD2D281E6FB24100FD2CB5 /* 120.png */,
 				9CDD2D291E6FB24100FD2CB5 /* 1242.png */,
 				9CDD2D2A1E6FB24100FD2CB5 /* 180.png */,
+				9CDD2D261E6FB24100FD2CB5 /* 1.png */,
 				9CDD2D2B1E6FB24100FD2CB5 /* 2.png */,
 				9CDD2D2C1E6FB24100FD2CB5 /* 3.png */,
 				9CDD2D2D1E6FB24100FD2CB5 /* 4.png */,
@@ -1335,7 +1318,6 @@
 				9CDD2D4B1E6FB24100FD2CB5 /* share_friend@3x.png */,
 				9CDD2D4C1E6FB24100FD2CB5 /* shouye@2x.png */,
 				9CDD2D4D1E6FB24100FD2CB5 /* shouye@3x.png */,
-				9CDD2D621E6FB24100FD2CB5 /* V2 */,
 				9CDD2DB91E6FB24200FD2CB5 /* 个人中心ios@3x */,
 				9CDD2DC61E6FB24200FD2CB5 /* 会员中心-已登录-背景1.png */,
 				9CDD2DC71E6FB24200FD2CB5 /* 会员中心-未登录-背景.png */,
@@ -1356,6 +1338,7 @@
 		9CDD2D621E6FB24100FD2CB5 /* V2 */ = {
 			isa = PBXGroup;
 			children = (
+				9C98F8851E7942EE00D69DA3 /* 登录 */,
 				9CDD2D631E6FB24100FD2CB5 /* 图标 */,
 				9CDD2D641E6FB24100FD2CB5 /* 导航栏 */,
 				9CDD2D681E6FB24100FD2CB5 /* 底部导航 */,
@@ -1749,7 +1732,6 @@
 				9CDD2EE11E6FB24200FD2CB5 /* HJCAdjustNumButton */,
 				9CDD2EE51E6FB24200FD2CB5 /* Lib */,
 				9CDD2EF01E6FB24200FD2CB5 /* libqrencode */,
-				9CDD2F011E6FB24200FD2CB5 /* Masonry */,
 				9CDD2F191E6FB24200FD2CB5 /* MBProgressHUD+ */,
 				9CDD2F1F1E6FB24200FD2CB5 /* MD5 */,
 				9CDD2F221E6FB24200FD2CB5 /* MJRefresh */,
@@ -1819,36 +1801,6 @@
 				9CDD2F001E6FB24200FD2CB5 /* split.h */,
 			);
 			path = libqrencode;
-			sourceTree = "<group>";
-		};
-		9CDD2F011E6FB24200FD2CB5 /* Masonry */ = {
-			isa = PBXGroup;
-			children = (
-				9CDD2F021E6FB24200FD2CB5 /* MASCompositeConstraint.h */,
-				9CDD2F031E6FB24200FD2CB5 /* MASCompositeConstraint.m */,
-				9CDD2F041E6FB24200FD2CB5 /* MASConstraint+Private.h */,
-				9CDD2F051E6FB24200FD2CB5 /* MASConstraint.h */,
-				9CDD2F061E6FB24200FD2CB5 /* MASConstraint.m */,
-				9CDD2F071E6FB24200FD2CB5 /* MASConstraintMaker.h */,
-				9CDD2F081E6FB24200FD2CB5 /* MASConstraintMaker.m */,
-				9CDD2F091E6FB24200FD2CB5 /* MASLayoutConstraint.h */,
-				9CDD2F0A1E6FB24200FD2CB5 /* MASLayoutConstraint.m */,
-				9CDD2F0B1E6FB24200FD2CB5 /* Masonry.h */,
-				9CDD2F0C1E6FB24200FD2CB5 /* MASUtilities.h */,
-				9CDD2F0D1E6FB24200FD2CB5 /* MASViewAttribute.h */,
-				9CDD2F0E1E6FB24200FD2CB5 /* MASViewAttribute.m */,
-				9CDD2F0F1E6FB24200FD2CB5 /* MASViewConstraint.h */,
-				9CDD2F101E6FB24200FD2CB5 /* MASViewConstraint.m */,
-				9CDD2F111E6FB24200FD2CB5 /* NSArray+MASAdditions.h */,
-				9CDD2F121E6FB24200FD2CB5 /* NSArray+MASAdditions.m */,
-				9CDD2F131E6FB24200FD2CB5 /* NSArray+MASShorthandAdditions.h */,
-				9CDD2F141E6FB24200FD2CB5 /* NSLayoutConstraint+MASDebugAdditions.h */,
-				9CDD2F151E6FB24200FD2CB5 /* NSLayoutConstraint+MASDebugAdditions.m */,
-				9CDD2F161E6FB24200FD2CB5 /* View+MASAdditions.h */,
-				9CDD2F171E6FB24200FD2CB5 /* View+MASAdditions.m */,
-				9CDD2F181E6FB24200FD2CB5 /* View+MASShorthandAdditions.h */,
-			);
-			path = Masonry;
 			sourceTree = "<group>";
 		};
 		9CDD2F191E6FB24200FD2CB5 /* MBProgressHUD+ */ = {
@@ -2276,7 +2228,6 @@
 				9CE02B5C1E72D4410017145F /* UserGuideViewController.m */,
 				9C98F8801E79368700D69DA3 /* FingerprintLockViewController.h */,
 				9C98F8811E79368700D69DA3 /* FingerprintLockViewController.m */,
-				9C98F8821E79368700D69DA3 /* FingerprintLockViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2380,6 +2331,7 @@
 				9CDD30E31E6FB24400FD2CB5 /* 支付-支付宝支付@3x.png in Resources */,
 				9CDD30831E6FB24300FD2CB5 /* my_sex_w@2x.png in Resources */,
 				9CDD31891E6FB24400FD2CB5 /* icon_chose_arrow_sel@2x.png in Resources */,
+				9C98F88B1E7942EE00D69DA3 /* fingerprint@3x.png in Resources */,
 				9CDD30C01E6FB24400FD2CB5 /* zonghe(yixuanzhong)@2x.png in Resources */,
 				9CDD300B1E6FB24300FD2CB5 /* 2.png in Resources */,
 				9CDD31191E6FB24400FD2CB5 /* Info.plist in Resources */,
@@ -2448,6 +2400,7 @@
 				9CDD31781E6FB24400FD2CB5 /* UMSocialSDKResourcesNew.bundle in Resources */,
 				9CDD30221E6FB24300FD2CB5 /* line.png in Resources */,
 				9CDD30FF1E6FB24400FD2CB5 /* ic_network_error.png in Resources */,
+				9C98F8891E7942EE00D69DA3 /* fingerprint.png in Resources */,
 				9CDD30961E6FB24300FD2CB5 /* 个人中心-我的订单-待收货icon.png in Resources */,
 				9CDD30C81E6FB24400FD2CB5 /* 支付-微信支付@2x.png in Resources */,
 				9CDD30B71E6FB24400FD2CB5 /* huiyuanzhongxin_hongbao_@2x.png in Resources */,
@@ -2473,7 +2426,6 @@
 				9CDD30491E6FB24300FD2CB5 /* tab_home.png in Resources */,
 				9CDD30551E6FB24300FD2CB5 /* tab_shopping.png in Resources */,
 				9CDD30BC1E6FB24400FD2CB5 /* tiaojianshaixuan(weixuanzhong)@2x.png in Resources */,
-				9C98F8841E79368700D69DA3 /* FingerprintLockViewController.xib in Resources */,
 				9CDD30181E6FB24300FD2CB5 /* contacts.png in Resources */,
 				9CDD315E1E6FB24400FD2CB5 /* MJRefresh.bundle in Resources */,
 				9CDD30F41E6FB24400FD2CB5 /* mylocation.png in Resources */,
@@ -2561,6 +2513,7 @@
 				9CDD30861E6FB24300FD2CB5 /* my_share@2x.png in Resources */,
 				9CDD31361E6FB24400FD2CB5 /* sdRefeshView_arrow@2x.png in Resources */,
 				9CDD30561E6FB24300FD2CB5 /* tab_shopping@2x.png in Resources */,
+				9C98F88A1E7942EE00D69DA3 /* fingerprint@2x.png in Resources */,
 				9CDD30BB1E6FB24400FD2CB5 /* tab-qiehuan(pubuliu)@2x.png in Resources */,
 				9CB368101E7824D90036EEC9 /* SettingConfirmGesturePasswordViewController.xib in Resources */,
 				9CDD30241E6FB24300FD2CB5 /* pick_bg@2x.png in Resources */,
@@ -2719,7 +2672,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CDD31491E6FB24400FD2CB5 /* NSArray+MASAdditions.m in Sources */,
 				9CDD318B1E6FB24400FD2CB5 /* GoodBaseCell.m in Sources */,
 				9CE02B771E72D4410017145F /* NewAddressViewController.m in Sources */,
 				9CDD31201E6FB24400FD2CB5 /* NSObject+Common.m in Sources */,
@@ -2735,13 +2687,10 @@
 				9CDD314E1E6FB24400FD2CB5 /* MBProgressHUD.m in Sources */,
 				9CE02B7A1E72D4410017145F /* OrderDetailViewController.m in Sources */,
 				9CDD31571E6FB24400FD2CB5 /* MJRefreshAutoStateFooter.m in Sources */,
-				9CDD314B1E6FB24400FD2CB5 /* View+MASAdditions.m in Sources */,
 				9CDD316B1E6FB24400FD2CB5 /* MXWechatSignAdaptor.m in Sources */,
 				9CDD31561E6FB24400FD2CB5 /* MJRefreshAutoNormalFooter.m in Sources */,
-				9CDD31451E6FB24400FD2CB5 /* MASConstraintMaker.m in Sources */,
 				9CE02B5F1E72D4410017145F /* AddressViewController.m in Sources */,
 				9CB367FE1E77FCEF0036EEC9 /* SettingGesturePasswordViewController.m in Sources */,
-				9CDD314A1E6FB24400FD2CB5 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				9CDD316A1E6FB24400FD2CB5 /* MXWechatPayHandler.m in Sources */,
 				9CDD31121E6FB24400FD2CB5 /* serDBModel.m in Sources */,
 				9CDD31081E6FB24400FD2CB5 /* BonusModel.m in Sources */,
@@ -2758,14 +2707,12 @@
 				9CDD31131E6FB24400FD2CB5 /* shangpinModel.m in Sources */,
 				9CDD31151E6FB24400FD2CB5 /* ShoppingCartGoodsModel.m in Sources */,
 				9CDD314C1E6FB24400FD2CB5 /* MBProgressHUD+MJ.m in Sources */,
-				9CDD31431E6FB24400FD2CB5 /* MASCompositeConstraint.m in Sources */,
 				9CDD310C1E6FB24400FD2CB5 /* MyAddressModel.m in Sources */,
 				9CDD318D1E6FB24400FD2CB5 /* GoodsDetailView.m in Sources */,
 				9CE02B7B1E72D4410017145F /* PayViewController.m in Sources */,
 				9CDD31601E6FB24400FD2CB5 /* UIScrollView+MJExtension.m in Sources */,
 				9CDD31551E6FB24400FD2CB5 /* MJRefreshAutoGifFooter.m in Sources */,
 				9CDD313E1E6FB24400FD2CB5 /* qrencode.c in Sources */,
-				9CDD31471E6FB24400FD2CB5 /* MASViewAttribute.m in Sources */,
 				9CDD31111E6FB24400FD2CB5 /* SearchModel.m in Sources */,
 				9CDD313C1E6FB24400FD2CB5 /* mask.c in Sources */,
 				9CE02B671E72D4410017145F /* hongBaoView.m in Sources */,
@@ -2780,7 +2727,6 @@
 				9CDD31811E6FB24400FD2CB5 /* AddressViewCell.m in Sources */,
 				9CDD31101E6FB24400FD2CB5 /* RequestModel.m in Sources */,
 				9CE02B7F1E72D4410017145F /* SearchListViewController.m in Sources */,
-				9CDD31481E6FB24400FD2CB5 /* MASViewConstraint.m in Sources */,
 				9CDD313B1E6FB24400FD2CB5 /* bitstream.c in Sources */,
 				9CDD31621E6FB24400FD2CB5 /* UIView+MJExtension.m in Sources */,
 				9CDD31211E6FB24400FD2CB5 /* NSString+Common.m in Sources */,
@@ -2800,7 +2746,6 @@
 				9CDD31671E6FB24400FD2CB5 /* SmallDropMenu.m in Sources */,
 				9CE02B701E72D4410017145F /* ThirdViewController.m in Sources */,
 				9CE02B801E72D4410017145F /* SearchViewController.m in Sources */,
-				9CDD31441E6FB24400FD2CB5 /* MASConstraint.m in Sources */,
 				9CDD31921E6FB24400FD2CB5 /* MyAddressViewCell.m in Sources */,
 				9CDD31581E6FB24400FD2CB5 /* MJRefreshBackGifFooter.m in Sources */,
 				9CDD31611E6FB24400FD2CB5 /* UIScrollView+MJRefresh.m in Sources */,
@@ -2826,7 +2771,6 @@
 				9CE02B7E1E72D4410017145F /* RegisterViewController.m in Sources */,
 				9CB367F61E77DB110036EEC9 /* ZPFmdbTool.m in Sources */,
 				9CDD319E1E6FB24500FD2CB5 /* SearchListCollect.m in Sources */,
-				9CDD31461E6FB24400FD2CB5 /* MASLayoutConstraint.m in Sources */,
 				9CE02B631E72D4410017145F /* CouponsViewController.m in Sources */,
 				9CDD315F1E6FB24400FD2CB5 /* MJRefreshConst.m in Sources */,
 				9CDD31A61E6FB24500FD2CB5 /* SureTableViewCell.m in Sources */,

@@ -18,6 +18,7 @@ PODS:
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
   - IQKeyboardManager (4.0.7)
+  - Masonry (1.0.2)
   - MJExtension (3.0.13)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - FMDB (~> 2.6.2)
   - IQKeyboardManager (~> 4.0.7)
+  - Masonry (~> 1.0.2)
   - MJExtension (~> 3.0.13)
   - SDWebImage (~> 3.8.2)
 
@@ -34,9 +36,10 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   IQKeyboardManager: 69002bb4fea60596b710e57d426abc00e5063630
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 7ff7de15b3a17ae3b7a961276927cc0cf04add4f
+PODFILE CHECKSUM: 925689cf0e52b05c250ae4f3a3b1ed5c48c7668b
 
 COCOAPODS: 1.2.0.beta.1
