@@ -17,10 +17,25 @@
 @property (strong, nonatomic) UILabel *promptLabel;
 
 
+@property (strong ,nonatomic) UIWindow *window;
+
 @end
 
 @implementation GesturePasswordViewController
 
+-(instancetype)initWithWindow:(UIWindow *)window{
+    
+    self = [super init];
+    
+    if (self) {
+        
+        self.window = window;
+    }
+    
+    return self;
+    
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -87,16 +102,21 @@
         
     }else if([password isEqualToString:[[SettingManager sharedManager]gesturePassword]]){
         
-        self.promptLabel.text = @"成功";
+        //self.promptLabel.text = @"成功";
         self.promptLabel.textColor = [UIColor darkGrayColor];
         
         
         [ZPUnlockView reset];
         
-        AppDelegate *appDelegate =  [UIApplication sharedApplication].delegate;
         
-        [appDelegate.window makeKeyAndVisible];
         
+        if(self.window){
+            
+             [self.window makeKeyAndVisible];
+            
+        }
+            
+    
         
     }else{
         
