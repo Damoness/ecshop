@@ -23,7 +23,7 @@
     
     if (_delegate && [_delegate respondsToSelector:@selector(SettingUnlockTableViewCell:switchValueChanged:)]) {
         
-        [_delegate SettingUnlockTableViewCell:self switchValueChanged:mySwitch.selected];
+        [_delegate SettingUnlockTableViewCell:self switchValueChanged:mySwitch.on];
         
         
     }
