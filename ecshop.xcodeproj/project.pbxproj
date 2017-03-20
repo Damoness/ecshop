@@ -30,6 +30,7 @@
 		9C98F8891E7942EE00D69DA3 /* fingerprint.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C98F8861E7942EE00D69DA3 /* fingerprint.png */; };
 		9C98F88A1E7942EE00D69DA3 /* fingerprint@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C98F8871E7942EE00D69DA3 /* fingerprint@2x.png */; };
 		9C98F88B1E7942EE00D69DA3 /* fingerprint@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C98F8881E7942EE00D69DA3 /* fingerprint@3x.png */; };
+		9C98F88E1E7A67B000D69DA3 /* SettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C98F88D1E7A67B000D69DA3 /* SettingManager.m */; };
 		9CAFC7611E763C5600D92CCB /* ShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFC75F1E763C5600D92CCB /* ShoppingCartViewController.m */; };
 		9CAFC7621E763C5600D92CCB /* ShoppingCartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CAFC7601E763C5600D92CCB /* ShoppingCartViewController.xib */; };
 		9CB367F31E77DA660036EEC9 /* ZPUnlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB367F21E77DA660036EEC9 /* ZPUnlockView.m */; };
@@ -448,6 +449,8 @@
 		9CE02B831E72D4410017145F /* UserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE02B5C1E72D4410017145F /* UserGuideViewController.m */; };
 		9CE520451E78F354003A0C45 /* SettingUnlockTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE520431E78F354003A0C45 /* SettingUnlockTableViewCell.m */; };
 		9CE520461E78F354003A0C45 /* SettingUnlockTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CE520441E78F354003A0C45 /* SettingUnlockTableViewCell.xib */; };
+		9CF80E831E7E9088004B4666 /* GestureModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF80E821E7E9088004B4666 /* GestureModel.m */; };
+		9CF80E861E7FBD64004B4666 /* GesturePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF80E851E7FBD64004B4666 /* GesturePasswordViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -480,6 +483,8 @@
 		9C98F8861E7942EE00D69DA3 /* fingerprint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fingerprint.png; sourceTree = "<group>"; };
 		9C98F8871E7942EE00D69DA3 /* fingerprint@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fingerprint@2x.png"; sourceTree = "<group>"; };
 		9C98F8881E7942EE00D69DA3 /* fingerprint@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fingerprint@3x.png"; sourceTree = "<group>"; };
+		9C98F88C1E7A67B000D69DA3 /* SettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingManager.h; sourceTree = "<group>"; };
+		9C98F88D1E7A67B000D69DA3 /* SettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingManager.m; sourceTree = "<group>"; };
 		9CAFC75E1E763C5600D92CCB /* ShoppingCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartViewController.h; sourceTree = "<group>"; };
 		9CAFC75F1E763C5600D92CCB /* ShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartViewController.m; sourceTree = "<group>"; };
 		9CAFC7601E763C5600D92CCB /* ShoppingCartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingCartViewController.xib; sourceTree = "<group>"; };
@@ -1061,6 +1066,10 @@
 		9CE520421E78F354003A0C45 /* SettingUnlockTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingUnlockTableViewCell.h; sourceTree = "<group>"; };
 		9CE520431E78F354003A0C45 /* SettingUnlockTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingUnlockTableViewCell.m; sourceTree = "<group>"; };
 		9CE520441E78F354003A0C45 /* SettingUnlockTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingUnlockTableViewCell.xib; sourceTree = "<group>"; };
+		9CF80E811E7E9088004B4666 /* GestureModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureModel.h; sourceTree = "<group>"; };
+		9CF80E821E7E9088004B4666 /* GestureModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureModel.m; sourceTree = "<group>"; };
+		9CF80E841E7FBD64004B4666 /* GesturePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GesturePasswordViewController.h; sourceTree = "<group>"; };
+		9CF80E851E7FBD64004B4666 /* GesturePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GesturePasswordViewController.m; sourceTree = "<group>"; };
 		CD8F558534F74A5EEBE4F568 /* Pods-ecshop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecshop.release.xcconfig"; path = "Pods/Target Support Files/Pods-ecshop/Pods-ecshop.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1576,6 +1585,8 @@
 		9CDD2E351E6FB24200FD2CB5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9CF80E811E7E9088004B4666 /* GestureModel.h */,
+				9CF80E821E7E9088004B4666 /* GestureModel.m */,
 				9CDD2E361E6FB24200FD2CB5 /* AddressModel.h */,
 				9CDD2E371E6FB24200FD2CB5 /* AddressModel.m */,
 				9CDD2E381E6FB24200FD2CB5 /* BaseModel.h */,
@@ -1650,6 +1661,8 @@
 				9CDD2E661E6FB24200FD2CB5 /* Ditiy_NetAPIManager.m */,
 				9CDD2E671E6FB24200FD2CB5 /* DitiyNetAPIClient.h */,
 				9CDD2E681E6FB24200FD2CB5 /* DitiyNetAPIClient.m */,
+				9C98F88C1E7A67B000D69DA3 /* SettingManager.h */,
+				9C98F88D1E7A67B000D69DA3 /* SettingManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -2206,6 +2219,8 @@
 				9CE02B371E72D4410017145F /* ThirdViewController.m */,
 				9CE02B261E72D4410017145F /* LoginViewController.h */,
 				9CE02B271E72D4410017145F /* LoginViewController.m */,
+				9CF80E841E7FBD64004B4666 /* GesturePasswordViewController.h */,
+				9CF80E851E7FBD64004B4666 /* GesturePasswordViewController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -2624,6 +2639,7 @@
 				9CE02B5F1E72D4410017145F /* AddressViewController.m in Sources */,
 				9CB367FE1E77FCEF0036EEC9 /* SettingGesturePasswordViewController.m in Sources */,
 				9CDD316A1E6FB24400FD2CB5 /* MXWechatPayHandler.m in Sources */,
+				9C98F88E1E7A67B000D69DA3 /* SettingManager.m in Sources */,
 				9CDD31121E6FB24400FD2CB5 /* serDBModel.m in Sources */,
 				9CDD31081E6FB24400FD2CB5 /* BonusModel.m in Sources */,
 				9CDD31061E6FB24400FD2CB5 /* AddressModel.m in Sources */,
@@ -2636,6 +2652,7 @@
 				9CDD31501E6FB24400FD2CB5 /* MJRefreshAutoFooter.m in Sources */,
 				9CE02B831E72D4410017145F /* UserGuideViewController.m in Sources */,
 				9CDD319F1E6FB24500FD2CB5 /* SearchLTableCell.m in Sources */,
+				9CF80E861E7FBD64004B4666 /* GesturePasswordViewController.m in Sources */,
 				9CDD31131E6FB24400FD2CB5 /* shangpinModel.m in Sources */,
 				9CDD31151E6FB24400FD2CB5 /* ShoppingCartGoodsModel.m in Sources */,
 				9CDD314C1E6FB24400FD2CB5 /* MBProgressHUD+MJ.m in Sources */,
@@ -2716,6 +2733,7 @@
 				9CDD31661E6FB24400FD2CB5 /* MYPresentedController.m in Sources */,
 				9CDD318E1E6FB24400FD2CB5 /* MineTableViewCell.m in Sources */,
 				9CDD31A41E6FB24500FD2CB5 /* sonAdvertisementView.m in Sources */,
+				9CF80E831E7E9088004B4666 /* GestureModel.m in Sources */,
 				9CDD310D1E6FB24400FD2CB5 /* OrderDetailModel.m in Sources */,
 				9CDD31871E6FB24400FD2CB5 /* DetailTableCell.m in Sources */,
 				9CE02B821E72D4410017145F /* SliderViewController.m in Sources */,

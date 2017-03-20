@@ -17,6 +17,7 @@
 + (instancetype)sharedManager;
 
 
+
 //获取导航页图片
 -(void)request_WelcomeGuidePicBlock:(void (^)(id data,NSError *error))block;
 
@@ -42,6 +43,16 @@
 //用户登录    toLoginParams
 -(void)request_Login_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
 
+
+#pragma mark - GestureModel
+
+
+//请求保存手势密码 toSaveGestureCodeParams
+-(void)request_SaveGestureCode_WithParams:(NSDictionary *)params andBlock:(void (^)(id data, NSError *error))block;
+
+
+//请求获取手势密码 toFetchGestureCodeParams
+-(void)request_FetchGestureCode_WithParams:(NSDictionary *)params andBlock:(void (^)(id, NSError *))block;
 
 
 #pragma mark - Order 订单

@@ -52,6 +52,8 @@
 
 -(void)setUp{
     
+    self.backgroundColor = [UIColor clearColor];
+    
     for (int i=0; i<9; i++) {
         UIButton *btn = [[UIButton alloc]init];
         btn.tag = i+1;

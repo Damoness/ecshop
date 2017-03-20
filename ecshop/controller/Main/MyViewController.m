@@ -162,6 +162,10 @@
             
             ws.myUserModel = [UserModel mj_objectWithKeyValues:data[@"data"][0]];
             
+            
+            
+            [LoginModel doLogin:[ws.myUserModel mj_keyValues]];
+            
             [self updateUI];
             
         

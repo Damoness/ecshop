@@ -1,3 +1,4 @@
+
 //
 //  SettingConfirmGesturePasswordViewController.m
 //  ecshop
@@ -9,6 +10,7 @@
 #import "SettingConfirmGesturePasswordViewController.h"
 #import "ZPUnlockView.h"
 #import "ZPFmdbTool.h"
+#import "GestureModel.h"
 
 @interface SettingConfirmGesturePasswordViewController ()<ZPUnlockViewDelegate>
 
@@ -66,10 +68,36 @@
             
             [[ZPFmdbTool sharedDatabaseQueue]insertPassword:p];
             
+            [[SettingManager sharedManager] setGesturePassword:p];
+            [[SettingManager sharedManager] setGestureLock:true];
+            
             [MBProgressHUD showSuccess:@"设置手势密码成功"];
             
+            GestureModel *model =  [GestureModel new];
             
-            [self.navigationController popToViewController:self.navigationController.viewControllers[1] animated:YES];
+            model.mobile_phone = [LoginModel currentLoginUser].mobile;
+            model.gesture_pass = self.password;
+            
+            
+            
+            WS(ws)
+            
+            [[Ditiy_NetAPIManager sharedManager]request_SaveGestureCode_WithParams:[model toSaveGestureCodeParams] andBlock:^(id data, NSError *error) {
+               
+                
+                if (data) {
+                    
+                    [ws.navigationController popToViewController:self.navigationController.viewControllers[1] animated:YES];
+                    
+                    
+                }
+                
+
+            }];
+            
+            
+            
+    
             
             
         }else{
