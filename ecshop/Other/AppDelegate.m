@@ -117,7 +117,7 @@
     
     FingerprintLockViewController *fpLockVC = [FingerprintLockViewController new];
     
-    GesturePasswordViewController *fPassVC = [GesturePasswordViewController new];
+    GesturePasswordViewController *fPassVC = [[GesturePasswordViewController alloc]initWithWindow:self.window];
     
     self.lockWindow = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
@@ -252,6 +252,7 @@
     
     
     if ([[SettingManager sharedManager]gestureLock]) {
+        
         
         [self.lockWindow makeKeyAndVisible];
         

@@ -10,4 +10,9 @@
 
 @interface GesturePasswordViewController : BaseViewController
 
+
+
+-(instancetype)initWithWindow:(UIWindow *)window;
+
+
 @end
