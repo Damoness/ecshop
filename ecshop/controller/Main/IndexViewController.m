@@ -37,17 +37,30 @@
 }
 
 
--(void)viewWillAppear:(BOOL)animated
-{
+-(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    MyTabBarViewController * tabbar =(MyTabBarViewController *)self.navigationController.tabBarController;
     
-    [tabbar hideCustomTabbar:NO];
-    [self.tabBarController.tabBar setHidden:YES];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    self.navigationController.navigationBar.hidden = true;
+    
+    
+    MyTabBarViewController *myTbVC = (MyTabBarViewController *) self.navigationController.tabBarController;
+    [myTbVC hideCustomTabbar:NO];
+    
     
     
 }
+
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.hidden = false;
+    
+    
+    MyTabBarViewController *myTbVC = (MyTabBarViewController *) self.navigationController.tabBarController;
+    
+    [myTbVC hideCustomTabbar:YES];
+}
+
 
 -(void)initViews{
     

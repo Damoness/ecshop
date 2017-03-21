@@ -287,6 +287,26 @@
     
 }
 
+-(void)request_VerifyPhoneCode:(NSString *)phoneCode WithPhoneNo:(NSString *)phoneNo andBlock:(void (^)(id data, NSError *error))block{
+    
+    
+    NSString *path = [NSString stringWithFormat:@"%@/mobile/api/verifyauthcode.php",baseURLStr];
+    
+    NSDictionary *dic = @{
+                          @"mobile_phone":phoneNo,
+                          @"pass_code":phoneCode
+                          };
+    
+    
+    [[DitiyNetAPIClient sharedJsonClient]requestJsonDataWithPath:path withParams:dic withMethodType:Get autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+        block(data,error);
+        
+    }];
+    
+    
+}
+
 //请求将系
 -(void)request_KingSeriesBlock:(void (^)(id data,NSError *error))block{
     

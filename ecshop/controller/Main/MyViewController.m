@@ -102,7 +102,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+    DebugLog(@"");
     self.navigationController.navigationBar.hidden = true;
     
     
@@ -110,40 +110,18 @@
     [myTbVC hideCustomTabbar:NO];
     
     
-    LAContext *context = [[LAContext alloc] init];
-    __block  NSString *message;
-    
-    // Show the authentication UI with our reason string.
-    [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:@"Unlock access to locked feature" reply:^(BOOL success, NSError *authenticationError) {
-        if (success) {
-            message = @"evaluatePolicy: succes";
-        }
-        else {
-            message = [NSString stringWithFormat:@"evaluatePolicy: %@", authenticationError.localizedDescription];
-        }
-        
-    }];
+
 }
-
-
-//-(void)viewWillDisappear:(BOOL)animated{
-//    
-//    [super viewWillDisappear:animated];
-//    
-//    self.navigationController.navigationBar.hidden = false;
-//
-//    
-//}
 
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.hidden = false;
-
+    DebugLog(@"");
     
-    MyTabBarViewController *myTbVC = (MyTabBarViewController *) self.navigationController.tabBarController;
-    
-    [myTbVC hideCustomTabbar:YES];
+//    MyTabBarViewController *myTbVC = (MyTabBarViewController *) self.navigationController.tabBarController;
+//    
+//    [myTbVC hideCustomTabbar:YES];
 }
 
 

@@ -16,7 +16,7 @@
 #define kColorBack [UIColor colorWithRed:239/255.0 green:239/255.0 blue:244/255.0 alpha:1.0]
 
 
-@interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource,SettingUnlockTableViewCellDelegate>
+@interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource,SettingUnlockTableViewCellDelegate,SettingGesturePasswordViewControllerDelegate>
 
 @property(nonatomic,strong)UITableView *tableview;
 
@@ -147,6 +147,7 @@
             
             //cell.textLabel.text = @"手势解锁";
             cell.myLabel.text = @"手势解锁";
+            cell.mySwitch.on = [SettingManager sharedManager].gestureLock;
             
         }else if (indexPath.row == 1){
             
@@ -181,7 +182,7 @@
             
             SettingGesturePasswordViewController *sgpVC = [SettingGesturePasswordViewController new];
             //sgpVC.automaticallyAdjustsScrollViewInsets = NO;
-            
+            sgpVC.delegate = self;
             sgpVC.promptStr = @"设置手势密码";
             
             [self.navigationController pushViewController:sgpVC animated:YES];
@@ -201,6 +202,17 @@
 }
 
 
+#pragma mark --SettingGesturePasswordViewControllerDelegate
+
+-(void)settingGesturePasswordViewController:(SettingGesturePasswordViewController *)vc didFinishSettingWithPassword:(NSString *)password{
+    
+    
+    [self.navigationController popToViewController:self animated:YES];
+    
+    
+}
+
+
 #pragma mark -- SettingUnlockTableViewCellDelegate
 -(void)SettingUnlockTableViewCell:(SettingUnlockTableViewCell *)cell switchValueChanged:(BOOL)on{
     
@@ -212,10 +224,14 @@
         
         if (indexPath.row == 0) { //手势解锁
         
+            
+            [[SettingManager sharedManager] setGestureLock:on];
+            
             if (on) {
                 
                 
             }else{
+                
                 
                 
             }

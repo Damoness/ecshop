@@ -93,8 +93,8 @@
 
 //[NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/user.php"]
 
-//#define kURL_Base  @"http://sitmarket.ditiy.com"
-#define kURL_Base  @"http://www.fxj2017.com"
+#define kURL_Base  @"http://sitmarket.ditiy.com"
+//#define kURL_Base  @"http://www.fxj2017.com"
 //http://sitmarket.ditiy.com/mobile/weixinpay.php?out_trade_no=915
 
 

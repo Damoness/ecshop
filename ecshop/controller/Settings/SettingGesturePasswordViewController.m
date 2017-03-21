@@ -68,7 +68,7 @@
         password = p;
         
         SettingConfirmGesturePasswordViewController *vc = [SettingConfirmGesturePasswordViewController new];
-        
+        vc.delegate = self.delegate;
         vc.password = p;
         
         self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@""

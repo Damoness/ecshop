@@ -73,7 +73,7 @@
     
     self = [super initWithCoder:aDecoder];
     
-    NSLog(@"%@,%s,%@",NSStringFromClass([self class]),__FUNCTION__,self);
+    //NSLog(@"%@,%s,%@",NSStringFromClass([self class]),__FUNCTION__,self);
     if (self) {
         
         [self setUp];
@@ -86,7 +86,7 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     
-    NSLog(@"%@,%s,%@",NSStringFromClass([self class]),__FUNCTION__,self);
+    //NSLog(@"%@,%s,%@",NSStringFromClass([self class]),__FUNCTION__,self);
    
         // 设置每个按钮的frame
         CGFloat margin = 15;
@@ -114,7 +114,7 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     
-    NSLog(@"%@,%s,%@",NSStringFromClass([self class]),__FUNCTION__,self);
+    //NSLog(@"%@,%s,%@",NSStringFromClass([self class]),__FUNCTION__,self);
     
     UITouch *touch = touches.anyObject;
     CGPoint point = [touch locationInView:touch.view];
@@ -133,7 +133,7 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
 
-    NSLog(@"%@,%s,%@",NSStringFromClass([self class]),__FUNCTION__,self);
+    //NSLog(@"%@,%s,%@",NSStringFromClass([self class]),__FUNCTION__,self);
     
     UITouch *touch = touches.anyObject;
     CGPoint point = [touch locationInView:touch.view];
@@ -155,7 +155,7 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     
-    NSLog(@"%@,%s,%@",NSStringFromClass([self class]),__FUNCTION__,self);
+    //NSLog(@"%@,%s,%@",NSStringFromClass([self class]),__FUNCTION__,self);
 
     UITouch *touch = touches.anyObject;
     CGPoint point = [touch locationInView:touch.view];
@@ -200,7 +200,7 @@
 }
 - (void)drawRect:(CGRect)rect {
     
-    NSLog(@"%@,%s,%@",NSStringFromClass([self class]),__FUNCTION__,self);
+    //NSLog(@"%@,%s,%@",NSStringFromClass([self class]),__FUNCTION__,self);
     
     if (self.selectedbuttonsArray.count==0)return;
     UIBezierPath *path = [[UIBezierPath alloc]init];

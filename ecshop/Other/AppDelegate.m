@@ -58,16 +58,11 @@
     
     
     
-//    UIImage *backButtonImage = [[UIImage imageNamed:@"back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 30, 0, 0)];
-    UIImage *backButtonImage = [[UIImage imageNamed:@"nav_arrow.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 30, 0, 0)];
-    //UIImage *backButtonImage  = [UIImage imageNamed:@"nav_arrow"];
-    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(NSIntegerMin, NSIntegerMin) forBarMetrics:UIBarMetricsDefault];
 
+    [self setUpUIAppearance];
     
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],
-    NSForegroundColorAttributeName:kColor_NavigationBar_TitleColor}];
-    [UINavigationBar appearance].barTintColor = kColor_NavigationBar_BarTintColor;
+    
+    
     
     //[UINavigationBar appearance].backgroundColor = RGB(230, 37, 137);
     
@@ -119,14 +114,45 @@
     
     GesturePasswordViewController *fPassVC = [[GesturePasswordViewController alloc]initWithWindow:self.window];
     
+    UINavigationController *fNC = [[UINavigationController alloc]initWithRootViewController:fPassVC];
+    
     self.lockWindow = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
     self.lockWindow.backgroundColor=[UIColor whiteColor];
-    self.lockWindow.rootViewController = fPassVC;
+    self.lockWindow.rootViewController = fNC;
     
     
     return YES;    
 }
+
+
+//设置默认UI外观
+-(void)setUpUIAppearance{
+    
+    //返回按钮
+    UIImage *backButtonImage = [[UIImage imageNamed:@"nav_arrow.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 30, 0, 0)];
+    //UIImage *backButtonImage  = [UIImage imageNamed:@"nav_arrow"];
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(NSIntegerMin, NSIntegerMin) forBarMetrics:UIBarMetricsDefault];
+    
+    //导航栏
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],
+                                                           NSForegroundColorAttributeName:kColor_NavigationBar_TitleColor}];
+    [UINavigationBar appearance].barTintColor = kColor_NavigationBar_BarTintColor;
+    
+//    //按钮
+//    [[UIButton appearance] setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    
+//    
+//    [[UIButton appearance] setBackgroundImage:[self imageWithColor:kColor_Common_RedColor] forState:UIControlStateNormal];
+//    
+//    
+//    [[UIButton appearance] setBackgroundImage:[self imageWithColor:[UIColor darkGrayColor]] forState:UIControlStateSelected];
+//    
+    
+
+}
+
 
 
 //h5版本

@@ -24,6 +24,7 @@
 		51F2716D1C0D945C00619901 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F2716C1C0D945C00619901 /* libsqlite3.tbd */; settings = {ATTRIBUTES = (Required, ); }; };
 		59E8816C07D4D4D907FFB7C4 /* libPods-ecshop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA6EA264374C0A113009A8C /* libPods-ecshop.a */; };
 		9C225C551E753ABF004CC46D /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C225C531E753ABF004CC46D /* IndexViewController.m */; };
+		9C2D79B41E80C0FC006A8B55 /* VerifyPhoneCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D79B31E80C0FC006A8B55 /* VerifyPhoneCodeViewController.m */; };
 		9C4CD7D41E6FD0B5004D78D7 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4CD7D31E6FD0B5004D78D7 /* UIColor+Hex.m */; };
 		9C5191B01E6FED0C00576BE3 /* AlipayApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5191AF1E6FED0C00576BE3 /* AlipayApiManager.m */; };
 		9C98F8831E79368700D69DA3 /* FingerprintLockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C98F8811E79368700D69DA3 /* FingerprintLockViewController.m */; };
@@ -408,6 +409,8 @@
 		9CDD31A41E6FB24500FD2CB5 /* sonAdvertisementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2FD61E6FB24300FD2CB5 /* sonAdvertisementView.m */; };
 		9CDD31A51E6FB24500FD2CB5 /* sonCollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2FD81E6FB24300FD2CB5 /* sonCollectCell.m */; };
 		9CDD31A61E6FB24500FD2CB5 /* SureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2FDA1E6FB24300FD2CB5 /* SureTableViewCell.m */; };
+		9CDE15D91E81082C00A46044 /* NSString+RegularExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDE15D81E81082C00A46044 /* NSString+RegularExpression.m */; };
+		9CDE15DB1E8139C000A46044 /* shareIcon180.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CDE15DA1E8139C000A46044 /* shareIcon180.png */; };
 		9CE02B0F1E7154AE0017145F /* UIWebView+JavaScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE02B0E1E7154AE0017145F /* UIWebView+JavaScript.m */; };
 		9CE02B5D1E72D4410017145F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE02B121E72D4410017145F /* AboutViewController.m */; };
 		9CE02B5E1E72D4410017145F /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CE02B131E72D4410017145F /* AboutViewController.xib */; };
@@ -474,6 +477,8 @@
 		6BA6EA264374C0A113009A8C /* libPods-ecshop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ecshop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C225C521E753ABF004CC46D /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
 		9C225C531E753ABF004CC46D /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexViewController.m; sourceTree = "<group>"; };
+		9C2D79B21E80C0FC006A8B55 /* VerifyPhoneCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifyPhoneCodeViewController.h; sourceTree = "<group>"; };
+		9C2D79B31E80C0FC006A8B55 /* VerifyPhoneCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerifyPhoneCodeViewController.m; sourceTree = "<group>"; };
 		9C4CD7D21E6FD0B5004D78D7 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		9C4CD7D31E6FD0B5004D78D7 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		9C5191AE1E6FED0C00576BE3 /* AlipayApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlipayApiManager.h; sourceTree = "<group>"; };
@@ -988,6 +993,9 @@
 		9CDD2FD81E6FB24300FD2CB5 /* sonCollectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sonCollectCell.m; sourceTree = "<group>"; };
 		9CDD2FD91E6FB24300FD2CB5 /* SureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SureTableViewCell.h; sourceTree = "<group>"; };
 		9CDD2FDA1E6FB24300FD2CB5 /* SureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SureTableViewCell.m; sourceTree = "<group>"; };
+		9CDE15D71E81082C00A46044 /* NSString+RegularExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RegularExpression.h"; sourceTree = "<group>"; };
+		9CDE15D81E81082C00A46044 /* NSString+RegularExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RegularExpression.m"; sourceTree = "<group>"; };
+		9CDE15DA1E8139C000A46044 /* shareIcon180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareIcon180.png; sourceTree = "<group>"; };
 		9CE02B0D1E7154AE0017145F /* UIWebView+JavaScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+JavaScript.h"; sourceTree = "<group>"; };
 		9CE02B0E1E7154AE0017145F /* UIWebView+JavaScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+JavaScript.m"; sourceTree = "<group>"; };
 		9CE02B111E72D4410017145F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
@@ -1309,6 +1317,7 @@
 		9CDD2D631E6FB24100FD2CB5 /* 图标 */ = {
 			isa = PBXGroup;
 			children = (
+				9CDE15DA1E8139C000A46044 /* shareIcon180.png */,
 			);
 			path = "图标";
 			sourceTree = "<group>";
@@ -1682,6 +1691,8 @@
 				9CDD2E6F1E6FB24200FD2CB5 /* NSString+Common.m */,
 				9CDD2E701E6FB24200FD2CB5 /* UIButton+Common.h */,
 				9CDD2E711E6FB24200FD2CB5 /* UIButton+Common.m */,
+				9CDE15D71E81082C00A46044 /* NSString+RegularExpression.h */,
+				9CDE15D81E81082C00A46044 /* NSString+RegularExpression.m */,
 			);
 			path = OC_Category;
 			sourceTree = "<group>";
@@ -2221,6 +2232,8 @@
 				9CE02B271E72D4410017145F /* LoginViewController.m */,
 				9CF80E841E7FBD64004B4666 /* GesturePasswordViewController.h */,
 				9CF80E851E7FBD64004B4666 /* GesturePasswordViewController.m */,
+				9C2D79B21E80C0FC006A8B55 /* VerifyPhoneCodeViewController.h */,
+				9C2D79B31E80C0FC006A8B55 /* VerifyPhoneCodeViewController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -2510,6 +2523,7 @@
 				9CDD308D1E6FB24300FD2CB5 /* my_wait_payment@3x.png in Resources */,
 				9CDD30E41E6FB24400FD2CB5 /* a0v.png in Resources */,
 				9CDD30B21E6FB24300FD2CB5 /* fenlei(youdidaogao(weixuanzhong))@2x.png in Resources */,
+				9CDE15DB1E8139C000A46044 /* shareIcon180.png in Resources */,
 				9CDD31051E6FB24400FD2CB5 /* show_password.png in Resources */,
 				9CDD306F1E6FB24300FD2CB5 /* my_adress@3x.png in Resources */,
 				9CDD30661E6FB24300FD2CB5 /* loading2@3x.png in Resources */,
@@ -2628,6 +2642,7 @@
 				9C98F8831E79368700D69DA3 /* FingerprintLockViewController.m in Sources */,
 				9CDD313D1E6FB24400FD2CB5 /* QRCodeGenerator.m in Sources */,
 				9CE02B741E72D4410017145F /* MyAttentionViewController.m in Sources */,
+				9CDE15D91E81082C00A46044 /* NSString+RegularExpression.m in Sources */,
 				9CDD311D1E6FB24400FD2CB5 /* Ditiy_NetAPIManager.m in Sources */,
 				9CE02B7D1E72D4410017145F /* RechargeViewController.m in Sources */,
 				9CDD311E1E6FB24400FD2CB5 /* DitiyNetAPIClient.m in Sources */,
@@ -2690,6 +2705,7 @@
 				9CDD310E1E6FB24400FD2CB5 /* OrderModel.m in Sources */,
 				9CDD31071E6FB24400FD2CB5 /* BaseModel.m in Sources */,
 				9CDD31961E6FB24400FD2CB5 /* MyGoodsViewCell.m in Sources */,
+				9C2D79B41E80C0FC006A8B55 /* VerifyPhoneCodeViewController.m in Sources */,
 				9CB3680F1E7824D90036EEC9 /* SettingConfirmGesturePasswordViewController.m in Sources */,
 				9CE02B791E72D4410017145F /* OrderConfirmController.m in Sources */,
 				9CDD31671E6FB24400FD2CB5 /* SmallDropMenu.m in Sources */,

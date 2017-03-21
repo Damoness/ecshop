@@ -80,6 +80,19 @@
             
             
             
+            
+//            [self.navigationController popToViewController:self.navigationController.viewControllers[self.navigationController.viewControllers.count - 3] animated:YES];
+            
+
+            
+            if (_delegate && [_delegate respondsToSelector:@selector(settingGesturePasswordViewController:didFinishSettingWithPassword:)]) {
+                
+                [_delegate settingGesturePasswordViewController:nil didFinishSettingWithPassword:p];
+            
+                
+            }
+            
+            
             WS(ws)
             
             [[Ditiy_NetAPIManager sharedManager]request_SaveGestureCode_WithParams:[model toSaveGestureCodeParams] andBlock:^(id data, NSError *error) {
@@ -87,7 +100,7 @@
                 
                 if (data) {
                     
-                    [ws.navigationController popToViewController:self.navigationController.viewControllers[1] animated:YES];
+//                    [ws.navigationController popToViewController:self.navigationController.viewControllers[self.navigationController.viewControllers.count - 3] animated:YES];
                     
                     
                 }

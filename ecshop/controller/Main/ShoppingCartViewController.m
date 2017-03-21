@@ -7,10 +7,11 @@
 //
 
 #import "ShoppingCartViewController.h"
-
+#import "MyTabBarViewController.h"
 @interface ShoppingCartViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 @end
 
@@ -19,6 +20,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBar.hidden = true;
+    DebugLog(@"");
+    
+    MyTabBarViewController *myTbVC = (MyTabBarViewController *) self.navigationController.tabBarController;
+    [myTbVC hideCustomTabbar:NO];
+    
+    
+    
+}
+
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    DebugLog(@"");
+    
+//    self.navigationController.navigationBar.hidden = false;
+//    
+//    
+//    MyTabBarViewController *myTbVC = (MyTabBarViewController *) self.navigationController.tabBarController;
+//    
+//    [myTbVC hideCustomTabbar:YES];
 }
 
 

@@ -9,13 +9,17 @@
 #import "GesturePasswordViewController.h"
 #import "ZPUnlockView.h"
 #import "AppDelegate.h"
+#import "VerifyPhoneCodeViewController.h"
 
-@interface GesturePasswordViewController ()<ZPUnlockViewDelegate>
+#import "SettingGesturePasswordViewController.h"
+
+@interface GesturePasswordViewController ()<ZPUnlockViewDelegate,SettingGesturePasswordViewControllerDelegate>
 
 @property (nonatomic,strong) ZPUnlockView *unlockView;
 
 @property (strong, nonatomic) UILabel *promptLabel;
 
+@property (strong,nonatomic) UIButton *forgetButton;
 
 @property (strong ,nonatomic) UIWindow *window;
 
@@ -45,7 +49,21 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear: animated];
+    
+    self.navigationController.navigationBar.hidden = YES;
+    
+}
 
+-(void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear: animated];
+    
+    self.navigationController.navigationBar.hidden = NO;
+    
+}
 -(void)initViews{
     
     
@@ -82,6 +100,70 @@
         make.centerX.equalTo(ws.view);
         
     }];
+    
+    
+    
+    self.forgetButton = ({
+    
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.view addSubview:button];
+        
+        [button setTitle:@"忘记手势密码" forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        
+        [button addTarget:self action:@selector(forgetButton_Action:) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+        [button mas_makeConstraints:^(MASConstraintMaker *make) {
+           
+            make.size.mas_equalTo(CGSizeMake(200, 30));
+            make.centerX.mas_equalTo(self.view);
+            make.bottom.mas_equalTo(self.view).with.offset(-30);
+            
+        }];
+        
+        
+        button;
+    });
+    
+    
+    
+    
+    
+}
+
+
+-(void)forgetButton_Action:(UIButton *)button{
+    
+    
+    
+    VerifyPhoneCodeViewController *verPhoneVC = [VerifyPhoneCodeViewController new];
+    
+    
+    verPhoneVC.nextBlock = ^(){
+        
+        
+        SettingGesturePasswordViewController *settingGesPassVC = [SettingGesturePasswordViewController new];
+        settingGesPassVC.promptStr = @"设置手势密码";
+        settingGesPassVC.delegate = self;
+        [self.navigationController pushViewController:settingGesPassVC animated:YES];
+        
+        
+    };
+    
+    [self.navigationController pushViewController:verPhoneVC animated:YES];
+    
+}
+
+
+#pragma mark --SettingGesturePasswordViewControllerDelegate
+
+-(void)settingGesturePasswordViewController:(SettingGesturePasswordViewController *)vc didFinishSettingWithPassword:(NSString *)password{
+    
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    
 }
 
 
@@ -102,7 +184,7 @@
         
     }else if([password isEqualToString:[[SettingManager sharedManager]gesturePassword]]){
         
-        //self.promptLabel.text = @"成功";
+        self.promptLabel.text = @"";
         self.promptLabel.textColor = [UIColor darkGrayColor];
         
         

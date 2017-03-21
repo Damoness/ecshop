@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SettingGesturePasswordViewController.h"
 @interface SettingConfirmGesturePasswordViewController : UIViewController
 
 
 @property (nonatomic,strong) NSString *password; //上次的密码
-
+@property (nonatomic,weak) id<SettingGesturePasswordViewControllerDelegate>delegate;
 @end

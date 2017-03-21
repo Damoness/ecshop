@@ -17,19 +17,53 @@
 + (instancetype)sharedManager;
 
 
+/**
+ 获取导航页图片
 
-//获取导航页图片
+ @param block <#block description#>
+ */
 -(void)request_WelcomeGuidePicBlock:(void (^)(id data,NSError *error))block;
 
-//注册分销商
+
+/**
+ 注册分销商
+
+ @param params <#params description#>
+ @param block <#block description#>
+ */
 -(void)request_RegisterSharingMan_WithParams:(NSDictionary *)params andBlock:(void (^)(id data, NSError *error))block;
 
-//注册分销商
+
+/**
+ 注册分销商
+
+ @param params <#params description#>
+ @param progress <#progress description#>
+ @param block <#block description#>
+ */
 -(void)request_RegisterSharingMan_WithParams:(NSDictionary *)params andProgress:(void (^)(float progress))progress andBlock:(void (^)(id data, NSError *error))block;
 
 
-//获取手机号验证码
+
+/**
+ 获取手机号验证码
+
+ @param phone <#phone description#>
+ @param block <#block description#>
+ */
 -(void)request_PhoneVerifyCode_WithParam:(NSString *)phone andBlock:(void (^)(id data,NSError *error))block;
+
+
+/**
+ 验证手机号 和 验证码是否匹配
+
+ @param phoneCode 验证码
+ @param phoneNo 手机号
+ @param block 结果
+ */
+-(void)request_VerifyPhoneCode:(NSString *)phoneCode WithPhoneNo:(NSString *)phoneNo andBlock:(void (^)(id data, NSError *error))block;
+
+
 
 //请求将系
 -(void)request_KingSeriesBlock:(void (^)(id data,NSError *error))block;
