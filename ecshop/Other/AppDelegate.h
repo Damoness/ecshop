@@ -15,5 +15,8 @@
 @property (strong, nonatomic)NSDictionary *tempDic;
 @property (strong, nonatomic)NSString *userName;
 
+
+@property (nonatomic,strong)UIWindow *lockWindow;
+
 @end
 

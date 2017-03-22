@@ -8,6 +8,8 @@
 
 #import "H5ViewController.h"
 
+#import "AppDelegate.h"
+
 #import "UserGuideViewController.h"
 #import "SettingGesturePasswordViewController.h"
 
@@ -134,6 +136,8 @@
 
 #define kURL_User_Set_GesturePassword [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/v_user_set_pattern_lock.php"] //用户设置手势密码
 
+
+#define kURL_User_My [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/user.php"] //我的页面
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
@@ -325,6 +329,19 @@
         
         return NO;
         
+    }else if ([urlStr isEqualToString:kURL_User_My] && [LoginModel isLogin]){
+        
+        AppDelegate *appDelegate   =(AppDelegate *) [UIApplication sharedApplication].delegate;
+        
+        //appDelegate
+        
+        if ([[SettingManager sharedManager]gestureLock] && ![[SettingManager sharedManager].gesturePassword isEmptyStr]) {
+            
+            [appDelegate.lockWindow makeKeyAndVisible];
+            
+        }
+        
+        return YES;
     }
     
     return  true;

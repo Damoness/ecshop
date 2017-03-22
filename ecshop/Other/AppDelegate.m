@@ -36,7 +36,7 @@
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
 
-@property (nonatomic,strong)UIWindow *lockWindow;
+//@property (nonatomic,strong)UIWindow *lockWindow;
 
 @end
 
