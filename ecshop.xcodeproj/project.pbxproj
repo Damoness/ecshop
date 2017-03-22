@@ -23,6 +23,7 @@
 		51F12E701C0BE168002C62D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F12E6F1C0BE168002C62D0 /* main.m */; };
 		51F2716D1C0D945C00619901 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F2716C1C0D945C00619901 /* libsqlite3.tbd */; settings = {ATTRIBUTES = (Required, ); }; };
 		59E8816C07D4D4D907FFB7C4 /* libPods-ecshop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA6EA264374C0A113009A8C /* libPods-ecshop.a */; };
+		9C0F642D1E8282B500E31414 /* GestureModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0F642B1E8282B500E31414 /* GestureModel.m */; };
 		9C225C551E753ABF004CC46D /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C225C531E753ABF004CC46D /* IndexViewController.m */; };
 		9C2D79B41E80C0FC006A8B55 /* VerifyPhoneCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D79B31E80C0FC006A8B55 /* VerifyPhoneCodeViewController.m */; };
 		9C4CD7D41E6FD0B5004D78D7 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4CD7D31E6FD0B5004D78D7 /* UIColor+Hex.m */; };
@@ -475,6 +476,8 @@
 		51F12E6F1C0BE168002C62D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		51F2716C1C0D945C00619901 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		6BA6EA264374C0A113009A8C /* libPods-ecshop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ecshop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C0F642B1E8282B500E31414 /* GestureModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureModel.m; sourceTree = "<group>"; };
+		9C0F642C1E8282B500E31414 /* GestureModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureModel.h; sourceTree = "<group>"; };
 		9C225C521E753ABF004CC46D /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
 		9C225C531E753ABF004CC46D /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexViewController.m; sourceTree = "<group>"; };
 		9C2D79B21E80C0FC006A8B55 /* VerifyPhoneCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifyPhoneCodeViewController.h; sourceTree = "<group>"; };
@@ -1605,6 +1608,8 @@
 		9CDD2E351E6FB24200FD2CB5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9C0F642B1E8282B500E31414 /* GestureModel.m */,
+				9C0F642C1E8282B500E31414 /* GestureModel.h */,
 				9CDD2E361E6FB24200FD2CB5 /* AddressModel.h */,
 				9CDD2E371E6FB24200FD2CB5 /* AddressModel.m */,
 				9CDD2E381E6FB24200FD2CB5 /* BaseModel.h */,
@@ -2680,6 +2685,7 @@
 				9CF80E861E7FBD64004B4666 /* GesturePasswordViewController.m in Sources */,
 				9CDD31131E6FB24400FD2CB5 /* shangpinModel.m in Sources */,
 				9CDD31151E6FB24400FD2CB5 /* ShoppingCartGoodsModel.m in Sources */,
+				9C0F642D1E8282B500E31414 /* GestureModel.m in Sources */,
 				9C5DDF451E82286E006ECA6C /* GTMBase64.m in Sources */,
 				9CDD314C1E6FB24400FD2CB5 /* MBProgressHUD+MJ.m in Sources */,
 				9CDD310C1E6FB24400FD2CB5 /* MyAddressModel.m in Sources */,
