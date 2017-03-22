@@ -230,7 +230,7 @@
 
 
 //请求获取手势密码
--(void)request_FetchGestureCode_WithParams:(NSDictionary *)params andBlock:(void (^)(id, NSError *))block{
+-(void)request_FetchGestureCode_WithParams:(NSDictionary *)params andBlock:(void (^)(id data, NSError *error))block{
     
     NSString *path = [NSString stringWithFormat:@"%@/mobile/api/gesture_passCode.php",baseURLStr];
     
@@ -363,6 +363,28 @@
         
         
         
+        block(data,error);
+        
+        
+    }];
+    
+    
+}
+
+//获取用户信息(通过用户ID)
+-(void)request_UserInfoWithUserID:(NSString *)userID andBlock:(void (^)(id data,NSError *error))block{
+    
+    NSString *path = @"user/userIdinfo";
+    
+    NSDictionary *params = @{
+                          
+                          @"user_id":userID
+                          
+                          };
+    
+    [[DitiyNetAPIClient sharedJsonClient]requestJsonDataWithPath:path withParams:params withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+    
         block(data,error);
         
         
@@ -916,7 +938,7 @@
 
 
 //请求获取手势密码
--(void)request_H5_FetchGestureCode_WithParams:(NSDictionary *)params andBlock:(void (^)(id, NSError *))block{
+-(void)request_H5_FetchGestureCode_WithParams:(NSDictionary *)params andBlock:(void (^)(id data, NSError *error))block{
     
     NSString *path = [NSString stringWithFormat:@"%@/mobile/api/h5gesture_passCode.php",baseURLStr];
     

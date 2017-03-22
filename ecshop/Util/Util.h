@@ -26,9 +26,25 @@
 #define k3DES_Ditiy_Key  @"www.ditiy.com/penngoh?#@"
 
 //3DES加密
+
+/**
+ 3DES加密
+
+ @param plainText 需要加密的内容
+ @param key 加密key
+ @return <#return value description#>
+ */
 +(NSString*)tripleDES_Encrypt:(NSString*)plainText withKey:(NSString *)key;
 
 //3DES解密
+
+/**
+ 3DES解密
+
+ @param encryptText 密文
+ @param key 解密key
+ @return <#return value description#>
+ */
 +(NSString*)tripleDES_Decrypt:(NSString*)encryptText withKey:(NSString *)key;
 
 

@@ -92,21 +92,27 @@
                 
             }
             
-            
-            WS(ws)
-            
-            [[Ditiy_NetAPIManager sharedManager]request_SaveGestureCode_WithParams:[model toSaveGestureCodeParams] andBlock:^(id data, NSError *error) {
-               
-                
-                if (data) {
-                    
-//                    [ws.navigationController popToViewController:self.navigationController.viewControllers[self.navigationController.viewControllers.count - 3] animated:YES];
-                    
-                    
-                }
-                
 
-            }];
+            if (kH5_Version) {
+                
+                model.user_id = [LoginModel currentLoginUser].user_id;
+                
+                
+                [[Ditiy_NetAPIManager sharedManager]request_H5_SaveGestureCode_WithParams:[model toH5SaveGestureCodeParams] andBlock:^(id data, NSError *error){
+            
+                }];
+                
+                
+            }else{
+                
+                [[Ditiy_NetAPIManager sharedManager]request_SaveGestureCode_WithParams:[model toSaveGestureCodeParams] andBlock:^(id data, NSError *error) {
+                    
+                    
+                }];
+
+            }
+            
+
             
             
             

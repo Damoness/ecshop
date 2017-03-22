@@ -9,8 +9,11 @@
 #import "H5ViewController.h"
 
 #import "UserGuideViewController.h"
+#import "SettingGesturePasswordViewController.h"
+
 
 #import "OrderModel.h"
+#import "GestureModel.h"
 #import "Util.h"
 #import "WXApiManager.h"
 
@@ -18,7 +21,11 @@
 #import <AlipaySDK/AlipaySDK.h>
 #import "AlipayApiManager.h"
 
-@interface H5ViewController ()<UIWebViewDelegate,WXApiManagerDelegate,AlipayApiManagerDelegate>
+#import "Util.h"
+#import "NSString+Common.h"
+#import "SettingManager.h"
+
+@interface H5ViewController ()<UIWebViewDelegate,WXApiManagerDelegate,AlipayApiManagerDelegate,SettingGesturePasswordViewControllerDelegate>
 
 @property (nonatomic,strong) UIWebView *webView;
 
@@ -103,8 +110,13 @@
 
 #define kURL_Order_Submit [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/flow.php?step=checkout"] //立即购买
 
+//需要添加is_app=y的链接  -- start
+
 #define kURL_Order_Finished [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/flow.php?step=done"] //提交订单成功
 #define kURL_Order_Finished2  [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/flow.php?step=checkout?is_app="]
+
+#define kURL_My_Share  [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/v_user.php"] //我的分享
+//需要添加is_app=y的链接  -- end
 
 #define kURL_Order_PayWithWeixin [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/weixinpay.php?out_trade_no="] //微信支付 （包含）
 #define kURL_Order_PayWithAlipay [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/pay/alipayapi.php?out_trade_no="] //支付宝支付 (包含)
@@ -116,6 +128,11 @@
 
 
 #define kURL_UserLogin_Finish [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/user.php?is_app="] //登录成功或失败跳转链接
+
+#define kURL_UserUnlogin [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/user.php?act=logout"] //退出完成
+
+
+#define kURL_User_Set_GesturePassword [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/v_user_set_pattern_lock.php"] //用户设置手势密码
 
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
@@ -186,7 +203,7 @@
         
         return NO;
         
-    }else if([urlStr isEqualToString:kURL_Order_Submit] || [urlStr isEqualToString:kURL_Order_Finished2]) {
+    }else if([urlStr isEqualToString:kURL_Order_Submit] || [urlStr isEqualToString:kURL_Order_Finished2] || [urlStr isEqualToString:kURL_My_Share]) {
         
 
         if ([[[urlStr componentsSeparatedByString:@"/"]lastObject]containsString:@"?"]) {
@@ -282,6 +299,32 @@
         return NO;
         
         
+    }else if ([urlStr isEqualToString:kURL_User_Set_GesturePassword]){//设置手势密码
+        
+//        
+//        SettingGesturePasswordViewController *vc = [SettingGesturePasswordViewController new];
+//        
+//        
+//
+//        [self presentViewController:vc animated:YES completion:nil];
+        
+        
+        
+        
+        SettingGesturePasswordViewController *sgpVC = [SettingGesturePasswordViewController new];
+        //sgpVC.automaticallyAdjustsScrollViewInsets = NO;
+        sgpVC.delegate = self;
+        sgpVC.promptStr = @"设置手势密码";
+        
+        
+        UINavigationController *nc =[[UINavigationController alloc]initWithRootViewController:sgpVC];
+        
+        [self presentViewController:nc animated:YES completion:nil];
+        
+        //[self.navigationController pushViewController:sgpVC animated:YES];
+        
+        return NO;
+        
     }
     
     return  true;
@@ -338,6 +381,77 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     
     //[MBProgressHUD hideAllHUDsForView:self.view animated:NO];
+    
+    
+    NSString *urlStr = webView.request.URL.absoluteString;
+    
+    if ([urlStr isEqualToString:kURL_UserLogin_Finish]){  //登录
+        
+        NSString *userID = [_webView stringByEvaluatingJavaScriptFromString:@"get_user_id_for_app()"];
+        
+        
+        if (![userID isEmptyStr]) {
+            
+            
+            NSLog(@"userID:%@",userID);
+            
+            
+            GestureModel *model = [GestureModel new];
+            
+            model.user_id = userID;
+     
+            
+            [[Ditiy_NetAPIManager sharedManager]request_UserInfoWithUserID:userID andBlock:^(id data, NSError *error) {
+               
+                
+                
+                UserModel *userModel = [UserModel mj_objectWithKeyValues:data[@"data"][0]];
+                userModel.user_id = userID;
+                
+                [LoginModel doLogin:[userModel mj_keyValues]];
+                
+                
+            }];
+            
+            
+            
+           [[Ditiy_NetAPIManager sharedManager]request_H5_FetchGestureCode_WithParams:[model toH5FetchGestureCodeParams] andBlock:^(id data, NSError *error) {
+              
+               
+               if (data) {
+                   
+                   
+                   NSString *password = [Util tripleDES_Decrypt:data[@"msg"] withKey:k3DES_Ditiy_Key];
+                   
+                   
+                   
+                   if (password) {
+                    
+                       [[SettingManager sharedManager] setGesturePassword:password];
+                       [[SettingManager sharedManager] setGestureLock:true];
+                   }
+                   
+                   
+               }
+               
+               
+           }];
+            
+        }
+        
+        
+    }else if ([urlStr isEqualToString:kURL_UserUnlogin]){ //退出
+        
+        
+        [LoginModel doLogout];
+        [[SettingManager sharedManager] setGesturePassword:@""];
+        [[SettingManager sharedManager] setGestureLock:false];
+        
+        
+        
+    }
+    
+
     
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
@@ -588,6 +702,16 @@
     }
     
     
+    
+}
+
+
+#pragma mark -- SettingGesturePasswordViewControllerDelegate
+
+-(void)settingGesturePasswordViewController:(SettingGesturePasswordViewController *)vc didFinishSettingWithPassword:(NSString *)password{
+    
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 

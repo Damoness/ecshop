@@ -86,7 +86,7 @@
 
 
 //请求获取手势密码 toFetchGestureCodeParams
--(void)request_FetchGestureCode_WithParams:(NSDictionary *)params andBlock:(void (^)(id, NSError *))block;
+-(void)request_FetchGestureCode_WithParams:(NSDictionary *)params andBlock:(void (^)(id data, NSError *error))block;
 
 
 
@@ -132,8 +132,12 @@ typedef enum{
 
 #pragma mark - User
 
-//获取用户信息  toUserInfoParams
+//获取用户信息(通过key)  toUserInfoParams
 -(void)request_UserInfo_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
+
+//获取用户信息(通过用户ID)
+-(void)request_UserInfoWithUserID:(NSString *)userID andBlock:(void (^)(id data,NSError *error))block;
+
 //更新用户信息  toUpdateUserInfoParams
 -(void)request_UpdateUserInfo_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
 //修改用户密码  toChangePasswordParams
@@ -232,7 +236,7 @@ typedef enum{
 
 
 //请求获取手势密码 
--(void)request_H5_FetchGestureCode_WithParams:(NSDictionary *)params andBlock:(void (^)(id, NSError *))block;
+-(void)request_H5_FetchGestureCode_WithParams:(NSDictionary *)params andBlock:(void (^)(id data, NSError *))block;
 
 
 /**
