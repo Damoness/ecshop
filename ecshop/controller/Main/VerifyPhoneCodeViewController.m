@@ -138,7 +138,8 @@
         
         [nButton mas_makeConstraints:^(MASConstraintMaker *make) {
            
-            make.center.equalTo(self.view);
+            make.centerX.equalTo(self.view);
+            make.top.equalTo(self.codeTextField.mas_bottom).offset(100);
             make.size.mas_equalTo(CGSizeMake(150, 30));
             
         }];
@@ -158,14 +159,21 @@
     self.phoneNoStr = [LoginModel currentLoginUser].mobile;
     
     if ([self.phoneNoStr isPhoneNo]) {
+
         
+        [MBProgressHUD showMessage:@"正在获取验证码"];
         
         [[Ditiy_NetAPIManager sharedManager]request_PhoneVerifyCode_WithParam:self.phoneNoStr andBlock:^(id data, NSError *error) {
             
-           
+            [MBProgressHUD hideHUD];
             
             if (data) {
                 
+                if ([data[@"code"]intValue] != 0 ) {
+                    
+                    [MBProgressHUD showError:data[@"msg"]];
+                    
+                }
     
                 
                 
