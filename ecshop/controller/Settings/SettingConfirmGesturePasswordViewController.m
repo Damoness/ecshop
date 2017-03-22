@@ -12,6 +12,7 @@
 #import "ZPFmdbTool.h"
 #import "GestureModel.h"
 
+
 @interface SettingConfirmGesturePasswordViewController ()<ZPUnlockViewDelegate>
 
 @property (weak, nonatomic) IBOutlet ZPUnlockView *unlockView;
