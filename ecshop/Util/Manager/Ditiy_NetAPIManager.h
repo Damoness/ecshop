@@ -235,6 +235,24 @@ typedef enum{
 -(void)request_H5_FetchGestureCode_WithParams:(NSDictionary *)params andBlock:(void (^)(id, NSError *))block;
 
 
+/**
+ 获取用户ID 对应手机号的验证码
+ 
+ @param phone <#phone description#>
+ @param block <#block description#>
+ */
+-(void)request_H5_PhoneVerifyCode_WithUserID:(NSString *)UserID andBlock:(void (^)(id data,NSError *error))block;
+
+
+/**
+ 验证用户ID对应手机号 和 验证码是否匹配
+ 
+ @param phoneCode 验证码
+ @param UserID 用户ID
+ @param block 结果
+ */
+-(void)request_H5_VerifyPhoneCode:(NSString *)phoneCode WithUserID:(NSString *)UserID andBlock:(void (^)(id data, NSError *error))block;
+
 
 
 #pragma mark - H5用

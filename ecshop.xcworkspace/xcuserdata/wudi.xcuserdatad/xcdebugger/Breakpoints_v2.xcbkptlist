@@ -361,8 +361,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "208"
             endingLineNumber = "208"
-            landmarkName = "@interface Ditiy_NetAPIManager"
-            landmarkType = "2">
+            landmarkName = "-request_SetDefaultAddress_WithParams:andBlock:"
+            landmarkType = "6">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -834,11 +834,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ecshop/H5/H5ViewController.m"
-            timestampString = "511155129.563408"
+            timestampString = "511859170.256194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "512"
-            endingLineNumber = "512"
+            startingLineNumber = "514"
+            endingLineNumber = "514"
             landmarkName = "-UpdatePayResultSuccess:"
             landmarkType = "7">
          </BreakpointContent>
@@ -850,11 +850,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ecshop/H5/H5ViewController.m"
-            timestampString = "511155129.563408"
+            timestampString = "511859170.256194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "-webView:shouldStartLoadWithRequest:navigationType:"
             landmarkType = "7">
          </BreakpointContent>
@@ -866,11 +866,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ecshop/H5/H5ViewController.m"
-            timestampString = "511155129.563408"
+            timestampString = "511859170.256194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "570"
-            endingLineNumber = "570"
+            startingLineNumber = "572"
+            endingLineNumber = "572"
             landmarkName = "-alipayApiManagerDidReceivePayResponse:"
             landmarkType = "7">
          </BreakpointContent>
@@ -888,22 +888,6 @@
             startingLineNumber = "164"
             endingLineNumber = "164"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ecshop/Controller/Main/GesturePasswordViewController.m"
-            timestampString = "511785459.78515"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
-            landmarkName = "-ZPUnlockView:didFinishDraw:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

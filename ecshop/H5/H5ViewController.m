@@ -114,6 +114,10 @@
 
 #define kURL_Order_PayFromUnpay [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/user.php?act=order_detail&order_id"] // 代付款里面进入支付
 
+
+#define kURL_UserLogin_Finish [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/user.php?is_app="] //登录成功或失败跳转链接
+
+
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
     NSLog(@"shouldStartLoadWithRequest-----");
