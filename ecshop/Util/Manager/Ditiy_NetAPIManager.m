@@ -897,4 +897,42 @@
 }
 
 
+//请求保存手势密码
+-(void)request_H5_SaveGestureCode_WithParams:(NSDictionary *)params andBlock:(void (^)(id data, NSError *error))block{
+    
+    NSString *path = [NSString stringWithFormat:@"%@/mobile/api/h5gesture_passCode.php",baseURLStr];
+    
+    [[DitiyNetAPIClient sharedJsonClient]requestJsonDataWithPath:path withParams:params withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+        
+        
+        block(data,error);
+        
+        
+    }];
+    
+    
+}
+
+
+//请求获取手势密码
+-(void)request_H5_FetchGestureCode_WithParams:(NSDictionary *)params andBlock:(void (^)(id, NSError *))block{
+    
+    NSString *path = [NSString stringWithFormat:@"%@/mobile/api/h5gesture_passCode.php",baseURLStr];
+    
+    [[DitiyNetAPIClient sharedJsonClient]requestJsonDataWithPath:path withParams:params withMethodType:Post autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+        
+        
+        block(data,error);
+        
+        
+    }];
+    
+    
+}
+
+
+
+
 @end

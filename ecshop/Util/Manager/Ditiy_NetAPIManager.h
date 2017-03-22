@@ -78,7 +78,7 @@
 -(void)request_Login_WithParams:(NSDictionary *)params andBlock:(void (^)(id data,NSError *error))block;
 
 
-#pragma mark - GestureModel
+#pragma mark - GestureModel 手势
 
 
 //请求保存手势密码 toSaveGestureCodeParams
@@ -87,6 +87,8 @@
 
 //请求获取手势密码 toFetchGestureCodeParams
 -(void)request_FetchGestureCode_WithParams:(NSDictionary *)params andBlock:(void (^)(id, NSError *))block;
+
+
 
 
 #pragma mark - Order 订单
@@ -222,6 +224,17 @@ typedef enum{
 
 //支付订单 toPayOrderParams
 -(void)request_PayOrder_AppH5_WithPayType:(PayType)type Params:(NSDictionary *)params andBlock:(void (^)(id data ,NSError *error))block;
+
+
+
+//请求保存手势密码
+-(void)request_H5_SaveGestureCode_WithParams:(NSDictionary *)params andBlock:(void (^)(id data, NSError *error))block;
+
+
+//请求获取手势密码 
+-(void)request_H5_FetchGestureCode_WithParams:(NSDictionary *)params andBlock:(void (^)(id, NSError *))block;
+
+
 
 
 #pragma mark - H5用

@@ -43,8 +43,8 @@
     self.navigationController.navigationBar.hidden = true;
     
     
-    MyTabBarViewController *myTbVC = (MyTabBarViewController *) self.navigationController.tabBarController;
-    [myTbVC hideCustomTabbar:NO];
+//    MyTabBarViewController *myTbVC = (MyTabBarViewController *) self.navigationController.tabBarController;
+//    [myTbVC hideCustomTabbar:NO];
     
     
     
@@ -55,10 +55,10 @@
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.hidden = false;
     
-    
-    MyTabBarViewController *myTbVC = (MyTabBarViewController *) self.navigationController.tabBarController;
-    
-    [myTbVC hideCustomTabbar:YES];
+//    
+//    MyTabBarViewController *myTbVC = (MyTabBarViewController *) self.navigationController.tabBarController;
+//    
+//    [myTbVC hideCustomTabbar:YES];
 }
 
 

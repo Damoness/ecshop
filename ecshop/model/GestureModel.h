@@ -17,9 +17,17 @@
 @property (nonatomic,strong) NSString *gesture_pass; //手势密码
 
 
+@property (nonatomic,strong) NSString *user_id; //用户iD
+
 -(NSDictionary *)toSaveGestureCodeParams;
 
 
 -(NSDictionary *)toFetchGestureCodeParams;
+
+
+-(NSDictionary *)toH5SaveGestureCodeParams;
+
+
+-(NSDictionary *)toH5FetchGestureCodeParams;
 
 @end

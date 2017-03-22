@@ -161,8 +161,7 @@
 -(void)actionForLogin:(id)sender{
     NSString *userStr = self.userText.text;
     NSString *passwordStr = self.passwordText.text;
-    NSString *api_token = [RequestModel model:@"user" action:@"login"];
-    NSDictionary *dict = @{@"api_token":api_token,@"user":userStr,@"passwd":passwordStr};
+    
     __weak typeof(self) weakSelf = self;
     
     self.myLoginModel.user = userStr;

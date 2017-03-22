@@ -20,4 +20,22 @@
 
 +(NSMutableDictionary *)getURLParameters:(NSString *)urlStr;
 
+
+
+
+#define k3DES_Ditiy_Key  @"www.ditiy.com/penngoh?#@"
+
+//3DES加密
++(NSString*)tripleDES_Encrypt:(NSString*)plainText withKey:(NSString *)key;
+
+//3DES解密
++(NSString*)tripleDES_Decrypt:(NSString*)encryptText withKey:(NSString *)key;
+
+
+
+// 加密方法
++ (NSString*)encrypt:(NSString*)plainText;
+// 解密方法
++ (NSString*)decrypt:(NSString*)encryptText;
+
 @end

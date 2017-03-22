@@ -30,6 +30,9 @@
 #import "FingerprintLockViewController.h"
 #import "GesturePasswordViewController.h"
 
+#import "NSString+Common.h"
+#import "Util.h"
+
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
 
@@ -90,7 +93,20 @@
 //    return YES;
     
     
-    UIViewController *vc = [self nativeRootViewController];
+    
+    
+    NSString *str = @"测试加密";
+    
+    NSString *result =   [Util tripleDES_Encrypt:str withKey:k3DES_Ditiy_Key];
+    
+    NSString *result1 =   [Util tripleDES_Decrypt:result withKey:k3DES_Ditiy_Key];
+    
+    NSLog(@"result:%@,%@",result,result1);
+    
+    
+    
+    
+    UIViewController *vc = [self h5RootViewController];
     
     
     if (![[NSUserDefaults standardUserDefaults]boolForKey:@"kHasLaunched"]) {
@@ -125,6 +141,31 @@
     return YES;    
 }
 
+
+
+-(void)test{
+    
+    NSData *nsdata = [@"iOS Developer Tips encoded in Base64"
+                      dataUsingEncoding:NSUTF8StringEncoding];
+    
+    // Get NSString from NSData object in Base64
+    NSString *base64Encoded = [nsdata base64EncodedStringWithOptions:0];
+    
+    // Print the Base64 encoded string
+    NSLog(@"Encoded: %@", base64Encoded);
+    
+    // Let's go the other way...
+    
+    // NSData from the Base64 encoded str
+    NSData *nsdataFromBase64String = [[NSData alloc]
+                                      initWithBase64EncodedString:base64Encoded options:0];
+    
+    // Decoded NSString from the NSData
+    NSString *base64Decoded = [[NSString alloc]
+                               initWithData:nsdataFromBase64String encoding:NSUTF8StringEncoding];
+    NSLog(@"Decoded: %@", base64Decoded);
+    
+}
 
 //设置默认UI外观
 -(void)setUpUIAppearance{
@@ -163,6 +204,40 @@
     
     return h5VC;
 }
+
+//测试
+-(UIViewController *)testViewController{
+    
+    
+    
+    IndexViewController *iVC = [IndexViewController new];
+    UINavigationController *iNC = [[UINavigationController alloc]initWithRootViewController:iVC];
+    iVC.automaticallyAdjustsScrollViewInsets = NO;
+    
+    
+    UIViewController *vc = [UIViewController new];
+    vc.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"tab_user_gray"] tag:0];
+    
+    MyViewController *myVC = [[MyViewController alloc]init];
+    UINavigationController *myNV = [[UINavigationController alloc]initWithRootViewController:myVC];
+    
+    NSArray *array=@[vc,iNC];
+    iVC.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"tab_home"] tag:1];
+    
+    UITabBarController *tabBarControl = [[UITabBarController alloc]init];
+    
+    tabBarControl.viewControllers = array;
+    
+   // tabBarControl.tabBar.tintColor = [UIColor greenColor];
+    
+    tabBarControl.tabBar.barTintColor = [UIColor whiteColor];
+    
+    tabBarControl.tabBar.items[0].selectedImage = [UIImage imageNamed:@"tab_user"];
+    
+    return tabBarControl;
+    
+}
+
 
 
 //原生版本
