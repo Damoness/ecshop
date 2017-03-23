@@ -2261,6 +2261,7 @@
 				51F12E691C0BE168002C62D0 /* Resources */,
 				721B6ED3071FFF21231D65DF /* [CP] Embed Pods Frameworks */,
 				F081D1B16C603598B3BBFE64 /* [CP] Copy Pods Resources */,
+				9C6E41461E83DBB100B017F9 /* New Run Script Phase */,
 			);
 			buildRules = (
 			);
@@ -2621,6 +2622,20 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ecshop/Pods-ecshop-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9C6E41461E83DBB100B017F9 /* New Run Script Phase */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "New Run Script Phase";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "REVEAL_APP_PATH=$(mdfind kMDItemCFBundleIdentifier=\"com.ittybittyapps.Reveal2\" | head -n 1)\nBUILD_SCRIPT_PATH=\"${REVEAL_APP_PATH}/Contents/SharedSupport/Scripts/reveal_server_build_phase.sh\"\nif [ \"${REVEAL_APP_PATH}\" -a -e \"${BUILD_SCRIPT_PATH}\" ]; then\n\"${BUILD_SCRIPT_PATH}\"\nelse\necho \"Reveal Server not loaded: Cannot find a compatible Reveal app.\"\nfi";
+		};
 		F081D1B16C603598B3BBFE64 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2956,7 +2971,7 @@
 					"$(PROJECT_DIR)/ecshop/Vendor/umeng_ios_social_sdk_4.4_arm64_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/ecshop/Vendor/umeng_ios_social_sdk_4.4_arm64_custom/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ditiy.app.CloudShop.S;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ditiy.app.CloudShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3002,7 +3017,7 @@
 					"$(PROJECT_DIR)/ecshop/Vendor/umeng_ios_social_sdk_4.4_arm64_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/ecshop/Vendor/umeng_ios_social_sdk_4.4_arm64_custom/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ditiy.app.CloudShop.S;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ditiy.app.CloudShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

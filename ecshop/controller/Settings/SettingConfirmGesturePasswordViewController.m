@@ -142,7 +142,7 @@
 - (IBAction)reset_Action:(id)sender {
     
     
-    
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 

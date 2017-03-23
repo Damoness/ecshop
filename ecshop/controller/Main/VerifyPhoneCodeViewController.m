@@ -156,7 +156,7 @@
     
     
     
-    self.phoneNoStr = [LoginModel currentLoginUser].mobile;
+    self.phoneNoStr = [LoginModel currentLoginUser].mobile_phone;
     
     if ([self.phoneNoStr isPhoneNo]) {
 
@@ -198,7 +198,7 @@
 -(void)nextButton_Action:(UIButton *)button{
 
     
-    self.phoneNoStr = [LoginModel currentLoginUser].mobile;
+    self.phoneNoStr = [LoginModel currentLoginUser].mobile_phone;
     
     
     if (![self.codeTextField.text isPhoneVerifyCode]) {
