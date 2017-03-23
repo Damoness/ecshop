@@ -9,7 +9,6 @@
 #import "RequestModel.h"
 #import "AFHTTPSessionManager.h"
 #import "NSString+Hashing.h"
-#import "MBProgressHUD+MJ.h"
 @implementation RequestModel
 
 //-(void)startRequestInfo{
