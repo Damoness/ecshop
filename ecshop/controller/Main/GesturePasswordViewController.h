@@ -10,7 +10,7 @@
 
 @interface GesturePasswordViewController : BaseViewController
 
-
+@property (nonatomic,assign)Boolean hidden; //是否隐藏
 
 -(instancetype)initWithWindow:(UIWindow *)window;
 

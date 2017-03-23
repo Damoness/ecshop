@@ -14,8 +14,11 @@
 -(Boolean)isPhoneNo;
 
 
-
 -(Boolean)isPhoneVerifyCode; //手机验证码
 
 
+-(Boolean)isIdentityCard; //验证身份证
+
+
+-(Boolean)isEmail; //邮箱
 @end
