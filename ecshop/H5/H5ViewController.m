@@ -449,6 +449,11 @@
                    }
                    
                    
+               }else{
+                   
+                   [[SettingManager sharedManager] setGesturePassword:@""];
+                   [[SettingManager sharedManager] setGestureLock:false];
+                   
                }
                
                

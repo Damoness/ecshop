@@ -834,11 +834,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ecshop/H5/H5ViewController.m"
-            timestampString = "511870372.057708"
+            timestampString = "511961726.590006"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "661"
-            endingLineNumber = "661"
+            startingLineNumber = "666"
+            endingLineNumber = "666"
             landmarkName = "-UpdatePayResultSuccess:"
             landmarkType = "7">
          </BreakpointContent>
@@ -866,11 +866,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ecshop/H5/H5ViewController.m"
-            timestampString = "511870372.057708"
+            timestampString = "511961726.590006"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "719"
-            endingLineNumber = "719"
+            startingLineNumber = "724"
+            endingLineNumber = "724"
             landmarkName = "-alipayApiManagerDidReceivePayResponse:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1032,38 +1032,6 @@
             startingLineNumber = "326"
             endingLineNumber = "326"
             landmarkName = "-application:openURL:options:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ecshop/Controller/Main/VerifyPhoneCodeViewController.m"
-            timestampString = "511946268.126246"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "-getCodeButton_Action:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ecshop/Controller/Main/VerifyPhoneCodeViewController.m"
-            timestampString = "511946567.802453"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
-            landmarkName = "-getCodeButton_Action:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
