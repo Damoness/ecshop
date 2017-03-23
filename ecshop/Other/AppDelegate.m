@@ -38,6 +38,8 @@
 
 //@property (nonatomic,strong)UIWindow *lockWindow;
 
+@property(nonatomic,strong) GesturePasswordViewController *gesturePasswordVC;
+
 @end
 
 @implementation AppDelegate
@@ -128,9 +130,12 @@
     
     FingerprintLockViewController *fpLockVC = [FingerprintLockViewController new];
     
-    GesturePasswordViewController *fPassVC = [[GesturePasswordViewController alloc]initWithWindow:self.window];
     
-    UINavigationController *fNC = [[UINavigationController alloc]initWithRootViewController:fPassVC];
+    
+    
+    self.gesturePasswordVC = [[GesturePasswordViewController alloc]initWithWindow:self.window];
+    
+    UINavigationController *fNC = [[UINavigationController alloc]initWithRootViewController:self.gesturePasswordVC];
     
     self.lockWindow = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
@@ -321,9 +326,13 @@
     
     if ([url.absoluteString hasPrefix:MXWechatAPPID]) {
         
+        self.gesturePasswordVC.hidden = YES;
+        
         return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
         
     }else if([url.host isEqualToString:@"safepay"]){
+        
+        self.gesturePasswordVC.hidden = YES;
         
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
@@ -352,12 +361,16 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
     
-    if ([[SettingManager sharedManager]gestureLock] && ![[SettingManager sharedManager].gesturePassword isEmptyStr]) {
+    if ([[SettingManager sharedManager]gestureLock] && ![[SettingManager sharedManager].gesturePassword isEmptyStr] && !self.gesturePasswordVC.hidden) {
         
         
         [self.lockWindow makeKeyAndVisible];
         
+        //self.window.rootViewController = self.gesturePasswordVC;
+        
     }
+    
+    self.gesturePasswordVC.hidden = false;
     
     
     
