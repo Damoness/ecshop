@@ -13,7 +13,7 @@ target 'ecshop' do
   pod 'AFNetworking', '~> 3.1.0'
   pod 'SDWebImage', '~>3.8.2'
   pod 'FMDB', '~> 2.6.2'  # https://github.com/ccgus/fmdb
-  
+  pod 'MBProgressHUD', '~> 1.0.0' #https://github.com/matej/MBProgressHUD.git
   pod 'Masonry', '~> 1.0.2' #Homepage: https://github.com/cloudkite/Masonry
 
 end

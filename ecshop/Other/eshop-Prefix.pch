@@ -25,7 +25,7 @@
 #import "NSDictionary+Common.h"
 #import "NSObject+Common.h"
 #import "MJExtension.h"
-#import "MBProgressHUD+MJ.h"
+#import "MBProgressHUD+WD.h"
 
 #import "DitiyNetAPIClient.h"
 #import "Ditiy_NetAPIManager.h"

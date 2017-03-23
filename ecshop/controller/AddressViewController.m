@@ -17,7 +17,6 @@
 #import "OrderConfirmController.h"
 #import "SDRefresh.h"
 #import "UIColor+Hex.h"
-#import "MBProgressHUD+MJ.h"
 #define kColorBack [UIColor colorWithRed:239/255.0 green:239/255.0 blue:244/255.0 alpha:1.0]
 @interface AddressViewController ()<UITableViewDelegate,UITableViewDataSource,SDRefreshViewAnimationDelegate>
 @property(nonatomic,strong)UITableView *tableView;
