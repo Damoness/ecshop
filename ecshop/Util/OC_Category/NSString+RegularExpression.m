@@ -14,7 +14,7 @@
 -(Boolean)isPhoneNo{
     
     
-    NSRange range = [self rangeOfString:@"^1[3]\\d{9}$" options:NSRegularExpressionSearch];
+    NSRange range = [self rangeOfString:@"^1[0-9]{10}$" options:NSRegularExpressionSearch];
     if (range.location != NSNotFound) {
         NSLog(@"%@", [self substringWithRange:range]);
         
