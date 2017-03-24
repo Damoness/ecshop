@@ -23,6 +23,11 @@
 @property (nonatomic,strong) NSString *phoneCodeStr;
 @property (nonatomic,strong) NSString *phoneNoStr;
 
+
+@property (nonatomic,assign)int secondsCountDown;
+
+@property (nonatomic,strong) NSTimer *countDownTimer;
+
 @end
 
 @implementation VerifyPhoneCodeViewController
@@ -78,7 +83,7 @@
             [button mas_makeConstraints:^(MASConstraintMaker *make) {
                 
                 make.right.equalTo(aView).with.offset(-30);
-                make.size.mas_equalTo(CGSizeMake(100, 30));
+                make.size.mas_equalTo(CGSizeMake(120, 30));
                 make.centerY.equalTo(aView);
                 
             }];
@@ -173,6 +178,12 @@
                     
                     [MBProgressHUD showError:data[@"msg"]];
                     
+                }else{
+                    
+                    
+                    
+                    [self startCountDownWithNo:60];
+                    
                 }
     
                 
@@ -191,6 +202,50 @@
         
     }
     
+    
+}
+
+
+
+-(void)startCountDownWithNo:(int)no{
+    
+    
+    
+    //设置倒计时总时长
+    
+    self.secondsCountDown = no;
+    
+    self.countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(startTimeNSTimer) userInfo:nil repeats:YES];
+    
+    [self.getCodeButton setTitle:[NSString stringWithFormat:@"%ld秒后重新发送",(long)self.secondsCountDown] forState:UIControlStateNormal];
+   
+    self.getCodeButton.enabled = NO;
+
+}
+
+//使用NSTimer实现倒计时
+
+- (void)startTimeNSTimer
+
+{
+    
+    self.secondsCountDown -- ;
+    
+    self.getCodeButton.userInteractionEnabled = NO;
+    self.getCodeButton.enabled = NO;
+    
+    [self.getCodeButton setTitle:[NSString stringWithFormat:@"%ld秒后重新发送",(long)self.secondsCountDown] forState:UIControlStateNormal];
+    
+    if (self.secondsCountDown == 0) {
+        
+        [self.countDownTimer invalidate];
+        
+        self.getCodeButton.userInteractionEnabled = YES;
+        self.getCodeButton.enabled = YES;
+        
+        [self.getCodeButton setTitle:@"重新发送验证码" forState:UIControlStateNormal];
+        
+    }
     
 }
 
