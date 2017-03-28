@@ -94,21 +94,18 @@
 //    
 //    return YES;
     
+#if kH5_Version == true
     
-    
-    
-    NSString *str = @"测试加密";
-    
-    NSString *result =   [Util tripleDES_Encrypt:str withKey:k3DES_Ditiy_Key];
-    
-    NSString *result1 =   [Util tripleDES_Decrypt:result withKey:k3DES_Ditiy_Key];
-    
-    NSLog(@"result:%@,%@",result,result1);
-    
-    
-    
-    
+
     UIViewController *vc = [self h5RootViewController];
+    
+#else
+    
+    UIViewController *vc = [self nativeRootViewController];
+    
+#endif
+    
+    
     
     
     if (![[NSUserDefaults standardUserDefaults]boolForKey:@"kHasLaunched"]) {

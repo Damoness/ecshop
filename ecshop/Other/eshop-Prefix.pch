@@ -41,8 +41,22 @@
 
 #define kH5_Version true   //H5版本
 
+#define kVersion_Debug false //测试（true) 生产（false)
+
+#if kVersion_Debug == true
+
 #define baseURLStr @"http://sitmarket.ditiy.com" //测试
-//#define baseURLStr @"http://www.fxj2017.com"  //生产
+#define kURL_Base  @"http://sitmarket.ditiy.com"
+
+#else
+
+#define baseURLStr @"http://www.fxj2017.com"  //生产
+#define kURL_Base  @"http://www.fxj2017.com"
+
+#endif
+
+
+//#define baseURLStr @"http://sitmarket.ditiy.com" //测试
 
 #define baseAPIURLStr [NSString stringWithFormat:@"%@%@",baseURLStr,@"/shopapi/index.php"]
 

@@ -16,6 +16,9 @@
 @property(nonatomic,strong)NSString *sex;
 @property(nonatomic,strong)NSString *address;
 @property(nonatomic,strong)NSString *mobile;
+
+@property(nonatomic,strong)NSString *mobile_phone; //手机号
+
 @property(nonatomic,strong)NSString *birthday;
 @property(nonatomic,strong)NSString *email;
 
