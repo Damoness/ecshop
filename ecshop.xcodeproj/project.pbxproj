@@ -295,7 +295,6 @@
 		9CDD31161E6FB24400FD2CB5 /* ShoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2E571E6FB24200FD2CB5 /* ShoppingCartModel.m */; };
 		9CDD31171E6FB24400FD2CB5 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2E591E6FB24200FD2CB5 /* UserModel.m */; };
 		9CDD31181E6FB24400FD2CB5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2E5C1E6FB24200FD2CB5 /* AppDelegate.m */; };
-		9CDD31191E6FB24400FD2CB5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD2E5E1E6FB24200FD2CB5 /* Info.plist */; };
 		9CDD311B1E6FB24400FD2CB5 /* Setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD2E601E6FB24200FD2CB5 /* Setting.plist */; };
 		9CDD311C1E6FB24400FD2CB5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2E621E6FB24200FD2CB5 /* ViewController.m */; };
 		9CDD311D1E6FB24400FD2CB5 /* Ditiy_NetAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD2E661E6FB24200FD2CB5 /* Ditiy_NetAPIManager.m */; };
@@ -2278,12 +2277,12 @@
 		51F12E631C0BE168002C62D0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = jsyh;
 				TargetAttributes = {
 					51F12E6A1C0BE168002C62D0 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = ZN7KJ4D45E;
+						DevelopmentTeam = DM75VG4BJ5;
 					};
 				};
 			};
@@ -2321,7 +2320,6 @@
 				9CDD31891E6FB24400FD2CB5 /* icon_chose_arrow_sel@2x.png in Resources */,
 				9C98F88B1E7942EE00D69DA3 /* fingerprint@3x.png in Resources */,
 				9CDD30C01E6FB24400FD2CB5 /* zonghe(yixuanzhong)@2x.png in Resources */,
-				9CDD31191E6FB24400FD2CB5 /* Info.plist in Resources */,
 				9CDD30171E6FB24300FD2CB5 /* cart_goods_empty.jpg in Resources */,
 				9CDD30771E6FB24300FD2CB5 /* my_complete@2x.png in Resources */,
 				9CDD30851E6FB24300FD2CB5 /* my_share.png in Resources */,
@@ -2939,7 +2937,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = ZN7KJ4D45E;
+				DEVELOPMENT_TEAM = DM75VG4BJ5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2971,7 +2969,7 @@
 					"$(PROJECT_DIR)/ecshop/Vendor/umeng_ios_social_sdk_4.4_arm64_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/ecshop/Vendor/umeng_ios_social_sdk_4.4_arm64_custom/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ditiy.app.CloudShop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fxj2017.app.CloudShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -2985,7 +2983,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = ZN7KJ4D45E;
+				DEVELOPMENT_TEAM = DM75VG4BJ5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3017,7 +3015,7 @@
 					"$(PROJECT_DIR)/ecshop/Vendor/umeng_ios_social_sdk_4.4_arm64_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/ecshop/Vendor/umeng_ios_social_sdk_4.4_arm64_custom/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ditiy.app.CloudShop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fxj2017.app.CloudShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

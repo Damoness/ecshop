@@ -21,14 +21,14 @@
  */
 
 // 开放平台登录https://open.weixin.qq.com的开发者中心获取APPID
-#define MXWechatAPPID       @"wx40fbb60e2d770512"
+#define MXWechatAPPID       @"wx53c8fff13fdb9852"
 // 开放平台登录https://open.weixin.qq.com的开发者中心获取AppSecret。
 #define MXWechatAPPSecret   @"e5d5a34eb45ad58b64d*bf2eef8b7*22"
 // 微信支付商户号
-#define MXWechatMCHID       @"1445268202"
+#define MXWechatMCHID       @"1450739802"
 // 安全校验码（MD5）密钥，商户平台登录账户和密码登录http://pay.weixin.qq.com
 // 平台设置的“API密钥”，为了安全，请设置为以数字和字母组成的32字符串。
-#define MXWechatPartnerKey  @"beijingzhongjiyun123456789000000"
+#define MXWechatPartnerKey  @"00571c0fb665773849b9abd01f563856"
 
 
 /**
