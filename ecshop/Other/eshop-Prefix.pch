@@ -41,7 +41,7 @@
 
 #define kH5_Version true   //H5版本(true) 原生版本(false)
 
-#define kVersion_Debug true //测试（true) 生产（false)
+#define kVersion_Debug false //测试（true) 生产（false)
 
 #if kVersion_Debug == true
 
