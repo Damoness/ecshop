@@ -452,6 +452,7 @@
 		9CE02B831E72D4410017145F /* UserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE02B5C1E72D4410017145F /* UserGuideViewController.m */; };
 		9CE520451E78F354003A0C45 /* SettingUnlockTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE520431E78F354003A0C45 /* SettingUnlockTableViewCell.m */; };
 		9CE520461E78F354003A0C45 /* SettingUnlockTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CE520441E78F354003A0C45 /* SettingUnlockTableViewCell.xib */; };
+		9CE7242D1E94A32B000306A9 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE7242C1E94A32B000306A9 /* LoginVC.m */; };
 		9CF80E861E7FBD64004B4666 /* GesturePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF80E851E7FBD64004B4666 /* GesturePasswordViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -1076,6 +1077,8 @@
 		9CE520421E78F354003A0C45 /* SettingUnlockTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingUnlockTableViewCell.h; sourceTree = "<group>"; };
 		9CE520431E78F354003A0C45 /* SettingUnlockTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingUnlockTableViewCell.m; sourceTree = "<group>"; };
 		9CE520441E78F354003A0C45 /* SettingUnlockTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingUnlockTableViewCell.xib; sourceTree = "<group>"; };
+		9CE7242B1E94A32B000306A9 /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
+		9CE7242C1E94A32B000306A9 /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		9CF80E841E7FBD64004B4666 /* GesturePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GesturePasswordViewController.h; sourceTree = "<group>"; };
 		9CF80E851E7FBD64004B4666 /* GesturePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GesturePasswordViewController.m; sourceTree = "<group>"; };
 		CD8F558534F74A5EEBE4F568 /* Pods-ecshop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecshop.release.xcconfig"; path = "Pods/Target Support Files/Pods-ecshop/Pods-ecshop.release.xcconfig"; sourceTree = "<group>"; };
@@ -2243,6 +2246,8 @@
 				9CF80E851E7FBD64004B4666 /* GesturePasswordViewController.m */,
 				9C2D79B21E80C0FC006A8B55 /* VerifyPhoneCodeViewController.h */,
 				9C2D79B31E80C0FC006A8B55 /* VerifyPhoneCodeViewController.m */,
+				9CE7242B1E94A32B000306A9 /* LoginVC.h */,
+				9CE7242C1E94A32B000306A9 /* LoginVC.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -2778,6 +2783,7 @@
 				9CE02B821E72D4410017145F /* SliderViewController.m in Sources */,
 				9CDD31181E6FB24400FD2CB5 /* AppDelegate.m in Sources */,
 				9CE520451E78F354003A0C45 /* SettingUnlockTableViewCell.m in Sources */,
+				9CE7242D1E94A32B000306A9 /* LoginVC.m in Sources */,
 				9C4CD7D41E6FD0B5004D78D7 /* UIColor+Hex.m in Sources */,
 				9CE02B751E72D4410017145F /* MyOrderViewController.m in Sources */,
 				9CDD31981E6FB24400FD2CB5 /* MyOrderViewCell.m in Sources */,

@@ -42,6 +42,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
+    
+    [self request_Set_Session];
+    
     //WKWebView
     
     NSURLCache *urlCache = [[NSURLCache alloc]initWithMemoryCapacity:4 * 1024 *1024 diskCapacity:20 *1024 * 1024 diskPath:nil];
@@ -254,11 +258,11 @@
         self.myOrderModel.order_id = arrayData[0];
         
         
-        if ([arrayData[1] isEqualToString:@"微信支付"]) {
+        if ([arrayData[1] isEqualToString:@"微信APP"]) {
             
             _myOrderModel.payType = [NSString stringWithFormat:@"%d",PayWithWeChat];
             
-        }else if ([arrayData[1] isEqualToString:@"支付宝"]){
+        }else if ([arrayData[1] isEqualToString:@"支付宝APP"]){
             
             _myOrderModel.payType = [NSString stringWithFormat:@"%d",PayWithAlipay];
             
@@ -377,6 +381,28 @@
     
     
     [self.webView loadRequest:[[NSURLRequest alloc]initWithURL:[NSURL URLWithString:kURL_Index]]];
+    
+    
+    
+}
+
+-(void)request_Set_Session{
+    
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    
+    NSString *path = [NSString stringWithFormat:@"%@/mobile/api_set_session.php?key=is_app&value=y",baseURLStr];
+    
+    [manager GET:path parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        
+        
+    }];
     
     
     
