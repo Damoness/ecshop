@@ -307,6 +307,22 @@
     
 }
 
+-(void)request_VersionOfAppInAppStore:(NSString *)appId andBlock:(void(^)(id data,NSError *error))block{
+    
+    
+    NSString *path = [NSString stringWithFormat:@"https://itunes.apple.com/cn/lookup?id=%@",appId];
+    
+    [[DitiyNetAPIClient sharedJsonClient]requestJsonDataWithPath:path withParams:nil withMethodType:Get autoShowError:NO andBlock:^(id data, NSError *error) {
+        
+        
+        block(data,error);
+        
+        
+    }];
+    
+    
+}
+
 //请求将系
 -(void)request_KingSeriesBlock:(void (^)(id data,NSError *error))block{
     

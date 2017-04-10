@@ -65,6 +65,17 @@
 
 
 
+
+
+/**
+ 请求App Store上app的版本
+
+ @param appId app的id
+ @param block block description
+ */
+-(void)request_VersionOfAppInAppStore:(NSString *)appId andBlock:(void(^)(id data,NSError *error))block;
+
+
 //请求将系
 -(void)request_KingSeriesBlock:(void (^)(id data,NSError *error))block;
 

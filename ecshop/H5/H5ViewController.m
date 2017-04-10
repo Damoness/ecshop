@@ -42,7 +42,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    [self request_Get_AppVersion_InAppStore];
     
     [self request_Set_Session];
     
@@ -59,6 +59,45 @@
     
 }
 
+-(void)request_Get_AppVersion_InAppStore{
+    
+    
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    NSString *path = [NSString stringWithFormat:@"https://itunes.apple.com/cn/lookup?id=%@",kAppId];
+    
+    [manager GET:path parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+//        
+//        NSData *data = responseObject;
+//        
+//        
+//        //NSString *str = [NSString stringWithCString:[data bytes] encoding:NSUTF8StringEncoding];
+//        
+//        
+//        
+//        DebugLog(@"%@",str);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        
+        
+    }];
+    
+    
+    
+    [[Ditiy_NetAPIManager sharedManager]request_VersionOfAppInAppStore:kAppId andBlock:^(id data, NSError *error) {
+        
+    
+        
+        
+        
+    }];
+    
+}
 
 -(void)showUserGuiderVC{
     

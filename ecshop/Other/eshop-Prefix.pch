@@ -81,6 +81,9 @@
 
 
 
+#define kAppId  @"1220404911" //分享加APP ID
+
+
 //颜色
 #define kColor_UIView_BackgroundColor  RGB(242, 240, 241)  //背景色
 #define kColor_NavigationBar_BarTintColor RGB(230, 37, 137) //导航栏颜色

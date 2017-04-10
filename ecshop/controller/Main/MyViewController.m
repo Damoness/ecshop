@@ -11,6 +11,9 @@
 #import "UIButton+Common.h"
 #import "LoginViewController.h"
 
+#import "LoginVC.h"
+
+
 #import "MemberRegisterViewController.h"
 #import "AddressViewController.h"
 #import "MyAttentionViewController.h"
@@ -89,7 +92,8 @@
     
     }else{
         
-        LoginViewController *lVC = [LoginViewController new];
+        //LoginViewController *lVC = [LoginViewController new];
+        LoginVC *lVC = [LoginVC new];
         
         [self presentViewController:lVC animated:YES completion:nil];
         
@@ -215,6 +219,10 @@
 - (IBAction)my_Action:(CustomButton *)sender {
 
     if (![LoginModel isLogin]) {
+        
+        //LoginViewController *lVC = [LoginViewController new];
+        LoginVC *lVC = [LoginVC new];
+        [self presentViewController:lVC animated:YES completion:nil];
         
         return;
     }
