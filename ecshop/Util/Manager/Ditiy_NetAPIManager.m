@@ -310,15 +310,23 @@
 -(void)request_VersionOfAppInAppStore:(NSString *)appId andBlock:(void(^)(id data,NSError *error))block{
     
     
-    NSString *path = [NSString stringWithFormat:@"https://itunes.apple.com/cn/lookup?id=%@",appId];
     
-    [[DitiyNetAPIClient sharedJsonClient]requestJsonDataWithPath:path withParams:nil withMethodType:Get autoShowError:NO andBlock:^(id data, NSError *error) {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    NSString *path = [NSString stringWithFormat:@"https://itunes.apple.com/cn/lookup?id=%@",kAppId];
+    
+    [manager GET:path parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
+        block(responseObject,nil);
         
-        block(data,error);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
+        block(nil,error);
         
     }];
+    
     
     
 }

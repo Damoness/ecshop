@@ -36,6 +36,7 @@
 		9C98F88A1E7942EE00D69DA3 /* fingerprint@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C98F8871E7942EE00D69DA3 /* fingerprint@2x.png */; };
 		9C98F88B1E7942EE00D69DA3 /* fingerprint@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C98F8881E7942EE00D69DA3 /* fingerprint@3x.png */; };
 		9C98F88E1E7A67B000D69DA3 /* SettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C98F88D1E7A67B000D69DA3 /* SettingManager.m */; };
+		9CAF7C681E9B85C800BE0FA0 /* EshopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAF7C671E9B85C800BE0FA0 /* EshopTests.m */; };
 		9CAFC7611E763C5600D92CCB /* ShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFC75F1E763C5600D92CCB /* ShoppingCartViewController.m */; };
 		9CAFC7621E763C5600D92CCB /* ShoppingCartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CAFC7601E763C5600D92CCB /* ShoppingCartViewController.xib */; };
 		9CB367F31E77DA660036EEC9 /* ZPUnlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB367F21E77DA660036EEC9 /* ZPUnlockView.m */; };
@@ -456,6 +457,16 @@
 		9CF80E861E7FBD64004B4666 /* GesturePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF80E851E7FBD64004B4666 /* GesturePasswordViewController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		9CAF7C6A1E9B85C800BE0FA0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 51F12E631C0BE168002C62D0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 51F12E6A1C0BE168002C62D0;
+			remoteInfo = ecshop;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		2C6F45F137B9E65F9F3EF0F4 /* Pods-ecshop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecshop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ecshop/Pods-ecshop.debug.xcconfig"; sourceTree = "<group>"; };
 		3C1083921C3F45E5003E436B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -498,6 +509,9 @@
 		9C98F8881E7942EE00D69DA3 /* fingerprint@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fingerprint@3x.png"; sourceTree = "<group>"; };
 		9C98F88C1E7A67B000D69DA3 /* SettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingManager.h; sourceTree = "<group>"; };
 		9C98F88D1E7A67B000D69DA3 /* SettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingManager.m; sourceTree = "<group>"; };
+		9CAF7C651E9B85C800BE0FA0 /* EshopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EshopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CAF7C671E9B85C800BE0FA0 /* EshopTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EshopTests.m; sourceTree = "<group>"; };
+		9CAF7C691E9B85C800BE0FA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CAFC75E1E763C5600D92CCB /* ShoppingCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartViewController.h; sourceTree = "<group>"; };
 		9CAFC75F1E763C5600D92CCB /* ShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartViewController.m; sourceTree = "<group>"; };
 		9CAFC7601E763C5600D92CCB /* ShoppingCartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingCartViewController.xib; sourceTree = "<group>"; };
@@ -1115,6 +1129,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9CAF7C621E9B85C800BE0FA0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -1154,6 +1175,7 @@
 				51F2716C1C0D945C00619901 /* libsqlite3.tbd */,
 				51F12E6D1C0BE168002C62D0 /* ecshop */,
 				9CDD2CD01E6FB24100FD2CB5 /* Assets.xcassets */,
+				9CAF7C661E9B85C800BE0FA0 /* EshopTests */,
 				51F12E6C1C0BE168002C62D0 /* Products */,
 				440C9346187356CC6D78CCAA /* Pods */,
 				0BA2E66A02782EEAC0F98218 /* Frameworks */,
@@ -1164,6 +1186,7 @@
 			isa = PBXGroup;
 			children = (
 				51F12E6B1C0BE168002C62D0 /* ecshop.app */,
+				9CAF7C651E9B85C800BE0FA0 /* EshopTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1230,6 +1253,15 @@
 				9C98F8881E7942EE00D69DA3 /* fingerprint@3x.png */,
 			);
 			path = "登录";
+			sourceTree = "<group>";
+		};
+		9CAF7C661E9B85C800BE0FA0 /* EshopTests */ = {
+			isa = PBXGroup;
+			children = (
+				9CAF7C671E9B85C800BE0FA0 /* EshopTests.m */,
+				9CAF7C691E9B85C800BE0FA0 /* Info.plist */,
+			);
+			path = EshopTests;
 			sourceTree = "<group>";
 		};
 		9CB367F01E77DA660036EEC9 /* ZPUnlockView */ = {
@@ -2276,6 +2308,24 @@
 			productReference = 51F12E6B1C0BE168002C62D0 /* ecshop.app */;
 			productType = "com.apple.product-type.application";
 		};
+		9CAF7C641E9B85C800BE0FA0 /* EshopTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9CAF7C6E1E9B85C800BE0FA0 /* Build configuration list for PBXNativeTarget "EshopTests" */;
+			buildPhases = (
+				9CAF7C611E9B85C800BE0FA0 /* Sources */,
+				9CAF7C621E9B85C800BE0FA0 /* Frameworks */,
+				9CAF7C631E9B85C800BE0FA0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9CAF7C6B1E9B85C800BE0FA0 /* PBXTargetDependency */,
+			);
+			name = EshopTests;
+			productName = EshopTests;
+			productReference = 9CAF7C651E9B85C800BE0FA0 /* EshopTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -2288,6 +2338,12 @@
 					51F12E6A1C0BE168002C62D0 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = DM75VG4BJ5;
+					};
+					9CAF7C641E9B85C800BE0FA0 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = DM75VG4BJ5;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 51F12E6A1C0BE168002C62D0;
 					};
 				};
 			};
@@ -2306,6 +2362,7 @@
 			projectRoot = "";
 			targets = (
 				51F12E6A1C0BE168002C62D0 /* ecshop */,
+				9CAF7C641E9B85C800BE0FA0 /* EshopTests */,
 			);
 		};
 /* End PBXProject section */
@@ -2592,6 +2649,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9CAF7C631E9B85C800BE0FA0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -2814,7 +2878,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9CAF7C611E9B85C800BE0FA0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CAF7C681E9B85C800BE0FA0 /* EshopTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9CAF7C6B1E9B85C800BE0FA0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 51F12E6A1C0BE168002C62D0 /* ecshop */;
+			targetProxy = 9CAF7C6A1E9B85C800BE0FA0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9CDD2CD21E6FB24100FD2CB5 /* LaunchScreen.storyboard */ = {
@@ -3027,6 +3107,42 @@
 			};
 			name = Release;
 		};
+		9CAF7C6C1E9B85C800BE0FA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = DM75VG4BJ5;
+				INFOPLIST_FILE = EshopTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fxj2017.app.EshopTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ecshop.app/ecshop";
+			};
+			name = Debug;
+		};
+		9CAF7C6D1E9B85C800BE0FA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = DM75VG4BJ5;
+				INFOPLIST_FILE = EshopTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fxj2017.app.EshopTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ecshop.app/ecshop";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3047,6 +3163,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		9CAF7C6E1E9B85C800BE0FA0 /* Build configuration list for PBXNativeTarget "EshopTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CAF7C6C1E9B85C800BE0FA0 /* Debug */,
+				9CAF7C6D1E9B85C800BE0FA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
