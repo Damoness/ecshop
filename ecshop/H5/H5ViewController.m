@@ -186,6 +186,15 @@
 
 #define kURL_User_My [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/user.php"] //我的页面
 
+
+
+//http://sitmarket.ditiy.com/admin/wxScanQrCode.php
+#define kURL_ShareSettle_我要付款 [NSString stringWithFormat:@"%@%@",kURL_Base,@"/admin/wxScanQrCode.php"] //我要付款
+
+
+
+
+
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
     NSLog(@"shouldStartLoadWithRequest-----");
@@ -389,9 +398,38 @@
         }
         
         return YES;
+    }else if ([urlStr isEqualToString:kURL_ShareSettle_我要付款]){ //我要付款
+        
+        [SGQRCodeNotificationCenter addObserver:self selector:@selector(SGQRCodeInformationFromeScanning:) name:SGQRCodeInformationFromeScanning object:nil];
+        
+        QRCodeScanningVC *vc = [QRCodeScanningVC new];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        //[self presentViewController:vc animated:YES completion:nil];
+        
+        return NO;
+        
     }
     
     return  true;
+}
+
+- (void)SGQRCodeInformationFromeScanning:(NSNotification *)noti {
+    SGQRCodeLog(@"noti - - %@", noti);
+    NSString *string = noti.object;
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    
+    if ([string hasPrefix:@"http"]) {
+        [self.webView loadRequest:[[NSURLRequest alloc]initWithURL:[NSURL URLWithString:string]]];
+        
+    } else { // 扫描结果为条形码
+//        
+//        ScanSuccessJumpVC *jumpVC = [[ScanSuccessJumpVC alloc] init];
+//        jumpVC.jump_bar_code = string;
+//        [self.navigationController pushViewController:jumpVC animated:YES];
+    }
 }
 
 -(void)initViews{

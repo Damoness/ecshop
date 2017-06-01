@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "UIWebView+JavaScript.h"
+#import "QRCodeScanningVC.h"
 @interface H5ViewController : ViewController
 
 @end

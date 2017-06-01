@@ -83,6 +83,10 @@ static  NSString *key;
         
         key =  [defaults stringForKey:KLoginKey];
         
+        if (key ==nil) {
+            key = @"";
+        }
+        
     }
     
     return  key;
