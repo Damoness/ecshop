@@ -834,11 +834,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ecshop/H5/H5ViewController.m"
-            timestampString = "518005090.147994"
+            timestampString = "518078841.248275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "761"
-            endingLineNumber = "761"
+            startingLineNumber = "840"
+            endingLineNumber = "840"
             landmarkName = "-UpdatePayResultSuccess:"
             landmarkType = "7">
          </BreakpointContent>
@@ -850,11 +850,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ecshop/H5/H5ViewController.m"
-            timestampString = "517997086.835674"
+            timestampString = "518075811.883212"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
             landmarkName = "-webView:shouldStartLoadWithRequest:navigationType:"
             landmarkType = "7">
          </BreakpointContent>
@@ -945,28 +945,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ecshop/Other/AppDelegate.m"
-            timestampString = "518002317.36479"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "328"
-            endingLineNumber = "328"
-            landmarkName = "-application:openURL:options:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ecshop/H5/H5ViewController.m"
-            timestampString = "518005090.147994"
+            timestampString = "518078841.248275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "680"
-            endingLineNumber = "680"
+            startingLineNumber = "749"
+            endingLineNumber = "749"
             landmarkName = "-sendWechatPay:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1010,7 +994,7 @@
                   moduleName = "ecshop"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wudi/Documents/work/%E4%B8%AD%E6%8A%80%E5%90%8C%E5%88%9B/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E5%B9%B3%E5%8F%B0/ecshop%20%E6%9C%80%E7%BB%883-8/ecshop/Util/Manager/DitiyNetAPIClient.m"
-                  timestampString = "518003096.375992"
+                  timestampString = "518078199.829023"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "62"
@@ -1025,7 +1009,7 @@
                   moduleName = "ecshop"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wudi/Documents/work/%E4%B8%AD%E6%8A%80%E5%90%8C%E5%88%9B/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E5%B9%B3%E5%8F%B0/ecshop%20%E6%9C%80%E7%BB%883-8/ecshop/Util/Manager/DitiyNetAPIClient.m"
-                  timestampString = "518003096.378141"
+                  timestampString = "518078199.831085"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "62"
@@ -1074,7 +1058,7 @@
                   moduleName = "ecshop"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wudi/Documents/work/%E4%B8%AD%E6%8A%80%E5%90%8C%E5%88%9B/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E5%B9%B3%E5%8F%B0/ecshop%20%E6%9C%80%E7%BB%883-8/ecshop/H5/H5ViewController.m"
-                  timestampString = "518003096.387056"
+                  timestampString = "518078199.840871"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "89"
@@ -1089,7 +1073,7 @@
                   moduleName = "ecshop"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wudi/Documents/work/%E4%B8%AD%E6%8A%80%E5%90%8C%E5%88%9B/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E5%B9%B3%E5%8F%B0/ecshop%20%E6%9C%80%E7%BB%883-8/ecshop/H5/H5ViewController.m"
-                  timestampString = "518003096.389092"
+                  timestampString = "518078199.843027"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "89"
@@ -1104,7 +1088,7 @@
                   moduleName = "ecshop"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wudi/Documents/work/%E4%B8%AD%E6%8A%80%E5%90%8C%E5%88%9B/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E5%B9%B3%E5%8F%B0/ecshop%20%E6%9C%80%E7%BB%883-8/ecshop/H5/H5ViewController.m"
-                  timestampString = "518003096.391301"
+                  timestampString = "518078199.845166"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "89"
@@ -1112,6 +1096,22 @@
                   offsetFromSymbolStart = "36">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ecshop/H5/H5ViewController.m"
+            timestampString = "518078841.248275"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "784"
+            endingLineNumber = "784"
+            landmarkName = "-sendAlipay:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

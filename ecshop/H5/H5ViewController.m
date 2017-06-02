@@ -192,8 +192,14 @@
 #define kURL_ShareSettle_我要付款 [NSString stringWithFormat:@"%@%@",kURL_Base,@"/admin/wxScanQrCode.php"] //我要付款
 
 
+//http://sitmarket.ditiy.com/mobile/space_station_offline_store.php?act=payconfirm
+
+#define kURL_ShareSettle_确认支付 [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/space_station_offline_store.php?act=payconfirm"] //确认支付
+
+#define kURL_ShareSettle_立即支付 [NSString stringWithFormat:@"%@%@",kURL_Base,@"/mobile/space_station_offline_store.php?act=paydone"] //立即支付
 
 
+//http://sitmarket.ditiy.com/mobile/wwhl_xf_pay_submit.php
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
@@ -263,7 +269,7 @@
         
         return NO;
         
-    }else if([urlStr isEqualToString:kURL_Order_Submit] || [urlStr isEqualToString:kURL_Order_Finished2] || [urlStr isEqualToString:kURL_My_Share]) {
+    }else if([urlStr isEqualToString:kURL_Order_Submit] || [urlStr isEqualToString:kURL_Order_Finished2] || [urlStr isEqualToString:kURL_My_Share] ||  [urlStr isEqualToString:kURL_ShareSettle_确认支付]) {
         
 
         if ([[[urlStr componentsSeparatedByString:@"/"]lastObject]containsString:@"?"]) {
@@ -404,13 +410,17 @@
         
         QRCodeScanningVC *vc = [QRCodeScanningVC new];
         
-        [self.navigationController pushViewController:vc animated:YES];
-        //[self presentViewController:vc animated:YES completion:nil];
+        //[self.navigationController pushViewController:vc animated:YES];
+        
+    
+        NSString *url = @"http://sitmarket.ditiy.com/mobile/space_station_offline_store.php?act=payinfo&suppid=148";
+        
+        [self.webView loadRequest:[[NSURLRequest alloc]initWithURL:[NSURL URLWithString:url]]];
+        
         
         return NO;
         
     }
-    
     return  true;
 }
 
@@ -472,12 +482,20 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     NSString *path = [NSString stringWithFormat:@"%@/mobile/api_set_session.php?key=is_app&value=y",baseURLStr];
     
     [manager GET:path parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
+        //NSString *result = [NSString stringWithCString:responseObject encoding:NSUTF8StringEncoding];
         
+        NSData *data = responseObject;
+        
+
+        NSString *result = [NSString stringWithCString:[data bytes] encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"%s:%@",__func__,result);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
@@ -575,6 +593,57 @@
         [LoginModel doLogout];
         [[SettingManager sharedManager] setGesturePassword:@""];
         [[SettingManager sharedManager] setGestureLock:false];
+        
+        
+        
+    }else if([urlStr isEqualToString:kURL_ShareSettle_立即支付]){ //分享结算 立即支付
+        
+        
+        
+        NSString *orderIdAndPayType = [_webView stringByEvaluatingJavaScriptFromString:@"get_station_order_id_for_app()"];
+        NSLog(@"get_order_id_and_paytype_for_app %@", orderIdAndPayType);
+        
+        
+        if([orderIdAndPayType isEqualToString:@""]){
+            
+            return;
+        }
+        
+        //微信支付，支付宝
+        
+        NSArray *arrayData = [orderIdAndPayType componentsSeparatedByString:@"_"];
+        
+        
+        NSLog(@"%@,%@",arrayData[0],arrayData[1]);
+        
+        
+        self.myOrderModel = [OrderModel new];
+        self.myOrderModel.typeStr = @"共享结算";
+        
+        self.myOrderModel.order_id = arrayData[0];
+        
+        
+        if ([arrayData[1] isEqualToString:@"微信APP"]) {
+            
+            _myOrderModel.payType = [NSString stringWithFormat:@"%d",PayWithWeChat];
+            
+        }else if ([arrayData[1] isEqualToString:@"支付宝APP"]){
+            
+            _myOrderModel.payType = [NSString stringWithFormat:@"%d",PayWithAlipay];
+            
+        }
+        
+        
+        
+        // 获取当前页面的标题
+        NSString *title = [_webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+        NSLog(@"title %@", title);
+        
+        
+        [self request_PayOrder_AppH5];
+        
+        
+        //return NO;
         
         
         
@@ -713,7 +782,17 @@
         }else if([resultDic[@"resultStatus"] intValue] == 6001) //用户取消
         {
             
-            [MBProgressHUD showError:@"用户取消支付"];
+            if ([self.myOrderModel.typeStr isEqualToString:@"共享结算"]) {
+                
+                [self UpdatePayResultSuccess:NO];
+                
+            }else{
+                
+                [MBProgressHUD showError:@"用户取消支付"];
+                
+            }
+            
+            
             
         }else{
             
@@ -793,7 +872,16 @@
         }
         case WXErrCodeUserCancel:{
             
-            [MBProgressHUD showError:@"用户取消支付"];
+            
+            if ([self.myOrderModel.typeStr isEqualToString:@"共享结算"]) {
+                
+                [self UpdatePayResultSuccess:NO];
+                
+            }else{
+                
+                [MBProgressHUD showError:@"用户取消支付"];
+                
+            }
             
             break;
         }
@@ -821,13 +909,25 @@
         
         [self UpdatePayResultSuccess:YES];
         
+    }else if([response[@"resultStatus"] intValue] == 6001) //用户取消
+    {
+        
+        if ([self.myOrderModel.typeStr isEqualToString:@"共享结算"]) {
+            
+            [self UpdatePayResultSuccess:NO];
+            
+        }else{
+            
+            [MBProgressHUD showError:@"用户取消支付"];
+            
+        }
+        
+        
+        
     }else{
         
-        
-        //[self UpdatePayResultSuccess:NO];
-        
         [MBProgressHUD showError:response[@"memo"]];
-        
+        [self UpdatePayResultSuccess:NO];
     }
     
     
