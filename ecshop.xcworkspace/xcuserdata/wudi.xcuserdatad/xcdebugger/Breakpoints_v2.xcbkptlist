@@ -978,7 +978,7 @@
                   moduleName = "ecshop"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wudi/Documents/work/%E4%B8%AD%E6%8A%80%E5%90%8C%E5%88%9B/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E5%B9%B3%E5%8F%B0/ecshop%20%E6%9C%80%E7%BB%883-8/ecshop/Util/Manager/DitiyNetAPIClient.m"
-                  timestampString = "518340725.1271"
+                  timestampString = "518342264.438213"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "62"
@@ -993,7 +993,7 @@
                   moduleName = "ecshop"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wudi/Documents/work/%E4%B8%AD%E6%8A%80%E5%90%8C%E5%88%9B/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E5%B9%B3%E5%8F%B0/ecshop%20%E6%9C%80%E7%BB%883-8/ecshop/Util/Manager/DitiyNetAPIClient.m"
-                  timestampString = "518340725.129133"
+                  timestampString = "518342264.440466"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "62"
@@ -1042,11 +1042,11 @@
                   moduleName = "ecshop"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wudi/Documents/work/%E4%B8%AD%E6%8A%80%E5%90%8C%E5%88%9B/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E5%B9%B3%E5%8F%B0/ecshop%20%E6%9C%80%E7%BB%883-8/ecshop/H5/H5ViewController.m"
-                  timestampString = "518340725.137934"
+                  timestampString = "518342264.449194"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "146"
-                  endingLineNumber = "146"
+                  startingLineNumber = "149"
+                  endingLineNumber = "149"
                   offsetFromSymbolStart = "204">
                </Location>
                <Location
@@ -1057,11 +1057,11 @@
                   moduleName = "ecshop"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wudi/Documents/work/%E4%B8%AD%E6%8A%80%E5%90%8C%E5%88%9B/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E5%B9%B3%E5%8F%B0/ecshop%20%E6%9C%80%E7%BB%883-8/ecshop/H5/H5ViewController.m"
-                  timestampString = "518340725.140067"
+                  timestampString = "518342264.451185"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "146"
-                  endingLineNumber = "146"
+                  startingLineNumber = "149"
+                  endingLineNumber = "149"
                   offsetFromSymbolStart = "64">
                </Location>
                <Location
@@ -1072,11 +1072,11 @@
                   moduleName = "ecshop"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wudi/Documents/work/%E4%B8%AD%E6%8A%80%E5%90%8C%E5%88%9B/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E5%B9%B3%E5%8F%B0/ecshop%20%E6%9C%80%E7%BB%883-8/ecshop/H5/H5ViewController.m"
-                  timestampString = "518340725.142093"
+                  timestampString = "518342264.45324"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "146"
-                  endingLineNumber = "146"
+                  startingLineNumber = "149"
+                  endingLineNumber = "149"
                   offsetFromSymbolStart = "36">
                </Location>
             </Locations>
