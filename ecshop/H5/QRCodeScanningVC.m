@@ -19,10 +19,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // 注册观察者
-    [SGQRCodeNotificationCenter addObserver:self selector:@selector(SGQRCodeInformationFromeAibum:) name:SGQRCodeInformationFromeAibum object:nil];
-    [SGQRCodeNotificationCenter addObserver:self selector:@selector(SGQRCodeInformationFromeScanning:) name:SGQRCodeInformationFromeScanning object:nil];
-    
+//    // 注册观察者
+//    [SGQRCodeNotificationCenter addObserver:self selector:@selector(SGQRCodeInformationFromeAibum:) name:SGQRCodeInformationFromeAibum object:nil];
+//    [SGQRCodeNotificationCenter addObserver:self selector:@selector(SGQRCodeInformationFromeScanning:) name:SGQRCodeInformationFromeScanning object:nil];
+//    
     
     self.navigationItem.title = @"二维码/条形码";
     
@@ -54,32 +54,7 @@
     [self.navigationController setNavigationBarHidden:YES];
 }
 
-- (void)SGQRCodeInformationFromeAibum:(NSNotification *)noti {
-    NSString *string = noti.object;
-//
-//    ScanSuccessJumpVC *jumpVC = [[ScanSuccessJumpVC alloc] init];
-//    jumpVC.jump_URL = string;
-//    [self.navigationController pushViewController:jumpVC animated:YES];
-}
 
-- (void)SGQRCodeInformationFromeScanning:(NSNotification *)noti {
-    SGQRCodeLog(@"noti - - %@", noti);
-//    NSString *string = noti.object;
-//    
-//    if ([string hasPrefix:@"http"]) {
-//        ScanSuccessJumpVC *jumpVC = [[ScanSuccessJumpVC alloc] init];
-//        jumpVC.jump_URL = string;
-//        [self.navigationController pushViewController:jumpVC animated:YES];
-//        
-//    } else { // 扫描结果为条形码
-//        
-//        ScanSuccessJumpVC *jumpVC = [[ScanSuccessJumpVC alloc] init];
-//        jumpVC.jump_bar_code = string;
-//        [self.navigationController pushViewController:jumpVC animated:YES];
-//    }
-    
-    
-}
 
 - (void)dealloc {
     SGQRCodeLog(@"QRCodeScanningVC - dealloc");

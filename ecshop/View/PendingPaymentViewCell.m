@@ -12,6 +12,7 @@
 @implementation PendingPaymentViewCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     self.payBtn.layer.borderWidth = 0.5f;
     self.payBtn.layer.borderColor = [[UIColor redColor]CGColor];
     self.payBtn.layer.cornerRadius = 5;

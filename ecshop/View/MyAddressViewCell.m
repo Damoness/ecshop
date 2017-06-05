@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
     [self.editBtn setTitle:@"编辑" forState:UIControlStateNormal];
     self.editBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [self.editBtn setImage:[UIImage imageNamed:@"address_edit"] forState:UIControlStateNormal];

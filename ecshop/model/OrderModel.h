@@ -49,6 +49,8 @@
 
 @property (nonatomic,strong) NSString *payType;  //支付类型
 
+@property (nonatomic,strong) NSString *typeStr;  //类型
+
 - (NSDictionary *)toCreateOrderParams;
 
 - (NSDictionary *)toCancelOrderParams;
