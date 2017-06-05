@@ -194,7 +194,7 @@
         
         //[self payWithWeChat];
         
-        WS(ws)
+        //WS(ws)
         [[Ditiy_NetAPIManager sharedManager]request_PayOrder_WithPayType:PayWithWeChat Params:[model toPayOrderParams] andBlock:^(id data, NSError *error) {
             
             if(data){

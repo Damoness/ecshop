@@ -21,7 +21,7 @@
 +(NSMutableDictionary *)getURLParameters:(NSString *)urlStr;
 
 
-
++ (UIImage *)imageWithColor:(UIColor *)color;
 
 #define k3DES_Ditiy_Key  @"www.ditiy.com/penngoh?#@"
 

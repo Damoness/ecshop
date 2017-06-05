@@ -31,8 +31,13 @@
 
 @property (nonatomic,strong) UIWebView *webView;
 
+@property (nonatomic,strong) UIView *netErrorView;
 
 @property (nonatomic,strong) OrderModel *myOrderModel;
+
+
+@property (nonatomic)  NSMutableURLRequest *lastRequst;
+
 
 @end
 
@@ -46,7 +51,6 @@
     
     [self request_Set_Session];
     
-    //WKWebView
     
     NSURLCache *urlCache = [[NSURLCache alloc]initWithMemoryCapacity:4 * 1024 *1024 diskCapacity:20 *1024 * 1024 diskPath:nil];
     
@@ -56,6 +60,62 @@
     
     [WXApiManager sharedManager].delegate = self;
     [AlipayApiManager sharedManager].delegate = self;
+    
+}
+
+
+-(UIView *)netErrorView{
+    
+    if (_netErrorView ==nil) {
+        
+        
+        _netErrorView = [[UIView alloc]initWithFrame:UIScreen.mainScreen.bounds];
+        _netErrorView.backgroundColor = [UIColor whiteColor];
+        
+        UIView *aView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 200, 200)];
+        
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 80, 200, 20)];
+        label.text = @"啊哦，网络不太顺畅哦~";
+        label.textAlignment = NSTextAlignmentCenter;
+        //[label sizeToFit];
+        
+        
+        UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(30, 120, 140, 40)];
+        
+        NSAttributedString *attributedStr = [[NSAttributedString alloc]initWithString:@"重新加载" attributes:@{
+                                                                                                          NSFontAttributeName:[UIFont systemFontOfSize:14],
+                                                                                                          NSForegroundColorAttributeName:[UIColor whiteColor]
+                                                                                                          }];
+        
+        [button setAttributedTitle:attributedStr forState:UIControlStateNormal];
+    
+        
+        [button addTarget:self action:@selector(reloadAction) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+        [button setBackgroundImage:[Util imageWithColor:[UIColor redColor]] forState:UIControlStateNormal];
+        
+        [aView addSubview:button];
+        [aView addSubview:label];
+        
+        aView.center = _netErrorView.center;
+    
+        [_netErrorView addSubview:aView];
+        
+        [self.view addSubview:_netErrorView];
+        
+        _netErrorView.hidden = YES;
+        
+    }
+    return _netErrorView;
+}
+
+
+
+//重新加载
+-(void)reloadAction{
+    
+    [self.webView loadRequest:self.lastRequst];
     
 }
 
@@ -203,7 +263,11 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
+    
+    
     NSLog(@"shouldStartLoadWithRequest-----");
+    
+    self.lastRequst = request;
     
     NSMutableString *urlStr = [NSMutableString stringWithString:request.URL.absoluteString];
     
@@ -242,28 +306,8 @@
         }
         
         
-        
-        //NSDictionary *dic =  [Util getURLParameters:urlStr];
-        
         _myOrderModel.order_id = [[Util getURLParameters:urlStr] objectForKey:@"order_id"];
         
-        //        WS(ws)
-        //        [[Ditiy_NetAPIManager sharedManager]request_PayOrder_AppH5_WithPayType:[_myOrderModel.payType intValue] Params:[_myOrderModel toPayOrderH5Params] andBlock:^(id data, NSError *error) {
-        //
-        //            if(data && [ws.myOrderModel.payType intValue] == PayWithWeChat){
-        //
-        //                [ws sendWechatPay:data];
-        //
-        //            }else if (data && [ws.myOrderModel.payType intValue] == PayWithAlipay){
-        //
-        //                NSLog(@"支付宝支付");
-        //
-        //                [ws sendAlipay:data];
-        //
-        //
-        //            }
-        //
-        //        }];
         
         [self request_PayOrder_AppH5];
         
@@ -557,6 +601,7 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
     
+    self.netErrorView.hidden = YES;
     
     //NSLog(@"webViewDidStartLoad-----@%",[NSString stringWithFormat:@"%@%@",kURL_Base,kURL_Order_Submit]);
     
@@ -712,6 +757,15 @@
     //[MBProgressHUD hideHUDForView:self.view animated:YES];
     
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    
+    if (error.code == -1009) { //似乎已断开与互联网的连接
+        
+       // [MBProgressHUD showMessage:@"网络已经断开" toView:webView];
+        
+        
+        self.netErrorView.hidden = NO;
+    }
+    
     
 }
 
